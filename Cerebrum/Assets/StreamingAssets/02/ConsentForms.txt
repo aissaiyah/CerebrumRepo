@@ -1,0 +1,126 @@
+#ConsentForms.txt - Loop and check all the form items
+
+$ConsentForms lookAtMe 0.0 0.3 -0.05
+$ConsentForms outline.off
+
+#Prompt 'about to move'
+#Wait 2
+#Player align $ConLook
+#Prompt 'Moved'
+#Wait 5
+$ConsentForms selectable false
+turnOn $ConsentFormsButtons
+
+#$autoAdvance = false
+#If
+#  $autoAdvance=true
+#Then
+#  $itemCheck = 'Forms/CheckFormItemStatus.txt'
+#Else
+#  $itemCheck = 'Forms/CheckFormItemPressed.txt'
+#Endif
+#$itemCheck now set in CheckItemSkip.txt
+$itemCheck = 'Forms/CheckFormItemPressed.txt'
+
+
+Label 'ConsentPageCheck'
+
+    ##PAGE 1
+    $formpage = 'Consent1'
+
+    If
+        $formpage isOn
+    Then
+        $formpage selectable false
+        Debug 'Checking formpage ' + formpage
+        
+        #Patient Line
+        $item = ItemConsentPatient
+        $formitem = 'Consent1/PatientLine'
+        $formitemName = 'Consent1PatientLine'
+        $question = 'Is the name and IC correct?'
+        Do $itemCheck
+    Endif
+
+    ##PAGE 4
+    $formpage = 'Consent4'
+
+    If
+        $formpage isOn
+    Then
+        $formpage selectable false
+        Debug 'Checking formpage ' + formpage
+	$ConsentDateLineP4L1 setItemDate
+	$ConsentDateLineP4L2 setItemDate
+        #Wait .5
+
+        #Date Line
+        $item = ItemConsentDates
+        $formitem = 'Consent4/DateLine'
+        $formitemName = 'Consent4DateLine'
+        $question = 'Is the consent date valid?'
+        Do $itemCheck
+
+        #Signature Line
+        $item = ItemConsentSignature
+        $formitem = 'Consent4/SignatureLine'
+        $formitemName = 'Consent4SignatureLine'
+        $question = 'Are all relevant fields filled up?'
+        Do $itemCheck
+
+        #Valid Line
+        $item = ItemConsentIC
+        $formitem = 'Consent4/ValidLine'
+        $formitemName = 'Consent4ValidLine'
+        $question = 'Is the name and IC number correct?'
+        Do $itemCheck
+
+
+    Endif
+
+    ##PAGE 5
+    $formpage = 'Consent5'
+
+    If
+        $formpage isOn
+    Then
+    	$formpage selectable false
+        Debug 'Checking formpage ' + formpage
+#        $ConsentDateLineP5L1 setItemDate
+#	$ConsentDateLineP5L2 setItemDate
+    Endif
+
+    ##PAGE 6
+    $formpage = 'Consent6'
+
+    If
+        $formpage isOn
+    Then
+	    $formpage selectable false
+        Debug 'Checking formpage ' + formpage
+        $ConsentDateLineP6L1 setItemDate
+#	$ConsentDateLineP6L2 setItemDate
+    Endif
+
+
+    #check for exit button
+    $CF_ExitForm = ConsentForms + '/Buttons/Exit'
+    Debug 'Check exit button : ' + Exit
+    #Wait .5
+
+    If 
+        $CF_ExitForm pressed
+    Then
+        #reset must happen before button turned off
+        $CF_ExitForm reset
+        turnOff $ConsentFormsButtons
+        $range = '5-8'
+        $formpage = ConsentForms
+        Do 'Forms/FormCheckComplete.txt'
+#        Player align $DefLook
+#        Player lookat $Deflook
+        Return                
+    Endif
+
+Wait .1
+Goto 'ConsentPageCheck'

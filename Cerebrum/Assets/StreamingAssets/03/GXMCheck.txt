@@ -1,0 +1,27 @@
+If
+	ScoreTracker iscomplete 0
+Then
+	If
+		ScoreTracker iscomplete 6
+	Then
+		$Paper align IceBoxAbove
+		wait 1
+		$Paper rotatey -90
+		$Paper align $PaperReturn
+		wait 1
+		ScoreTracker incomplete 6
+	Else
+		$Paper align IceBoxAbove
+		wait 1
+		$Paper rotatey 90
+		$Paper moveto $PaperBox
+		wait 1
+		ScoreTracker taskCorrect 6 true
+	Endif
+Else
+	$Paper align IceBoxAbove
+	wait 1
+	$Paper align $PaperReturn
+	wait 1
+	ScoreTracker incomplete 6
+Endif

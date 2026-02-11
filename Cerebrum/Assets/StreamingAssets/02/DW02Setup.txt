@@ -1,0 +1,150 @@
+#Wait 10
+Do 'Setup.txt'
+
+# TASK 00 Check Valid Prescription
+# TASK 01 Call Blood Bank
+# TASK 02 Check GXM Form Patient Name
+# TASK 03 Check GXM Form Blood Info
+# TASK 04 Check GXM Form Request Date & Time
+# TASK 05 Check Consent Form Date
+# TASK 06 Check Consent Form Patient Signatory
+# TASK 07 Check Consent Form Front Page (PatientLine)
+# TASK 08 Check Consent Form Patient Declaration
+
+$ItemCompDone = 0
+$ItemPhoneDone = 1
+$ItemGXMpatient = 2
+$ItemGXMblood = 3
+$ItemGXMvalid = 4
+$ItemConsentDates = 5
+$ItemConsentSignature = 6
+$ItemConsentPatient = 7
+$ItemConsentIC = 8
+
+ScoreTracker setstages 2
+ScoreTracker numItems 9
+ScoreTracker setdependency 1  0 7 8 6 5 2 3 4
+
+
+#Document4 = GXMForm
+#Document3 = ConsentForms
+End off
+$CheckMark = 'CheckMark'
+$XMark = 'XMark'
+
+$Desk = 'Desk6'
+$Monitor = $Desk + '/Computer1'
+$GXMForm = $Desk + '/Document4'
+$ConsentForms = $Desk + '/Document3'
+$Phone = $Desk + '/Telephone(Clone)' #'Phone'
+$Scene_Exit = 'JoystickCanvas/Exit'
+$SumButton = 'JoystickCanvas/Summary'
+$MonitorDate1 = $Monitor + '/Dynamic/Date1'
+$MonitorDate2 = $Monitor + '/Dynamic/Date2'
+$MonitorDate3 = $Monitor + '/Dynamic/Date3'
+$MonitorDate4 = $Monitor + '/Dynamic/Date4'
+$MonitorDate5 = $Monitor + '/Dynamic/Date5'
+$MonitorDate6 = $Monitor + '/Dynamic/Date6'
+$MonitorDate7 = $Monitor + '/Dynamic/Date7'
+$MonitorDate8 = $Monitor + '/Dynamic/Date8'
+$MonitorDate9 = $Monitor + '/Dynamic/Date9'
+$MonitorName = $Monitor + '/Dynamic/PatientName'
+$MonitorIC = $Monitor + '/Dynamic/PatientIC'
+
+$MonitorDate1 setItemDate
+$MonitorDate2 setItemDate
+$MonitorDate3 setItemDate
+$MonitorDate4 setItemDate
+$MonitorDate5 setItemDate
+$MonitorDate6 setItemDate
+$MonitorDate7 setItemDate
+$MonitorDate8 setItemDate 0 'dd-MMM-yyyy'
+$MonitorDate9 setItemDate 1 'dd-MMM-yyyy'
+$MonitorName setItemText $PatientName
+$MonitorIC setItemText $PatientIC
+
+$ConsentForms outline.on
+$ConsentFormsButtons = $ConsentForms + '/Buttons'
+#prompt $ConsentFormsButtons
+turnOff $ConsentFormsButtons
+#$ConsentForms outline.color good
+#Wait 5
+$SumCanvas = 'SummaryCanvas/Background'
+$Summary = 'SummaryCanvas/Background/Text'
+$SummaryExit = 'SummaryCanvas/Background/Button'
+$SumButton = 'JoystickCanvas/Summary'
+$SceneStart = '02/02MainLoop.txt'
+
+ALL/WristTag localMoveX -0.2
+ALL/WristTag localMoveZ 0.2
+
+$GXMDateLine1 = $GXMForm + '/Dynamic/Date1'
+$GXMDateLine2 = $GXMForm + '/Dynamic/Date2'
+$GXMDateLine3 = $GXMForm + '/Dynamic/Date3'
+$GXMDateLine4 = $GXMForm + '/Dynamic/Date4'
+$GXMDateLine5 = $GXMForm + '/Dynamic/Date5'
+$GXMDateTime = $GXMForm + '/Dynamic/Time'
+
+
+#$GXMDateLine1 setItemDate
+$GXMDateLine2 setItemDate
+$GXMDateLine3 setItemDate
+$GXMDateLine4 setItemDate
+$GXMDateLine5 setItemDate
+$GXMDateTime setItemDate .334 't'
+
+$ConsentDateLineP1L1 = $ConsentForms + '/Pages/Consent1/Date1'
+$ConsentDateLineP4L1 = $ConsentForms + '/Pages/Consent4/Date1'
+$ConsentDateLineP4L2 = $ConsentForms + '/Pages/Consent4/Date2'
+$ConsentDateLineP5L1 = $ConsentForms + '/Pages/Consent5/Date1'
+$ConsentDateLineP5L2 = $ConsentForms + '/Pages/Consent5/Date2'
+$ConsentDateLineP6L1 = $ConsentForms + '/Pages/Consent6/Date1'
+$ConsentDateLineP6L2 = $ConsentForms + '/Pages/Consent6/Date2'
+
+$ConsentDateLineP1L1 setItemDate
+$ConsentDateLineP4L1 setItemDate
+$ConsentDateLineP4L2 setItemDate
+#$ConsentDateLineP5L1 setItemDate
+#$ConsentDateLineP5L2 setItemDate
+$ConsentDateLineP6L1 setItemDate
+#$ConsentDateLineP6L2 setItemDate
+
+$GXMFormStage1 = $GXMForm + '/Stage1Areas'
+turnOff $GXMFormStage1
+
+#$Deflook = $Desk + ' medium'
+#$Deflook = 'DefLook medium'
+$Deflook = $Desk + '/ShotMedium'
+
+$GXMForm outline.on
+$GXMForm clickable true
+$ConsentForms outline.on
+$ConsentForms clickable true
+$Phone outline.on
+$Phone clickable true
+$Monitor outline.on
+$Monitor clickable true
+$Phone rotatey -20
+
+$MonLook = $Monitor + ' close'
+$GXMLook = $GXMForm + '/ShotMedium'
+#$GXMLook = $GXMForm + ' medium'
+#$ConLook = $ConsentForms + ' medium'
+$ConLook = $ConsentForms + '/ShotMedium'
+$PhoLook = $Phone +' close'
+
+$Max = 1000
+$Current = 0
+
+
+
+
+Player lookat $Deflook
+
+$SumCanvasPatientInfo = SumCanvas + '/SummaryPatientInfo'
+$PatientInfo = ' Patient Name: ' + PatientName + '                        IC Number: ' + PatientIC + '\n DOB: ' + Birthdate + '        Blood Type: ' +  PatientBloodType +'        Address: ' + PatientAddress
+$SumCanvasPatientInfo setItemText $PatientInfo
+
+wait 1
+Do $SceneStart
+#Do 'SummaryCheck.txt'

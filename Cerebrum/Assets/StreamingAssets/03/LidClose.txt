@@ -1,0 +1,5 @@
+$Lid play Close
+wait 1
+ScoreTracker taskCorrect 7 true
+ScoreTracker rangecomplete 0-7
+Do 'EndCheck.txt'

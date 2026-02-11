@@ -1,0 +1,23 @@
+If
+    $InfusionSet01 isChosen
+Then
+    ScoreTracker taskCorrect 0 true
+    $InfusionSet01 outline.off
+    $InfusionSet02 outline.off
+    $InfusionSet03 outline.off
+    $InfusionSet01 moveto $SetCOWPosition
+    $InfusionSet01 align $SetCOWPosition
+    #$InfusionSet01 rotatetoy 180
+    #$InfusionSet01 rotatetox 180
+    #$InfusionSet01 rotatetoz 270
+    Do '04/LG04PlayertoCOW.txt'
+Else
+    ScoreTracker taskCorrect 0 false
+Endif
+
+$InfusionSet01 outline.off
+$InfusionSet02 outline.off
+$InfusionSet03 outline.off
+$InfusionSet moveto $SetCOWPosition
+$InfusionSet align $SetCOWPosition
+Do '04/LG04PlayertoCOW.txt'

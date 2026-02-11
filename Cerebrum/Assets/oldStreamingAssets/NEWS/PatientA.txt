@@ -1,0 +1,39 @@
+#########################################
+#  PATIENT INFO
+#########################################
+
+$PatientName = 'Lim Ah Nee'
+$PatientIC = 'S1112223A'
+$BloodType = 'B-'
+$AgeInYears = 73
+$PatientModel = 'PatientMale70'
+
+$Temperature 36.5
+$HR = 70
+$BP = '169/71' #mmHg
+$Respiration = 20
+$SpO2 = 100
+$OxygenSupplement true
+$LevelOfConscious =  'Alert'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+#Do 'NEWS/GetPatient.txt'
+$PatLookPlayer = Patient + '/TurntoPlayer'
+$PatLookReset = Patient + '/TurnForward'
+
+Create $PatientModel 'PatientA'
+PatientA align $Patient
+turnOff $Patient
+$Patient = 'PatientA'
+
+$CuffPos = Patient + '/CuffPos'
+$CannulaIVPos = Patient + '/CannulaIVPos'
+$PatientFace = Patient + '/head.x'
+$PatientHead = Patient + '/Jaw'
+
+
+
+Do 'NEWS/SetupPatient.txt'

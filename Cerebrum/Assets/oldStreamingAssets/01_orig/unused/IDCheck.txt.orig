@@ -1,0 +1,38 @@
+#PatientChoice
+#Start->PatientChoice
+$IDCanvas close
+$ID1 moveto $StandingZoom
+wait 1
+$ID1 rotatetoy 270 .5
+wait .5
+$ID1 rotatetoz 180 .5
+wait .5
+$ID1 rotatetox 90 .5
+wait .5
+$ID1 Menu.Question 'Is the patient label correct?'
+$ID1 Menu.on ZoomSpot
+WaitFor
+    $ID1 Menu.Done
+Wait 1
+If
+    $IDLabel menu.result $Yes
+Then
+    $ID1 reset
+	$ID1 align $IDDeskPos
+	$ID2 align $IDDeskPos
+	$ID3 align $IDDeskPos
+	$ID4 align $IDDeskPos
+	wait 1
+	$ID1 rotatetoy 270 .5
+	ScoreTracker taskCorrect 14 1
+	$IDCanvas open
+#    Do '01/LG01PatientChoice.txt'
+Else
+    $Nurse reset
+	$ID1 align $IDDeskPos
+	wait 1
+	$ID1 rotatetoy 270 .5	
+	ScoreTracker taskCorrect 14 0
+	$IDCanvas open
+#    Do '01/LG01PatientChoice.txt'
+Endif

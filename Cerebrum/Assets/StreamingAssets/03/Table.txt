@@ -1,0 +1,54 @@
+wait .1
+Player align PlayerPos
+wait .1
+$Table outline.off
+$Paper outline.on
+$Divider outline.on
+$Lid outline.on
+
+Label 'Loop'
+    wait .1
+    If
+        $Lid pressed
+    Then
+        $Lid reset
+        Do '03/LidOpen.txt'
+    ENDIF
+
+    If
+        $PC_ICePack pressed
+    Then
+        $PC_ICePack reset
+        Do '03/IceBoxCheck.txt'
+    ENDIF
+
+    If
+        $Divider pressed
+    Then
+        $Divider reset
+        Do '03/DividerCheck.txt'
+    ENDIF
+
+    If
+        $Paper pressed
+    Then
+        $Paper reset
+        Do '03/GXMCheck.txt'
+    ENDIF
+
+	If
+		$Scene_Exit pressed
+	Then 
+		$Scene_Exit resetPressed
+		ScoreTracker rangecomplete 0-7
+		Do 'EndCheck.txt'
+	Endif
+	If
+		$SumButton pressed
+	Then 
+		$SceneStart = '03/Table.txt'
+		$SumButton resetPressed
+		Do 'SummaryCheck.txt'
+	Endif
+
+Goto 'Loop'

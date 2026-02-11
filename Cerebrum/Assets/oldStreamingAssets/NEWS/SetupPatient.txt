@@ -1,0 +1,34 @@
+#$NursePatPos = 'Nurse' + PatientNumber
+$NursePatPos = Bed + '/NursePosLeft'
+# + '/Medium'
+$PlayerStart = Bed + '/Medium'
+$WristTag = Patient + '/WristTag'
+$WristTag setitemtext $PatientName
+
+
+
+$AgeInDays = -367 * AgeInYears
+$Birthday = 
+    Player getdate $AgeInDays 'dd-MMM-yyyy' 
+$Birthdate = 
+    Player getdate $AgeInDays 'dd-MM-yy'
+
+$Nurse speaker.color 1 .5 .5
+$NurseHead = $Nurse + '/metarig/Jaw'
+$Patient speaker.object $PatientHead
+$Nurse speaker.object $NurseHead
+$Patient speaker.color .5 .5 1
+#$Vitals = Bed + '/Vitalsmonitor01'
+$Vitals = 'BedsideHeadLeft' + PatientNumber + '/Computer1'
+
+$Vitals setVitals $HR $SPO2 $BP $Respiration 
+
+
+$PatientSign = 'PatientSign' + PatientNumber
+$PatientSignNumber = PatientSign + '/BedNumber' 
+$PatientSignNumber setItemText $PatientNumber
+$PatientSign4Name = PatientSign + '/PatientName' 
+$PatientSign4Name setItemText $PatientName
+
+$PatientLabel = 'IDLabelDyn'
+$PatientLabel setItemText $PatientName

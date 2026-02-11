@@ -1,0 +1,53 @@
+#  0 openBox
+#  1 removeSelector
+#  2 openFridge
+#  3 iceTable
+#  4 iceBox
+#  5 selectorBox
+#  6 GXMbox
+#  7 closeBox
+
+Do 'Setup.txt'
+ScoreTracker setstages 3
+
+### ScoreTracker Tasks ###
+ScoreTracker numtasks 8
+# ScoreTracker setdependency 1  0
+# ScoreTracker setdependency 3  2
+ScoreTracker setdependency 4  3 
+ScoreTracker setdependency 5  3 4
+ScoreTracker setdependency 6  3 4 5
+ScoreTracker setdependency 7  3 4 5 6 
+
+$Table = 'Desk1'
+$Table reset
+
+$DividerRemoved = false
+$Scene_Exit = 'JoystickCanvas/Exit'
+$RefrigeratorDoor = 'Cabinet2/Fridge/RefrigeratorDoor'
+$PC_ICePack = 'Cabinet2/Misc2'
+$PC_ICeTable = 'Desk1/FrontMiddle'
+$PC_ICeBox = 'Desk1/Misc8/Box'
+$SumButton = 'JoystickCanvas/Summary'
+
+$Paper = 'Desk1/Document1'
+$PaperBox = 'Desk1/Misc8/Box'
+$PaperReturn = 'Desk1/FrontLeft'
+
+$BloodBox = 'Desk1/Misc8'
+$Lid = 'Desk1/Misc8/Lid'
+$Divider = 'Desk1/Misc8/Divider'
+
+$DividerTable = 'Desk1/FrontRight'
+$DividerBox = BloodBox
+
+$BoxTable = 'Desk1/BoxTable'
+$SumCanvas = 'SummaryCanvas/Background'
+$Summary = 'SummaryCanvas/Background/Text'
+$SummaryExit = 'SummaryCanvas/Background/Button'
+$SceneStart = '03/Scene03Start.txt'
+
+$Lid reset
+End off
+
+Do $SceneStart

@@ -1,0 +1,25 @@
+#Dish.txt -> SyringeCheck.txt
+SyringeCanvas on
+Label 'SyringeLoop'
+	Wait .1
+	If
+		SyringeCanvas/Amount/Aspirate pressed
+	Then
+		SyringeCanvas/Amount/Aspirate reset
+	Endif
+	If
+		SyringeCanvas/Amount/PushandFlush pressed
+	Then
+		SyringeCanvas/Amount/PushandFlush reset
+		SalineTracker reducesaline
+	Endif
+	If
+		SalineTracker salineamount 1
+	Then
+		Wait 1
+		ScoreTracker taskCorrect 5 true
+		SyringeCanvas off
+		#Do '06/Dish.txt'
+		Return
+	Endif
+Goto 'SyringeLoop'

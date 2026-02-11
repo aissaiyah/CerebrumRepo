@@ -1,0 +1,25 @@
+Debug 'LG04SetCheck'
+/JoystickCanvas off
+ZoomSpot Menu.Question 'Flip the Set?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+    ZoomSpot Menu.Done
+#Wait .1
+If
+    ZoomSpot menu.result $Yes
+Then
+    $InfusionSet reset
+    $InfusionSet localrotatez 180 0.5
+    Do '04/LG04SetChosen.txt'
+    /JoystickCanvas on
+Else
+    Do '04/LG04SetChosen.txt'
+    /JoystickCanvas on
+    Return
+    $InfusionSet reset
+    $InfusionSet moveto $SetOrig 
+    $InfusionSet matchrotation $SetOrig
+    $InfusionSet playerreplace
+#    Do '04/LG04SetPicking.txt'
+Endif
+Wait .3

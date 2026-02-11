@@ -1,0 +1,107 @@
+#HourStart->ChamberCanvas->ChamberCheck->DripCheck->TimeCheck->StartDripTest->ChangeDrip
+# $DPMText - TMP text UI Object for Drops Per Minutes
+# VolumeInput - Volume UI Object
+# DripFactorInput - DripFactor UI Object
+# TotalTimeInput - TotalTime UI Object
+# $TaskNum - The task number this activity is tied to
+
+ChamberCanvas off
+ChamberCheck on
+Player align BagZoom
+
+$DFset = false
+$DTset = false
+
+Label 'LoopDS'
+
+	$DPM = 0
+
+
+
+  	$Volume =
+    	$VolumeInput getValue
+
+  	$DripFactor =
+    	$DripFactorInput getValue
+
+	If
+		$DFset = false
+	Then
+		If
+			$DripFactor > 0
+		Then
+			$DFset = true
+#			Prompt 'DF is set'
+#			Wait 1
+#			Prompt ''
+			ScoreTracker taskCorrect $TaskSelectDripFactor 1
+		Endif
+	Endif
+
+  	$TotalDripTime =
+    	$TotalTimeInput getValue
+#   	Prompt 'Volume = ' + Volume +  '  DripFactor = ' + DripFactor + 'TotalTime = ' + TotalTime
+
+	If
+		$DTset = false
+	Then
+		If
+			$TotalDripTime > 0
+		Then
+			$DTset = true
+#			Prompt 'Time is set'
+#			Wait 1
+#			Prompt ''
+			ScoreTracker taskCorrect $TaskSelectDripTime 1
+		Endif
+	Endif
+
+
+	$vbool = Volume > 0
+	$tbool = TotalDripTime > 0
+
+	#Prompt 'vbool = ' + vbool
+	#Wait 1
+	#Prompt 'tbool = ' + tbool
+	#Wait 1
+
+	If
+		$(vbool && tbool)
+	Then 
+		$DPM = Volume * DripFactor / (60 * TotalDripTime)
+	Else
+		$DPM = '-'
+	Endif
+
+	#i.e. 268mls X 20 / 240 = 22 drops/min
+	Wait .1
+	$DripsPerMinute setItemText ''+ DPM
+
+
+	#StartDripTest
+	If
+		ChamberCheck/Chamber/StartDrip pressed
+	Then
+		$DripStarted = true
+		SoundPlayer playsound $DripSpeed
+		ChamberCheck/Chamber/StartDrip reset
+		ChamberCheck off
+		Do '07/ChangeDripSpeed.txt'
+		$T5Correct = $Volume = CorrectVolume && DripFactor = CorrectDripFactor && TotalDripTime = CorrectTotalDripTime && DripSpeed = CorrectDripSpeed
+		#Prompt 'T5Correct = ' + T5Correct
+		If
+			$T5Correct
+		Then
+			Wait 1
+			SoundPlayer stopsound
+			ScoreTracker taskCorrect $TaskNum true
+			ChamberCheck off
+#			ChamberCanvas on
+			Return
+		Endif
+		ChamberCheck off
+		Return
+	Endif
+
+	Wait .01
+Goto 'LoopDS'

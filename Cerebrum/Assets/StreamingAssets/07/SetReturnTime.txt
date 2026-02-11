@@ -1,0 +1,61 @@
+$Increase = '+15 min'
+$Decrease = '-15 min'
+$Time_Exit = 'Come back later.'
+
+Label 'LoopSRT'
+
+	If
+		$ReturnTime > 0
+	Then
+		ZoomSpot Menu.Question 'Return in ' + ReturnTime + ' minutes.'
+		$Time_Exit = 'Come back later.'
+	Else
+		ZoomSpot Menu.Question 'Choose Return Time.'
+		$Time_Exit = 'Do not leave.'
+	Endif
+	ZoomSpot Menu.Choices $Decrease,$Time_Exit,$Increase
+	ZoomSpot Menu.on ZoomSpot
+
+	WaitFor
+		ZoomSpot Menu.Done
+	
+	Wait .1
+	If
+		ZoomSpot menu.result $Increase
+	Then
+		$ReturnTime = ReturnTime + 15
+	Endif
+
+	If
+		ZoomSpot menu.result $Decrease
+	Then
+		If
+			$ReturnTime > 0
+		Then
+			$ReturnTime = ReturnTime - 15
+		Endif
+	Endif
+	
+	If
+		ZoomSpot menu.result $Time_Exit
+	Then
+		ZoomSpot Menu.Choices $Yes,$No
+		$CurrentTime = CurrentTime + ReturnTime
+		If
+			$CurrentTime >= 105
+		Then
+			ScoreTracker taskcorrect $TaskTimeSelectionT2 1
+			Do '07/FourHourStart.txt'
+		Endif
+		If
+			$CurrentTime >= 60
+		Then
+			ScoreTracker taskcorrect $TaskTimeSelectionT1 1
+			Do '07/HourStart.txt'
+		Endif
+		Return
+	Endif
+
+
+Goto 'LoopSRT'
+

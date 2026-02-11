@@ -1,0 +1,81 @@
+Do 'Setup.txt'
+ScoreTracker setstages 7
+End off
+
+$Scene_Exit = 'JoystickCanvas/Exit'
+$Patient = 'Bed2/Patient1/TEMP_Patient'
+$Patient reset
+#$Patient = 'Bed2/Patient1/TempPatient_Rigged'
+$PatientFace = $Patient + '/metarig/spine/spine.001/spine.002/spine.003/spine.004'
+$PatLookPlayer = $Patient + '/TurntoPlayer'
+$PatLookReset = $Patient + '/TurnForward'
+$ChecklistButton = 'ChecklistButton'
+$Checklist = 'ChecklistCanvas'
+$Player = 'Player'
+
+ALL/WristTag localMoveX -0.2
+ALL/WristTag localMoveZ 0.2
+
+#$Patient = 'Bed2/Patient1'
+$PlayerPatLook = 'Bed2/close'
+
+$Vitalsmonitor = 'BedsideHeadLeft2/Computer1'
+$Monitorlook = 'BedsideHeadLeft2/Computer1/Medium'
+
+$SumButton = 'JoystickCanvas/Summary'
+$SumCanvas = 'SummaryCanvas/Background'
+$Summary = 'SummaryCanvas/Background/Text'
+$SummaryExit = 'SummaryCanvas/Background/Button'
+
+
+$InfusionStand = 'BedsideHead2'
+$Cannula = 'BedsideHead2/IV4'
+$InfusionSet = 'BedsideHead2/InfusionBag1'
+$InfusionClamp = 'BedsideHead2/IV3'
+
+$COWComputer = 'Cart2/Computer1'
+$DeskStart = 'Cart2/Computer1 far'
+
+$PressureCuff = 'Cart2/Misc7'
+$CuffPos = 'Bed2/Patient1/cube'
+
+$Soap = 'COW1(Clone)/LiquidSoap(Clone)'
+$SoapSpot = 'Cart2/Pos06'
+
+$Gloves = 'COW1(Clone)/Gloves(Clone)'
+
+$DishDefPos = 'COW1(Clone)/DishPos'
+$GlovesPos = 'COW1(Clone)/GlovesPos'
+
+$ComplaintCanvasSymptom = '/ComplaintCanvas/Choices/Symptom'
+$ComplaintCanvasGoodbye = '/ComplaintCanvas/Choices/Goodbye'
+
+
+$KidneyDish = 'COW1(Clone)/KidneyDish(Clone)'
+$Wipe1 = 'Cart2/Misc2/Wipe1'
+$Wipe2 = 'Cart2/Misc2/Wipe2'
+$Syringe = 'Cart2/Misc2/Syringe'
+$DishPos = 'Cart2/Pos02'
+$Vitalsmonitor off
+$Gloves align $GlovesPos
+$KidneyDish align $DishDefPos
+/PatientCanvas off
+/CannulaCanvas off
+/ComplaintCanvas off
+/TimeCanvas off
+ChamberCheck off
+ChamberCanvas off
+/ChangeDripSpeed off
+/HourCanvas off
+/FourStartCanvas off
+/ClampCanvas off
+DishCanvas off
+COWCanvas off
+WipeCanvas off
+DishCanvas off
+WipeCanvas off
+SyringeCanvas off
+
+$SceneStart = '07/07Start.txt'
+Do $SceneStart
+#Do 'SummaryCheck.txt'

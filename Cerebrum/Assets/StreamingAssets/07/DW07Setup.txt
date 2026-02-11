@@ -1,0 +1,267 @@
+### 07 PLAYER TASKS (16 TASKS TOTAL) ###
+#  0 Turn on vitals monitor (at 0 time)
+#  1 Check if cannula is clear (at 0 time)
+#  2 Ask patient for symptomatic complaints (at 0 time)
+#  3 Check if cannula is clear (at 60 time)
+#  4 Ask patient for symptomatic complaints (at 60 time)
+#  5 vol. = 258, drip = 20, time = 4, Start Drip Test, drip speed = 3
+#  6 Check vitals monitor (at 240 time)
+#  7 Check if cannula is clear (at 240 time)
+#  8 Ask patient for symptomatic complaints (at 240 time)
+#  9 Close infusion clamp (240 time)
+# 10 Use sanitizer/soap (at 240 time)
+# 11 Put on gloves (at 240 time)
+# 12 Wipe needleless connector 10 times (at 240 time)
+# 13 Push and flush until Saline = 1 (at 240 time)
+# 14 FINAL TASK Leave conversation with patient (at 240 time)
+# 15 Disconnect connector (at 240 time)
+# 16 Open infusion clamp (at 60 time)
+
+$TaskMonitor0 		=  0 
+$TaskCannula0 		=  1
+$TaskComplaints0 	=  2
+$TaskCannulaClear60 =  3
+$TaskComplaints60 	=  4
+$TaskHasPhlebitis   =  5
+# $TaskDripSettings   =  5
+$TaskMonitor240		=  6
+$TaskCannula240 	=  7
+$TaskComplaints240 	=  8
+$TaskClampClose240 	=  9
+$TaskSoap240 		=  10
+$TaskGloves240 		=  11
+$TaskConnectorWipe  =  12
+$TaskSyringeAspriate  	=  13
+$TaskLeaveConversation 	 = 14
+$TaskConnectorDisconnect = 15
+$TaskClampOpen60         = 16
+$TaskInfusionSqueeze0    = 17
+$TaskCannulaRed60        = 18
+$TaskConnectorDisconnect60 = 19
+$TaskCannulaReplace60    = 20
+$TaskConfirmDripSpeed0 	 = 21
+$TaskTimeSelectionT1     = 22 
+$TaskInfusionSqueeze60   = 23
+$TaskClampClose60 	     = 24
+$TaskSelectSyringe       = 25
+$TaskConfirmDripSpeed60  = 26
+$TaskMonitor60 	         = 27
+$TaskTimeSelectionT2     = 28
+$TaskInfusionSqueeze240  = 29
+$TaskConfirmDripSpeed240 = 30
+$TaskSelectKidneyDish    = 31
+$TaskSyringeFlush        = 32
+
+
+Do 'Setup.txt'
+
+#Needs to be removed from Addressables!!
+TurnOff CannulaScene07(Clone)
+
+ScoreTracker setstages 7
+ScoreTracker numtasks 33
+ScoreTracker setdependency 22	0 2 1 17 21
+ScoreTracker setdependency 4	0 2 1 17 21 22
+ScoreTracker setdependency 3	0 2 1 17 21 22
+ScoreTracker setdependency 23	0 2 1 17 21 22
+ScoreTracker setdependency 26	0 2 1 17 21 22 23
+ScoreTracker setdependency 28	0 2 1 17 21 22 23 26
+ScoreTracker setdependency 7	0 2 1 17 21 22 23 26 28
+ScoreTracker setdependency 8	0 2 1 17 21 22 23 26 28
+ScoreTracker setdependency 29	0 2 1 17 21 22 23 26 28
+ScoreTracker setdependency 30	0 2 1 17 21 22 23 26 28
+ScoreTracker setdependency 9	0 2 1 17 21 22 23 26 28
+ScoreTracker setdependency 31	0 2 1 17 21 22 23 26 28
+ScoreTracker setdependency 10	0 2 1 17 21 22 23 26 28
+ScoreTracker setdependency 11	0 2 1 10 17 21 22 23 26 28 31
+ScoreTracker setdependency 12	0 2 1 10 11 17 21 22 23 26 28 31
+ScoreTracker setdependency 15	0 2 1 10 11 12 17 21 22 23 26 28 31
+ScoreTracker setdependency 25	0 2 1 10 11 12 15 17 21 22 23 26 28 31
+ScoreTracker setdependency 13	0 2 1 10 11 12 15 17 21 22 23 25 26 28 31
+ScoreTracker setdependency 32	0 2 1 10 11 12 13 15 17 21 22 23 25 26 28 31
+ScoreTracker setdependency 14 	0 2 1 6 7 8 9 10 11 12 13 15 17 21 22 23 25 26 28 31
+
+End off
+
+$PlayerStart = PlayerStart
+
+$Scene_Exit = 'JoystickCanvas/Exit'
+$Patient = 'Bed4/Patient1/TEMP_Patient'
+$Patient reset
+$PatientFace = $Patient + '/metarig/spine/spine.001/spine.002/spine.003/spine.004'
+$PatLookPlayer = $Patient + '/TurntoPlayer'
+$PatLookReset = $Patient + '/TurnForward'
+$ChecklistButton = 'ChecklistButton'
+$Checklist = 'ChecklistCanvas'
+$CannulaIVPos = 'Bed4/Patient1/CannulaIVPos'
+
+
+$PlayerNurse = 'Player/NursePlayer'
+$NurseBodyGloves = PlayerNurse + '/BodyGloves'
+$NurseBodyNoGloves = PlayerNurse + '/BodyNoGloves'
+turnOff $NurseBodyGloves 
+turnOn $NurseBodyNoGloves 
+
+ALL/WristTag localMoveX -0.2
+ALL/WristTag localMoveZ 0.2
+
+#$Patient = 'Bed4/Patient1'
+$PlayerPatLook = 'Bed4 close'
+$LeftHandSpot = 'LeftHandSpot'
+$RightHandSpot = 'RightHandSpot'
+
+$Vitalsmonitor = 'BedsideHeadLeft4/Computer1'
+$Monitorlook = 'BedsideHeadLeft4/Computer1/Medium'
+
+$SumButton = 'JoystickCanvas/Summary'
+$SumCanvas = 'SummaryCanvas/Background'
+$Summary = 'SummaryCanvas/Background/Text'
+$SummaryExit = 'SummaryCanvas/Background/Button'
+
+
+$CannulaIV = 'CannulaIV'
+$CannulaIVEnd = $CannulaIV + '/Cube/CannulaEnd'
+
+
+#$InfusionStand = 'BedsideHead4'
+#$InfusionSet = 'BedsideHead4/LINE/InfusionSet'
+#$InfusionClamp = 'BedsideHead4/IVClamp'
+#$InfusionStand rotatetoy 0
+
+$InfusionLine = 'InfusionLine'
+
+#INFUSION SET
+Do 'Setup/BloodInfusionStand.txt'
+$InfusionStand localRotateY 88
+$IVEndPos = 'Positions/IVEndPos'
+#$IVEndPosPre1 = 'Positions/IVEndPosPre1'
+
+
+$ChamberBlood fillAmount 0.5
+
+$COWComputer = 'Cart4/Computer1'
+$DeskStart = 'Cart4/Computer1 far'
+
+$PressureCuff = 'Cart4/Misc6'
+$CuffPos = 'Bed4/Patient1/cube'
+$GlovesDefPos = 'COW0(Clone)/GlovesPos'
+
+#$Soap = 'handSanitizer(Clone)'
+$Soap = 'Cart4/Misc5'
+$SoapDefPos = 'Cart4/Pos05'
+$Gloves = 'Cart4/Misc9'
+$GlovesPos = 'Cart4/Pos09'
+
+$KidneyDish = 'Cart4/Misc2'
+#$KidneyDish reset
+#$KidneyDish outline.on
+$Wipe1 = 'Cart4/Misc2/Wipe1'
+$Wipe2 = 'Cart4/Misc2/Wipe2'
+$Syringe = 'Cart4/Misc2/SyringeCGT'
+$SyringePlunger = Syringe + '/Body/Plunger'
+$Syringe clickable true
+
+turnOff $Wipe1
+
+$DishPos = 'Cart4/Pos02'
+$DishDefPos = 'Cart4/DishPos'
+
+$ComplaintCanvasSymptom = '/ComplaintCanvas/Choices/Symptom'
+$ComplaintCanvasGoodbye = '/ComplaintCanvas/Choices/Goodbye'
+$ComplaintCanvasCancel = '/ComplaintCanvas/Choices/Cancel'
+
+$Vitalsmonitor off
+$KidneyDish align $DishDefPos
+/PatientCanvas off
+/CannulaCanvas off
+/ComplaintCanvas off
+/TimeCanvas off
+ChamberCheck off
+ChamberCanvas off
+/ChangeDripSpeed off
+/HourCanvas off
+/FourStartCanvas off
+/ClampCanvas off
+DishCanvas off
+COWCanvas off
+WipeCanvas off
+DishCanvas off
+WipeCanvas off
+SyringeCanvas off
+
+$CurrentTime = 15
+$ReturnTime = 0
+
+
+$InfusionStand on
+Create CannulaIV $CannulaIV
+Wait .01   #Need wait after create
+$CannulaIV align $CannulaIVPos 0
+Wait 0.01
+$IVEndTarget align $IVEndPos 0
+Wait 0.11
+$IVEndTarget align $CannulaIVEnd 0
+Wait 0.11
+$IVConnected = true
+turnOn $IVLineBlood
+
+$InfusionCollection = SetBag + '/Date1' 
+$InfusionExpiration = SetBag + '/Date2'
+$InfusionCollection setItemDate -2
+$InfusionExpiration setItemDate 30
+
+#$InfusionCollection setItemDate -3
+#$InfusionExpiration setItemDate 12
+
+$Cannula = $CannulaIV
+#$InfusionStand+ '/LINE/IVEndTarget'
+$InfusionClamp outline.off
+
+#DRIP SETTINGS
+Do 'Setup/DripSetup.txt'
+
+
+
+$CuffPos = $Patient + '/CuffPos'
+$CuffDefPos = 'BedsideHeadLeft4/BPCuffPos'
+$PressureCuff align $CuffDefPos .05
+Wait 0.05
+
+		$PressureCuff play UnfoldCuff
+		Wait .7
+		$PressureCuff align $CuffPos 
+
+$Gloves align $GlovesDefPos
+$BloodBag = 'BloodBag'
+$BloodBagObj = BloodBag + '/Bag'
+$BloodCompatibilityLabel = 'BloodCompatibilityLabel'
+Create BloodOrderForm $BloodCompatibilityLabel
+$BloodCompatibilityLabel clickable false
+$BloodCompatibilityLabel align $BloodBag 0
+Wait 0.1
+$BloodCompatibilityLabel localMoveY -0.07 0
+$BloodCompatibilityLabel localMoveZ -0.015 0
+$BloodCompatibilityLabel attachTo $BloodBag
+$HasPhlebitis = false
+$ClampOpen = true
+$WristTag = 'Bed4/Patient1/WristTag'
+
+$SceneStart = '07/07Start.txt'
+
+$BloodAnimation = 'Nurse_TakeBlood'
+
+#$SumCanvasPatientInfo = SumCanvas + '/SummaryPatientInfo'
+$PatientInfo = ' Patient Name: ' + PatientName + '                        IC Number: ' + PatientIC + '\n DOB: ' + Birthdate + '        Blood Type: ' +  PatientBloodType +'        Address: ' + PatientAddress
+#$SumCanvasPatientInfo setItemText $PatientInfo
+
+$Vitals = VitalsMonitor
+
+$HR = 68
+$SPO2 = 99
+$BP = '118/62'
+$Temp = 36.8
+$Vitals setVitals $HR $SPO2 $BP $Temp
+
+SumText setItemText The patient has started on the blood transfusion. Proceed to monitor the patient based on the intervals stipulated. Once the transfusion is completed, perform the appropriate actions.
+
+Do $SceneStart

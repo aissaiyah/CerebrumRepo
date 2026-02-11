@@ -1,0 +1,256 @@
+Do 'Setup.txt'
+
+# TASKS
+
+ScoreTracker setstages 6
+ScoreTracker numitems 27
+$TaskPatientCheck    =  0 #PatientCheck.txt : Inform patient of plans
+$TaskMonitorOn       =  1
+$TaskSoap            =  2 #Sanitizer
+$TaskGloves          =  3
+$TaskTalkNameIC      =  4 #Correct BloodType  in LGPatientCheck.txt
+$TaskSalineAmount    =  5 #SyringeCheck : SalineAmount = 1?
+$TaskWipeNeedless    =  6 #Clean needless connector
+$TaskBagCombine      =  7
+$TaskPoleSetup       =  8
+$TaskSyringeAspriate =  9 #SyringeCheck : Aspirate
+$TaskClampRelease1   = 10 #ClampRelease.txt
+$TaskPressureCuff    = 11
+$TaskBagSqueeze      = 12 #BagSqueeze.txt : >= 50% 
+$TaskClampRelease2   = 13 #ClampRelease.txt
+$TaskIVConnect       = 14 #06Start.txt : ConnectIV?
+$TaskDripSettings    = 15 #ClampRelease.txt : set drip settings
+$TaskClampClose      = 16 #InfusionStart.txt
+$TaskWipeInfEnd      = 17 #Dish.txt : Clean infusion tube end
+$TaskVerifyIC        = 18 #Already done by Task 10
+$TaskVerifyDOB       = 19
+$TaskVerifyAddress   = 20
+$TaskAskBloodType    = 21
+$TaskSelectBloodBag  = 22
+$TaskSelectKidneyDish = 23
+$TaskSelectSyringe   = 24
+$TaskSelectDripFactor = 25
+$TaskSelectDripTime  = 26
+
+# TASK PREREQUISITES
+
+ScoreTracker setprereq 12  7 8 22
+ScoreTracker setprereq 10  7 8 12 22
+ScoreTracker setprereq 16  7 8 10 12 22
+ScoreTracker setprereq  3  2
+ScoreTracker setprereq 17  2 3 23
+ScoreTracker setprereq  6  2 3 23
+ScoreTracker setprereq  5  2 3 6 7 8 9 10 12 17 22 23 24
+ScoreTracker setprereq  7  22
+ScoreTracker setprereq  8  7 22
+ScoreTracker setprereq  9 2 3 6 7 8 10 12 17 22 23 24
+ScoreTracker setprereq 14  2 3 5 6 7 8 9 10 12 17 22 23 24
+ScoreTracker setprereq 16  7 8 10 12 22
+ScoreTracker setprereq 13  2 3 5 6 7 8 9 10 12 14 17 22 23 24
+ScoreTracker setprereq 15  0 2 3 5 6 7 8 9 10 12 13 14 17 22 23 24 26
+ScoreTracker setprereq 24  2 3 6 7 8 10 12 17 22 23
+ScoreTracker setprereq 25  2 3 5 6 7 8 9 10 12 13 14 17 22 23 24
+ScoreTracker setprereq 26  2 3 5 6 7 8 9 10 12 13 14 17 22 23 24
+
+End off
+$Patient = 'Bed4/Patient1/TEMP_Patient'
+$Patient reset
+$Bed = 'Bed4'
+$Bed clickable false
+$WristTag = 'Bed4/Patient1/WristTag'
+$CannulaIVPos = 'Bed4/Patient1/CannulaIVPos'
+$WristTag reset
+$PlayerStart = 'Bed4/Medium'
+
+ALL/WristTag localMoveX -0.2
+ALL/WristTag localMoveZ 0.2
+
+$Nurse = 'Nurse2'
+$Nurse selectable false
+#$Nurse resetPressed
+
+$PatientFace = $Patient + '/metarig/spine/spine.001/spine.002/spine.003/spine.004'
+$PatLookPlayer = $Patient + '/TurntoPlayer'
+$PatLookReset = $Patient + '/TurnForward'
+$NurseFace = $Nurse + '/Eyes'
+$NursePatPos = 'Nurse4'
+$Player = 'Player'
+$LeftHandSpot = 'LeftHandSpot'
+$RightHandSpot = 'RightHandSpot'
+
+
+$IVEndPos = 'Positions/IVEndPos'
+$IVEndPosPre1 = 'Positions/IVEndPosPre1'
+
+$DishPos = 'Positions/DishPos'
+$IVLook = 'Positions/IVLook'
+$ChecklistButton = 'ChecklistButton'
+$Checklist = 'ChecklistCanvas'
+
+$Scene_Exit = 'JoystickCanvas/Exit'
+#$PatLook = 'Bed4 close'
+$PatLook = 'PatLook'
+$DeskStart = 'Cart4/Computer1 far'
+
+$Vitalsmonitor = 'BedsideHeadLeft4/Computer1'
+$Monitorlook = Vitalsmonitor+ '/Close'
+
+#INFUSION SET
+Do 'Setup/BloodInfusionStand.txt'
+
+
+$COWComputer = 'Cart4/Computer1'
+#$Soap = 'handSanitizer(Clone)'
+$Soap = 'Cart4/Misc5'
+$Gloves = 'Cart4/Misc9'
+$KidneyDish = 'Cart4/Misc2'
+$BloodBag = 'Cart4/Misc4'
+
+$Set = 'Cart4/Misc3'
+$PressureCuff = 'Cart4/Misc7'
+$Wipe = 'Cart4/Misc2/Wipe1'
+$Wipe1 = 'Cart4/Misc2/Wipe1'
+$Wipe2 = 'Cart4/Misc2/Wipe2'
+
+
+$Syringe = 'Cart4/Misc2/SyringeCGT'
+$SyringePlunger = Syringe + '/Plunger'
+$Syringe clickable true
+
+
+$BrokenClamp = 'COW0(Clone)/InfusionClamp(Clone)'
+$Gloves clickable true
+$PressureCuff clickable true
+$IVEnd = $SetBag + '/Valve'
+
+$DishDefPos = 'COW0(Clone)/DishPos'
+$GlovesDefPos = 'COW0(Clone)/GlovesPos'
+$SetTablePos = 'table1(Clone)/LeftPos'
+$BagTableSpot = 'table1(Clone)/MiddlePos'
+#$CuffPos = 'Bed4/Patient1/CuffLoc'
+$CuffPos = $Patient + '/CuffPos'
+$SoapDefPos = 'Cart4/Pos05'
+$SetBloodPos = BloodBag + '/Valve'
+
+$Vitalsmonitor off
+$bbpos = 'COW0(Clone)/Pos03'
+$BloodBag align $bbpos 0
+#Prompt 'aligned' 
+Wait .15
+
+$BloodBag localRotateX 90 0
+#$BloodBag rotatetoz 90 0
+$BloodBag localmoveX -.15 0
+$BloodBag localmoveZ .17 0
+Wait 0.01
+
+$BloodCompatibilityLabel = 'BloodCompatibilityLabel'
+Create BloodOrderForm $BloodCompatibilityLabel
+$BloodCompatibilityLabel clickable false
+$BloodCompatibilityLabel align $BloodBag 0
+Wait 0.1
+$BloodCompatibilityLabel localMoveX -0.07 0
+$BloodCompatibilityLabel localMoveY 0.02 0
+$BloodCompatibilityLabel attachTo $BloodBag
+
+
+$CuffDefPos = 'BedsideHeadLeft4/BPCuffPos'
+
+$InfusionStand rotatetoy 0
+$Gloves align $GlovesDefPos
+#Prompt 'Aligning' + CuffDefPos
+#Wait 2
+$PressureCuff align $CuffDefPos .05
+Wait 0.05
+$KidneyDish align $DishDefPos 0
+$Set localmovez .1
+Wait .01
+$BPEndTarget = Vitalsmonitor + '/BPTarget'
+#$BPEndTarget reset
+$BPEndTarget align $PressureCuff 0.1
+$BPEndTarget attachTo $PressureCuff
+#$BPEndTarget parentTo $PressureCuff
+
+
+$SumCanvas = 'SummaryCanvas/Background'
+$Summary = 'SummaryCanvas/Background/Text'
+$SummaryExit = 'SummaryCanvas/Background/Button'
+$SumButton = 'JoystickCanvas/Summary'
+
+Do 'Setup/PatientCanvas.txt'
+
+#### Dialogue Setup
+
+$DialogCanvas = 'DialogueCanvas'
+   If
+      Player exists $DialogCanvas 
+   Then
+   Else
+        Create DialogueCanvas 'DialogueCanvas'
+   Endif
+
+$PatientSpeechBubble = 'DialogueCanvas/Patient Speak'
+$PlayerSpeechBubble = 'DialogueCanvas/Player Speak'
+$PatientSpeech = 'DialogueCanvas/Patient Speak/Text'
+$PlayerSpeech = 'DialogueCanvas/Player Speak/Text'
+Wait .1
+$PlayerSpeechBubble close
+$PatientSpeechBubble close
+
+#### State Variables
+$ChamberAmount = 0
+$BagCombined = false
+$InfusionStarted = false
+$InfusionSetHung = false
+$InfusionSetMoved = false
+$BloddBagMoved = false
+
+$CannulaIV = 'CannulaIV'
+$CannulaIVEnd = $CannulaIV + '/CannulaEnd'
+$PlayerNurse = 'Player/NursePlayer'
+$NurseBodyGloves = PlayerNurse + '/BodyGloves'
+$NurseBodyNoGloves = PlayerNurse + '/BodyNoGloves'
+turnOff $NurseBodyGloves 
+turnOn $NurseBodyNoGloves 
+
+Create CannulaIV $CannulaIV
+Wait .01
+$CannulaIV align $CannulaIVPos
+$SceneStart = '06/06Start.txt'
+
+$ClampOpen = false
+$IVConnected = false
+ 
+$ii = 0
+Label 'N1Loop'
+#$ii = ii + 1
+#Speaker2 'S6: ii= ' + ii
+#Wait 2
+#Goto 'N1Loop'
+
+$Nurse speaker.color 1 .5 .5
+$NurseHead = $Nurse + '/metarig/Jaw'
+$PatientHead = $Patient + '/Jaw'
+$Patient speaker.object $PatientHead
+$Nurse speaker.object $NurseHead
+$Patient speaker.color .5 .5 1
+
+$Vitals = Bed + '/VitalsMonitor'
+$Vitals setVitals $HR $SPO2 $BP $Respiration 
+
+#DRIP SETTINGS
+Do 'Setup/DripSetup.txt'
+
+$SumCanvasPatientInfo = SumCanvas + '/SummaryPatientInfo'
+$PatientInfo = ' Patient Name: ' + PatientName + '                        IC Number: ' + PatientIC + '\n DOB: ' + Birthdate + '        Blood Type: ' +  PatientBloodType +'        Address: ' + PatientAddress
+$SumCanvasPatientInfo setItemText $PatientInfo
+
+$Vitals = VitalsMonitor
+
+$HR = 68
+$SPO2 = 99
+$BP = '118/62'
+$Temp = 36.8
+$Vitals setVitals $HR $SPO2 $BP $Temp
+
+Do $SceneStart

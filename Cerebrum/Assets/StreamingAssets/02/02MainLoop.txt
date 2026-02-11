@@ -1,0 +1,71 @@
+Player align $Deflook
+
+$GXMForm_selectable = true
+$ConsentForms_selectable = true
+Do 'SummaryCheck.txt'
+Label '02Loop'
+
+    If
+        $Monitor pressed
+    Then
+        $Monitor resetPressed
+        Do '02/Monitor.txt'
+        $Monitor reset
+        Player align $Deflook
+    Endif
+
+    If
+        $GXMForm pressed
+    Then
+        $GXMForm selectable false
+#        $GXMForm_selectable = false
+        $ConsentForms selectable false
+        $GXMForm resetPressed
+        Do '02/GXMForm.txt'
+        $GXMForm reset
+        $ConsentForms selectable true
+#        $ConsentForms selectable $ConsentForms_selectable
+        Player align $Deflook
+    Endif
+
+    If
+        $ConsentForms pressed
+    Then
+        $ConsentForms selectable false
+#        $ConsentForms_selectable = false
+        $GXMForm selectable false
+        $ConsentForms resetPressed
+        Do '02/ConsentForms.txt'
+        $ConsentForms reset
+        $GXMForm selectable true
+#        $GXMForm selectable $GXMForm_selectable
+        Player align $Deflook
+    Endif
+
+    If
+        $Phone pressed
+    Then
+        $Phone resetPressed
+        Do '02/Phone.txt'
+        $Phone reset
+        Player align $Deflook
+    Endif
+
+	If
+		$Scene_Exit pressed
+	Then 
+		$Scene_Exit resetPressed
+		ScoreTracker rangecomplete 0-8
+		Do 'EndCheck.txt'
+	Endif
+
+	If
+		$SumButton pressed
+	Then 
+		$SceneStart = '02/02MainLoop.txt'
+		$SumButton resetPressed
+		Do 'SummaryCheck.txt'
+	Endif
+
+    Wait .03
+Goto '02Loop'

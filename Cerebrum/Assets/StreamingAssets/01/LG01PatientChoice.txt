@@ -1,0 +1,145 @@
+#PatientChoice
+#Start->PatientChoice
+
+Debug 'PatientChoice.txt'
+
+#Player lookat $PlayerPatPos medium
+$COW moveto $COWPatientPos
+Wait .15
+$COW align $COWPatientPos
+Player align $PlayerPatPos 
+$PlayerCurPos = PlayerPatPos
+
+Debug 'Moving COW'
+
+JoystickCanvas on
+PatientCanvas off
+CheckCanvas off
+
+$Patient outline.on
+$WristTag outline.on
+$WristTag selectable true
+$WristTag outline.color off
+$ID1 outline.on
+$ID2 outline.on
+$ID3 outline.on
+$ID4 outline.on
+$GXMForm clickable.reset
+
+$Patient reset
+
+#wait 1
+Label 'PCLoop'
+	Debug 'In PatientChoice Loop'
+#	Wait .1
+
+	If
+		$Nurse pressed
+	Then
+		$Nurse reset
+		$Nurse selectable false
+		$Nurse outline.off
+		Player lookat $Nurse
+		Do '01/LG01NurseCall.txt'
+		Player align $PlayerPatPos 
+	Endif
+
+	If
+		$NarrowTable pressed
+	Then
+		$NarrowTable outline.off
+		$NarrowTable resetPressed
+		Player align $Deflook
+		$COWDefPos = 'COWDefPos'
+		$COW align $COWDefPos
+		$Bed outline.on
+		$Bed reset
+		Return
+	Endif
+
+	If
+		$Bed pressed
+	Then
+		$NarrowTable outline.on
+		$NarrowTable reset
+		Player align $PlayerPatPos 
+		$Bed outline.off
+		$Bed resetPressed
+	ENDIF
+
+	If
+		$Patient pressed
+	Then
+		$Patient reset
+		$Patient selectable false
+#		$Patient outline.off
+		Do '01/LG01PatientMeet.txt'
+#		$Patient outline.on
+		JoystickCanvas on
+		Player align $PlayerPatPos 
+	Endif
+
+	If
+		$WristTag pressed
+	Then
+		$WristTag reset
+		$WristTag selectable false
+		$WristTag outline.off
+		Do '01/LG01TagCheck.txt'
+		Player align $PlayerPatPos 
+	Endif
+
+	If
+		$IDLabelStrip pressed
+	Then
+		$IDLabelStrip reset
+		$ID1 outline.off
+		$ID2 outline.off
+		$ID3 outline.off
+		$ID4 outline.off
+		$IDLabelStrip selectable false
+		$IDLabelStrip outline.off
+		Do '01/IDLoop.txt'
+		If
+			$IDPaste pressed
+		Then
+		Else
+			$IDLabelStrip selectable true
+			$IDLabelStrip outline.on
+		Endif
+		Player align $PlayerPatPos 
+
+	Endif
+
+	If
+		$GXMForm pressed
+	Then
+		$GXMForm resetPressed
+		Do '01/GXMForm.txt'
+	Endif
+
+	If
+		$Scene_Exit pressed
+	Then 
+		#ScoreTracker rangecomplete 0-11
+		$Scene_Exit resetPressed
+		Do 'EndCheck.txt'
+	Endif
+
+	If
+		$Dispatch pressed
+	Then 
+		ScoreTracker taskCorrect $TaskDispatchBlood 1
+		$Dispatch resetPressed
+		Do 'EndCheck.txt'
+	Endif
+
+	If
+		$SumButton pressed
+	Then 
+		$SceneStart = '01/LG01PatientChoice.txt'
+		$SumButton resetPressed
+		Do 'SummaryCheck.txt'
+	Endif
+	wait .11
+Goto 'PCLoop'

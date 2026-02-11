@@ -1,0 +1,69 @@
+$ChamberAmount = 50
+Label 'ChamberLoop'
+
+	$Choice1 = 'Squeeze chamber'
+	$Choice2 = 'Check drip'
+	$Choice3 = 'Exit'
+	ZoomSpot Menu.Question 'Infusion set chamber at ' + ChamberAmount + '%'
+	ZoomSpot Menu.Choices $Choice1,$Choice2,$Choice3
+	ZoomSpot Menu.on ZoomSpot
+	WaitFor
+		ZoomSpot Menu.Done
+	ZoomSpot Menu.Choices $Yes,$No
+	
+	Wait .1
+	If
+		ZoomSpot menu.result $Choice1
+	Then
+		If
+			$ChamberAmount >= 100
+		Then
+			Prompt 'Chamber is full'
+			Wait 1		
+			Prompt ''
+			Goto 'ChamberLoop'
+		Endif
+		$ChamberAmount = ChamberAmount + 25
+
+		$ChamberBlood fillAmount $ChamberAmount * .01
+
+#		$StageTime = 0
+		$taskName = 'TaskInfusionSqueeze' + StageTime
+		$taskNum =$ taskName
+#		Prompt 'Squeeze task num = ' + taskNum
+#		Wait 2
+#		Prompt ''
+
+		ScoreTracker taskcorrect $taskNum 1
+
+#		Prompt 'The chamber has been filled to ' + ChamberAmount + ' percent.'
+#		Wait 1
+#		Prompt ''
+	Endif
+
+	If
+		ZoomSpot menu.result $Choice2
+	Then
+		#$TaskNum = TaskDripSettings
+		#ScoreTracker taskcorrect $taskNum 1
+
+		$taskName = 'TaskConfirmDripSpeed' + StageTime
+		$taskNum =$ taskName
+#		Prompt 'DripSqueeze task num = ' + taskNum
+#		Wait 2
+#		Prompt ''
+		Do '07/DripSettings.txt'
+	Endif
+
+
+	If
+		ZoomSpot menu.result $Choice3
+	Then
+		/JoystickCanvas on
+		/StartCanvas on
+		/Player align PlayerStart
+		Return
+	Endif
+
+
+Goto 'ChamberLoop'

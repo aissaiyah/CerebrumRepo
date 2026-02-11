@@ -1,0 +1,139 @@
+# $formPage - name of form's current page, e.g. GMX or ConsentForm/Pages/Page01
+# $question - question to ask, e.g. 'Is the page signed?'
+# $formitem - object location name e.g. GMX/Signature
+# $item     - item number for ScoreTracker
+# $current - number of check marks
+# $max - maximum number of check marks
+
+Debug 'CheckFormItemStatus.txt start'
+
+
+$formItemNameSet = (formitemname != '')
+If
+   $formItemNameSet
+Then
+#   $formitem =$ formitemname
+Else
+   $formitemname = formitem
+Endif
+
+$formitem clickable.reset
+Debug 'Clickable.reset ' + formitem
+
+
+#if mark already exists, delete and decrement number of marks
+$markname = 'itemMark' + formitemname
+$mark =  formitem + '/' + markname
+Debug 'Mark = ' + mark
+
+   If
+      $formitem exists $mark 
+   Then
+      Destroy $mark
+      If
+         $(Current>0)
+      Then
+         $Current = Current - 1
+      Endif
+   Endif
+
+   Label 'MarkDestroySkip'
+   $formitem lookAtMe 0 .1 -.03
+   Wait .2
+   $formPage Menu.Question $question
+
+   Debug 'CheckFormItemStatus:Menu.on' + formPage + ':' + formitem
+#   Wait 2
+
+   #only update if page is on
+   If
+      isOff $formPage
+   Then
+      Debug 'CheckFormItemStatus:formPage is off for ' + formpage + ':' +  formitem
+#      Wait 5
+      Return
+   Endif
+
+   #turn menu on and wait for answer
+   Debug 'Turning Menu ON'
+   $formPage Menu.on $formitem
+   Debug 'Menu should be ON'
+   #Wait 2
+   Debug 'CheckFormItemStatus:Menu should be on for' + formpage + ':' +  formitem
+   WaitFor 
+      $formPage Menu.Done 
+
+   #if Yes, then make mark and increment total number of marks
+   Wait .1
+   $cond = $item == 'null'
+   $cond = !cond
+
+   If
+      $formPage menu.result $Yes
+   Then
+      If
+         $(Current<Max)
+      Then
+#         $Current = Current + 1
+         Create $CheckMark $markname
+         If
+            $cond
+         Then
+            ScoreTracker taskcorrect $item 1
+         Endif
+      Endif
+   Else
+      If
+         $cond
+      Then
+         ScoreTracker taskcorrect $item 0
+      Endif
+
+      If
+         $Xmark != 'SKIP'
+      Then
+         #$Current = Current + 1
+         Create $XMark $markname
+         Debug 'CREATE XMARK'
+         If
+            $item exists
+         Then
+            ScoreTracker taskcorrect $item 0
+         Endif
+      Endif
+   Endif
+
+   $formitem reset
+   Wait .01
+   #align and parent mark
+   $marknameslash = markname
+   Debug 'Looking for ' + markname
+#   Wait 1
+   If
+      $(Current<Max)
+   Then
+      If
+         $formitem exists $marknameslash 
+      Then
+         $Current = Current + 1
+         Debug 'Aligning mark ' + markname + ' with ' + formitem
+         $marknameslash align $formitem 0
+         #Debug 'Aligned mark ' + mark + ' with ' + formitem
+         $marknameslash AttachTo $formitem
+#         Wait 3
+         #Debug 'Attached mark ' + mark + ' to ' + formitem
+         Wait 1
+      Else
+#         Prompt 'Error:Could not find mark ' + markname
+#         Wait 1
+      Endif
+   Endif
+   $formPage lookAtMe 0 .35 -.1
+   Player localMoveZ -0.05
+   Wait .1
+   Player localMoveX 0.05 .1
+#   $formPage lookAt medium  #zoom out still looking at $formPage
+   Wait .1
+   Debug 'CheckFormItemStatus.txt end'
+#   Wait 2
+   $formitemname = ''

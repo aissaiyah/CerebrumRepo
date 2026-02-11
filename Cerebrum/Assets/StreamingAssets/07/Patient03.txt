@@ -1,0 +1,25 @@
+/FourHourCanvas off
+/JoystickCanvas off
+/PatientCanvas on
+Player lookat $PlayerPatLook
+Label 'P03Loop'
+	If
+		PatientCanvas/Choices/Speak pressed
+	Then
+		PatientCanvas/Choices/Speak reset
+
+		Do '07/FinalPatientComplaintsClear.txt'
+	Endif
+	If
+		PatientCanvas/Choices/Leave pressed
+	Then
+		PatientCanvas/Choices/Leave reset
+		$Patient reset
+		/PatientCanvas off
+		/JoystickCanvas on
+		/StartCanvas on
+		/Player align PlayerStart
+		Return
+	Endif
+	Wait .1
+Goto 'P03Loop'

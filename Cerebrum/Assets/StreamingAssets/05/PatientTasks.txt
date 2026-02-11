@@ -1,0 +1,35 @@
+Debug 'Entering PatientTasks.txt'
+
+Player lookat $PlayerLookPat
+/JoystickCanvas off
+/CheckCanvas on
+
+Label 'MeetLoop'
+	/CheckCanvas on
+	Debug 'In PatientMeet Loop (Speak and Blood buttons)'
+	Wait .5
+
+	If
+		/CheckCanvas/Speak pressed
+	Then
+		/CheckCanvas/Speak reset
+		/CheckCanvas off
+		/JoystickCanvas on
+		Do '05/TalkToPatient.txt'
+		Return
+	Endif
+	Wait .1
+	If
+		/CheckCanvas/Speak/Blood pressed
+	Then
+		/CheckCanvas/Speak/Blood reset
+		/CheckCanvas off
+		Prompt 'Beginning Transfusion.'
+		Wait 1
+		Prompt ''
+		ScoreTracker taskCorrect 15 true
+		Do 'EndCheck.txt'
+	Endif
+		Wait .1
+Goto 'MeetLoop'
+

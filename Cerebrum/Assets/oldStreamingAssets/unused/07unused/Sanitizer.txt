@@ -1,0 +1,18 @@
+# Sanitizer.txt - why isn't this called soap.txt?
+
+$Soap align ZoomSpot
+ZoomSpot Menu.Question 'Use Sanitizer?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait 1
+If
+	ZoomSpot menu.result $Yes
+Then
+	ScoreTracker taskCorrect 10 true
+Else
+	ScoreTracker taskCorrect 10 false
+Endif
+$Soap reset
+$Soap align $SoapSpot
+Return

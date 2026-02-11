@@ -1,0 +1,25 @@
+If
+	ScoreTracker iscomplete 0
+Then
+	If
+		ScoreTracker iscomplete 4
+	Then
+		$PC_ICePack align IceBoxAbove
+		wait 1
+		$PC_ICePack align $PC_ICeTable
+		wait 1
+		ScoreTracker incomplete 4
+	Else
+		$PC_ICePack align IceBoxAbove
+		wait 1
+		$PC_ICePack moveto $PC_ICeBox
+		wait 1
+		ScoreTracker taskCorrect 4 true
+	Endif
+Else
+	$PC_ICePack align IceBoxAbove
+	wait 1
+	$PC_ICePack align $PC_ICeTable
+	wait 1
+	wait 1	ScoreTracker incomplete 4
+Endif

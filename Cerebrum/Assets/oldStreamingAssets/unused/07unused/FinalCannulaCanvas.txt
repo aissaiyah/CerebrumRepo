@@ -1,0 +1,12 @@
+/FourStartCanvas off
+/CannulaCanvas on
+Label 'Loop'
+If
+	/CannulaCanvas/Check pressed
+Then
+	/CannulaCanvas/Check reset
+	Do '07/FinalCannula.txt'
+	Return
+Endif
+Wait 1
+Goto 'Loop'

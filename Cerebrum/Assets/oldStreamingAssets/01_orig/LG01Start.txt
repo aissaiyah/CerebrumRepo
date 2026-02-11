@@ -1,0 +1,151 @@
+Debug 'Entering Start.txt'
+Player align $Deflook
+#Player LocalMoveZ 0.3
+	/CheckCanvas off
+	/PatientCanvas off
+
+$Nurse clickable false
+$Monitor clickable false
+$ID1 outline.on
+$ID2 outline.on
+$ID3 outline.on
+$ID4 outline.on
+ 
+$GXMForm outline.on
+$Bed outline.on
+$TaskSpoke = 0
+$TaskBlood = 0
+#$i = 0
+Do 'SummaryCheck.txt'
+
+Label '01Loop'
+	#$i = i + 1
+
+	/CheckCanvas off
+	/PatientCanvas off
+	#/PatientCanvas on
+	#Do '01/LG01PatientCheck.txt'
+
+
+	#If
+	#	$Nurse pressed
+	#Then
+	#	Do '01/LG01NurseCall.txt'
+	#Endif
+
+	If
+		$GXMForm pressed
+	Then
+#		Wait 5
+#		$GXMForm outline.off
+		$GXMForm resetPressed
+		$GXMForm moveto $GXMDeskPos
+		Wait .5
+		$GXMForm parentto $COW
+		$GXMForm localrotatetoY 0
+		ScoreTracker taskCorrect 1 1
+	ENDIF
+
+#	Wait .1
+	
+	If
+		$IDLabelStrip pressed
+	Then
+#		#$IDLabelStrip outline.off
+		$ID1 outline.off
+		$ID2 outline.off
+		$ID3 outline.off
+		$ID4 outline.off
+		$IDLabelStrip reset
+		$IDLabelStrip moveto $IDDeskPos
+		Wait .5
+		$IDLabelStrip parentto $COW
+		$IDLabelStrip localrotatetoY -10
+		ScoreTracker taskCorrect 0 1
+	ENDIF
+#	Wait 1
+	If
+		$Bed pressed
+	Then
+		$Bed outline.off
+		$Bed resetPressed
+		$Nurse outline.on
+		$Nurse clickable true
+		ScoreTracker taskCorrect 2 1
+		Do '01/LG01PatientChoice.txt'
+	ENDIF
+
+	If
+		$PC_Exit pressed
+	Then 
+		$PC_Exit resetPressed
+		$End open
+		If
+			ScoreTracker taskright 0
+		Then
+			$Miss1 close
+		Else
+			$Miss1 open
+		Endif
+		If
+			ScoreTracker taskright 1
+		Then
+			$Miss1 close
+		Else
+			$Miss1 open
+		Endif
+		If
+			ScoreTracker taskright 3
+		Then
+			$Miss2 close
+		Else
+			$Miss2 open
+		Endif
+		If
+			ScoreTracker taskright 4
+		Then
+			$Miss3 close
+		Else
+			$Miss3 open
+		Endif
+		If
+			ScoreTracker taskright 5
+		Then
+			$Miss3 close
+		Else
+			$Miss3 open
+		Endif
+		If
+			ScoreTracker taskright 6
+		Then
+			$Miss3 close
+		Else
+			$Miss3 open
+		Endif
+		If
+			ScoreTracker taskright 7
+		Then
+			$Miss3 close
+		Else
+			$Miss3 open
+		Endif
+		If
+			ScoreTracker taskright 8
+		Then
+			$Miss3 close
+		Else
+			$Miss3 open
+		Endif
+		#ScoreTracker rangecomplete 0-11
+		Do 'EndCheck.txt'
+	Endif
+
+	If
+		$SumButton pressed
+	Then 
+		$SceneStart = '01/LG01Start.txt'
+		$SumButton resetPressed
+		Do 'SummaryCheck.txt'
+	Endif
+	#Debug 'i = ' + i
+	Goto '01Loop'

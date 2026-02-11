@@ -1,0 +1,213 @@
+$StageTime = 240
+$ReturnTime = 0
+$BloodBagObj setMaterial 'BloodBagEmpty'
+$Vitalsmonitor reset
+$Cannula reset
+$Patient reset
+$InfusionClamp clickable true
+$InfusionClamp reset
+$Soap reset
+$KidneyDish reset
+$Wipe2 reset
+$Syringe reset
+#$InfusionChamber outline.off
+#$InfusionChamber clickable false
+$InfusionChamber outline.on
+$InfusionChamber reset
+/FourStartCanvas on
+/PatientCanvas off
+/CannulaCanvas off
+/ComplaintCanvas off
+/TimeCanvas off
+ChamberCheck off
+ChamberCanvas off
+/ChangeDripSpeed off
+/StartCanvas off
+ClampCanvas off
+/Player align PlayerStart
+Speaker1 ''
+$InfusionSet outline.off
+$KidneyDish outline.on
+$InfusionClamp outline.on
+$Syringe clickable false
+#$Wipe1 clickable false
+$Wipe2 clickable false
+
+$InfusionLine clickable true
+$InfusionLine outline.on
+
+$TimeMark = 4
+Prompt 'End of Blood Transfusion'
+Wait 2
+$Vitalsmonitor outline.on
+$Cannula outline.on
+$Patient outline.on
+$InfusionClamp outline.on
+$Soap outline.on
+$Gloves outline.on
+
+Prompt ''
+Label 'Loop4Hour'
+
+	If
+		$Vitalsmonitor pressed
+	Then
+		$Vitalsmonitor reset
+		FourStartCanvas off
+		$TaskNum = TaskMonitor240
+		Do 'Items/Vitals.txt'
+		/Player align PlayerStart
+	Endif
+
+	#If
+	#	ScoreTracker incomplete 15
+	#Then
+	#	If
+	#		ScoreTracker taskwrong 7
+	#	Then
+	#		If
+	#			$Cannula pressed
+	#		Then
+	#			$Cannula reset
+	#			$TaskNum = 7
+	#			Do '07/Cannula.txt'
+	#			/Player align PlayerStart
+	#		Endif
+	#	Else
+	#		$Cannula reset
+	#		Do '07/ConnectorDisconnect.txt'
+	#		/Player align PlayerStart
+	#	Endif
+	#Endif
+
+	If
+		$Cannula pressed
+	Then
+			$Cannula reset
+			$TaskNum = TaskCannula240
+			Do '07/Cannula.txt'
+			/Player align PlayerStart			
+	Endif
+
+
+#		If
+#			ScoreTracker isnotcomplete 7
+#		Then
+#			$Cannula reset
+#			$TaskNum = 7
+#			Do '07/Cannula.txt'
+#			#Do '07/ConnectorDisconnect.txt'
+#			/Player align PlayerStart			
+#		Else
+#			If
+#				ScoreTracker taskwrong 7
+#			Then
+#				$Cannula reset
+#				$TaskNum = 7
+#				Do '07/Cannula.txt'
+#				/Player align PlayerStart
+#			Else
+#				$Cannula reset
+#				#Do '07/ConnectorDisconnect.txt'
+#				/Player align PlayerStart
+#			Endif
+#		Endif
+#	Endif
+		
+#	If
+#		$InfusionLine pressed
+#	Then
+#		$InfusionLine reset
+#		Do '07/ConnectorDisconnect.txt'
+#		/Player align PlayerStart
+#	Endif
+
+	If
+		$Patient pressed
+	Then
+		$Patient reset
+		Do '07/Patient03.txt'
+		/Player align PlayerStart
+	Endif
+
+	If
+		$InfusionClamp pressed
+	Then
+		$InfusionClamp reset
+		$TaskNum = TaskClampClose240
+		Do 'Items/ClampClose.txt'
+		/Player align PlayerStart
+	Endif
+
+	If
+		$InfusionChamber pressed
+	Then
+		$InfusionChamber reset
+		Do '07/ChamberOptions.txt'
+	Endif
+
+	If
+		$Soap pressed
+	Then
+		$Soap reset
+		$TaskNum = TaskSoap240
+		Do 'Items/Sanitizer.txt'
+	Endif
+
+	If
+		$Gloves pressed
+	Then
+		$Gloves reset
+		$TaskNum = TaskGloves240
+		Do 'Items/Gloves.txt'
+	Endif
+
+	If
+		$KidneyDish pressed
+	Then
+		ScoreTracker taskcorrect $TaskSelectKidneyDish 1
+		$KidneyDish align DishPos
+		Wait 1
+		Player lookat $KidneyDish 0 .4 -.2
+		$KidneyDish outline.off
+		$KidneyDish reset
+		$KidneyDish clickable false
+		$Syringe clickable true
+		$Syringe outline.on
+		$Wipe1 clickable true
+		$Wipe1 outline.on
+		$Wipe2 clickable true
+		$Wipe2 outline.on
+	Endif
+
+	Do '07/Dish.txt'
+
+#	If
+#		$KidneyDish pressed
+#	Then
+#		Do '07/DishStart.txt'
+#	Endif
+
+	If
+		$ChecklistButton pressed
+	Then
+		$ChecklistButton resetPressed
+		Do 'ShowList.txt'
+	Endif
+
+	If
+		$Scene_Exit pressed
+	Then 
+		$Scene_Exit resetPressed
+		ScoreTracker rangecomplete 0-32
+		Do 'EndCheck.txt'
+	Endif
+	If
+		$SumButton pressed
+	Then 
+#		$SceneStart = '07/FourHourStart.txt'
+		$SumButton resetPressed
+		Do 'SummaryCheck.txt'
+	Endif
+	Wait .01
+Goto 'Loop4Hour'

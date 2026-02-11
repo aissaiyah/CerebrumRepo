@@ -1,0 +1,81 @@
+#/WipeCanvas on
+#Prompt 'Clean the needleless connector?'
+$WipeOpen = Wipe + '/WipeOpen'
+$WipeWrapper = Wipe + '/WrapperClosed'
+TurnOn $WipeOpen
+TurnOff $WipeWrapper
+$Wipecount = 0
+
+$Once = 'Once'
+ZoomSpot Menu.Question 'Clean the needleless connector?'
+ZoomSpot Menu.Choices 'Once','5 times','10 times'
+ZoomSpot Menu.on ZoomSpot
+
+WaitFor
+    ZoomSpot Menu.Done
+
+
+#Label 'WipeCheckLoop'
+#		WipeCanvas/Choices/One pressed
+#		WipeCanvas/Choices/Five pressed
+#		WipeCanvas/One/Ten pressed
+	If
+	    ZoomSpot Menu.Result $Once
+	Then 
+		$Wipecount = 1
+		ScoreTracker taskCorrect 4 false
+		WipeCanvas/Choices/One reset
+	Endif
+
+	If
+	    ZoomSpot Menu.Result '5 times'
+	Then
+		$Wipecount = 5
+		ScoreTracker taskCorrect 4 false
+		WipeCanvas/Choices/Five reset
+	Endif
+
+	If	
+	    ZoomSpot Menu.Result '10 times'
+	Then
+		$Wipecount = 10
+		ScoreTracker taskCorrect 4 true
+		WipeCanvas/Choices/Ten reset
+	Endif
+
+	If
+		$Wipecount > 0
+	Then
+		ZoomSpot Menu.Choices $Yes,'No'
+		/WipeCanvas off
+#		Prompt ''
+		$WipeOpen align $WipeTarget
+		Wait 1
+Player lookat $WipeTarget 
+#0 .3 -.3
+		$WipeOpen LocalMoveY 0.03 0
+		$WipeOpen LocalMoveZ 0.03 0
+		Label 'WipeLoop'
+#			Prompt 'Wipecount = ' + Wipecount
+			Wait .5
+			$WipeOpen LocalRotateX 30 1
+			Wait .21
+			$WipeOpen LocalRotateY -60 1
+			Wait .21
+			$WipeOpen LocalRotateY 60 1
+			Wait .21
+			$WipeOpen LocalRotateX -30 1
+			Wait .21
+			$Wipecount = Wipecount - 1
+			If 
+				$Wipecount <= 0
+			Then
+				$WipeOpen align $Wipe
+				Wait .5
+Player lookat $KidneyDish 0 .3 -.3
+				Return
+			Endif
+		Goto 'WipeLoop'
+	Endif
+
+#Goto 'WipeCheckLoop'

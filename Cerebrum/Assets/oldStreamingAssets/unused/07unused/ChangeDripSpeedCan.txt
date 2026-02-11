@@ -1,0 +1,33 @@
+#HourStart->ChamberCanvas->ChamberCheck->DripCheck->TimeCheck->StartDripTest->ChangeDrip
+ChamberCheck off
+ChangeDripSpeed on
+ChangeDripSpeed/Chamber/DripRate setsaline 0
+SoundPlayer playsound 4
+Label 'LoopCD'
+	If
+		ChangeDripSpeed/Chamber/Increase pressed
+	Then
+		ChangeDripSpeed/Chamber/Increase reset
+		ChangeDripSpeed/Chamber/DripRate raisesaline
+		SoundPlayer raiseinterval
+	Endif
+	If
+		ChangeDripSpeed/Chamber/Decrease pressed
+	Then
+		ChangeDripSpeed/Chamber/Decrease reset
+		ChangeDripSpeed/Chamber/DripRate reducesaline
+	Endif
+	If
+		ChangeDripSpeed/Chamber/DripRate salineamount 3
+	Then
+		Wait 2
+		SoundPlayer stopsound
+		ScoreTracker taskCorrect 5 true
+	Endif
+	If 
+		ChangeDripSpeed/Chamber/Done pressed
+	Then
+		Do '07/FourHourStart.txt'
+	Endif
+	Wait .01
+Goto 'LoopCD'

@@ -1,0 +1,53 @@
+/PatientCanvas off
+/ComplaintCanvas on
+$ComplaintCanvasGoodbye setitemtext 'Say Goodbye and Complete Scenario'
+Label 'LoopFPCC'
+	If
+	    $ComplaintCanvasSymptom pressed
+	Then
+	    $ComplaintCanvasSymptom reset
+	    /ComplaintCanvas off
+	    $Patient headturn Player
+	    Speaker2 'Are you okay? Do you feel any pain?'
+	    Wait 2
+	    Speaker1 'I am good, thank you. I feel well.'
+	    Wait 2
+	    Speaker1 ''
+	    Speaker2 ''
+	    ScoreTracker taskCorrect $TaskComplaints240 true
+	    $Patient release
+	    $Patient reset
+	    /PatientCanvas on
+	    Return
+	Endif
+	If
+		$ComplaintCanvasGoodbye pressed
+	Then
+		$ComplaintCanvasGoodbye reset
+		/ComplaintCanvas off
+		$Patient headturn Player
+		Speaker1 'Thank you for your cooperation, Mr. Tan.'
+		Wait 2
+		Speaker1 'I am now going to leave you resting.'
+		Wait 2
+		Prompt 'Thank you Nurse. Goodbye.'
+		Wait 2
+		Speaker1 ''
+		Prompt ''
+		$Patient release
+		/PatientCanvas off
+		ScoreTracker taskCorrect $TaskLeaveConversation true						ScoreTracker rangecomplete 0-15
+		Do 'EndCheck.txt'
+	Endif
+	If
+		$ComplaintCanvasCancel pressed
+	Then
+		$ComplaintCanvasCancel reset
+		/ComplaintCanvas off
+		$Patient release
+		$Patient reset
+		/PatientCanvas on
+		Return
+	Endif
+Wait .2
+Goto 'LoopFPCC'

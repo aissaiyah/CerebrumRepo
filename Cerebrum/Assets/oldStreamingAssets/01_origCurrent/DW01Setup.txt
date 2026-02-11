@@ -1,0 +1,202 @@
+Do 'Setup.txt'
+
+#Debug.on
+#DebugCommands.on
+#Game.delay 0.2
+#DebugCanvas.on
+	/CheckCanvas off
+	/PatientCanvas off
+
+
+End off
+#Prompt 'Turn end off'
+#Wait 10
+
+UICompletion setDummy
+
+# TASK 00 Put Label Strip on COW
+# TASK 01 Put GXM Form on COW
+# TASK 02 Move COW over to patient's bed
+# TASK 03 Call Nurse
+# TASK 04 Ask patient's name OR IC number
+# TASK 05 Check patients's wrist tag
+# TASK 06 Collect Blood??
+# TASK 07 Paste patient label on test tube
+# TASK 08 Ask patient's name OR IC number
+# TASK 09 GXM Form: GXM Name
+# TASK 10 GXM Form: GXM Req
+# TASK 11 GXM Form: GXM Sig
+# TASK 12 Commented out of GXMForm.txt???
+# TASK 13 DOES NOT EXIST???
+# TASK 14 Check patient label for test tube
+# TASK 15 GXM Form: GXM Date2 AND Press talk about education?
+# TASK 16 GXM Form: GXM Clin1
+
+ScoreTracker numitems 17
+ScoreTracker setdependency 2 0 1
+ScoreTracker setdependency 4 3
+ScoreTracker setdependency 5 3
+ScoreTracker setdependency 6 3 4 8
+ScoreTracker setdependency 7 3 4 5 6 8 9 10 11 12 13 14 15 16
+ScoreTracker setdependency 8 3
+ScoreTracker setdependency 9 3
+ScoreTracker setdependency 10 3
+ScoreTracker setdependency 11 3
+ScoreTracker setdependency 12 3
+ScoreTracker setdependency 13 3
+ScoreTracker setdependency 14 3
+ScoreTracker setdependency 15 3
+ScoreTracker setdependency 16 3
+
+### Variables
+$Bed = 'Bed4'
+$NarrowTable = 'NarrowTable'
+$PatientNumber = '4'
+
+$Deflook = 'PlayerTablePos'
+#$Bed = 'Bed'+ PatientNumber
+$Patient = 'Bed4/Patient1/TEMP_Patient'
+$WristTag = 'Bed4/Patient1/WristTag'
+$TagView = $WristTag + '/TagView'
+$PatientFace = $Patient + '/metarig/spine/spine.001/spine.002/spine.003/spine.004'
+$PatLookPlayer = $Patient + '/TurntoPlayer'
+$PatLookReset = $Patient + '/TurnForward'
+$PC_Exit = 'JoystickCanvas/Exit'
+$COW = 'Cart5'
+$COW outline.off
+$COWPatientPos = 'Cart4'
+$KidneyDish = 'Cart5/Misc5'
+$GXMDeskPos = $COW + '/Pos02'
+$IDDeskPos = $COW + '/Pos04'
+$GXMForm = 'Desk7/Document2'
+$IDLabel = 'Desk7/Document4'
+$IDLabel setItemText $PatientName
+$GXMLook = $GXMForm + '/ShotMedium'
+$Vitals = 'Vitalsmonitor(Clone)'
+$GXMBoxes = $GXMForm + '/Stage1Areas'
+$FormExit = $GXMForm + '/Canvas/Exit'
+$GXMLook = $GXMForm + '/ShotMedium'
+$GXMName = $GXMBoxes + '/GO/Name'
+$GXMReq = $GXMBoxes + '/GO/Request'
+$GXMSig = $GXMBoxes + '/GO/Signatures'
+$GXMClin1 = $GXMBoxes + '/GO/ClinInfo1'
+$GXMClin2 = $GXMBoxes + '/GO/ClinInfo2'
+$GXMClin3 = $GXMBoxes + '/GO/ClinInfo3'
+$GXMSGH = $GXMBoxes + '/GO/SGHBloodBank'
+$GXMProd1 = $GXMBoxes + '/GO/Products'
+$GXMProd2 = $GXMBoxes + '/GO/Products2'
+$GXMDate1 = $GXMBoxes + '/GO/Date1'
+$GXMDate2 = $GXMBoxes + '/GO/Date2'
+$GXMSignatureLine = $GXMForm + '/SignatureLine'
+$GXMDateLine1 = $GXMForm + '/Dates/Date1'
+$GXMDateLine2 = $GXMForm + '/Dates/Date2'
+$GXMDateLine3 = $GXMForm + '/Dates/Date3'
+$GXMDateLine4 = $GXMForm + '/Dates/Date4'
+$GXMDateLine5 = $GXMForm + '/Dates/Date5'
+#$PlayerPatPos = 'Bed4/Medium'
+$PlayerPatPos = 'PlayerPatPos'
+$PlayerLookPat = 'Bed4/LookAt'
+$PlayerTablePos = 'PlayerTablePos'
+$Nurse = 'Nurse2'
+$NursePatPos = 'Nurse4'
+$Computer = 'Cart5/Computer1'
+$SumButton = 'JoystickCanvas/Summary'
+$SumCanvas = 'SummaryCanvas/Background'
+$SummaryExit = 'SummaryCanvas/Background/Button'
+$SumButton = 'JoystickCanvas/Summary'
+$IDCanvas = 'IDCanvas/Choices'
+$IDCheck = $IDCanvas + '/Check'
+$IDPaste = $IDCanvas + '/Paste'
+$IDLeave = $IDCanvas + '/Leave'
+$StandingZoom = 'Player/ItemSpot'
+$Dispatch = 'JoystickCanvas/Dispatch'
+$BloodAnimation = 'Nurse_TakeBlood'
+$PC_Name = '/PatientCanvas/Buttons/Choices/Name'
+$PC_IC = '/PatientCanvas/Buttons/Choices/IC'
+$PC_Education = '/PatientCanvas/Buttons/Choices/Education'
+$PC_Blood = '/PatientCanvas/Buttons/Choices/Blood'
+$PC_Date = '/PatientCanvas/Buttons/Choices/Date'
+$PC_Address = '/PatientCanvas/Buttons/Choices/Address'
+$PC_Family = '/PatientCanvas/Buttons/Choices/Family'
+$Phone = '/PatientCanvas/Buttons/Choices/Phone'
+$BloodVial = 'BloodVial'
+$VialRest = 'VialSpot'
+$CheckMark = 'CircleMark'
+$XMark = 'SKIP'
+$PatientSpeechBubble = 'DialogueCanvas/Patient Speak'
+$PlayerSpeechBubble = 'DialogueCanvas/Player Speak'
+$PatientSpeech = 'DialogueCanvas/Patient Speak/Text'
+$PlayerSpeech = 'DialogueCanvas/Player Speak/Text'
+$Max = 4
+$Current = 0
+$Dispatch close
+$IDCanvas close
+#$Yes = 'Yes'
+
+#$PatientLabel = 'IDLabelDyn'
+#$PatientLabel setItemText $PatientName
+
+### Initial positions
+$GXMForm localrotatetoY 5
+ALL/WristTag localMoveX -0.2
+ALL/WristTag localMoveZ 0.2
+
+
+#### ID Labels
+$IDLabel localrotatetoY 10
+$IDLabelStrip = 'IDLabelStrip'
+Create IDLabelStrip $IDLabelStrip
+
+$ID1 = $IDLabelStrip + '/IDLabel1_0_0_0'
+$ID2 = $IDLabelStrip + '/IDLabel1_0_0_1'
+$ID3 = $IDLabelStrip + '/IDLabel1_0_0_2'
+$ID4 = $IDLabelStrip + '/IDLabel1_0_0_3'
+$IDLabelStrip/ALL setItemText $PatientName
+$IDLabel off
+Wait .1  #allow labels time to spawn before move or else positions will be off
+$IDLabelStrip align $IDLabel
+
+#### TestTube
+
+# 5/25/21 Had to replace the fillable test tube with the animated blood vial
+$TestTube = $KidneyDish + '/BloodVial'
+$TestTubeBlood = $TestTube + '/TestTube_fillable'
+$TestTubeBlood fillAmount 0.09
+
+$COW localrotatetoY 180
+
+### Set Dates
+$GXMDateLine1 setItemDate
+$GXMDateLine2 setItemDate
+$GXMDateLine3 setItemDate
+$GXMDateLine4 setItemDate
+$GXMDateLine5 setItemDate
+
+### Setup Vitals monitor
+$hr = 87
+$Vitals setVitals $hr
+
+### Setup Clickables
+$Nurse clickable false
+$COW clickable false
+$Computer clickable false
+$PlayerSpeechBubble close
+$PatientSpeechBubble close
+
+$Nurse speaker.color 1 .5 .5
+$NurseHead = Nurse + '/metarig/Jaw'
+$PatientHead = Patient + '/Jaw'
+$Patient speaker.object $PatientHead
+$Nurse speaker.object $NurseHead
+$Patient speaker.color .5 .5 1
+
+#Player align $PlayerTablePos
+#Wait .5
+#ScoreTracker setstages 1
+
+#Do '01/LG01TagCheck.txt'
+#Wait 5
+
+$SceneStart = '01/LG01Start.txt'
+DO $SceneStart
+### Start scene

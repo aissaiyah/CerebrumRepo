@@ -1,0 +1,12 @@
+UICompletion bad
+Label 'Loop'
+    If
+        $Leave pressed
+    Then
+        $Leave reset
+		ScoreTracker CloseStage
+        Wait 1  #delay for scorm
+        SceneManager switchtoscene Scenes/MainMenu
+    Endif
+    Wait .1
+Goto 'Loop'

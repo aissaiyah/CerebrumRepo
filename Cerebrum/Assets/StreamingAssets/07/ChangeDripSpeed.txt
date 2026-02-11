@@ -1,0 +1,48 @@
+$Increase = 'Faster'
+$Decrease = 'Slower'
+$Drip_Exit = 'Exit'
+
+Label 'LoopCDS'
+
+
+	ZoomSpot Menu.Question 'Drip speed is ' + DripSpeed + ' seconds betwen drips'
+	ZoomSpot Menu.Choices $Decrease,$Drip_Exit,$Increase
+	ZoomSpot Menu.on ZoomSpot
+
+	WaitFor
+		ZoomSpot Menu.Done
+	
+	Wait .1
+	If
+		ZoomSpot menu.result $Increase
+	Then
+		If
+			$DripSpeed > 1
+		Then
+			$DripSpeed = DripSpeed - 1
+			SoundPlayer playsound $DripSpeed
+		Endif
+	Endif
+
+	If
+		ZoomSpot menu.result $Decrease
+	Then
+		If
+			$DripSpeed < 10
+		Then
+			$DripSpeed = DripSpeed + 1
+			SoundPlayer playsound $DripSpeed
+		Endif
+	Endif
+	
+	If
+		ZoomSpot menu.result $Drip_Exit
+	Then
+		ZoomSpot Menu.Choices $Yes,$No
+#		ChamberCheck on
+		SoundPlayer stopSound 
+		Return
+	Endif
+
+Goto 'LoopCDS'
+

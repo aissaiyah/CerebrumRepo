@@ -1,0 +1,35 @@
+If
+	ScoreTracker iscomplete 0
+Then
+	#Prompt 'DividerRemoved ' + DividerRemoved
+	#Wait 1
+	#Prompt ''
+	#was If ScoreTracker iscomplete 1
+	
+	If
+		$DividerRemoved
+	Then
+		$DividerRemoved = false
+
+#		$Divider play In
+		$Divider align IceBoxAbove 0.5
+		wait 0.5
+		$Divider moveto $PaperBox 0.5
+		wait 0.5
+#		$Divider align Divider 0
+
+		ScoreTracker taskCorrect 5 true
+	Else
+		$DividerRemoved = true
+
+#		$Divider play Out
+		$Divider align IceBoxAbove 0.5
+		wait 0.5
+		$Divider align $DividerTable 0.5
+		wait 0.5
+
+		ScoreTracker incomplete 5
+		ScoreTracker taskCorrect 1 true
+	Endif
+Endif
+

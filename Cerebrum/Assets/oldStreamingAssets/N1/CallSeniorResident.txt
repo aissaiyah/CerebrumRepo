@@ -1,0 +1,42 @@
+Debug 'WaitForNurseCall'
+/JoystickCanvas off
+$Nurse Menu.Question 'Call Nurse?'
+$Nurse Menu.on
+#Nurse
+
+Wait .5
+#Label 'NurseCallLoop'
+    WaitFor
+        $Nurse Menu.Done
+    Wait .1
+    If
+        $Nurse menu.result $Yes
+    Then
+        $Nurse horizontalLookAt Player
+#    	$Nurse rotatey 150 .3
+        $Nurse localMoveZ 0.1
+	### TASK 0 CORRECT ###
+        ScoreTracker taskCorrect 2 1
+	######################
+   	$GenericPlayerLine = 'The doctor has not arrived. Can you help me?'
+    	$GenericPatientLine = 'Sure.'
+	Do 'PlayerNurseChat.txt'	
+#    	Do 'GenericChat.txt'	
+
+#        Prompt 'LookAt'
+        $Nurse horizontalLookAt $NursePatPos 
+        Wait .3
+#        Prompt 'MoveTo'
+        $Nurse moveTo $NursePatPos 3 #Player
+        Wait 2.8
+#        Prompt 'Align'
+        $Nurse align $NursePatPos .2 #Player
+#        Wait 3
+#        $Nurse play 'idle'
+#	$Nurse follow false
+    Endif
+    JoystickCanvas on
+#    $Nurse outline.off
+#    $Nurse clickable false
+    Return
+

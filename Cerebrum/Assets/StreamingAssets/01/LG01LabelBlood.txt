@@ -1,0 +1,33 @@
+Debug 'LabelBlood.txt'
+Wait .1
+/JoystickCanvas on
+/PatientCanvas off
+/CheckCanvas off
+$IDCanvas close
+$BloodVial align $StandingZoom .2
+Wait .3
+$BloodVial localrotatey 270 .01
+$BloodVial localmovey -0.1
+wait .1
+$ID1 align Player .2
+Wait .25
+TurnOff $ID1
+$BloodVial play AddLabel
+#Prompt 'move label'
+wait 2
+#Prompt 'moved label'
+#wait 2
+ScoreTracker taskCorrect 7 1
+$BloodVial align $VialRest
+	$ID2 unparent
+	$ID2 align $GXMSignatureLine
+	$ID3 unparent
+	$ID3 align $GXMSignatureLine
+	$ID4 unparent
+	$ID4 align $GXMSignatureLine
+	wait 1
+$IDCanvas open
+$Dispatch open
+Return
+Endif
+Goto 'Loop'

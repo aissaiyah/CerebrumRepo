@@ -1,0 +1,43 @@
+#PatientChoice
+#Start->PatientChoice
+$IDCanvas close
+$IDLabelStrip align $StandingZoom .2
+wait .2
+$IDLabelStrip localmovey .02
+$IDLabelStrip localrotatex 90
+wait .5
+
+$IDLabelStrip Menu.Question 'Is the patient label correct?'
+$IDLabelStrip Menu.on ZoomSpot
+WaitFor
+    $IDLabelStrip Menu.Done
+Wait 1
+If
+    $IDLabelStrip menu.result $Yes
+Then
+    $IDLabelStrip reset
+	$IDLabelStrip align $IDDeskPos .2
+	Wait .3
+#	$ID1 align $IDDeskPos
+
+
+#	$ID2 unparent
+#	$ID2 align $GXMSignatureLine
+#	$ID3 unparent
+#	$ID3 align $GXMSignatureLine
+#	$ID4 unparent
+#	$ID4 align $GXMSignatureLine
+#	wait 1
+#	$ID1 rotatetoy 270 .5
+	ScoreTracker taskCorrect 14 1
+	$IDCanvas open
+#    Do '01/LG01PatientChoice.txt'
+Else
+    $IDLabelStrip reset
+	$IDLabelStrip align $IDDeskPos
+	wait 1
+#	$ID1 rotatetoy 270 .5	
+	ScoreTracker taskCorrect 14 0
+	$IDCanvas open
+#    Do '01/LG01PatientChoice.txt'
+Endif

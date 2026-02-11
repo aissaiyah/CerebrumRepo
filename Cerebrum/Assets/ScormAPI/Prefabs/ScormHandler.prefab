@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &196965783028487338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 196965783028487336}
+  - component: {fileID: 196965783028487337}
+  - component: {fileID: 4206517316759093552}
+  m_Layer: 0
+  m_Name: ScormHandler
+  m_TagString: ScormHandler
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &196965783028487336
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196965783028487338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &196965783028487337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196965783028487338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5daf1f7b52fc249e6b5f057a6a1c8c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameID: 
+  learnerID: 
+  APIHandler: {fileID: 0}
+  _actor:
+    name: testLearner
+    mbox: mailto:testLearner@sg-tap.com
+  _Startedverb:
+    id: http://gamestrax.com/verbs/started
+  _Closedverb:
+    id: http://gamestrax.com/verbs/closed
+  _Completedverb:
+    id: http://gamestrax.com/verbs/completed
+  _GameobjectData:
+    id: http://gamestrax.com/games/BloodTransfusion
+    definition:
+      type: http://gamestrax.com/define/type/game
+  _StageobjectData:
+    id: http://gamestrax.com/define/type/stages/Stage1
+    definition:
+      type: http://gamestrax.com/define/type/stage
+  _ActivityobjectData:
+    id: http://gamestrax.com/define/type/stages/Stage1/activities/0
+    definition:
+      type: http://gamestrax.com/define/type/activity
+  _contextDataStage:
+    extensions:
+      game_title: 
+      game_id: 
+      game_version: 
+  _result:
+    success: 0
+  _resultMessage:
+    Extensions:
+      message: 
+  _resultRaw:
+    success: 0
+    extensions:
+      raw_data: 
+  _contextOptionsAlternate:
+    extensions:
+      options: []
+      correct_option: 
+  _PerformedVerb:
+    id: 
+  stageNumber: 1
+  stageName: Stage1
+  taskNumber: 0
+--- !u!114 &4206517316759093552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196965783028487338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d7e04c4870644253966f0eee2b198bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TagName: ScormHandler

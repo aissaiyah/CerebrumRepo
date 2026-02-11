@@ -1,0 +1,106 @@
+#GXMForm.txt - Loop and check all the form items
+
+#Player lookat $GXMLook
+#$GXMForm lookAtMe 0 .35 -.1
+Player align $GXMLook
+$GXMBoxes on
+$GXMForm resetPressed
+
+$autoAdvance = false
+If
+  $autoAdvance = true
+Then
+  $itemCheck = 'Forms/CheckFormItemStatus.txt'
+Else
+  $itemCheck = 'Forms/CheckFormItemPressed.txt'
+Endif
+
+$GXMForm outline.off
+Prompt 'Select the fields on the GXM form to fill up'
+
+$formpage = $GXMForm
+
+Debug 'Itemcheck = ' + Itemcheck
+#Wait 2
+Label 'GXMLoop' 
+
+  #### NAME
+  $item = '9'
+#  Do 'Forms/CheckItemSkip.txt'
+#  $formitem = $GXMForm + '/SignatureLine'
+  $formitem = $GXMName
+  $question = 'Is this section one of the most vital to fill out first after taking blood?'
+#  Do $itemCheck
+
+  #### REQUEST
+  $item = '10'
+#  Do 'Forms/CheckItemSkip.txt'
+  $formitem = $GXMReq
+  $question = 'Is this section one of the most vital to fill out first after taking blood?'
+#  Do $itemCheck
+
+
+
+  #### SIGNATURES
+  $item = '11'
+#  Do 'Forms/CheckItemSkip.txt'
+  $formitem = $GXMSig
+  $question = 'Is this section one of the most vital to fill out first after taking blood?'
+  Do $itemCheck
+
+  #### CLINFO1
+  $item = '16'
+#  Do 'Forms/CheckItemSkip.txt'
+  $formitem = $GXMClin1
+  $question = 'Is this section one of the most vital to fill out first after taking blood?'
+  Do $itemCheck
+
+  #### CLINFO2
+  $formitem = $GXMClin2
+  Do $itemCheck
+
+  #### CLINFO3
+  $formitem = $GXMClin3
+  Do $itemCheck
+
+  #### SGH
+  $formitem = $GXMSGH
+  $question = 'Is this section one of the most vital to fill out first after taking blood?'
+  Do $itemCheck
+
+  #### PROD1
+  $formitem = $GXMProd1
+  $question = 'Is this section one of the most vital to fill out first after taking blood?'
+  Do $itemCheck
+
+  #### PROD2
+  $formitem = $GXMProd2
+  Do $itemCheck
+
+  #### DATE1
+#  $item = '12'
+#  Do 'Forms/CheckItemSkip.txt'
+  $formitem = $GXMDate1
+  Do $itemCheck
+
+  #### DATE2
+  $item = '15'
+  $formitem = $GXMDate2
+  $question = 'Is this section one of the most vital to fill out first after taking blood?'
+  Do $itemCheck
+
+  #### EXIT
+  $FormExit = $GXMForm + '/Buttons/Exit'
+  If
+    $FormExit pressed
+  Then
+    Debug 'Exiting Form'
+    Prompt ''
+    $FormExit reset
+    $range = '9-11'
+	Player align $PlayerPatPos 
+    Do 'Forms/FormCheckComplete.txt'
+    Return                
+  Endif
+#  Wait 0.03
+Goto 'GXMLoop'

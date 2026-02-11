@@ -1,0 +1,44 @@
+#Dish.txt -> SyringeCheck.txt
+$SalineAmount = 5
+
+ScoreTracker taskcorrect $taskNum 1
+
+Label 'SyringeLoop'
+	$Question = '' + SalineAmount + 'ml in the syringe'
+	ZoomSpot Menu.Question $Question
+	ZoomSpot Menu.Choices 'Push/Flush','Aspirate','Exit'
+	ZoomSpot Menu.on ZoomSpot
+	WaitFor
+		ZoomSpot Menu.Done
+	Wait .1
+	If
+		ZoomSpot menu.result 'Push/Flush'
+	Then
+		SalineTracker reducesaline
+		$SalineAmount = SalineAmount - 1
+	Else
+		If
+			ZoomSpot menu.result 'Aspirate'
+		Then
+			ScoreTracker taskCorrect $TaskSyringeAspriate 1
+		Endif
+	Endif
+
+	If
+		ZoomSpot menu.result 'Exit'
+	Then
+		ZoomSpot Menu.Choices $Yes,$No
+		Return
+	Endif
+	
+	If
+		SalineTracker salineamount 1
+	Then
+		Wait .1
+		ScoreTracker taskCorrect $TaskSyringeFlush true
+#		SyringeCanvas off
+		#Do '06/Dish.txt'
+		ZoomSpot Menu.Choices $Yes,$No
+		Return
+	Endif
+Goto 'SyringeLoop'	

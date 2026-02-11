@@ -1,0 +1,21 @@
+#CheckFormItemPressed.txt - if item is pressed, then check its status with popup question
+
+#Prompt 'CheckFormItemPressed.txt'
+#Wait 2
+#$formitem lookAtMe 0 .1 -.03
+$formitem clickable
+
+#If
+#	ScoreTracker iscomplete $item
+#Then
+#	Return
+#Else
+#	Goto 'Check'
+#Endif
+#Label 'Check'
+If 
+  $formitem pressed
+Then
+  $formitem reset
+  Do 'Forms/CheckFormItemStatus.txt'
+Endif

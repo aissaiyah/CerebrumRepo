@@ -1,0 +1,124 @@
+$StageTime = 0
+StartCanvas/Later reset
+
+/PatientCanvas off
+/CannulaCanvas off
+/ComplaintCanvas off
+/TimeCanvas off
+ChamberCheck off
+ChamberCanvas off
+/ChangeDripSpeed off
+/HourCanvas off
+/FourStartCanvas off
+/ClampCanvas off
+DishCanvas off
+COWCanvas off
+WipeCanvas off
+DishCanvas off
+WipeCanvas off
+SyringeCanvas off
+/Player align PlayerStart
+Speaker1 ''
+Speaker2 ''
+$Cannula reset
+$InfusionChamber outline.on
+$InfusionChamber reset
+
+
+Do 'SummaryCheck.txt'
+
+Prompt 'After 15 Minutes of starting Blood Transfusion'
+$TimeMark = 0
+Wait 2
+
+$Vitalsmonitor outline.on
+$Cannula outline.on
+$Patient outline.on
+Prompt ''
+
+
+Label 'Loop'
+
+#	If
+#		ScoreTracker taskright 0
+#	Then
+#		$Vitalsmonitor outline.off
+#	Else
+#		$Vitalsmonitor outline.on
+#	Endif
+#
+#	If
+#		ScoreTracker taskright 1
+#	Then
+#		$Cannula outline.off
+#	Else
+#		$Cannula outline.on
+#	Endif
+#
+#	If
+#		ScoreTracker taskright 2
+#	Then
+#		$Patient outline.off
+#	Else
+#		$Patient outline.on
+#	Endif
+#
+	If
+		$Vitalsmonitor pressed
+	Then
+		$TaskNum = TaskMonitor0
+		$Vitalsmonitor outline.off
+		$Vitalsmonitor reset
+		Do '07/Monitor.txt'
+	Endif
+
+	If
+		$InfusionChamber pressed
+	Then
+		$InfusionChamber reset
+		Do '07/ChamberOptions.txt'
+	Endif
+
+	If
+		$Cannula pressed
+	Then
+		$Cannula outline.off
+		$Cannula reset
+		$TaskNum = TaskCannula0
+		Do '07/Cannula.txt'
+	Endif
+
+	If
+		$Patient pressed
+	Then
+		$Patient reset
+		Do '07/Patient01.txt'
+	Endif
+
+	If
+		StartCanvas/Later pressed
+	Then
+		StartCanvas/Later reset
+		Do '07/SetReturnTime.txt'
+	Endif
+	If
+		$ChecklistButton pressed
+	Then
+		$ChecklistButton resetPressed
+		Do 'ShowList.txt'
+	Endif
+	If
+		$Scene_Exit pressed
+	Then 
+		$Scene_Exit resetPressed
+		ScoreTracker rangecomplete 0-32
+		Do 'EndCheck.txt'
+	Endif
+	If
+		$SumButton pressed
+	Then 
+		$SumButton resetPressed
+		Do 'SummaryCheck.txt'
+	Endif
+	Wait .05
+Goto 'Loop'

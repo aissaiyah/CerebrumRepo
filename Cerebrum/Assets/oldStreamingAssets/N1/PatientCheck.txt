@@ -1,0 +1,134 @@
+#Player lookat $PatLook
+#Player align $PatLook
+/PatientCanvas on
+JoystickCanvas off
+#$PatientFace align $PatLookPlayer
+Prompt 'Hello, did you have something to ask?'
+#Wait .1
+
+
+#$PC_Exit = 'PatientCanvas/GameObject/Exit'
+$PC_Name on
+$PC_IC off
+$PC_Education on
+$PC_Blood on
+$PC_Date off
+$PC_Address off
+turnOff $PC_Family
+turnOff $PC_Phone
+
+$Patient headturn Player
+Prompt 'Select an item above to speak to patient.'
+Wait .1
+	/PatientCanvas on
+#Wait 10
+
+Label 'PCLoop'
+	/PatientCanvas on
+	#/PatientCanvas/Buttons/Choices/ALL off
+	/PatientCanvas/Buttons/Choices/Education on
+	If
+		/PatientCanvas/Buttons/Choices/Education pressed
+	Then
+		/PatientCanvas/Buttons/Choices/Education reset
+		ScoreTracker taskCorrect 0 true
+		/PatientCanvas off
+		$GenericPlayerLine = 'Can you move you hand?'
+		$GenericPatientLine = 'Yes'
+		Do 'GenericChat.txt'
+		Prompt 'The Patient is able to wriggle their fingers.'
+		wait 2
+		Prompt ''
+		$Patient release
+		JoystickCanvas on
+		Return
+	ENDIF
+	Wait .1
+	/PatientCanvas on
+	If
+		$PC_Name pressed
+	Then
+		$PC_Name resetPressed
+		/PatientCanvas off
+		Prompt ''
+		#Speaker1 'My name is Tan Ah Kow.' 
+		#Wait 2
+		#Speaker1 ''
+		$GenericPlayerLine = 'Can you please tell me your name?'
+		$GenericPatientLine = 'My name is ' + PatientName
+		Do 'GenericChat.txt'
+		$Patient release
+
+		#what is correct task num?
+		#$TaskNum = 4  
+		#Do '01/LG01CorrectPatient.txt'
+		Return
+	Endif
+	If
+		$PC_IC pressed
+	Then
+		Prompt ''
+		$PC_IC reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'What is your IC number?'
+		#$GenericPatientLine = 'My IC Number is '+ PatientIC
+		#Do 'GenericChat.txt'
+		wait 2
+		Prompt 'The patient
+		$Patient release
+		#what is correct task num?
+		#$TaskNum = 4
+		#Do '01/LG01CorrectPatient.txt'
+		Return
+	Endif
+	If
+		$PC_Blood pressed
+	Then
+		Prompt ''
+		$PC_Blood reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'What year is it?'
+		$GenericPatientLine = '2021'
+		Do 'GenericChat.txt'
+		$Patient release
+		Return
+	Endif
+	If
+		$PC_Date pressed
+	Then
+		Prompt ''
+		$PC_Date reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'What is your birthdate?'
+		$GenericPatientLine = 'My birthday is on ' + Birthday  
+		Do 'GenericChat.txt'
+		$Patient release
+		Return
+	Endif
+	If
+		$PC_Address pressed
+	Then
+		Prompt ''
+		$PC_Address reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'Can you please tell me your address?'
+		$GenericPatientLine = 'I am staying in ' + PatientAddress 
+		Do 'GenericChat.txt'
+		$Patient release
+		Return
+	Endif
+
+	If
+		$PC_Exit pressed
+	Then
+		$PC_Exit reset
+		Prompt ''
+		/PatientCanvas off
+		$Patient release
+		Return
+	Endif
+
+
+
+	Wait .1
+Goto 'PCLoop'
