@@ -1,0 +1,53 @@
+### Task for the player ###
+#1. Healthcare worker approaches patient.
+#2. Patient reports difficulty breathing / Healthcare worker asks patient if they are having trouble breathing.
+#3. Healthcare worker visually assesses patient’s breathing.
+#4. Assess patient’s ability to speak in full sentences.
+#5. Observe chest rise and breathing effort.
+#6. Check for audible wheezing.
+#7. Count respiratory rate.
+#8. Apply pulse oximeter.
+#9. Read oxygen saturation.
+#10. Assess use of accessory muscles (examples: visible neck muscle tightening, intercostal retractions, prolonged forced expiration, patient leaning forward, audible wheezing).
+#11. Assist patient into upright or high Fowler’s position.
+#12. Reassess breathing effort after positioning.
+#13. Apply supplemental oxygen.
+#14. Select nasal cannula.
+#15. Set oxygen flow rate per protocol.
+#16. Apply oxygen device.
+#17. Reassess oxygen saturation.
+#18. Check heart rate.
+#19. Check blood pressure.
+#20. Ask patient about asthma history.
+#21. Ask about recent triggers or inhaler use.
+#22. Auscultate lung sounds (stethoscope).
+#23. Identify diffuse wheezing consistent with asthma.
+#24. Determine likely acute asthma exacerbation.
+#25. Notify provider of assessment findings.
+#26. Receive order for nebulized bronchodilator.
+#27. Prepare nebulizer treatment (albuterol).
+#28. Administer nebulized bronchodilator.
+#29. Monitor patient during treatment.
+#30. Reassess lung sounds.
+#31. Reassess respiratory rate.
+#32. Reassess oxygen saturation.
+#33. Observe improvement in airflow and breathing effort / Successful end of simulation.
+
+Do 'Setup.txt'
+
+End off
+
+$PlayerStart = PlayerStart
+
+$Scene_Exit = 'JoystickCanvas/Exit'
+$Patient = 'Bed/Patient1/TEMP_Patient'
+$Patient reset
+$PatientFace = $Patient + '/metarig/spine/spine.001/spine.002/spine.003/spine.004'
+$PatLookPlayer = $Patient + '/TurntoPlayer'
+$PatLookReset = $Patient + '/TurnForward'
+$ChecklistButton = 'ChecklistButton'
+$Checklist = 'ChecklistCanvas'
+$SceneStart = '08/08Start.txt'
+
+
+Do $SceneStart

@@ -1,0 +1,46 @@
+$StageTime = 0
+StartCanvas/Later reset
+
+/PatientCanvas off
+/CannulaCanvas off
+/ComplaintCanvas off
+/TimeCanvas off
+ChamberCheck off
+ChamberCanvas off
+/ChangeDripSpeed off
+/HourCanvas off
+/FourStartCanvas off
+/ClampCanvas off
+DishCanvas off
+COWCanvas off
+WipeCanvas off
+DishCanvas off
+WipeCanvas off
+SyringeCanvas off
+/Player align PlayerStart
+Speaker1 ''
+Speaker2 ''
+$Cannula reset
+$InfusionChamber outline.on
+$InfusionChamber reset
+
+
+Do 'SummaryCheck.txt'
+
+Prompt ''
+$TimeMark = 0
+Wait 2
+Prompt ''
+$Patient outline.on
+
+
+Label 'Loop'
+	If
+		$Patient pressed
+	Then
+		$Patient reset
+		Do '08/Patient01.txt'
+	Endif
+
+	Wait .05
+Goto 'Loop'
