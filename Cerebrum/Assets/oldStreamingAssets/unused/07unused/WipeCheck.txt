@@ -1,0 +1,26 @@
+/DishCanvas off
+/WipeCanvas on
+Label 'Loop'
+If
+	WipeCanvas/One pressed
+Then 
+	ScoreTracker taskCorrect 12 false
+	WipeCanvas/One reset
+	Do '07/Dish.txt'
+Endif
+If
+	WipeCanvas/One/Five pressed
+Then
+	ScoreTracker taskCorrect 12 false
+	WipeCanvas/One/Five reset
+	Do '07/Dish.txt'
+Endif
+If	
+	WipeCanvas/One/Ten pressed
+Then
+	ScoreTracker taskCorrect 12 true
+	WipeCanvas/One/Ten reset
+	Wipe1 reset
+	Do '07/Dish.txt'
+Endif
+Goto 'Loop'

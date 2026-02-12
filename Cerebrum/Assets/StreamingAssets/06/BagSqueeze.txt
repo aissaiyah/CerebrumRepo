@@ -1,0 +1,54 @@
+#Player align $PoleLook
+#Player align $PoleLook
+#	$Player align $IVLook
+
+Label 'SqueezeLoop'
+
+	If
+		$ChamberAmount >= 100
+	Then
+		Prompt 'Chamber is full'
+		Wait 1		
+		Prompt ''
+		Return
+	Endif
+	ZoomSpot Menu.Question 'Infusion set chamber at ' + ChamberAmount + '%'
+	ZoomSpot Menu.Choices 'Squeeze chamber','Exit'
+	ZoomSpot Menu.on ZoomSpot
+	WaitFor
+		ZoomSpot Menu.Done
+	ZoomSpot Menu.Choices $Yes,$No
+	
+	Wait .1
+	If
+		ZoomSpot menu.result 'Squeeze chamber'
+	Then
+		$ChamberAmount = ChamberAmount + 25
+		If
+			$ClampOpen
+		Then
+			turnOn $IVLineBlood
+		Endif
+		$ChamberBlood fillAmount $ChamberAmount * .01
+
+#		Prompt 'The chamber has been filled to ' + ChamberAmount + ' percent.'
+#		Wait 1
+#		Prompt ''
+	Endif
+
+	If
+		ZoomSpot menu.result 'Exit'
+	Then
+		If
+			$ChamberAmount >= 50
+		Then
+			ScoreTracker taskCorrect $TaskBagSqueeze 1
+		Else
+			ScoreTracker taskCorrect $TaskBagSqueeze 0
+		Endif
+		Return
+	Endif
+
+
+Goto 'SqueezeLoop'
+

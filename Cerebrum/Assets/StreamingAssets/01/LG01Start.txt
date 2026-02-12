@@ -1,0 +1,209 @@
+Debug 'Entering Start.txt'
+Player align $Deflook
+$PlayerCurPos = DefLook
+
+#Player LocalMoveZ 0.3
+	/CheckCanvas off
+	/PatientCanvas off
+
+$Nurse clickable false
+#$Monitor clickable false
+$ID1 outline.on
+$ID2 outline.on
+$ID3 outline.on
+$ID4 outline.on
+ 
+$GXMForm outline.on
+$Bed outline.on
+$TaskSpoke = 0
+$TaskBlood = 0
+#$i = 0
+Do 'SummaryCheck.txt'
+
+
+$PromptTop = 'Player/PromptTop'
+$PromptBottom = 'Player/PromptBottom'
+#$PromptTop speaks 'Top:When in the course of human events it becomes necessary for one people to dissolve the political bands...I am going to take a sample of your blood for investigation before you go for your procedure.'
+#$PromptBottom speaks 'Bottom:When in the course of human events it becomes necessary for one people to dissolve the political bands...I am going to take a sample of your blood for investigation before you go for your procedure.'
+#Prompt 'hello'
+#Wait 5
+#$PromptTop speaks 'Top:I am going to take a sample of your blood.'
+#$PromptBottom speaks 'Bottom:I am going to take a sample of your blood.'
+#Prompt 'hello'
+#Wait 5
+#$PromptTop speaks ''
+Wait 1
+#$PromptBottom speaks ''
+Wait 1
+
+Label '01Loop'
+	/CheckCanvas off
+	/PatientCanvas off
+
+	If
+		$GXMForm pressed
+	Then
+
+		If
+			$GXMForm_moved
+		Then
+			$GXMForm reset
+			Do '01/GXMForm.txt'
+		Else
+			$GXMForm_moved = true
+	#		Wait 5
+	#		$GXMForm outline.off
+			$GXMForm reset
+			$GXMForm moveto $GXMDeskPos
+			Wait .5
+#			$GXMForm parentto $COW
+#			$GXMForm localrotatetoY 0
+			$GXMForm attachto $COW
+			$GXMForm localrotatetoY 0
+			ScoreTracker taskCorrect 1 1
+		Endif
+
+	Endif
+
+	If
+		$IDLabelStrip pressed
+	Then
+		$ID1 outline.off
+		$ID2 outline.off
+		$ID3 outline.off
+		$ID4 outline.off
+		$IDLabelStrip resetPressed
+
+		If
+			$IDLabelStrip_moved
+		Then
+			$IDLabelStrip selectable false
+			$IDLabelStrip outline.off
+			Do '01/IDLoop.txt'
+			If
+				$IDPaste pressed
+			Then
+			Else
+				$IDLabelStrip selectable true
+				$IDLabelStrip outline.on
+			Endif
+		Else
+			$IDLabelStrip_moved = true
+		#		#$IDLabelStrip outline.off
+			$IDLabelStrip reset
+			$IDLabelStrip moveto $IDDeskPos
+			Wait .5
+			$IDLabelStrip parentto $COW
+			$IDLabelStrip localrotatetoY -10
+			ScoreTracker taskCorrect 0 1
+		Endif
+	ENDIF
+
+
+	If
+		$NarrowTable pressed
+	Then
+		$NarrowTable outline.off
+		$NarrowTable resetPressed
+		Player align $Deflook
+		$Bed outline.on
+		$Bed reset
+	Endif
+
+
+	If
+		$Bed pressed
+	Then
+		$NarrowTable outline.on
+		$NarrowTable reset
+		$Bed outline.off
+		$Bed resetPressed
+		$Nurse outline.on
+		$Nurse clickable true
+		ScoreTracker taskCorrect 2 1
+		Do '01/LG01PatientChoice.txt'
+		$PlayerCurPos = DefLook
+
+	ENDIF
+
+	If
+		$Scene_Exit pressed
+	Then 
+		$Scene_Exit resetPressed
+		$End open
+		If
+			ScoreTracker taskright 0
+		Then
+			$Miss1 close
+		Else
+			$Miss1 open
+		Endif
+		If
+			ScoreTracker taskright 1
+		Then
+			$Miss1 close
+		Else
+			$Miss1 open
+		Endif
+		If
+			ScoreTracker taskright 3
+		Then
+			$Miss2 close
+		Else
+			$Miss2 open
+		Endif
+		If
+			ScoreTracker taskright 4
+		Then
+			$Miss3 close
+		Else
+			$Miss3 open
+		Endif
+		If
+			ScoreTracker taskright 5
+		Then
+			$Miss3 close
+		Else
+			$Miss3 open
+		Endif
+		If
+			ScoreTracker taskright 6
+		Then
+			$Miss3 close
+		Else
+			$Miss3 open
+		Endif
+		If
+			ScoreTracker taskright 7
+		Then
+			$Miss3 close
+		Else
+			$Miss3 open
+		Endif
+		If
+			ScoreTracker taskright 8
+		Then
+			$Miss3 close
+		Else
+			$Miss3 open
+		Endif
+
+		Do 'EndCheck.txt'
+	Endif
+	
+	If
+		$Dispatch pressed
+	Then 
+		#ScoreTracker rangecomplete 0-11
+		$Dispatch resetPressed
+		Do 'EndCheck.txt'
+	Endif
+
+	If
+		$SumButton pressed
+	Then 
+		$SceneStart = '01/LG01Start.txt'
+		$SumButton resetPressed
+		Do 'SummaryCheck.txt'
+	Endif
+Goto '01Loop'

@@ -1,0 +1,89 @@
+
+
+#Label 'DishLoop'
+	If
+		$Wipe1 pressed
+	Then 
+		$Once = 'Once'
+		ZoomSpot Menu.Question 'Clean the needleless connector?'
+		ZoomSpot Menu.Choices 'Once','5 times','10 times','No'
+		ZoomSpot Menu.on ZoomSpot
+
+		WaitFor
+			ZoomSpot Menu.Done
+
+		$Wipe1 resetPressed
+		$Wipe1 outline.off
+		$Wipe = Wipe1
+		$WipeTarget = CannulaIVEnd
+		$TaskNum = TaskWipeNeedless
+		Do '06/WipeCheck.txt'
+	Endif
+
+	If
+		$Wipe2 pressed
+	Then 
+
+		ZoomSpot Menu.Question 'Clean the end of the infusion tubing?'
+		ZoomSpot Menu.Choices 'Yes','No'
+		ZoomSpot Menu.on ZoomSpot
+		WaitFor
+	    	ZoomSpot Menu.Done
+
+		If
+			$InfusionSetHung
+		Then
+			$Wipe2 resetPressed
+			$Wipe2 outline.off
+			$Wipe = Wipe2
+			$WipeTarget = $IVEndTarget
+			$TaskNum = $TaskWipeInfEnd
+			Do '06/WipeCheck.txt'
+
+		Else
+			$Wipe2 reset
+			$Wipe2 outline.on
+			Prompt 'Infusion Set not yet hung'
+			Wait 1
+			Prompt ''
+		Endif
+	Endif
+
+	If
+		$Syringe pressed
+	Then
+		$Syringe resetPressed
+		$Syringe align $CannulaIVEnd
+		ScoreTracker taskCorrect $TaskSelectSyringe 1
+		Wait 1
+#		Prompt 'Lookat ' + CannulaIVEnd
+		Player lookat $CannulaIVEnd 
+		Do '06/SyringeCheck.txt'
+		Player lookat $KidneyDish 
+		$Syringe align $KidneyDish
+		$Syringe outline.off
+	Endif
+
+#	If
+#		$Wastebin pressed
+#	Then
+#		$Wastebin resetPressed
+#		Do '06/Garbage.txt'
+#		$Wastebin outline.off
+#	Endif
+Return
+	If
+		$Scene_Exit pressed
+	Then 
+		$Scene_Exit resetPressed
+		Do 'EndCheck.txt'
+	Endif
+	If
+		$SumButton pressed
+	Then 
+		$SceneStart = '06/Dish.txt'
+		$SumButton resetPressed
+		Do 'SummaryCheck.txt'
+	Endif
+	Wait .1
+#Goto 'DishLoop'

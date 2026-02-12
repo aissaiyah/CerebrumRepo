@@ -1,0 +1,39 @@
+#########################################
+#  PATIENT INFO
+#########################################
+
+$PatientName = 'Loh Kok Liang'
+$PatientIC = 'S5566778C'
+$BloodType = 'O-'
+$AgeInYears = 77
+$PatientModel = 'PatientMale74'
+
+$Temperature 36.4
+$HR = 82
+$BP = '95/50' #mmHg
+$Respiration = 14
+$SpO2 = 98
+$OxygenSupplement false
+$LevelOfConscious =  'Alert'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+#Do 'NEWS/GetPatient.txt'
+$PatLookPlayer = Patient + '/TurntoPlayer'
+$PatLookReset = Patient + '/TurnForward'
+
+Create $PatientModel 'PatientC'
+PatientC align $Patient
+turnOff $Patient
+$Patient = 'PatientC'
+
+$CuffPos = Patient + '/CuffPos'
+$CannulaIVPos = Patient + '/CannulaIVPos'
+$PatientFace = Patient + '/head.x'
+$PatientHead = Patient + '/Jaw'
+
+
+
+Do 'NEWS/SetupPatient.txt'

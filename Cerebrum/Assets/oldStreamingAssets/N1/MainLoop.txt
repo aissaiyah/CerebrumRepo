@@ -1,0 +1,159 @@
+/PatientCanvas off
+JoystickCanvas on
+#WipeCanvas off
+#SyringeCanvas off
+$InfusionStand off
+#DripCanvas off
+#ClampCanvas off
+
+$Patient outline.on
+$Vitalsmonitor outline.on
+#$COWComputer outline.off
+#$Soap outline.on
+#$Gloves outline.on
+#$KidneyDish outline.on
+#$BloodBag outline.on
+#$Set outline.on
+#$PressureCuff outline.on
+$Vitalsmonitor outline.on
+$Nurse align $NursePatPos 2 #Player
+Player align $PlayerStart
+
+#Wait 5
+WipeCanvas off
+/SyringeCanvas off
+/IVCanvas off
+/DripCanvas off
+#Player lookat $DeskStart
+
+$Soap outline.on
+$Gloves outline.on
+$KidneyDish outline.on
+$KidneyDish reset
+
+$BloodBag outline.on
+$Set outline.on
+$PressureCuff outline.on
+$Vitalsmonitor outline.on
+$Vitalsmonitor on
+#$Patient outline.off
+#$Vitalsmonitor outline.off
+
+$Wipe1 outline.on
+$Wipe1 reset
+$Syringe outline.on
+#$Wastebin outline.on
+$Phone outline.on
+$Phone clickable true
+#Prompt $Phone
+
+Do 'SummaryCheck.txt'
+Label 'LoopN1'
+#		Prompt 'N1:Loop : ' + PatientName
+
+	If
+		$Patient isCurrent
+	Then
+#		Prompt 'N1:Patient active: ' + PatientName
+		If
+			$Nurse pressed
+		Then
+			$Nurse reset
+			Do 'N1/CallSeniorResident.txt'
+		Endif
+	Else
+		Prompt ''
+		If
+			$Patient pressed
+		Then
+			Player align $PlayerStart 0.5
+			$Patient reset
+		Endif
+	Endif
+
+
+
+	If
+		$Patient pressed
+	Then
+#		Speaker2 'N1: Patient = ' + PatientName
+		Player align $PlayerStart 0.5
+	Wait 1
+		$Patient reset
+		$Patient outline.off
+		Do 'N1/PatientCheck.txt'
+		$Patient outline.on
+		JoystickCanvas on
+		#Player align PlayerStart
+	Endif
+
+	#If
+	#	$IVEndTarget pressed
+	#Then
+	#	$IVEndTarget outline.off
+	#	$IVEndTarget reset
+	#	$IVEndTarget align $CannulaIVEnd
+	#	Wait 3
+	#	$IVConnected = true
+#		Do 'EndCheck.txt'
+#		Player moveto $PlayerStart
+	#Endif
+
+	If
+		$Vitalsmonitor pressed
+	Then
+		$Vitalsmonitor outline.off
+		$Vitalsmonitor reset
+		Do 'N1/Monitor.txt'
+		Player moveto $PlayerStart
+	Endif
+
+	If
+		$Phone pressed
+	Then
+		$Phone reset
+		Do 'N1/Phone.txt'
+	Endif
+	
+	#If
+	#	$COWComputer pressed
+	#Then
+	#	$COWComputer outline.off
+	#	$COWComputer reset
+	#	Do '06/COWStart.txt'
+	#	Player align PlayerStart
+	#Endif
+
+	If
+		$ChecklistButton pressed
+	Then
+		$ChecklistButton resetPressed
+		Do 'ShowList.txt'
+	Endif
+
+	If
+		$Scene_Exit pressed
+	Then 
+		$Scene_Exit reset
+		#ScoreTracker rangecomplete 0-14
+		Do 'EndCheck.txt'
+	Endif
+	
+	If
+		$SumButton pressed
+	Then 
+		$SceneStart = 'N1/MainLoop.txt'
+		$SumButton resetPressed
+		Do 'SummaryCheck.txt'
+	Endif
+
+	#Do '06/COWStart.txt'
+
+	#If
+	#	$InfusionStarted
+	#Then
+	#	Do '06/InfusionStart.txt'
+	#Endif
+
+	Wait .1
+Goto 'LoopN1'

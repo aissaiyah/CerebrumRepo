@@ -1,0 +1,116 @@
+#GXMForm.txt - Loop and check all the form items
+
+#Player lookat $GXMLook
+#$GXMForm lookAtMe 0 .35 -.1
+Player align $GXMLook
+$GXMBoxes on
+$GXMForm resetPressed
+
+$autoAdvance = false
+If
+  $autoAdvance = true
+Then
+  $itemCheck = 'Forms/CheckFormItemStatus.txt'
+Else
+  $itemCheck = 'Forms/CheckFormItemPressed.txt'
+Endif
+
+$GXMForm outline.off
+Prompt 'Select the fields on the GXM form to fill up'
+
+$formpage = $GXMForm
+
+Debug 'Itemcheck = ' + Itemcheck
+#Wait 2
+Label 'GXMLoop' 
+
+  $question = 'Is this section one of the most vital to fill out first after taking blood?'
+
+  #### NAME
+  $item = '9'
+  $formitem = $GXMName
+  $formitemname = 'GXMName'
+  Do $itemCheck
+
+  #### REQUEST
+  $item = '10'
+  $formitem = $GXMReq
+  $formitemname = 'GXMReq'
+  Do $itemCheck
+
+  #### SIGNATURES 1
+  $item = '11'
+  $formitem = $GXMSig1
+  $formitemname = 'GXMSig1'
+  Do $itemCheck
+
+  #### SIGNATURES 2
+  $item = '12'
+  $formitem = $GXMSig2
+  $formitemname = 'GXMSig2'
+  Do $itemCheck
+
+  #### CLINFO1
+  $item = '99'
+  $formitem = $GXMClin1
+  $formitemname = 'GXMClin1'
+  Do $itemCheck
+
+  #### CLINFO2
+  $item = '99'
+  $formitem = $GXMClin2
+  $formitemname = 'GXMClin2'
+  Do $itemCheck
+
+  #### CLINFO3
+  $item = '99'
+  $formitem = $GXMClin3
+  $formitemname = 'GXMClin3'
+  Do $itemCheck
+
+  #### SGH
+  $item = '99'
+  $formitem = $GXMSGH
+  $formitemname = 'GXMSGH'
+  Do $itemCheck
+
+  #### PROD1
+  $item = '18'
+  $formitem = $GXMProd1
+  $formitemname = 'GXMProd1'
+  Do $itemCheck
+
+  #### PROD2
+  $item = '99'
+  $formitem = $GXMProd2
+  $formitemname = 'GXMProd2'
+  Do $itemCheck
+
+  #### DATE1
+  $item = '99'
+#  Do 'Forms/CheckItemSkip.txt'
+  $formitem = $GXMDate1
+  $formitemname = 'GXMDate1'
+  Do $itemCheck
+
+  #### DATE2
+  $item = '99'
+  $formitem = $GXMDate2
+  $formitemname = 'GXMDate2'
+  Do $itemCheck
+
+  #### EXIT
+  $FormExit = $GXMForm + '/Buttons/Exit'
+  If
+    $FormExit pressed
+  Then
+    Debug 'Exiting Form'
+    Prompt ''
+    $FormExit reset
+    $range = '9-11'
+	Player align $PlayerCurPos 
+    Do 'Forms/FormCheckComplete.txt'
+    Return                
+  Endif
+#  Wait 0.03
+Goto 'GXMLoop'

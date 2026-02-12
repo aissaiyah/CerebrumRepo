@@ -1,0 +1,165 @@
+Label TopLine
+$item = '9'
+   $cond = item != 'null'
+   Prompt 'Cond = ' + cond
+  Wait 10
+   $cond = !cond
+   Prompt 'Cond = ' + cond
+  Wait 3
+$delay = 0.01
+$choice = 2
+Prompt 'Choice = '+ choice
+Wait $delay
+Prompt 'Check loading file by parameter array'
+Wait $delay
+$fileName = 'fileName'
+$fileName1 = 'CheckPatient.txt'
+$fileName2 = 'Forms/CheckSignature.txt'
+$fileName3 = 'CheckPatient3.txt'
+$fileName4 = 'CheckPatient4.txt'
+$fileName5 = 'CheckPatient5.txt'
+$choiceFile =$ fileName + choice
+Prompt 'Pretending to load ' + choiceFile
+#Do choiceFile
+Wait $delay
+DoChoice $choice
+Choices[
+    Prompt 'choice 1: FAIL'
+    Prompt 'choice 2: PASS!'
+    Prompt 'choice 3: FAIL'
+    Prompt 'choice 4: FAIL'
+    Prompt 'choice 5: FAIL'
+]
+Wait $delay
+$str1 = 'foo'
+$bool1 = true
+#Prompt 'Check Convert function (bool to string)'
+#Wait $delay
+#Prompt 'Result = ' + Convert(bool1 = true, 'System.String') + str1
+#Wait $delay
+#Prompt 'Check IIF function'
+#Wait $delay 
+#Prompt IIF(bool1 = false, 'Bool1 is false:FAIL','Bool1 is true:PASS')
+#Wait $delay
+Label Line2
+Prompt 'Check numeric expressions (should be 5)'
+Wait $delay
+$foo = 5
+Prompt foo
+Wait $delay
+Prompt 'Check numeric array'
+Wait $delay
+$numarray1 = 10.1
+$numarray2 = 20.2
+$numarray3 = 30.3
+$numarray = 'numarray' + choice
+$value =$ numarray
+Prompt 'numarray should be 2nd element ' + numarray + ' with value (20.2):  = ' + value
+Wait $delay
+$bar = 5 * (4-1)
+Prompt 'Expression $bar = 5 * (4-1)  = (should be 15) = ' + bar
+Wait $delay
+Prompt 'Check mixed types'
+Wait $delay
+Prompt 'str1 + bar = foo15'
+Wait $delay
+Prompt str1 + bar
+Wait $delay
+Prompt 'str1 + bool1 = foo1'
+Wait $delay
+Prompt str1 + bool1
+Wait $delay
+Prompt 'bar * bool1 = 15'
+Wait $delay
+Prompt bar * bool1
+Wait $delay
+Prompt 'Testing conditionals'
+Prompt '5 == 4'
+Wait $delay
+Prompt 5 == 4
+Wait $delay
+Prompt '5 == 5'
+Wait $delay
+Prompt 5 == 5
+Wait $delay
+Prompt 'true == false'
+Wait $delay
+$c1 = true == false
+Prompt c1
+Wait $delay
+Prompt 'true == true'
+Wait $delay
+Prompt true == true
+Wait $delay
+Prompt 'doublequote'
+Wait $delay
+Prompt '"tru" == "tru"'
+Wait $delay
+Prompt 'tru' == 'tru'
+Wait $delay
+Prompt '"tru" == "ttru"'
+Wait $delay
+Prompt 'tru' == 'ttru'
+Wait $delay
+Prompt 'Check OR statement'
+Wait $delay
+#$bool2 = str1 = 'foo' OR bar = 10  
+$bool2 = str1 == 'foo'
+Prompt '$bool2 = str1 == "foo" (true)'
+Wait $delay
+Prompt bool2
+Wait $delay
+Prompt '$bool2 = bar == 10 (false)'
+Wait $delay
+$bool2 = bar == 10  
+Prompt bool2
+Wait $delay
+Prompt '$bool2 = str1 == "foo" || bar == 10 (true)'
+Wait $delay
+$bool2 = str1 == 'foo' || bar == 10  
+Prompt bool2
+Wait $delay  
+###############################GOOD UP TO HERE
+$delay = 2
+Prompt '$bool2 = str1 = "foo" OR bar = 10 (true)'
+Wait $delay
+$bool2 = str1 = 'foo' OR bar = 10  
+Prompt bool2
+Wait $delay
+
+$x4 = bar
+$x5 = x4
+Prompt 'bar (15) = '
+Wait $delay
+Prompt bar
+Wait $delay
+Prompt 'bool1 (true) = '
+Wait $delay
+Prompt bool1
+Wait $delay
+If 
+  $bool1
+Then
+  $bar = 5 * 2
+  Prompt 'In Then: PASS'
+  Wait $delay
+Else
+  $bar = 11
+  Prompt 'In Else: FAIL'
+  Wait $delay
+Endif
+#Prompt 'Bar changed to ' + Convert(bar,'System.String')
+#Wait 5
+$x6 = bar
+$x1 = bar 
+$bar = bar + 1
+$x6 = bar
+$x3 = bar
+$x2 = bar * 3
+Prompt 'Prompt 2'
+Wait $delay
+Prompt 'Number 3'
+Wait $delay
+#Goto TopLine
+Prompt 'Number 4'
+Wait $delay

@@ -1,0 +1,187 @@
+Debug 'Entering TalkToPatient.txt'
+
+/CheckCanvas off
+/JoystickCanvas off
+/PatientCanvas on
+
+$PC_Name on
+$PC_IC on
+$PC_Blood on
+$PC_Date on
+$PC_Address on
+#turnOff $PC_Education
+turnOff $PC_Family
+turnOff $PC_Phone
+
+#Wait 1
+#$PatientFace align $PatLookPlayer #2.5
+$Patient headturn Player
+Prompt 'Select an item above to speak to patient.'
+#$checkedOnce = false
+Label 'PCLoop'
+	Debug 'PatientCheck Loop'
+	Wait .1
+	If
+		$PC_Name pressed
+	Then
+		Debug 'PatientCheck Name Pressed'
+
+		/PatientCanvas/Buttons/Choices/Name reset
+		#don't turn off Canvas before sending reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'Can you please tell me your name?'
+		$GenericPatientLine = 'My name is ' + PatientName
+		#Tan Ah Kow'
+		Do 'GenericChat.txt'
+		$item = $None
+		$question = 'Is this the correct patient?'
+		$Answer = $Yes
+		$LabelPos = $None
+
+		$tasknum = 1
+		Do '05/CheckScorableItem.txt'
+
+
+		$Patient release
+		#Speaker2 ''
+		#Speaker1 ''
+		Goto 'LeavePCLoop'
+	Endif
+
+	If
+		$PC_Blood pressed
+	Then
+		Debug 'PatientCheck Blood Pressed'
+		$PC_Blood reset
+		#don't turn off before sending reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'What is your blood type?'
+		$GenericPatientLine = BloodType
+		Do 'GenericChat.txt'
+		$item = $None
+		$question = 'Is this the correct blood type?'
+		$Answer = $Yes
+		$tasknum = 2
+		$LabelPos = $None
+
+		Do '05/CheckScorableItem.txt'
+
+		$Patient release
+		#Speaker2 ''
+		#Speaker1 ''
+		Goto 'LeavePCLoop'
+	Endif
+	
+	If
+		$PC_Education pressed
+	Then
+		Prompt ''
+		$PC_Education reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'The doctor has ordered a blood transfusion for you as your red blood count is low'
+		$GenericPatientLine = 'Okay.  Thank you.'
+		### TASK 3 CORRECT ###
+	        ScoreTracker taskCorrect 3 1
+		######################
+		Do 'GenericChat.txt'
+		$Patient release
+		JoystickCanvas on
+		Return
+	Endif
+
+	If
+		$PC_IC pressed
+	Then
+		$PC_IC reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'What is your IC number?'
+		$GenericPatientLine = 'My IC Number is '+ PatientIC
+		Do 'GenericChat.txt'
+		$item = $None
+		$question = 'Is this the correct patient?'
+		$Answer = $Yes
+		$LabelPos = $None
+
+		$tasknum = 10
+		Do '05/CheckScorableItem.txt'
+
+		$Patient release
+		Prompt ''
+		JoystickCanvas on
+		Return
+	Endif
+	
+	If
+		$PC_Date pressed
+	Then
+		$PC_Date reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'What is your birthdate?'
+		$GenericPatientLine = 'My birthday is on ' + Birthday
+		Do 'GenericChat.txt'
+		$item = $None
+		$question = 'Is this the correct patient?'
+		$Answer = $Yes
+		$LabelPos = $None
+		
+		$tasknum = 11
+		Do '05/CheckScorableItem.txt'
+
+		$Patient release
+		Prompt ''
+		JoystickCanvas on
+		Return
+	Endif
+
+	If
+		$PC_Address pressed
+	Then
+		$PC_Address reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'Can you please tell me your address?'
+		$GenericPatientLine = 'I am staying in ' + PatientAddress 
+		Do 'GenericChat.txt'
+
+		$item = $None
+		$question = 'Is this the correct patient?'
+		$Answer = $Yes
+		$LabelPos = $None
+		
+		$tasknum = 12
+		Do '05/CheckScorableItem.txt'
+
+
+		$Patient release
+		Prompt ''
+		JoystickCanvas on
+		Return
+	Endif
+
+	If
+		$PC_Exit pressed
+	Then
+		$PC_Exit reset
+		$Patient release
+		Prompt ''
+		/PatientCanvas off
+		JoystickCanvas on
+		Return
+	Endif
+
+
+	Debug 'PatientCheck End of Loop'
+	Wait .21
+Goto 'PCLoop'
+
+Label 'LeavePCLoop'
+
+/PatientCanvas off
+/JoystickCanvas on
+$PatientFace align $PatLookReset 1.5
+Prompt ''
+
+Label 'MeetDone'
+Debug 'PatientMeet: out of loop'
+
+/JoystickCanvas on
+

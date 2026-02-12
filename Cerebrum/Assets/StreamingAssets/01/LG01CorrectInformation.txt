@@ -1,0 +1,19 @@
+Debug 'CorrectPatient.txt'
+#Start->PatientChoice->PatientMeet->PatientTalkCheck->PatientInfoCheck->CorrectInfo
+
+/PatientCanvas off
+ZoomSpot Menu.Question 'Is this information correct?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+If
+	ZoomSpot menu.result $Yes
+Then
+	ScoreTracker taskCorrect $TaskNum 1
+Else
+	ScoreTracker taskCorrect $TaskNum 0
+Endif
+
+$Patient reset
+/CheckCanvas/Speak reset
+Return

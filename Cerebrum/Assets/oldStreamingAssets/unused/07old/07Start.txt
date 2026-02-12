@@ -1,0 +1,65 @@
+/PatientCanvas off
+/CannulaCanvas off
+/ComplaintCanvas off
+/TimeCanvas off
+ChamberCheck off
+ChamberCanvas off
+/ChangeDripSpeed off
+/HourCanvas off
+/FourStartCanvas off
+/ClampCanvas off
+DishCanvas off
+COWCanvas off
+WipeCanvas off
+DishCanvas off
+WipeCanvas off
+SyringeCanvas off
+
+Do 'SummaryCheck.txt'
+
+/Player align PlayerStart
+Speaker1 ''
+Prompt 'After 15 Minutes of starting Blood Transfusion'
+Wait 2
+Prompt ''
+
+Label 'Loop'
+
+	If
+		Vitalsmonitor pressed
+	Then
+		Vitalsmonitor reset
+		Do '07/Monitor.txt'
+	Endif
+
+	If
+		Cannula pressed
+	Then
+		Cannula reset
+		Do '07/CannulaCanvas.txt'
+	Endif
+
+	If
+		Patient pressed
+	Then
+		Patient reset
+		Do '07/Patient01.txt'
+	Endif
+
+	If
+		StartCanvas/Later pressed
+	Then
+		StartCanvas/Later reset
+		Do '07/TimeSkip.txt'
+	Endif
+
+	If
+		$SumButton pressed
+	Then 
+		$SceneStart = '01/LG01Start.txt'
+		$SumButton resetPressed
+		Do 'SummaryCheck.txt'
+	Endif
+
+#	Wait .1
+Goto 'Loop'

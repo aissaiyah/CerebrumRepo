@@ -1,0 +1,42 @@
+#########################################
+#  PATIENT INFO
+#########################################
+
+$PatientName = 'Muhammad Harim Bin Ali'
+$PatientIC = 'S8899900D'
+$BloodType = 'A-'
+$AgeInYears = 77
+$PatientModel = 'PatientMale77'
+
+$Temperature 37
+$HR = 90
+$BP = '205/105' #mmHg
+$Respiration = 22
+$SpO2 = 94
+$OxygenSupplement false
+$LevelOfConscious =  'Alert'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+#Do 'NEWS/GetPatient.txt'
+$PatLookPlayer = Patient + '/TurntoPlayer'
+$PatLookReset = Patient + '/TurnForward'
+Create $PatientModel 'PatientD'
+
+PatientD align $Patient
+turnOff $Patient
+$Patient = 'PatientD'
+
+$CuffPos = Patient + '/CuffPos'
+$CannulaIVPos = Patient + '/CannulaIVPos'
+#$PatientFace = Patient + '/metarig/spine/spine.001/spine.002/spine.003/spine.004'
+$PatientFace = Patient + '/head.x'
+$PatientHead = Patient + '/c_jawbone.x'
+
+#$PatLookPlayer = Patient + '/TurntoPlayer'
+#$PatLookReset = Patient + '/TurnForward'
+
+
+Do 'NEWS/SetupPatient.txt'

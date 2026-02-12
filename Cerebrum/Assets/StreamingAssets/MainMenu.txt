@@ -1,0 +1,45 @@
+#Prompt 'Start'
+#Stages/Exit StartGame
+#Wait 1  #delay for scorm
+
+Label 'GameLoop'
+    If
+        Stages/Buttons/Scene01 pressed
+    Then
+        SceneManager switchToScene Scenes/01
+    Endif
+    If
+        Stages/Buttons/Scene02 pressed
+    Then
+        SceneManager switchToScene Scenes/02
+    ENDIF
+
+    If
+        Stages/Buttons/Scene03 pressed
+    Then
+        SceneManager switchToScene Scenes/03
+    ENDIF
+
+    If
+        Stages/Buttons/Scene04 pressed
+    Then
+        SceneManager switchToScene Scenes/04
+    Endif
+
+    If
+        Stages/Buttons/Scene05 pressed
+    Then
+        SceneManager switchToScene Scenes/05
+    Endif
+    If
+        Stages/Buttons/Scene06 pressed
+    Then
+        SceneManager switchToScene Scenes/06
+    Endif
+    If
+        Stages/Buttons/Scene07 pressed
+    Then
+        SceneManager switchToScene Scenes/07
+    Endif
+    Wait .1
+goto 'GameLoop'

@@ -1,0 +1,24 @@
+# Sanitizer.txt - uses Soap object for some reason
+$TaskNum = TaskSoap240
+$Soap align ZoomSpot
+
+ZoomSpot Menu.Question 'Use Sanitizer?'
+ZoomSpot Menu.Choices 'Yes','No'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+    ZoomSpot Menu.Done
+Wait 1
+If
+	ZoomSpot menu.result $Yes
+Then
+    $PlayerNurse grab RightHandSpot
+    Wait   1.2
+    $PlayerNurse release
+	Wait 1
+	ScoreTracker taskCorrect $TaskNum true
+Else
+	ScoreTracker taskCorrect $TaskNum false
+Endif
+Wait 1
+$Soap reset
+$Soap align $SoapSpot

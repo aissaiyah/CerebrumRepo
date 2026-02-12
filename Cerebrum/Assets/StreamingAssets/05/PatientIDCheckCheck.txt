@@ -1,0 +1,12 @@
+Debug 'Entering PatientIDCheckCheck.txt'
+
+# Did player ask patient for at least two forms of ID?
+$AskedIDTotal = AskedIDName + AskedIDIC + AskedIDDOB
+
+If
+	$(AskedIDTotal>1)
+Then
+	### TASK 1 CORRECT ###
+	ScoreTracker taskCorrect 1 1
+	######################
+Endif

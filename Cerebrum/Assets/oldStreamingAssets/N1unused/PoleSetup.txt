@@ -1,0 +1,37 @@
+#COWStart->BagCombine->PoleSetup
+Player align $PoleLook
+BloodCanvas off
+ZoomSpot Menu.Question 'Hang set on drip pole?'
+ZoomSpot Menu.Choices 'Yes','No'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait .3
+If
+	ZoomSpot menu.result $Yes
+Then
+    #hack moves real blood to trash and turns on other copy.  This should be fixed 
+	#to use the align command and move the real blood.
+	/InfusionStand on
+#	$Player align $IVLook
+	$BloodBag align $InfusionSetBlood 1
+	Wait 1
+	$BloodBag localRotateY 90 .1
+	Wait .1
+	$BloodBag localMoveY -0.1 .1
+	Wait .1
+	turnOff $BloodBag
+	$InfusionStand on
+	ScoreTracker taskCorrect 8 true
+	$Set off
+	Wait .1
+	$InfusionStarted = true
+	$InfusionChamber reset
+	$InfusionClamp reset
+#	Do '06/InfusionStart.txt'
+Else
+	$InfusionStarted = false
+	ScoreTracker taskCorrect 8 false
+#	Do '06/InfusionStart.txt'
+	#Return
+Endif

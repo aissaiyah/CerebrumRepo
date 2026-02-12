@@ -1,0 +1,148 @@
+Debug 'COWStart'
+#Wait 5
+#WipeCanvas off
+#/SyringeCanvas off
+#/IVCanvas off
+#/DripCanvas off
+#Player lookat $DeskStart
+
+#$Soap outline.on
+#$Gloves outline.on
+#$KidneyDish outline.on
+#$BloodBag outline.on
+#$Set outline.on
+#$PressureCuff outline.on
+#$Vitalsmonitor outline.on
+#$Patient outline.off
+#$Vitalsmonitor outline.off
+
+#Label 'Loop'
+	If
+		$Soap pressed
+	Then
+		$Soap outline.off
+		$Soap resetPressed
+		/COWCanvas off
+		$TaskNum = TaskSoap
+		Do 'Items/Sanitizer.txt'
+	Endif
+
+	If
+		$Gloves pressed
+	Then
+		$Gloves outline.off
+		$Gloves resetPressed
+		$TaskNum = TaskGloves
+		Do 'Items/Gloves.txt'
+	Endif
+
+	If
+		$KidneyDish pressed
+	Then
+		$KidneyDish align DishPos
+		Wait 1
+		Player lookat $KidneyDish 0 .3 -.3
+		$KidneyDish outline.off
+		$KidneyDish reset
+		ScoreTracker taskCorrect $TaskSelectKidneyDish 1
+	Endif
+
+	Do '06/Dish.txt'
+
+	If
+		$BloodBag pressed
+	Then
+		$BloodBag outline.off
+		$BloodBag resetPressed
+		$BloodBag localMoveY 0.3 0.3
+		Wait 0.2
+		$BloodBag moveto $BagTableSpot
+		Wait 1
+		$BloodBag localMoveY 0.01 0
+
+		#$BloodBag rotatetoz 90 0.5
+		Wait .5
+		$BloodBagMoved = true
+#		$SetTablePos = SetBloodPos
+		ScoreTracker taskCorrect $TaskSelectBloodBag 1
+	Endif
+
+	If
+		$Set pressed
+	Then
+		$Set outline.off
+		$Set resetPressed
+		$Set localMoveY 0.3 0.3
+		Wait 0.3
+		$Set align $SetTablePos 0.5
+		Player lookAt $SetTablePos 0.1 0.25 0.
+		Wait 0.5
+		$Set MoveY 0.02 0
+		Wait 1
+		Player lookAt $SetBloodPos 0.3 0.45 0.
+#		Player lookAt $BloodBag 0.1 0.25 0.
+		$InfusionSetMoved = true
+	Endif
+
+	$BagCombined = InfusionSetMoved && BloodBagMoved 
+#	Prompt 'BagCombined = ' + BagCombined
+#	Wait 1
+	$CombinedAndNotHung = $BagCombined    && !InfusionSetHung
+#	Prompt 'CombinedAndNotHung = ' + CombinedAndNotHung
+#	Wait 1
+
+	If
+		$BagCombined && !InfusionSetHung
+	Then
+		$Set localMoveY 0.3 0.3
+		Wait 0.3
+		Player lookAt $SetBloodPos 0.1 0.25 0.
+		Wait .5
+		$Set align $SetBloodPos 0.5
+		Wait 1
+		$Set localRotateX -90 0.5
+		Wait 0.5
+		$Set attachto $BloodBag
+		Do '06/BagCombine.txt'
+		$InfusionSetHung = true
+	Endif
+
+	If
+		$PressureCuff pressed
+	Then
+		$PressureCuff outline.off
+		$PressureCuff resetPressed
+		$PressureCuff play UnfoldCuff
+		Wait .7
+		$PressureCuff align $CuffPos 
+		ScoreTracker taskCorrect $TaskPressureCuff true
+		Player lookat $CuffPos
+#		Do '06/Connector.txt'
+	Endif
+
+#	If
+#		$Vitalsmonitor pressed
+#	Then
+#		$Vitalsmonitor outline.off
+#		$Vitalsmonitor resetPressed
+#		Do '06/MonitorTwo.txt'
+#	Endif
+
+	If
+		$Scene_Exit pressed
+	Then 
+		$Scene_Exit resetPressed
+		Do 'EndCheck.txt'
+	Endif
+	
+	If
+		$SumButton pressed
+	Then 
+		$SceneStart = '06/COWStart.txt'
+		$SumButton resetPressed
+		Do 'SummaryCheck.txt'
+	Endif
+	Return
+	#Wait .1
+	#Wait .1
+#Goto 'Loop'

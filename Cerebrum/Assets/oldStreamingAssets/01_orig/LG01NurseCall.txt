@@ -1,0 +1,33 @@
+/JoystickCanvas off
+$Nurse outline.on
+$Nurse Menu.Question 'Call Nurse?'
+$Nurse Menu.on ZoomSpot
+WaitFor
+    $Nurse Menu.Done
+Wait 1
+If
+    $Nurse Menu.Result $Yes
+Then
+    $Nurse reset
+    $Nurse outline.off
+    $Nurse selectable false
+    ScoreTracker taskCorrect 3 1
+	#$Nurse lookat $PlayerPatPos
+    	$Nurse rotatey 150 .3
+        $Nurse localMoveZ 0.1 
+	wait 1
+	$GenericPlayerLine = 'I am going to take blood specimen for GXM. Can you check it with me?'
+	$GenericPatientLine = 'Sure.'
+	Do 'GenericChat.txt'	
+        $Nurse lookAt $NursePatPos 
+        Wait .3
+        $Nurse moveTo $NursePatPos 3 #Player
+        Wait 2.8
+        $Nurse align $NursePatPos .2 #Player
+Else
+    $Nurse reset
+ScoreTracker taskCorrect 3 0
+#    Do '01/LG01PatientChoice.txt'
+Endif
+/JoystickCanvas on
+#Wait 1

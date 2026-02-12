@@ -1,0 +1,15 @@
+Create Form 'MedForm' 
+MedForm moveTo /ExamRoom1/Desk/Left
+Wait 1
+MedForm lookAtMe
+Wait 2
+#GM Do 'old/Form/CheckSignature.txt'
+#GM Do 'old/Form/CheckDate.txt'
+$formitem = 'MedForm/SignatureLine'
+$question = 'Is it signed?'
+Do 'old/Form/CheckFormItem.txt'
+$formitem = 'MedForm/DateLine'
+$question = 'Is it dated?'
+Do 'old/Form/CheckFormItem.txt'
+Wait 2
+#MedForm lookAtMe 0.0,2.0,-0.0  #zoom out still looking at MedForm

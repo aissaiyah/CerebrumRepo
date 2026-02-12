@@ -1,0 +1,37 @@
+IVCanvas on
+DripCanvas off
+#Player align IVLook
+#Prompt 'InfusionStart'
+$InfusionChamber outline.on
+
+If
+	$InfusionChamber pressed
+Then
+	$InfusionChamber reset
+	If 
+		$IVConnected
+	Then
+#		Do '06/DripSettings.txt'
+	Else
+		# Player lookat PlayerSqueezeLook
+		Do '06/BagSqueeze.txt'
+	Endif
+Endif
+If
+	$InfusionClamp pressed
+Then	
+	$InfusionClamp reset
+	If
+		$ClampOpen
+	Then
+		BloodBag reset
+		Set reset
+		$TaskNum = TaskClampClose
+		Do 'Items/ClampClose.txt'
+	Else
+		BloodBag reset
+		Set reset
+		Do '06/ClampRelease.txt'
+	Endif
+
+Endif

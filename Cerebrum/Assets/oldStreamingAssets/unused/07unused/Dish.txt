@@ -1,0 +1,46 @@
+#FourHourStart->DishStart->Dish
+WipeCanvas off
+SyringeCanvas off
+$Wipe1 reset
+$Syringe reset
+$Cannula reset
+Prompt ''
+Player lookat $KidneyDish
+
+#Label 'DishLoop'
+	DishCanvas on
+	If
+		$Wipe1 pressed
+	Then 
+		If
+			ScoreTracker iscomplete 15
+		Then
+			$Wipe1 reset
+			Prompt 'Clean needleless connector?'
+			Do '07/WipeCheck.txt'
+		Else
+			$Wipe1 reset
+			Prompt 'Needless connector has not been disconnected'
+		Endif
+	Endif
+	If
+		$Syringe pressed
+	Then
+		If
+			ScoreTracker iscomplete 15
+		Then
+			$Syringe reset
+			Do '07/SyringeCheck.txt'
+		Else
+			$Syringe reset
+			Prompt 'Needless connector has not been disconnected'
+		Endif
+	Endif
+	If
+		$Cannula pressed
+	Then
+		$Cannula reset
+		Do '07/ConnectorDisconnect.txt'
+	Endif
+	Wait .1
+#Goto 'DishLoop'

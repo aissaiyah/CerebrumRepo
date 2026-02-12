@@ -1,0 +1,175 @@
+CannulaCanvas off
+Player align CannulaSpot 
+
+$Choice1 = 'Check'
+$Choice2 = 'Replace'
+
+If
+    $IVConnected
+Then
+    $Choice3 = 'Disconnect'
+Else
+    $Choice3 = 'Reconnect'
+Endif
+
+ZoomSpot Menu.Question 'Cannula'
+ZoomSpot Menu.Choices $Choice1,$Choice2,$Choice3
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+    ZoomSpot Menu.Done
+ZoomSpot Menu.Choices $Yes,$No
+
+
+$MenuChoice =
+    ZoomSpot Menu.Choice
+
+If
+    ZoomSpot menu.result $Choice1
+Then   
+    #Check
+    #Prompt 'Check chosen'
+    #Wait 1
+    ZoomSpot Menu.Question 'Is the site clear?'
+    ZoomSpot Menu.on ZoomSpot
+
+    WaitFor
+    ZoomSpot Menu.Done
+
+
+    If 
+        $StageTime = 60
+    Then
+        #Do scoring
+        If 
+            $HasPhlebitis
+        Then
+            $TaskNum = TaskCannulaRed60
+#            Prompt 'RED taskNum = ' + TaskNum
+#            Wait 1
+#            Prompt ''
+            If
+                ZoomSpot menu.result $Yes
+            Then
+                ScoreTracker taskCorrect $TaskNum false
+                Wait .26
+            Else
+                ScoreTracker taskCorrect $TaskNum true
+                Wait .26
+            Endif
+        Else
+            $TaskNum = TaskCannulaClear60
+#            Prompt 'CLEAR taskNum = ' + TaskNum
+#            Wait 1
+#            Prompt ''
+            If
+                ZoomSpot menu.result $Yes
+            Then
+                ScoreTracker taskCorrect $TaskNum true
+                Wait .26
+            Else
+                ScoreTracker taskCorrect $TaskNum false
+                Wait .26
+            Endif
+        Endif
+    Else
+        $taskName = 'TaskCannula' + StageTime
+		$taskNum =$ taskName
+        If
+            ZoomSpot menu.result $Yes
+        Then
+            ScoreTracker taskCorrect $TaskNum true
+            Wait .26
+        Else
+            ScoreTracker taskCorrect $TaskNum false
+            Wait .26
+        Endif
+    Endif
+
+    #Prompt 'After siteclear  check '
+    #Wait 2
+Endif
+
+If
+    ZoomSpot menu.result $Choice2
+Then   
+    #Replace
+    #Prompt 'Replace chosen'
+    #Wait 2
+
+    If
+        $ClampOpen = false
+    Then
+        $PlayerNurse grabright CannulaGrabSpot
+        Wait   1.2
+        $PlayerNurse release
+
+        If 
+            $StageTime = 60
+        Then
+            ScoreTracker taskCorrect $TaskCannulaReplace60 true
+        Endif
+
+
+        Prompt 'Cannula has been changed'
+        Wait 1
+        Prompt ''
+        If 
+            $HasPhlebitis
+        Then
+            #Prompt 'TURNING OFF PHLEBITIS'
+        
+            $HasPhlebitis = false
+            Destroy $ArmPhlebitis
+            Wait 1
+        Endif
+    Else
+        Prompt 'Warning!  Clamp is not closed!'
+        Wait 2
+        Prompt ''
+    Endif
+
+
+Endif
+
+If
+    $IVConnected
+Then
+    #disconnect
+    If
+        ZoomSpot menu.result $Choice3
+    Then   
+        If
+            $TimeMark = 4 
+        Then
+            /Player align PlayerStart
+            Do '07/ConnectorDisconnect.txt'
+            /Player align PlayerStart
+        Else
+            If
+                $ClampOpen = false
+            Then
+                /Player align PlayerStart
+                Do '07/ConnectorDisconnect.txt'
+                /Player align PlayerStart
+                Prompt 'Tubing is disconnected.'
+                Wait 1
+                Prompt ''
+            Else
+                Prompt 'Blood is still transfusing!'
+                Wait 1
+                Prompt ''
+            Endif
+        Endif
+    Endif
+Else
+    #reconnect
+    $IVEndTarget align $CannulaIVEnd
+	Wait 1.5
+	$IVConnected = true
+#	Wait 1
+    /Player align PlayerStart
+
+Endif
+
+
+/Player align PlayerStart

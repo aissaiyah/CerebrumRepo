@@ -1,0 +1,53 @@
+Player lookat $InfusionClamp
+ZoomSpot Menu.Question 'Release Clamp?'
+ZoomSpot Menu.Choices 'Yes','No'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait 1
+If
+	ZoomSpot menu.result $Yes
+Then
+	$ClampOpen = true
+	Prompt 'The Clamp has been released.'
+	If
+		ScoreTracker iscomplete $TaskClampRelease1
+#		ScoreTracker iscomplete 10
+	Then
+		ScoreTracker taskCorrect $TaskClampRelease2 true
+	Else
+		ScoreTracker taskCorrect $TaskClampRelease1 true
+	Endif
+	Wait 1
+	If 
+		$IVConnected
+	Then
+	#	Prompt 'Do drip settings'
+		$TaskNum = TaskDripSettings
+		Do '06/DripSettings.txt'
+		ScoreTracker rangecomplete 0-14
+		Do 'EndCheck.txt'
+	Endif
+
+	If
+		$ChamberAmount > 0
+	Then
+		turnOn $IVLineBlood
+		Prompt 'Blood is flowing'
+		Wait 1
+	Endif
+
+	Prompt ''
+Else
+	If
+		ScoreTracker iscomplete $TaskClampRelease1
+#		ScoreTracker iscomplete 10
+	Then
+		ScoreTracker taskCorrect $TaskClampRelease2 false
+	Else
+		ScoreTracker taskCorrect $TaskClampRelease1 false
+	Endif
+
+	Return
+	#Do '06/InfusionStart.txt'
+Endif

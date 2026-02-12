@@ -1,0 +1,35 @@
+#Label 'DishLoop'
+	If
+		$Wipe2 pressed
+	Then 
+
+		ZoomSpot Menu.Question 'Clean the infusion connection?'
+		ZoomSpot Menu.Choices 'Yes','No'
+		ZoomSpot Menu.on ZoomSpot
+		WaitFor
+	    	ZoomSpot Menu.Done
+
+		$Wipe2 resetPressed
+		$Wipe2 outline.off
+		$Wipe = Wipe2
+		$WipeTarget = $IVEndTarget
+		$TaskNum = TaskConnectorWipe
+		Do '06/WipeCheck.txt'
+	Endif
+
+
+	If
+		$Syringe pressed
+	Then
+		ScoreTracker taskcorrect $TaskSelectSyringe 1
+		$Syringe resetPressed
+		$Syringe align $CannulaIVEnd
+		Wait 1
+		Player lookat $CannulaIVEnd 
+
+		Do '07/SyringeCheck.txt'
+		Player lookat $KidneyDish 
+		$Syringe align $KidneyDish
+		$Syringe outline.off
+	Endif
+Return

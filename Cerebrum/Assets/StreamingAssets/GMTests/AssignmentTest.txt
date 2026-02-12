@@ -1,0 +1,48 @@
+Label TopLine
+
+
+$VarObject = 'VarObject'
+$retval = 
+  $VarObject getItemDate
+Prompt 'retval = ' + retval
+Wait 2
+
+$item = '9'
+$cond = item != 'null'
+Prompt '1:Cond = ' + cond
+Wait 2
+
+$item = '9'
+$cond = 
+  $item != 'null'
+Prompt '2:Cond = ' + cond
+Wait 2
+
+#NOTE: the line is an expression, not a statement, so the '=' operator is for comparison, not assignment
+
+$cond = 
+  $item = '9'
+#Looks like assigment, but is comparison
+Prompt '3:Cond = ' + cond
+Wait 2
+
+$cond = 
+  $item = 'foo'
+#Looks like assigment, but is comparison
+Prompt '4:Cond = ' + cond
+Wait 2
+
+#item has not been changed
+Prompt 'item = ' + item
+Wait 2
+
+$VolumeInput = 'Volume'
+Label 'Loop'
+
+  $Volume =
+    $VolumeInput getValue
+  Prompt 'Volume = ' + Volume
+  Wait 1
+Goto 'Loop'
+
+

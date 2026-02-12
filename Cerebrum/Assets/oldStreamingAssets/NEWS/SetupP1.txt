@@ -1,0 +1,15 @@
+$PatientNumber = '2'
+$PatientName = 'Lim Ah Nee'
+$PatientIC = 'S1112223A'
+$BloodType = 'A+'
+$AgeInYears = 73
+
+$Temperature 36.5
+$HR = 70
+$BP = '169/71' #mmHg
+$Respiration = 20
+$SpO2 = 100
+$OxygenSupplement true
+$LevelOfConscious =  'Alert'
+
+Do 'NEWS/SetupPatient.txt'

@@ -1,0 +1,77 @@
+Debug 'Entering CheckLabel.txt'
+
+### TASK 7 TRACKING VARIABLES ###
+$checkedIDLabelName = 0
+$checkedIDLabelNumber = 0
+$checkedIDLabelAll = 0
+#################################
+
+# CHECK THE NAME ON ID LABEL
+$item = IDLabel
+$Answer = $Yes
+$tasknum = 4
+$LabelPos = $BloodLocation    #IDLabelPos
+$IDLabel reset
+$IDLabel outline.off
+$question = 'Is this the correct patient?'
+
+$item align ZoomSpot
+Wait 1
+#$item localRotateX 90 0.2
+Debug 'CheckItem' + $item
+
+ZoomSpot Menu.Question $question
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait .1
+$item reset
+$item outline.off
+If
+	ZoomSpot Menu.Result $Answer
+Then
+	$checkedIDLabelName = 1
+	ScoreTracker taskCorrect 9 true
+Else
+	ScoreTracker taskCorrect 9 false
+Endif
+
+# CHECK THE BLOOD TYPE AND NUMBER ON ID LABEL
+Wait 1
+$tasknum = 9
+$question = 'Is the blood type and number correct?'
+#$item align ZoomSpot
+Debug 'CheckItem' + $item
+
+ZoomSpot Menu.Question $question
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait .1
+$item reset
+$item outline.off
+If
+	ZoomSpot Menu.Result $Answer
+Then
+	$checkedIDLabelNumber = 1
+	ScoreTracker taskCorrect 14 true
+Else
+	ScoreTracker taskCorrect 14 false
+Endif
+$item align $LabelPos 0.2
+Wait .21
+$IDLabel LocalMoveY 0.05
+$onOff = true
+
+$checkedIDLabelAll = checkedIDLabelName + checkedIDLabelNumber
+If
+	$(checkedIDLabelAll>1)
+Then
+	### TASK 9 CORRECT ###  UPDATE:  Task 9 is now just correct patient
+#	ScoreTracker taskCorrect 9 1
+	######################
+Endif
+
+Do '05/AllClicks.txt'
+
+Return

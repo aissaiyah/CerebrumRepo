@@ -1,0 +1,28 @@
+#SyringeCheck->Patient04
+/PatientCanvas on
+SyringeCanvas off
+Player lookat $PlayerPatLook
+$patient play TurnLeft
+Prompt ''
+Label 'LoopP4'
+	If
+		PatientCanvas/Choices/Leave pressed
+	Then
+		ScoreTracker taskCorrect $TaskLeaveConversation true
+		PatientCanvas/Choices/Leave reset
+		Speaker1 'Thank you for your cooperation, Mr. Tan.'
+		Wait 2
+		Speaker1 'I am now going to leave you resting.'
+		Wait 2
+		Prompt 'Thank you Nurse. Goodbye.'
+		Wait 2
+		Speaker1 ''
+		Prompt ''
+		$PatientFace align $PatLookReset
+		/PatientCanvas off
+		/JoystickCanvas off
+		ScoreTracker rangecomplete 0-15
+		Do 'EndCheck.txt'
+	Endif
+	Wait .1
+Goto 'LoopP4'

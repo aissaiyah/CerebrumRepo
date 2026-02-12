@@ -1,0 +1,39 @@
+#PatientChoice
+#Start->PatientChoice
+
+Debug 'PatientChoice.txt'
+
+$IDCanvas open
+$ID1 outline.off
+$ID2 outline.off
+$ID3 outline.off
+$ID4 outline.off
+
+#wait 1
+Label 'PCLoop'
+	Debug 'In PatientChoice Loop'
+#	Wait .1
+
+	If
+		$IDCheck pressed
+	Then 
+		$IDCheck reset
+		Do '01/IDCheck.txt'
+	Endif
+
+	If
+		$IDPaste pressed
+	Then 
+		$IDPaste reset
+		Do '01/LG01LabelBlood.txt'
+	Endif
+
+	If
+		$IDLeave pressed
+	Then 
+		$IDLeave reset
+		$IDCanvas close
+		Return
+	Endif
+	wait .11
+Goto 'PCLoop'

@@ -1,0 +1,88 @@
+#Debug.on
+#DebugCanvas.on
+End off
+Begin off
+
+Debug '05Setup.txt started'
+$Bed = 'Bed2'
+$COW = 'COW0(Clone)'
+$Cart = 'Cart2'
+
+$Patient = Bed + '/Patient1/TEMP_Patient'
+$WristTag = Bed + '/Patient1/WristTag'
+
+$Scene_Exit = 'JoystickCanvas/Exit'
+$PatientFace = $Patient + '/metarig/spine/spine.001/spine.002/spine.003/spine.004'
+$PatLookPlayer = $Patient + '/TurntoPlayer'
+$PatLookReset = $Patient + '/TurnForward'
+$ChecklistButton = 'ChecklistButton'
+$Checklist = 'ChecklistCanvas'
+ALL/TEMP_Patient localMoveX 0.15
+ALL/TEMP_Patient localMoveY -0.05
+ALL/TEMP_Patient localMoveX 0.14
+ALL/TEMP_Patient localMoveZ -0.2
+
+#$Scene = '05/MainLoop.txt'
+#$Check01 = $Checklist + '/Background/Check01'
+#$Check02 = $Checklist + '/Background/Check02'
+#$Check03 = $Checklist + '/Background/Check03'
+#$Check04 = $Checklist + '/Background/Check04'
+#$str1 = 'Ask the patient for their information'
+##str2 = 'Verify patient information'
+#$str3 = 'Verify patient compatibility'
+#$str4 = 'Check the blood bag'
+#$Check01 write $str1
+#$Check02 write $str2
+#$Check03 write $str3
+#$Check04 write $str4
+
+$Bloodbox = 'Bloodbox2(Clone)'
+$IDLabel = Cart + '/Misc5'
+$Dish = COW + '/KidneyDish(Clone)'
+$None = 'Null'
+$InfusionSet = Cart + '/Misc4'
+$GXMFirst = true
+$Deflook = Cart + ' far'
+#$Deflook = Cart + '/Far'
+
+$BloodLocation = COW + '/BloodPosScene05'
+$BloodboxLocation = COW + '/Pos05'
+$IDLabelPos = COW + '/IDLabelPos'
+
+$InfusionSet clickable false
+$IDLabel clickable false
+$WristTag clickable false
+$Patient clickable false
+
+#Wait 1
+
+$Bloodbox moveto $BloodboxLocation
+#$IDLabel align $IDLabelPos
+$Nurse = 'Nurse1'
+$NursePatPos = 'Bed02Nurse'
+
+$PlayerPatPos = Bed + '/Medium'
+
+$PlayerLookPat = 'PlayerPatPos'
+$PlayerLookCow = 'PlayerCowPos'
+$InfusionSet align $BloodLocation 0.01
+$IDLabel align $BloodLocation 0.01
+Wait .020051   #Time neede for things to move/align
+#Prompt 'Move blood'
+#$GXMForm = Cart + '/Misc3'
+$GXMForm = COW + '/GXMFormVariant(Clone)'
+$GXMForm localrotatetoY 180
+$GXMForm localmoveX 0.16
+$Dish delete
+
+ScoreTracker setstages 5
+
+$PC_NameCheck1 = false
+$PC_NameCheck2 = false
+$BloodCheck1 = false
+$BloodCheck2 = false
+$Checklist off
+$IDLabel LocalMoveY 0.02
+$IDLabel LocalMoveX -0.12
+
+Do '05/LG05Start.txt'

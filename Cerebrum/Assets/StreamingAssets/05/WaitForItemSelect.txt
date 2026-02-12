@@ -1,0 +1,27 @@
+Label 'Loop'
+	Debug 'WaitForSelectedItem:' + item
+	$item outline.on
+	If
+		$item pressed
+	Then
+		$item reset
+		$item outline.off
+		Player lookat $item
+		Return
+	Endif
+	If
+		$Scene_Exit pressed
+	Then 
+		$Scene_Exit resetPressed
+		Do 'EndCheck.txt'
+	Endif
+	Wait .1
+
+	
+	If
+		$SumButton pressed
+	Then
+		$SumButton reset
+		Do 'SummaryCheck.txt'
+	Endif
+Goto 'Loop'

@@ -1,0 +1,16 @@
+#COWStart->BagCombine
+#Player lookat $BloodBag
+Debug 'BagCombine.txt'
+Wait .1
+/COWCanvas off
+#Label 'Loop'
+#If
+#	$BloodBag pressed
+#Then
+#	$BloodBag moveto BagTableEnd
+	$BloodBag reset
+	ScoreTracker taskCorrect 7 true
+#	Wait 1
+	Do '06/PoleSetup.txt'
+#Endif
+#Goto 'Loop'

@@ -1,0 +1,54 @@
+#Gloves.txt - put on gloves
+# $Gloves - box of gloves
+# $GlovesDefPos - where gloves were located
+# $PlayerNurse - player's nurse avatar 
+# $NurseBodyGloves - nurse body with gloves
+# $NurseBodyNoGloves - nurse body without gloves
+# $LeftHandSpot - spot to move left hand to
+# $RightHandSpot - spot to move right hand to
+# TaskNum - put on gloves task number
+
+#$LeftHandSpot = 'LeftHandSpot'
+#$RightHandSpot = 'RightHandSpot'
+
+#$Gloves align ZoomSpot
+$Gloves align RightHandSpot
+/COWCanvas off
+ZoomSpot Menu.Question 'Put on Gloves?'
+ZoomSpot Menu.Choices 'Yes','No'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+    ZoomSpot Menu.Done
+#Wait 1
+
+If
+    ZoomSpot menu.result $Yes
+Then
+    $PlayerNurse grabRight $RightHandSpot
+    Wait .03
+    $PlayerNurse grabLeft $LeftHandSpot
+    Wait   1.2
+    $Gloves align $GlovesDefPos
+	Wait 1.5
+    $PlayerNurse release
+    Wait 1
+    turnOn $NurseBodyGloves 
+    turnOff $NurseBodyNoGloves 
+    Wait .5
+    $PlayerNurse grabLeft $LeftHandSpot
+    Wait .03
+    $PlayerNurse grabRight $RightHandSpot
+	Wait 2.5
+    $PlayerNurse release
+    
+    ScoreTracker taskCorrect $TaskNum true
+    Wait 1
+    $Gloves reset
+    #	Do '06/COWStart.txt'
+Else
+    $Gloves align $GlovesDefPos
+    Wait 1
+    $Gloves reset
+    ScoreTracker taskCorrect $TaskNum false
+    #	Do '06/COWStart.txt'
+Endif

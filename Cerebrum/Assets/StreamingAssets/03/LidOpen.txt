@@ -1,0 +1,12 @@
+If
+    ScoreTracker iscomplete 0
+Then
+    Do '03/LidClose.txt'
+Else
+    $BloodBox play Open
+    $Divider outline.on
+    $Divider reset
+
+    ScoreTracker taskCorrect 0 true
+    wait 1
+Endif

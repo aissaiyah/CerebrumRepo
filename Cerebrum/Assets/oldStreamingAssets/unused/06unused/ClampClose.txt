@@ -1,0 +1,18 @@
+
+Player lookat $InfusionClamp
+ZoomSpot Menu.Question 'Close Clamp?'
+ZoomSpot Menu.Choices 'Yes','No'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait 1
+If
+	ZoomSpot menu.result $Yes
+Then
+	$ClampOpen = false
+	Prompt 'The Clamp has been closed.'
+	Wait 1
+	Prompt ''
+Else
+	Return
+Endif

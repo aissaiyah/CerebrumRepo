@@ -1,0 +1,19 @@
+/PatientCanvas off
+/LabelCanvas off
+/CheckCanvas off
+/COWCanvas off
+
+#Player lookat $Deflook
+Player align $PlayerLookPat
+
+Do 'SummaryCheck.txt'
+
+
+#$item = $Nurse
+#$item reset
+#Do '05/WaitForItemSelect.txt'
+
+$Nurse outline.on
+Debug 'About to Do ' + Scene
+Do $Scene
+Return

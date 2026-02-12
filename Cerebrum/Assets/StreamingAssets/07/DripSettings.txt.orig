@@ -1,0 +1,79 @@
+#HourStart->ChamberCanvas->ChamberCheck->DripCheck->TimeCheck->StartDripTest->ChangeDrip
+ChamberCanvas off
+ChamberCheck on
+Player align BagZoom
+
+#ChamberCheck off
+#ChangeDripSpeed on
+ChangeDripSpeed/Chamber/DripRate setsaline 0
+Label 'LoopDS'
+
+	$VolumeInput = 'ChamberCheck/Chamber/BagVolume'
+	$DripFactorInput = 'DripFactor'
+	$TotalTimeInput = 'TotalTime'
+
+#Label 'Loop'
+
+  	$Volume =
+    	$VolumeInput getValue
+
+  	$DripFactor =
+    	$DripFactorInput getValue
+
+  	$TotalTime =
+    	$TotalTimeInput getValue
+#  	Prompt 'Volume = ' + Volume +  '  DripFactor = ' + DripFactor + 'TotalTime = ' + TotalTime
+	Wait .1
+
+	If
+		ChangeDripSpeed/Chamber/DripRate salineamount 3
+	Then
+<<<<<<< HEAD
+		If
+			$DripFactor = 20
+		Then
+			If
+				$TotalTime = 4
+			Then
+				If
+					$DripSpeed = 3
+				Then
+					Wait 1
+					SoundPlayer stopsound
+					ScoreTracker taskCorrect 5 true
+					ChamberCheck off
+					ChamberCanvas on
+					Return
+				Endif
+			Endif
+		Endif
+=======
+		Wait 2
+		SoundPlayer stopsound
+		ScoreTracker taskCorrect 5 true
+>>>>>>> origin/WorkingButAddressablesMaybeBad
+	Endif
+
+	#StartDripTest
+	If
+		ChamberCheck/Chamber/StartDrip pressed
+	Then
+		$DripStarted = true
+		SoundPlayer playsound $DripSpeed
+		ChamberCheck/Chamber/StartDrip reset
+		ChamberCheck off
+		Do '07/ChangeDripSpeed.txt'
+		Return
+
+	Endif
+
+#	If
+#		ChamberCheck/Chamber/Volume says 258
+#	Then
+#		Goto 'Loop'
+#	Else
+#		Do '07/ChamberCheck.txt'
+#	Endif
+
+	Wait .01
+Goto 'LoopDS'

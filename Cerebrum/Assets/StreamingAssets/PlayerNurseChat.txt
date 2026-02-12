@@ -1,0 +1,35 @@
+
+If
+    $SpeechBubbles == 1
+Then
+    $PlayerSpeechBubble open
+    $PlayerSpeech write $GenericPlayerLine
+    Wait 2
+    #$PatientSpeechBubble open
+    #$PatientSpeech write $GenericPatientLine
+    $Nurse speaks $'Nurse: ' + GenericPatientLine
+    Wait 2
+    $PlayerSpeechBubble close
+    #$PatientSpeechBubble close
+    $Nurse speaks ''
+    $Patient release
+    Return
+Else
+    ############### NEW
+    $PlayerLower = 'Player/DialogSpot'
+    $PlayerLower speaks $'You: ' + GenericPlayerLine
+    Wait 2
+    $Nurse speaks $'Nurse: ' + GenericPatientLine
+    Wait 2
+    $PlayerLower speaks ''
+    $Nurse speaks ''
+    Return
+Endif
+
+############### ORIG
+#Prompt 'You: ' + GenericPlayerLine
+Wait 2
+#Speaker2 'Nurse: ' + GenericPatientLine
+Wait 2
+#Prompt ''
+#Speaker2 ''

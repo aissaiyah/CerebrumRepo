@@ -1,0 +1,146 @@
+Debug.on
+#DebugCommands.on
+#Game.delay 0.2
+DebugCanvas.on
+
+	/CheckCanvas off
+	/PatientCanvas off
+
+$Bed = 'Bed2'
+End off
+#Prompt 'Turn end off'
+#Wait 10
+
+ScoreTracker numitems 13
+$PatientNumber = '4'
+#$PatientName = 'Tan Ah Kow'
+$Scene_Exit = 'JoystickCanvas/Exit'
+
+
+#$Bed = 'Bed'+ PatientNumber
+$SumCanvas = 'SummaryCanvas'
+$SummaryExit = 'SummaryCanvas/Background/Button'
+$SumButton = 'JoystickCanvas/Summary'
+
+
+$Patient = 'Bed2/Patient1/TEMP_Patient'
+$PatientTagPos = $Patient + /WristTagPos'
+Prompt 'Moving patients'
+Wait 2
+#ALL/TEMP_Patient localMoveY -01.05
+ALL/TEMP_Patient localMoveX 0.14
+ALL/TEMP_Patient localMoveZ -0.2
+Wait 2
+Prompt 'Moved patients'
+Prompt ''
+$WristTag = 'Bed2/Patient1/WristTag'
+$TagView = $WristTag + '/TagView'
+$PatientFace = $Patient + '/metarig/spine/spine.001/spine.002/spine.003/spine.004'
+$PatLookPlayer = $Patient + '/TurntoPlayer'
+$PatLookReset = $Patient + '/TurnForward'
+$ChecklistButton = 'ChecklistButton'
+$Checklist = 'ChecklistCanvas'
+
+$Check01 = $Checklist + '/Background/Check01'
+$Check02 = $Checklist + '/Background/Check02'
+$Check03 = $Checklist + '/Background/Check03'
+$Check04 = $Checklist + '/Background/Check04'
+$str1 = 'Ask the patient for their information'
+$str2 = 'Verify patient information'
+$str3 = 'Draw the blood'
+$str4 = 'Affix the label'
+$Check01 write $str1
+$Check02 write $str2
+$Check03 write $str3
+$Check04 write $str4
+
+
+$PatientSign = 'PatientSign' + PatientNumber
+$PatientSignNumber = PatientSign + '/BedNumber' 
+$PatientSignNumber setItemText $PatientNumber
+$PatientSign4Name = PatientSign + '/PatientName' 
+$PatientSign4Name setItemText $PatientName
+
+$PatientLabel = 'IDLabelDyn'
+$PatientLabel setItemText $PatientName
+
+$COW = 'Cart7'    #$COW = 'COW1(Clone)'
+#$COW outline.on
+$COWPatientPos = 'Cart02'   #$COWPatientPos = 'Cart02'
+
+#Debug 'Moving COW ' + COW + ' to ' + COWPatientPos
+#$COW moveto $COWPatientPos
+
+$GXMDeskPos = $COW + '/Pos02'
+$IDDeskPos = $COW + '/Pos05'
+$GXMForm = 'Desk7/Document3'
+$IDLabel = 'Desk7/Document4'
+$GXMBoxes = $GXMForm + '/Stage1Areas'
+$FormExit = $GXMForm + '/Canvas/Exit'
+
+$GXMForm localrotatetoY 180
+
+$Deflook = 'table1(Clone)/far'   
+#$Deflook = 'table1(Clone)/MiddlePos close'   
+#far'
+Debug 'Deflook = ' + Deflook
+Player align $Deflook
+Wait 1
+$PlayerPatPos = 'Bed2/Medium'
+$PlayerLookPat = 'Bed2/Close'
+$Nurse = 'Nurse1'
+$NursePatPos = 'Bed02Nurse'
+$GXMLook = $GXMForm + '/ShotMedium'
+$GXMName = $GXMBoxes + '/GO/Name'
+$GXMReq = $GXMBoxes + '/GO/Request'
+$GXMSig = $GXMBoxes + '/GO/Signatures'
+$GXMClin1 = $GXMBoxes + '/GO/ClinInfo1'
+$GXMClin2 = $GXMBoxes + '/GO/ClinInfo2'
+$GXMClin3 = $GXMBoxes + '/GO/ClinInfo3'
+$GXMSGH = $GXMBoxes + '/GO/SGHBloodBank'
+$GXMProd1 = $GXMBoxes + '/GO/Products'
+$GXMProd2 = $GXMBoxes + '/GO/Products2'
+$GXMDate1 = $GXMBoxes + '/GO/Date1'
+$GXMDate2 = $GXMBoxes + '/GO/Date2'
+
+$Nurse clickable false
+
+ScoreTracker setstages 1
+$Checklist off
+$SceneStart = '01/LG01Start.txt'
+
+#Do '01/LG01TagCheck.txt'
+#Wait 5
+$GXMBoxes off
+GXMForm off
+
+#Do '01/LG01Start.txt'
+Do 'SummaryCheck.txt'
+
+#$COWPos01 = 'Cart7/Pos01'
+#$COWPos02 = 'Cart7/Pos03'
+
+$result1 = true
+$result2 = true
+If
+		$result1
+	Then
+		Prompt 'In outer Then'
+		Wait 1
+		If
+			$result2
+		Then
+			$taskNum = 8
+		Else
+			Debug 'PatientTalkCheck: not complete.  CheckPatient'
+			$taskNum = 4
+		Endif
+		Prompt 'After inner Endif tasknum= ' + taskNum
+		Wait 1
+	Endif
+
+
+Prompt 'After both ifs'
+Wait 1
+
+

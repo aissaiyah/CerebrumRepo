@@ -1,0 +1,38 @@
+/StartCanvas off
+/PatientCanvas off
+Player align $Monitorlook
+ZoomSpot Menu.Question 'Turn on to show vital signs?'
+ZoomSpot Menu.Choices 'On','Off'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait 1
+If
+	ZoomSpot menu.result 'On'
+Then
+	$Vitalsmonitor reset
+	If
+		ScoreTracker iscomplete $TaskMonitorOn
+#		ScoreTracker iscomplete 1
+	Then
+#		ScoreTracker taskCorrect 6 true
+	Else
+		ScoreTracker taskCorrect $TaskMonitorOn true
+	Endif
+	$Vitalsmonitor on
+	Wait 3
+
+Else
+	$Vitalsmonitor reset
+#	If
+#		ScoreTracker iscomplete $TaskMonitorOn
+#	Then
+#		ScoreTracker taskCorrect 6 true
+#	Else
+#		ScoreTracker taskCorrect 6 false
+#	Endif
+	$Vitalsmonitor off
+	wait 1
+Endif
+ZoomSpot Menu.Choices 'Yes','No'
+/StartCanvas on

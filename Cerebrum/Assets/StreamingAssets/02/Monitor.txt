@@ -1,0 +1,45 @@
+Player lookat $Monitor close
+JoystickCanvas off
+$Monitor resetPressed
+$mark = 'MonitorMark'
+$formitem = $Monitor + '/MarkSpot'
+$Monitor outline.off
+
+   If
+      $formitem exists $mark 
+   Then
+      Destroy $mark
+   Endif
+
+
+#Wait 1.21
+   ZoomSpot Menu.Question Is there a valid prescription?
+   ZoomSpot Menu.on ZoomSpot
+WaitFor 
+   ZoomSpot Menu.Done 
+$Monitor outline.on
+
+
+
+If
+    ZoomSpot menu.result $Yes
+Then
+    Create $CheckMark $mark
+
+#   $Monitor changeshader good
+   ScoreTracker taskCorrect $ItemCompDone true
+Else
+#   $Monitor changeshader bad
+   Create $XMark $mark
+   ScoreTracker taskCorrect $ItemCompDone false
+Endif
+      $mark align $formitem
+      #Debug 'Aligned mark ' + mark + ' with ' + formitem
+      $mark AttachTo $formitem
+      #Debug 'Attached mark ' + mark + ' to ' + formitem
+      Wait 1.1991
+JoystickCanvas on
+Wait .1
+#$Monitor enableclick
+#Player lookat $Deflook
+#Wait .1

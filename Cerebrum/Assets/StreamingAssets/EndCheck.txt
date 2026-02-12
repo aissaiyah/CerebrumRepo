@@ -1,0 +1,25 @@
+/JoystickCanvas off
+ScoreTracker getcompletepercent
+ScoreTracker EndStage
+Wait .2    #needed for scoring
+$EndCanvas = 'End'
+$Message = EndCanvas + '/DetailsText'
+$Leave = EndCanvas + '/Background/score/Leave'
+$Leave clickable true
+
+End on
+$EndMsg = 'Click on "Check result" on left,\nthen Click on "Play game" to Resume.\n\nOtherwise click "Proceed" to go to the next stage.'
+$Message setText $EndMsg
+
+
+Label 'LeaveLoop'
+    If
+        $Leave pressed
+    Then
+        $Leave reset
+		ScoreTracker CloseStage
+        Wait 1  #needed for scorm
+        SceneManager switchtoscene Scenes/MainMenu
+    Endif
+    Wait .1
+Goto 'LeaveLoop'

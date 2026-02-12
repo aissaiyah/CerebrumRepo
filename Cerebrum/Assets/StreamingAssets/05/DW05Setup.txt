@@ -1,0 +1,255 @@
+
+# CURRENT PLAYER TASK LIST (TOTAL OF 10 TASKS)
+# 0. call nurse
+# 1. ask patient for any 2 identifier (name/ IC/ date of birth) ($AskedIDTotal > 2)
+# 2. ask patient for blood type
+# 3. inform patient of plans
+# 4. check blood type on GXM form
+# 5. check name/IC on GXM form
+# 6. check Product ID on GXM form
+# 7. check blood bag for clots
+# 8. check blood bag for correct blood type and serial no
+# 9. check compatibility label
+#10. Ask for IC
+#11. Ask for date of birth
+#12. Ask for address
+#13. Check patient wrist tag
+#14. Check Blood compatibilty Label correct blood type and number
+#15. Conduct Transfusion
+
+### TASK TRACKING ###
+ScoreTracker setstages 5
+ScoreTracker numtasks 16
+ScoreTracker setdependency 1  0
+ScoreTracker setdependency 2  0
+ScoreTracker setdependency 3  0
+ScoreTracker setdependency 4  0
+ScoreTracker setdependency 5  0
+ScoreTracker setdependency 6  0
+ScoreTracker setdependency 7  0
+ScoreTracker setdependency 8  0
+ScoreTracker setdependency 9  0
+ScoreTracker setdependency 10  0
+ScoreTracker setdependency 11  0
+ScoreTracker setdependency 12  0
+ScoreTracker setdependency 13  0
+ScoreTracker setdependency 14  0
+ScoreTracker setdependency 15  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+
+
+# Variables for tracking task #1
+$AskedIDName = 0
+$AskedIDIC = 0
+$AskedIDDOB = 0
+$AskedIDTotal = 0
+#####################
+
+
+Do 'Setup.txt'
+#Debug.Console true
+
+$ZoomSpot = 'Player/ZoomSpot'
+#Debug.on
+#DebugCanvas.on
+End off
+Begin off
+
+Debug '05Setup.txt started'
+
+$PatientNumber = '4'
+
+$Bed = 'Bed'+ PatientNumber
+$COW = 'COW0(Clone)'
+$Cart = 'Cart4'
+
+$Patient = Bed + '/Patient1/TEMP_Patient'
+$WristTag = Bed + '/Patient1/WristTag'
+$TagView = $WristTag + '/TagView'
+$WristTagPos = $Patient + '/WristTagPos'
+Wait .1
+$WristTag align $WristTagPos .1
+Wait .1
+$PatientSign = 'PatientSign' + PatientNumber
+$PatientSignNumber = PatientSign + '/BedNumber' 
+$PatientSignNumber setItemText $PatientNumber
+$PatientSign4Name = PatientSign + '/PatientName' 
+$PatientSign4Name setItemText $PatientName
+$Scene_Exit = 'JoystickCanvas/Exit'
+$Vitalsmonitor = 'BedsideHeadLeft4/Computer1'
+
+$PatientLabel = 'IDLabelDyn'
+$PatientLabel setItemText $PatientName
+
+$PatientFace = $Patient + '/metarig/spine/spine.001/spine.002/spine.003/spine.004'
+$PatLookPlayer = $Patient + '/TurntoPlayer'
+$PatLookReset = $Patient + '/TurnForward'
+$ChecklistButton = 'ChecklistButton'
+$Checklist = 'ChecklistCanvas'
+
+$Scene = '05/MainLoop.txt'
+$Check01 = $Checklist + '/Background/Check01'
+$Check02 = $Checklist + '/Background/Check02'
+$Check03 = $Checklist + '/Background/Check03'
+$Check04 = $Checklist + '/Background/Check04'
+$str1 = 'Ask the patient for their information'
+$str2 = 'Verify patient information'
+$str3 = 'Verify patient compatibility'
+$str4 = 'Check the blood bag'
+$Check01 write $str1
+$Check02 write $str2
+$Check03 write $str3
+$Check04 write $str4
+
+$None = 'Null'
+$InfusionSet = Cart + '/Misc4'
+$GXMFirst = true
+$Deflook = Cart + ' far'
+#$Deflook = Cart + '/Far'
+$Patient1 = 'Bed1/Patient 3(Clone)'
+$Patient2 = 'Bed3/Patient 3(Clone)'
+$Patient3 = 'Bed5/Patient 3(Clone)'
+
+$BloodLocation = COW + '/BloodPosScene05'
+$BloodboxLocation = COW + '/Pos05'
+$IDLabelPos = COW + '/IDLabelPos'
+
+$BloodBag = InfusionSet
+$Bloodbox = 'Bloodbox2(Clone)'
+#BloodOrderForm
+$IDLabel = Cart + '/Misc5'
+$BloodCompatibilityLabel = 'BloodCompatibilityLabel'
+Create BloodOrderForm $BloodCompatibilityLabel
+$BloodCompatibilityLabel clickable false
+$BloodCompatibilityLabel align $BloodBag 0.01
+Wait 0.1
+$BloodCompatibilityLabel localMoveX -0.07 0
+$BloodCompatibilityLabel localMoveY 0.02 0
+$IDLabel = BloodCompatibilityLabel
+Do 'Setup/BloodOrderForm.txt'
+
+$InfusionSet clickable false
+$IDLabel clickable false
+$WristTag clickable false
+$Patient clickable false
+$Vitalsmonitor clickable false
+
+#### Summary Canvas
+$SumCanvas = 'SummaryCanvas/Background'
+$Summary = 'SummaryCanvas/Background/Text'
+$SummaryExit = 'SummaryCanvas/Background/Button'
+$SumButton = 'JoystickCanvas/Summary'
+$SceneStart = '05/LG05Start.txt'
+
+#### Dialogue Setup
+Create DialogueCanvas 'DialogueCanvas'
+$PatientSpeechBubble = 'DialogueCanvas/Patient Speak'
+$PlayerSpeechBubble = 'DialogueCanvas/Player Speak'
+$PatientSpeech = 'DialogueCanvas/Patient Speak/Text'
+$PlayerSpeech = 'DialogueCanvas/Player Speak/Text'
+Wait .1
+$PlayerSpeechBubble close
+$PatientSpeechBubble close
+
+Do 'Setup/PatientCanvas.txt'
+
+$InfusionCollection = $InfusionSet + '/CollectionDate' 
+$InfusionExpiration = $InfusionSet + '/ExpiryDate'
+$InfusionVolume = $InfusionSet + '/Volume'
+#Wait 1
+
+$Bloodbox moveto $BloodboxLocation
+#$IDLabel align $IDLabelPos
+$Nurse = 'Nurse2'
+$NursePatPos = 'Nurse4'
+$nursePressed = false
+
+$PlayerPatPos = Bed + '/Medium'
+
+$PlayerLookPat = 'PlayerPatPos'
+$PlayerLookCow = 'PlayerCowPos'
+#$InfusionSet = 'BloodBag'
+#Create BloodBag $InfusionSet
+$InfusionSet align $BloodLocation 0.01
+$IDLabel align $BloodLocation 0.01
+Wait .020051   #Time neede for things to move/align
+#Prompt 'Move blood'
+$GXMForm = Cart + '/Misc3'
+#$GXMForm = COW + '/GXM stage 5(Clone)'
+$GXMForm localrotatetoY 180
+$GXMForm localmoveX 0.16
+
+$GXMBoxes = $GXMForm + '/Stage1Areas'
+$GXMBoxes off
+$GXMFormDate1 = $GXMForm + '/Dynamic/Date1'
+$GXMFormDate2 = $GXMForm + '/Dynamic/Date2'
+$GXMFormDate3 = $GXMForm + '/Dynamic/Date3'
+$GXMFormDate4 = $GXMForm + '/Dynamic/Date4'
+$GXMFormDate5 = $GXMForm + '/Dynamic/Date5'
+$GXMFormTime = $GXMForm + '/Dynamic/Time'
+$GXMFormBloodID = $GXMForm + '/Dynamic/BloodID'
+$GXMFormDate1 setItemDate
+$GXMFormDate2 setItemDate
+$GXMFormDate3 setItemDate
+$GXMFormDate4 setItemDate
+$GXMFormDate5 setItemDate
+$GXMFormTime setItemDate
+$GXMBloodID = 'A/' + BloodID
+$GXMFormBloodID setItemText $GXMBloodID
+$InfusionCollection setItemDate -2
+$InfusionExpiration setItemDate 30
+$InfusionVolume setItemText $BloodVolume
+
+
+
+#$PC_NameCheck1 = false
+#$PC_NameCheck2 = false
+#$BloodCheck1 = false
+#$BloodCheck2 = false
+$Checklist off
+$IDLabel LocalMoveY 0.02 0
+#$IDLabel LocalMoveX -0.12 0
+#$IDLabel LocalRotateX 90 0
+$Patient1 localrotateX -6
+$Patient2 localrotateX -6
+$Patient3 localrotateX -6
+
+$Nurse speaker.color 1 .5 .5
+$NurseHead = $Nurse + '/metarig/Jaw'
+$PatientHead = $Patient + '/Jaw'
+$Patient speaker.object $PatientHead
+$Nurse speaker.object $NurseHead
+$Patient speaker.color .5 .5 1
+
+$Gloves = 'Cart4/Misc9'
+$Gloves clickable false
+$GlovesDefPos = 'COW0(Clone)/GlovesPos'
+$Gloves align $GlovesDefPos
+
+$SumCanvasPatientInfo = SumCanvas + '/SummaryPatientInfo'
+$PatientInfo = ' Patient Name: ' + PatientName + '                        IC Number: ' + PatientIC + '\n DOB: ' + Birthdate + '        Blood Type: ' +  PatientBloodType +'        Address: ' + PatientAddress
+$SumCanvasPatientInfo setItemText $PatientInfo
+
+$Vitals = VitalsMonitor
+
+$HR = 68
+$SPO2 = 99
+$BP = '118/62'
+$Temp = 36.8
+$Vitals setVitals $HR $SPO2 $BP $Temp
+
+Do '05/LG05Start.txt'
+
+# OLD PLAYER TASK LIST
+#  0 Meet Patient?
+#  1 Call Nurse
+#  2 Check wrist tag/ID label
+#  3 Check GXM - correct name/ID?
+#  4 Check label - correct patient?
+#  5 Talk to patient - correct blood type?
+#  6 Check infusion set - correct blood type and number?
+#  7 Check GXM - correct blood type?
+#  8 Talk to patient - correct name?
+#  9 Check label - correct blood type and number?
+# 10 Begin Transfusion (Speak to patient, press blood)
+# 11 Check infusion set - any clots?
+# 12 Talk to patient - Educate about transfusion plans - THERE IS NO TASK 12 - COMMENTED OUT

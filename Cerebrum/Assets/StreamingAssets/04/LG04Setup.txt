@@ -1,0 +1,43 @@
+Do 'Setup.txt'
+# SCENARIO GOALS
+# 0 = RightSet
+# 1 = DishAdded
+# 2 = Door
+
+# OLD VARIABLE DECLARATIONS
+#$KidneyDish = 'KidneyDish'
+
+#Debug.on
+Debug 'LG04Setup.txt'
+End off
+
+$Shelf = 'Cabinet2/Shelf4'
+$InfusionSet01 = 'Cabinet2/Misc1'
+$InfusionSet02 = 'Cabinet2/Misc2'
+$InfusionSet03 = 'Cabinet2/Misc3'
+$SetOrig01 = 'Cabinet2/Med01'
+$SetOrig02 = 'Cabinet2/Med02'
+$SetOrig03 = 'Cabinet2/Med03'
+$SetLook = 'Positions/SetLook'
+$Scene_Exit = 'JoystickCanvas/Exit'
+$SumButton = 'JoystickCanvas/Summary'
+
+$SetCOWPosition = 'Cart1/Misc4'
+$PlayerCOWLook = 'PlayerCOWLook'
+
+$KidneyDish = 'Cabinet4/Misc2'
+$KidDishOrig = 'Cart1/Misc2'
+$DoorSingle = 'DoorEntry'
+$SumCanvas = 'SummaryCanvas/Background'
+$Summary = 'SummaryCanvas/Background/Text'
+$SummaryExit = 'SummaryCanvas/Background/Button'
+$SceneStart = '04/LG04Scene04Start.txt'
+
+$Shelf outline.on
+
+ScoreTracker setstages 4
+ScoreTracker numtasks 3
+ScoreTracker setdependency 2  0 
+
+#Do 'SummaryCheck.txt'
+Do $SceneStart

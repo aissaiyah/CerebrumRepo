@@ -1,0 +1,37 @@
+$Cannula reset
+#Player align ConnectorLook
+ZoomSpot Menu.Question 'Disconnect drip set?'
+ZoomSpot Menu.Choices 'Yes','No'
+ZoomSpot Menu.on ZoomSpot
+
+If 
+    $StageTime = 60
+Then
+	$taskNum = TaskConnectorDisconnect60
+Else
+	$taskNum = TaskConnectorDisconnect
+Endif
+
+WaitFor
+	ZoomSpot Menu.Done
+	$Cannula reset
+If
+	ZoomSpot menu.result $Yes
+Then
+#	If 
+#        $StageTime = 60
+#	Then
+#	Endif
+	ScoreTracker taskCorrect $taskNum true
+
+	Prompt 'You disconnect the connector.'
+	$IVEndTarget align $IVEndPos
+	Wait 1.5
+	$IVConnected = false
+#	Wait 1
+	Prompt ''
+Else
+	ScoreTracker taskCorrect $taskNum 0
+	$Cannula reset
+Endif
+$Cannula reset

@@ -1,0 +1,109 @@
+Debug 'PatientCheck.txt'
+#Start->PatientChoice->PatientMeet->PatientCheck
+#Wait 2
+#Player lookat $PlayerLookPat
+/CheckCanvas off
+/JoystickCanvas off
+
+/PatientCanvas on
+
+#/PatientCanvas/Buttons/Choices/ALL off
+
+$PC_Name on
+$PC_IC on
+$PC_Education on
+$PC_Blood on
+$PC_Date on
+$PC_Address on
+$Plans on
+turnOff $PC_Family
+turnOff $Phone
+
+#$PatientFace align $PatLookPlayer
+
+$Patient headturn Player
+Prompt 'Select an item above to speak to patient.'
+Wait .1
+Label 'PCLoop'
+	/PatientCanvas on
+	If
+		$PC_Name pressed
+	Then
+		Prompt ''
+		$PC_Name reset
+		/PatientCanvas off
+
+		$GenericPlayerLine = 'What is your name?'
+		$GenericPatientLine = 'My name is ' + $PC_Name 
+		Do 'PlayerPatientChat.txt'
+		$Patient release
+		Do '01/LG01CorrectPatient.txt'
+		Return
+	Endif
+
+	If
+		$PC_IC pressed
+	Then
+		Prompt ''
+		$PC_IC reset
+		/PatientCanvas off
+
+		$GenericPlayerLine = 'What is your IC number?'
+		$GenericPatientLine = 'My IC Number is ' + PatientIC
+		Do 'PlayerPatientChat.txt'
+		$Patient release
+		Do '01/LG01CorrectPatient.txt'
+		Return
+	Endif
+	If
+		$PC_Education pressed
+	Then
+		Prompt ''
+		$PC_Education reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'I am going to take a sample of your blood for investigation before you go for your procedure.'
+		$GenericPatientLine = 'Okay.'
+		ScoreTracker taskCorrect 15 1
+		Do 'PlayerPatientChat.txt'
+		$Patient release
+		Return
+	Endif
+	If
+		$PC_Blood pressed
+	Then
+		Prompt ''
+		$PC_Blood reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'What is your blood type?'
+		$GenericPatientLine = BloodType
+		Do 'PlayerPatientChat.txt'
+		$Patient release
+		Return
+	Endif
+	If
+		$PC_Date pressed
+	Then
+		Prompt ''
+		$PC_Date reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'What is your birthdate?'
+		$GenericPatientLine = 'My birthday is on 1 January 1968'
+		Do 'PlayerPatientChat.txt'
+		$Patient release
+		Return
+	Endif
+	If
+		$PC_Address pressed
+	Then
+		Prompt ''
+		$PC_Address reset
+		/PatientCanvas off
+		$GenericPlayerLine = 'Can you please tell me you address?'
+		$GenericPatientLine = 'I am staying in Block 1, Ang Mo Kio Ave 1.'
+		Do 'PlayerPatientChat.txt'
+		$Patient release
+		Return
+	Endif
+	Wait .1
+Goto 'PCLoop'
+

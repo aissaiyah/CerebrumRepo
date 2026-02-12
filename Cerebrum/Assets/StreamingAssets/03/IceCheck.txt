@@ -1,0 +1,31 @@
+wait 1
+Player align PlayerPos
+If
+	ScoreTracker taskright 3
+Then
+	wait .3
+	$RefrigeratorDoor play close
+Else
+	wait .3
+	ZoomSpot Menu.Question Place Ice Pack on Table?
+	ZoomSpot Menu.on ZoomSpot
+	WaitFor 
+		ZoomSpot Menu.Done 
+	Wait .1
+	If
+		ZoomSpot menu.result $Yes
+	Then
+		wait .3
+		$PC_ICePack moveto IceTableAbove
+		Wait 1
+		$PC_ICePack moveTo $PC_ICeTable
+		$RefrigeratorDoor play close
+		Wait .1
+		$PC_ICePack outline.on
+		ScoreTracker taskCorrect 3 true
+	Else
+		$RefrigeratorDoor play close
+		Wait .1
+	Endif
+Endif
+Label 'end'

@@ -1,0 +1,17 @@
+#Connector->FinalClamp
+Player lookat ClampLook
+ClampCanvas on
+Label 'Loop'
+If
+	ClampCanvas/Release pressed
+Then
+	ClampCanvas/Release reset
+	Prompt 'The Clamp has been released.'
+	ScoreTracker taskCorrect $TaskClampRelease2 true
+	Wait 2
+	Prompt ''
+	ClampCanvas off
+	ScoreTracker rangecomplete 1,14
+	Do 'EndCheck.txt'
+Endif
+Goto 'Loop'

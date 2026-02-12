@@ -1,0 +1,37 @@
+$SumCanvas on
+$SumCanvas scale .47 .1
+Wait .1
+$SummaryExit clickable.reset
+$SumButton reset
+
+
+Label 'SumCheckLoop'
+	If
+    	isOff $SumCanvas
+	Then
+		Return
+	Endif
+
+
+	If
+		$SummaryExit pressed
+	Then
+		#Need the Wait command so all summary checks have time to exit.
+		Wait .1
+		$SummaryExit resetPressed
+		$SumCanvas scale 0 .2
+		$SumCanvas off
+		Return
+	Endif
+	If
+		$SumButton pressed
+	Then
+		#Need the Wait command so all summary checks have time to exit.
+		Wait .1
+		$SumButton reset
+		$SumCanvas scale 0 .2
+		$SumCanvas on
+		Return
+	Endif
+	Wait .1
+Goto 'SumCheckLoop'

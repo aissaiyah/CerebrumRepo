@@ -1,0 +1,27 @@
+#Dish->SyringeCheck
+/COWCanvas off
+WipeCanvas off
+DishCanvas off
+SyringeCanvas on
+Label 'Loop'
+If
+	SyringeCanvas/Amount/Aspirate pressed
+Then
+	SyringeCanvas/Amount/Aspirate reset
+Endif
+If
+	SyringeCanvas/Amount/PushandFlush pressed
+Then
+	SyringeCanvas/Amount/PushandFlush reset
+	SalineTracker reducesaline
+Endif
+If
+	SalineTracker salineamount 1
+Then
+	ScoreTracker taskCorrect 13 true
+	wait 1
+	Do '07/Patient04.txt'
+Else
+	ScoreTracker taskCorrect 13 false
+	Goto 'Loop'
+Endif

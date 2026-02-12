@@ -1,0 +1,32 @@
+Player align $MonitorLook
+ZoomSpot Menu.Question 'Turn on to show vital signs?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait .51
+If
+	ZoomSpot menu.result $Yes
+Then
+	$Vitalsmonitor on
+	ScoreTracker taskCorrect $TaskNum true
+	$Vitalsmonitor reset
+	Wait .2
+	ZoomSpot Menu.Question 'Are the vital signs ok?'
+	ZoomSpot Menu.on ZoomSpot
+	WaitFor
+		ZoomSpot Menu.Done
+
+	If
+		ZoomSpot menu.result $Yes
+	Then
+	#    $WristTag reset
+	Endif
+
+Else
+	$Vitalsmonitor off
+	$Vitalsmonitor reset
+	ScoreTracker taskCorrect $TaskNum false
+Endif
+
+
+Player align PlayerStart

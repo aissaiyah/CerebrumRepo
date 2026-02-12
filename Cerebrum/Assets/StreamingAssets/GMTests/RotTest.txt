@@ -1,0 +1,59 @@
+Label TopLine
+$Axis = 'Axes'
+#            case "localrotatetox":
+Prompt 'lr to x 30'
+$Axis localrotatetox 30 .5
+Wait 1
+Prompt 'lr to x 40'
+$Axis localrotatetox 40 .5
+Wait 1
+Prompt 'lr x 10'
+$Axis localrotatex 10 .5
+Wait 1
+Prompt 'lr x 5'
+$Axis localrotatex 10 .5
+Wait 1
+
+Prompt 'r y 30'
+$Axis rotatey 30 .5
+Wait 1
+Prompt 'r y 30'
+$Axis rotatey 30 .5
+Wait 1
+Prompt 'r to y 10'
+$Axis rotatetoy 10 .5
+Wait 1
+
+Prompt 'lr to z 30'
+$Axis localrotatetoz 30 .5
+Wait 1
+Prompt 'lr to z 40'
+$Axis localrotatetoz 40 .5
+Wait 1
+Prompt 'lr z 40'
+$Axis localrotatez 40 .5
+Wait 1
+
+Prompt 'r to z 0'
+$Axis rotatetoz 0 .5
+Wait 1
+Prompt 'r to y 0'
+$Axis rotatetoy 0 .5
+Wait 1
+Prompt 'r to x 0'
+$Axis rotatetox 0 .5
+Wait 1
+
+
+
+#            case "localrotatex":
+#            case "localrotatetoy":
+#            case "localrotatey":
+#            case "localrotatetoz":
+#            case "localrotatez":
+#            case "rotatetox":
+#            case "rotatex":
+#            case "rotatetoy":
+#            case "rotatey":
+#            case "rotatetoz":
+#            case "rotatez":

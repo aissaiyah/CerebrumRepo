@@ -1,0 +1,22 @@
+#Vitals.txt
+#$TaskNum - turning vitals on task number
+$VitalsMonitor - Vitals monitor object
+$MonitorLook - Vitals Monitor look position
+
+
+Player align $MonitorLook
+ZoomSpot Menu.Question 'Are the vitals good?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait 1
+If
+	ZoomSpot menu.result $Yes
+Then
+	Wait 1
+	ScoreTracker taskCorrect $TaskNum true
+	$Vitalsmonitor reset
+Else
+	ScoreTracker taskCorrect $TaskNum false
+	$Vitalsmonitor reset
+Endif
