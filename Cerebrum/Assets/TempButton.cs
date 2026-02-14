@@ -5,6 +5,8 @@ using UnityEngine;
 public class TempButton : MonoBehaviour
 {
     public GameObject Summary;
+	public GameObject ComplaintCanvas;
+	public GameObject PatientCanvas;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,4 +28,29 @@ public class TempButton : MonoBehaviour
     {
         Summary.SetActive(true);
     }
+
+	public void ComplaintPress()
+	{
+		ComplaintCanvas.SetActive(true);
+	}
+	
+	public void ComplaintUnpress()
+	{
+		ComplaintCanvas.SetActive(false);
+	}
+
+	public void ParientPress()
+	{
+		PatientCanvas.SetActive(true);
+	}
+
+
+	public void PatientUnpress()
+	{
+		PatientCanvas.SetActive(false);
+	}
+
+
+
+
 }

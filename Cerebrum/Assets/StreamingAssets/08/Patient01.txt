@@ -2,6 +2,12 @@
 /JoystickCanvas off
 /PatientCanvas on
 #Player lookat $PlayerPatLook
+$Patient outline.on
+$Patient clickable true 
+Prompt 'Patient = ' + Patient
+Wait 5
+Prompt ''
+
 Label 'P01Loop'
 	If
 		PatientCanvas/Choices/Speak pressed
