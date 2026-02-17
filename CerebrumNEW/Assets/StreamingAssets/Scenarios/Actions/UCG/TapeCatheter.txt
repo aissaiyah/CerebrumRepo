@@ -1,0 +1,44 @@
+Prompt 'Detached Tape'
+wait 1
+Prompt ''
+
+If
+	$Stage = 4
+Then
+
+	If
+		Do 'AnswerIsNo' 'Use tape to anchor catheter?'
+	Then
+		Return
+	Endif
+
+		If
+			$CatheterInserted = true
+		Then
+			$Item = $DetachedTape
+
+			Do 'Actions/UCG/GrabPackage' $Item
+			Do 'Actions/UCG/MoveWithPackage' $Item $PlayerStart
+			wait .5
+			Do 'Actions/UCG/ThrowAwayPackage' $Item $PlayerStart
+			wait .5
+			$PlayerNurse localMoveY 0.4 0
+			wait 0
+			$PlayerNurse play LeanIn
+			Wait 1
+
+			
+			Destroy $DetachedTape
+		
+			Prompt 'Catheter is anchored.'
+			wait 1
+			Prompt ''
+			wait 2
+			$PlayerNurse localMoveY -0.4 0
+			$Player align $PlayerStart
+		Else
+			Prompt 'Catheter not inserted yet.'
+			wait 1
+			Prompt ''
+		Endif
+Endif

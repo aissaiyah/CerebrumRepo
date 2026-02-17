@@ -1,0 +1,57 @@
+#ConfigurePatient.txt - change stage 
+
+If
+    $isEyesOpen
+Then
+    $Patient play CloseEyes false
+Else
+	$Patient play CloseEyes true
+Endif
+
+If
+	$SpO2 < 93
+Then	
+	$NewProjector = ProjectorName + 'BlueLips'
+
+	Create $LipsProjector $NewProjector
+	$NewProjector align $PatientFace 0
+	$NewProjector attachto $PatientFace
+	wait 0
+	$NewProjector localrotatey 180 0
+	wait 0
+
+	$NewProjector localMoveY 0.03	#38115906 0
+	wait 0
+	#$NewProjector localMoveZ -0.008267 0
+	wait 0
+Endif
+
+#Prompt 'Diagnosis ' + PatientDiag
+
+	#$PatientDiag = 'Right Dorsum Phlebitis'
+If
+	$PatientDiag = 'Right Dorsum Phlebitis'
+Then
+
+	$NewProjector = ProjectorName + 'RightDorsumPhlebitis'
+
+	Create $PhlebitisProjector $NewProjector
+	$NewProjector align $CannulaIVPosRHand 0
+	$NewProjector attachto $CannulaIVPosRHand
+	wait 0
+	$NewProjector localrotatez 90 0
+	wait 0
+
+	$PatientRightHand scale 1.3 1 1.3
+
+	If 
+		$BedNumber > 2
+	Then
+		$NewProjector localMoveX -0.04 0
+		wait 0
+		$NewProjector localMoveY 0.01 0
+	Endif
+	wait 0
+Endif
+
+$Vitals setVitals $HR $SPO2 $BP $Respiration

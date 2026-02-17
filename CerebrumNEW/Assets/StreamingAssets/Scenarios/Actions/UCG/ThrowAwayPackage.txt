@@ -1,0 +1,43 @@
+# 'ThrowAwayPackage' $Package
+#Prompt 'ThrowAwayPackage '
+#Wait 1
+
+If
+	$param[0] > 0
+Then
+	$Package = param[1]
+	$MoveBackSpot = param[2]
+Endif
+If
+	$param[0] > 1
+Then
+	$MoveBackSpot = param[2]
+Else
+	$MoveBackSpot = CartLook
+Endif
+
+#Lift package up
+$Package localmovey .05 .5
+Wait 0.5
+
+#have Package move with player
+$PlayerHandName = 'Nurse' + ActiveHand + 'Hand'
+$PlayerHand =$ PlayerHandName
+$Package constrainTo $PlayerHand
+Wait 0
+
+#Move player back to default position
+$Player align $MoveBackSpot 0.5
+Wait 0.5
+
+$Release = 'release' + ActiveHand
+$PlayerNurse $Release 0.5 'dip'
+
+Wait 0.5
+
+#have Package move freely (with hand attached)
+$Package releaseConstraint 
+
+Wait 0.1
+Destroy $Package
+

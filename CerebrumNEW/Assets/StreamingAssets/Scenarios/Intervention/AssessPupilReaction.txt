@@ -1,0 +1,45 @@
+#AssessPupilReaction - fill out pupil reaction canvas popup
+
+$PupilCanvas on
+$PupReactive = $PupilCanvas + 'Background/ReactiveDropdown'
+$PupSize = $PupilCanvas + 'Background/SizeDropdown'
+$PupButton = $PupilCanvas + 'Background/CloseButton'
+$PupExit = $PupilCanvas + 'Background/Exit'
+$ReactiveAnswer = $PupilReaction
+$SizeAnswer = $PupilSize
+
+Label 'Loop'
+
+If
+	$PupButton pressed
+Then
+	$PupButton reset
+	If
+		$PupReactive checkaccuracy $ReactiveAnswer
+		Then
+			If
+				$PupSize checkaccuracy $SizeAnswer
+			Then
+				$PupilCanvas off
+				Return
+			Else
+				#$PupilCanvas off
+				$ToolPrompt = 'Pupil size is incorrect. Pupil size is ' + PupilSize + 'mm.'
+				Do 'ToolPrompt.txt'
+			Endif
+		Else
+		#$PupilCanvas off
+		$ToolPrompt = 'Pupil Reactivity is incorrect. Pupil Reactivity is ' + PupilReaction + '.'
+		Do 'ToolPrompt.txt'
+	Endif
+Endif
+
+If
+	$PupExit pressed
+Then
+	$PupExit reset
+	$PupilCanvas off
+	Return
+Endif
+
+Goto 'Loop'

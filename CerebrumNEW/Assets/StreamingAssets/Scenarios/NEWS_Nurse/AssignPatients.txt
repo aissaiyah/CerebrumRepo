@@ -1,0 +1,46 @@
+Do 'Setup/DefaultPatientVariables'
+$BedNumber = '6'
+
+$GlobalVar = 'GlobalVariableManager'
+
+$myname =
+    $GlobalVar getGlobal 'PatNum'
+
+$myname = myname + 1
+$GlobalVar setGlobal 'PatNum' $MyName
+
+#Randomly assigns patient numbers and chooses a random ews patient to be in the scene
+$RandomRoomGen = 'PatientGeneratorRandom'
+$whichPatient = 
+    $RandomRoomGen getrandompatient myname
+$BedNumber = myname
+
+#Prompt 'BedNum = ' + BedNumber + ', whichPatient = ' + whichPatient
+#Wait 3
+#Prompt ''
+
+Wait .01
+
+$TasksTotal = '3'
+$Bed = 'Bed'+ BedNumber
+$Patient = Bed + '/Placeholder(Clone)'
+
+#Prompt 'whichPatient = ' + whichPatient
+#Wait 2
+
+DoChoice $whichPatient
+[
+    Do 'NEWS_Nurse/Stage1/PatientNon1.txt'
+    Do 'NEWS_Nurse/Stage1/PatientNon2.txt'
+    Do 'NEWS_Nurse/Stage1/PatientNon3.txt'
+    Do 'NEWS_Nurse/Stage1/PatientNon4.txt'
+    Do 'NEWS_Nurse/Stage1/PatientNon5.txt'
+    Do 'NEWS_Nurse/Stage1/PatientNews1.txt'
+    Do 'NEWS_Nurse/Stage1/PatientNews2.txt'
+    Do 'NEWS_Nurse/Stage1/PatientNews3.txt'
+    Do 'NEWS_Nurse/Stage1/PatientNews4.txt'
+]
+#Prompt 'About to start = ' + whichPatient
+#Wait 20
+
+Do 'NEWS_Nurse/NEWS_Start.txt'

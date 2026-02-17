@@ -1,0 +1,97 @@
+$IVDripCan on
+$Saline = IVDripCan + '/Choices/Normal Saline'
+$Dextrose = IVDripCan + '/Choices/Dextrose'
+$SalineGlucose = IVDripCan + '/Choices/SalineGlucose'
+$IVDripExit = IVDripCan + '/Choices/Exit'
+$IVStand = 'InfusionStandGlucose'
+$IVStandName = 'IVStand' + BedNumber
+$Drip = IVStandName + '/LINE/InfusionSetBlood/IVDrip'
+$InfusionLine = IVStandName + '/LINE/InfusionSetBlood/InfusionLine'
+$InfusionLineGlucose = IVStandName + '/LINE/InfusionSetBlood/InfusionLineGlucose'
+$GlucoseBag = IVStandName + '/LINE/InfusionSetBlood/GlucoseBag'
+$CannulaPos = IVCannulaName + '/CannulaEnd'
+$GlucoseMixText = $Drip + '/Canvas'
+
+#Prompt 'creating IVstand'
+If
+	$IVStandName isOn
+Then
+	#Continue
+Else
+	Create $IVStand $IVStandName
+	$IVStandName align $IVPos
+	$IVEnd = $IVStandName + '/LINE/InfusionSetBlood/InfusionLine/IVEndTarget'
+	$IVEndGlucose = $IVStandName + '/LINE/InfusionSetBlood/InfusionLineGlucose/IVEndTarget'
+Endif
+Endif
+
+Label 'DripLoop'
+
+If
+	$Saline pressed
+Then
+	$Saline reset
+	ScoreTracker TaskCompleted $PatientType 'Task_IVDrip'
+	$TakenAction = true
+	turnOn $InfusionLine
+	turnOn $Drip
+	$IVEnd align $CannulaPos
+	$IVEnd attachTo $CannulaPos
+	Prompt 'IV of Normal Saline 0.9% (500ml) is hanging at the patient bedsite'
+	wait 2
+	Prompt ''
+	$IVDripCan off
+	$GlucoseMixText off
+	Do 'InterventionReduce.txt'
+	Return
+Endif
+
+If
+	$Dextrose pressed
+Then
+	ScoreTracker TaskCompleted $PatientType 'Task_IVDrip'
+	$TakenAction = true
+	$Dextrose reset
+	turnOn $InfusionLineGlucose
+	turnOn $GlucoseBag
+	$IVEndGlucose align $CannulaPos
+	$IVEndGlucose attachTo $CannulaPos
+	Prompt 'IV of Dextrose 10% (100ml) is hanging at the patient bedsite'
+	wait 2
+	Prompt ''
+	$IVDripCan off
+	$GlucoseDrip = true
+	Do 'InterventionReduce.txt'
+	Return
+Endif
+
+If
+	$SalineGlucose pressed
+Then
+	$SalineGlucose reset
+	ScoreTracker TaskCompleted $PatientType 'Task_IVDrip'
+	$TakenAction = true
+	turnOn $InfusionLine
+	turnOn $Drip
+	$IVEnd align $CannulaPos
+	$IVEnd attachTo $CannulaPos
+	Prompt 'IV of Normal Saline 0.9%/ Glucose 5% (500ml) is hanging at the patient bedsite'
+	wait 2
+	Prompt ''
+	$GlucoseMixText on
+	$IVDripCan off
+	$GlucoseDrip = true
+	Do 'InterventionReduce.txt'
+	Return
+Endif
+
+If
+	$IVDripExit pressed
+Then
+	$IVDripExit reset
+	$IVDripCan off
+	Return
+Endif
+
+
+Goto 'DripLoop'

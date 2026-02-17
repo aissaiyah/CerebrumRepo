@@ -1,0 +1,45 @@
+# EngagePatient.txt runs when you click on a patient to speak to them
+#
+# PatientPreCanvas is where the speak to patient button is held
+# JoystickCanvas has the Joystick and is turned off when trying to speak to a patient
+# $PC_Info is the Patient Information button that gives basic info about the current patient
+# 
+# $Pre_Speak - the button to speak to the patient
+# NEWS_Nurse/PatientConversation.txt runs the dialogue between the player and the patient
+# $Pre_End is a button that closes the PatientPreCanvas
+#
+# $GlobalVar is the empty game object that holds all of the global variables in the scene
+# $Stage is the current stage number
+
+/PatientPreCanvas on
+JoystickCanvas off
+
+Label 'PCLoop_Stage01'
+	If
+		$Pre_Speak pressed
+	Then
+		$Pre_Speak reset
+		/PatientPreCanvas off
+		Prompt ''
+			If
+			PatInfoCanvas ison
+			Then
+			$PC_Info reset
+			PatInfoCanvas off
+			Endif
+		Do 'UCG/PatInfoDialogue.txt'
+		$Patient release
+		$Patient reset
+		Return
+	Endif
+
+	If
+		$Pre_End pressed
+	Then
+		$Pre_End resetPressed
+		/PatientPreCanvas off
+		$Patient release
+		$Patient reset
+		Return
+	Endif
+Goto 'PCLoop_Stage01'

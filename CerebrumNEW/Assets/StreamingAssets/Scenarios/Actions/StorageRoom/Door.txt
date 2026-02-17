@@ -1,0 +1,25 @@
+/JoystickCanvas off
+ZoomSpot Menu.Question 'Return to ward with materials?'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+    ZoomSpot Menu.Done
+Wait 1
+If
+    ZoomSpot menu.result $Yes
+Then
+    If
+        $ScenarioGender = 'Female'
+    Then
+        If
+            $ScenarioStruggle = true
+        Then
+            SceneManager switchtoscene Scenes/UCG/UCG03_4_Struggle
+        Else
+            SceneManager switchtoscene Scenes/UCG/UCG03_4_Female
+        Endif
+    Else
+        SceneManager switchtoscene Scenes/UCG/UCG03_4_Male
+    Endif
+Else
+    /JoystickCanvas on
+Endif

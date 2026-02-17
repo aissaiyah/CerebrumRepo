@@ -1,0 +1,19 @@
+ZoomSpot menu.Question 'Call the Doctor?'
+ZoomSpot menu.on ZoomSpot
+WaitFor 
+ZoomSpot menu.done 
+Wait .1
+If
+   ZoomSpot menu.result $Yes
+Then
+   ScoreTracker taskCorrect 0 true
+   #wait .1
+#   $Phone changeshader good
+   #Wait .25
+#	ScoreTracker rangecomplete 0-8
+#   Do 'EndCheck.txt'
+Else
+#   Player lookAtLegacy $Deflook
+   $Phone selectable true
+#   Do '02/02MainLoop.txt'
+Endif

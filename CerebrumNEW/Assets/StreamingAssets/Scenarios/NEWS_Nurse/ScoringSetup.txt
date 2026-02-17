@@ -1,0 +1,15 @@
+# ScoringSetup.txt - Sets up variables for Tasks 
+###########################################
+# Setup Scoring
+###########################################
+
+#Setup Task Values for this patient
+If
+    $isEWS = true
+Then
+    $ScoringSetup = StageFolderPrefix + 'ScoringNews.txt'
+Else
+    $ScoringSetup = StageFolderPrefix + 'ScoringNon.txt'
+Endif
+
+Do $ScoringSetup                 

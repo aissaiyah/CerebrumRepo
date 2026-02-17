@@ -1,0 +1,16 @@
+Do 'Setup/DefaultPatientVariables'
+$BedNumber = '4'
+$TasksTotal = '3'
+$Bed = 'Bed'+ BedNumber
+$Patient = Bed + '/Placeholder(Clone)'
+$BedOxyTarget = Bed + '/Oxygen'
+
+#DEMO OF GLOBAL VARIABLES (Set in Bed5.txt)
+#Wait .3     #Delay to make sure it is set first
+
+#$GlobalVar = 'GlobalVariableManager'
+#$myname =
+#    $GlobalVar getGlobal MyName
+#Prompt 'bed4 read name = ' + myname
+#wait 1
+

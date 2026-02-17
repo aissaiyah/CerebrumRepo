@@ -1,0 +1,96 @@
+$IVCannulaCan on
+$Antecubital = IVCannulaCan  + '/Choices/Antecubital fossa'
+$Dorsum = IVCannulaCan  + '/Choices/Dorsum of Hand'
+$IVExit = IVCannulaCan + '/Choices/Exit'
+$IVCannulaNameBase = 'IVCannula' + BedNumber
+
+
+$Cannula = Patient + 'CannulaIV'
+
+#Wait 5
+$PlayerNurse = 'Player/NursePlayer'
+
+
+Label 'CannulaLoop'
+
+If
+	$Antecubital pressed
+Then
+	$Antecubital reset
+	ScoreTracker TaskCompleted $PatientType 'Task_IVCannula'
+	$TakenAction = true
+	$IVCannulaCan off
+	$IVCannulaName = $IVCannulaNameBase + 'Antecubital'
+	$PlayerNurse play LeanIn
+	$IVSet = true
+	Wait 1.5
+	If
+		$IVCannulaName isOn
+	Then
+		Prompt 'Switching focus to Antecubital fossa Cannula'
+		wait 1
+		Prompt ''
+	Else
+		Create $CannulaIV $IVCannulaName
+		$IVCannulaName align $CannulaIVPosElbow 0
+		$IVCannulaName attachTo $CannulaIVPosElbow 
+		Do 'InterventionReduce.txt'
+		Prompt 'IV cannulation is executed on patient (elbow).'
+		wait 1
+		Prompt ''
+		If
+			$Bleeding = true
+		Then
+			Prompt 'Oozing seen at the femoral catheter exit site.'
+			wait 2
+			Prompt ''
+		Endif
+	Endif
+	Return
+Endif
+
+If
+	$Dorsum pressed
+Then
+	$Dorsum reset
+	ScoreTracker TaskCompleted $PatientType 'Task_IVCannula'
+	$TakenAction = true
+	$IVCannulaCan off
+	$IVCannulaName = $IVCannulaNameBase + 'Dorsum'
+	$PlayerNurse play LeanIn
+	$IVSet = true
+	Wait .5
+	If
+		$IVCannulaName isOn
+	Then
+		Prompt 'Switching focus to Dorsum Cannula'
+		wait 1
+		Prompt ''
+	Else
+		Create $CannulaIV $IVCannulaName
+		$IVCannulaName align $CannulaIVPos 0.1
+		$IVCannulaName attachTo $CannulaIVPos
+		Prompt 'IV cannulation is executed on patient (hand).'
+		Do 'InterventionReduce.txt'
+		wait 1
+		Prompt ''
+		If
+			$Bleeding = true
+		Then
+			Prompt 'Oozing seen at the femoral catheter exit site.'
+			wait 2
+			Prompt ''
+		Endif
+	Endif
+	Return
+Endif
+
+If
+	$IVExit pressed
+Then
+	$IVExit reset
+	$IVCannulaCan off
+	Return
+Endif
+
+Goto 'CannulaLoop'

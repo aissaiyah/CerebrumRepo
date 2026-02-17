@@ -1,0 +1,103 @@
+#wait 100
+$Stage = '2'
+Do 'UCG/SetupVariables'
+Do 'Setup/DefaultPatientVariables.txt'
+# SCENARIO GOALS
+# 0 = RightSet
+# 1 = DishAdded
+# 2 = Door
+# OLD VARIABLE DECLARATIONS
+#$KidneyDish = 'KidneyDish'
+#Debug.on
+Debug 'Setup.txt'
+End off
+BackButtonCanvas off
+$PlayerNurse = 'Player/NursePlayer'
+
+$Shelf1 = 'Cabinet2/Shelf4'
+$Shelf2 = 'Cabinet2/Shelf5'
+$Shelf3 = 'Cabinet1/Shelf4'
+
+$UC12 = 'Cabinet1/Misc1'
+$UC14 = 'Cabinet1/Misc2'
+$UC16 = 'Cabinet1/Misc3'
+
+$SalineAmpoule = 'Cabinet2/Misc1'
+$WaterAmpoule = 'Cabinet2/Misc2'
+$Chlorhexidine = 'Cabinet2/Misc4'
+$Saline = 'Cabinet2/Misc6'
+$Iodine = 'Cabinet2/Misc5'
+
+$UC12 reset
+$UC14 reset
+$UC16 reset
+
+$SalineAmpoule reset
+$WaterAmpoule reset
+$Chlorhexidine reset
+$Saline reset
+$Iodine reset
+
+$UC12 clickable false
+$UC14 clickable false
+$UC16 clickable false
+
+$SalineAmpoule clickable false
+$WaterAmpoule clickable false
+$Chlorhexidine clickable false
+$Saline clickable false
+$Iodine clickable false
+
+$SetOrig01 = 'Cabinet2/Med01'
+$SetOrig02 = 'Cabinet2/Med02'
+$SetOrig04 = 'Cabinet2/Med04'
+$SetOrig05 = 'Cabinet2/Med05'
+$SetOrig06 = 'Cabinet2/Med06'
+$SetOrig07 = 'Cabinet1/Med01'
+$SetOrig08 = 'Cabinet1/Med02'
+$SetOrig09 = 'Cabinet1/Med03'
+$SetLook = 'Positions/SetLook'
+$SetLook1 = 'Positions/SetLook1'
+$SetLook2 = 'Positions/SetLook2'
+$Scene_Exit = 'JoystickCanvas/Exit'
+$SumButton = 'JoystickCanvas/Summary'
+
+$SetCOWPosition = 'Cart1/Misc4'
+$PlayerCOWLook = 'PlayerCOWLook'
+
+$KidneyDish = 'Cabinet4/Misc2'
+$KidDishOrig = 'Cart1/Misc2'
+$DoorSingle = 'DoorEntry'
+$DoorView = $DoorSingle + '/DoorView'
+$SumCanvas = 'SummaryCanvas/Background'
+$Summary = 'SummaryCanvas/Background/Text'
+$SummaryExit = 'SummaryCanvas/Background/OKButton'
+$Summary = 'SummaryCanvas/Background/Text'
+$SummaryText = SumCanvas + '/TopSummary'
+$SummaryExit = SumCanvas + '/OKButton'
+$SummaryBlack = SumCanvas + '/Black'
+
+$DoorButton = 'DoorCanvas/DoorButton'
+
+$SceneStart = 'UCG/Stage2/Start.txt'
+
+$GlobalVar = 'GlobalVariableManager'
+wait .1
+
+$ScenarioGender =
+$GlobalVar getglobal 'Gender'
+
+$ScenarioStruggle =
+    $GlobalVar getglobal 'PatientStruggle'
+$Shelf1 outline.on
+$Shelf2 outline.on
+$Shelf3 outline.on
+
+ScoreTracker setstages 4
+ScoreTracker numtasks 3
+ScoreTracker setdependency 2  0 
+$Stage =2
+
+Do 'UCG/COWSetup'
+
+Do $SceneStart

@@ -1,0 +1,9 @@
+Do 'Setup/DefaultPatientVariables'
+$BedNumber = '6'
+$TasksTotal = '3'
+$P6Check1 = false
+$P6Check2 = false
+$P6Global = '0'
+$Bed = 'Bed'+ BedNumber
+$Patient = Bed + '/Patient1/TEMP_Patient'
+$BedOxyTarget = Bed + '/Oxygen'

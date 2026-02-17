@@ -1,0 +1,17 @@
+#BloodOrderForm.txt
+#Prompt 'Setting up BloodOrderForm'
+$IDLabelPatientName = IDLabel + '/PatientName'
+$IDLabelBedNumber = IDLabel + '/BedNumber'
+$IDLabelPatientBloodType = IDLabel + '/PatientBloodType'
+$IDLabelBloodType = IDLabel + '/BloodType'
+$IDLabelBloodVolume = IDLabel + '/BloodVolume'
+$IDLabelExpiryDate = IDLabel + '/ExpiryDate'
+$IDLabelIssueDate = IDLabel + '/IssueDate'
+
+$IDLabelPatientName setItemText $PatientName
+$IDLabelBedNumber setItemText $PatientIC
+$IDLabelPatientBloodType setItemText $PatientBloodType
+$IDLabelBloodType setItemText $BloodType
+$IDLabelBloodVolume setItemText $BloodVolume
+$IDLabelExpiryDate setItemDate  30.3 'dd-MM-yy'
+$IDLabelIssueDate setItemDate  -0.1 'dd-MM-yy/hh:mm'

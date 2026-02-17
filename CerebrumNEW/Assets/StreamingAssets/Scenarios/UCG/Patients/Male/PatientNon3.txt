@@ -1,0 +1,54 @@
+#########################################
+#  PATIENTNon3 INFO INIT
+#########################################
+
+$PatientName = 'John Tan'
+$NeedsPerformed = true
+$PatientIC = 'S107978B'
+$BloodType = 'B-'
+$AgeInYears = 82
+$PatientModel = 'uAvatar_Male'
+$PatientDiag = 'Right fingers gangrene'
+
+$PatientOrder = 'Insertion of indwelling urinary catheterization'
+$OrderFreq = 'Once'
+$PatientMedication = 'Glucosamine Sulfate Capsule PO 500 mg, TDS'
+$PatientRoute = 'PO'
+
+$PatientGender = 'Male'
+$PatientSummary = ''
+
+$PatientType = 'Non3'
+
+$Temperature = 36.4
+$HR = 85
+$BP = '120/50'
+$BPSys = 120
+$Respiration = 20
+$SpO2 = 98
+
+$PainScore = 'Pain Score: 0/10'
+
+$PatientSpeak = 'Please do not disturb me, I am not in the mood to talk to anyone.'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNon3_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientObjName align $Patient 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'UCG/SetupPatient.txt'
+
+$HeadAmount = 90.0
+$WeightAmount = 75.0
+
+Do 'PatientCreations/Head/Head3.txt'
+Do 'PatientCreations/Height/Average.txt'
+#Do 'PatientCreations/Weight/Average.txt'
+Do 'PatientCreations/Gender/Male.txt'

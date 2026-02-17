@@ -1,0 +1,563 @@
+# InterventionAssessmentChoices - Runs when Tool Canvas ($InterventionsCanvas) is on to run different Assessments or Interventions
+# Checks if any Tool Button is active and pressed (isOnAndPressed)
+#
+# A commmon function that is run is $UIMan closetoolinventory which closes the tool inventory through the UIManager OMH
+#
+# List of Tool Buttons assessed in this file
+#
+# $AssessParameters - Runs Intervention/AssessSpotMonitor.txt which moves the camera to view the monitor and show a display of the patients parameters and NEWS Risk score
+# $PainCard - Displays a prompt of the current patient's Pain score (which is set on their individual txt file as $PainScore)
+# $GlascowScale - Runs ComaCheck.txt which has a pop-up that allows you to enter and measure the patients current Verbal, Eye, and Body response 
+# $PupilReaction - Shines a light in the patient's eyes and has the pupils change in response. Then, gives a pop-up to measure the patient's eye response and size.
+# $PhysicalExamination - Runs a physical exam on the patient, checking for motor control and physical appearance. Gives a prompt based on what is found.
+# $LimbMovement - Prompts the limb movement power the patient has.
+# $BloodGlucose - Prompts the blood glucose level of the patient.
+# $ECG - Zooms in on the ECG to show patient status. EWS patient values change between stages and update.
+# $OxygenTherapy - Choose between applying oxygen mask or nasal prong. Also able to remove after applying.
+# $ApplyPressure - Applies pressure to bleeding site or prompts if no bleeding site present.
+# $IVDrip - Applies an IV drip to a patient if they have a Cannula applied.
+# $IVCannula - Runs Intervention/InsertIVCannula.txt and applies an IV cannula to the patient's Antecubital fossa or Dorsum of Hand.
+# $GlucoseSachet - Gives the patient a glucose tablet drink.
+# $SpotMonitorFreq - Updates the Spot monitor frequency to 15 minutes, hourly, or once a shift.
+# $InformMedicalTeam - Calls the medical team to inform about the current patient.
+#
+# $BedNumber is checked to correctly look at the patient
+# $GlobalVar is the empty game object that holds all of the global variables in the scene
+# $Stage is the current stage number
+
+
+	If
+		$AssessParameters isOnAndPressed
+	Then
+		$AssessParameters reset
+		$GlobalVar setglobal 'UsingTool' true
+		$UIMan closetoolinventory
+		Do 'Intervention/AssessSpotMonitor.txt'
+		$Patient reset
+		$UseToolButton reset
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+	Endif
+
+
+	If
+		$PainCard isOnAndPressed
+	Then
+		$PainCard reset
+		$GlobalVar setglobal 'UsingTool' true
+		$UIMan closetoolinventory
+		$ToolPrompt = $PainScore
+		Do 'ToolPrompt.txt'
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+	Endif
+
+
+	If
+		$GlascowScale isOnAndPressed
+	Then
+		$GlascowScale reset
+		$GlobalVar setglobal 'UsingTool' true
+		$UIMan closetoolinventory
+		Do 'Intervention/ComaCheck.txt'
+		$Patient reset
+		$UseToolButton reset
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+	Endif
+
+
+# $Eyelight is a created light object to shine in the patient's eyes
+	If
+		$PupilReactionButton isOnAndPressed
+	Then
+		$PupilReactionButton reset
+		$GlobalVar setglobal 'UsingTool' true
+		$UIMan closetoolinventory
+
+		#Should move all pupil check and anim to new file
+		If 
+			$BedNumber < 3
+		Then
+			Player lookAtLegacy $PatientFace 0.125 0.3 0.1225
+		Else
+			Player lookAtLegacy $PatientFace -0.125 0.3 -0.1225
+		EndIf
+		$EyeLight = 'EyeLight'
+		Create $EyeLight $EyeLight
+		Wait .05
+		$EyeLight align Player 0
+		Wait .05
+		$Patient headturn Player
+		wait 1.2
+		$EyeLight lookAt $PatientLeftEye duration 1
+		#$EyeLight localRotateX -20 .5
+		#$EyeLight localRotateY 20 .5
+		
+		wait 2
+
+
+		If
+			$PupilReaction = 'Reactive'
+		Then
+			$PupilReacts = true
+		Else
+			$PupilReacts = false
+		Endif
+
+		#$isEyesOpen = false
+
+		#Do left eye
+		If
+			$isEyesOpen = false
+		Then
+			#Prompt 'Eyes closed:' + PlayerNurse
+			$PlayerNurse On
+			$RightHandReach = 'RightHandReach'
+			Create Locator $RightHandReach
+			$RightHandReach align $PatientRightEye 0
+			Wait 0
+			#Prompt 'RZ'
+			$RightHandReach localRotateX 80 0
+			Wait 0
+			$RightHandReach localRotateY 162 0
+			Wait 0
+			$RightHandReach localRotateZ -64 0
+
+			$PlayerNurse $grabRight $RightHandReach
+
+			$RightHandReach localMoveZ -0.1  #right
+			Wait 0
+
+			$RightHandReach localMoveY .1
+			Wait 0
+
+			$RightHandReach localMoveX 0.08  
+			Wait 0
+
+			$PlayerNurse $grabRight $RightHandReach
+			Wait 1
+			$Patient play OpenLeft true
+			wait 3
+		Else
+			#Prompt 'Eyes opened'
+		Endif
+		$Patient play Pupil_Left_Shrink $PupilReacts
+		wait 4
+		$EyeLight lookAt $PatientRightEye duration 1
+		#$EyeLight localRotateY -18 1
+		$Patient play Pupil_Left_Shrink false
+		Wait 1
+
+		#Do right eye
+		If
+			$isEyesOpen = false
+		Then
+			#Prompt 'Move hand to right eye'
+			$RightHandReach localMoveY -0.2 0.5  
+			Wait 0.5
+			$Patient play OpenLeft false
+			wait 1
+			$Patient play OpenRight true
+			wait 3
+		Endif
+		$Patient play Pupil_Right_Shrink $PupilReacts
+		wait 4
+		$EyeLight localRotateY -30 1
+		$Patient play Pupil_Right_Shrink false
+		wait 1
+		If
+			$isEyesOpen = false
+		Then
+			$RightHandReach localMoveY 0.4 0.5  
+			Wait 0.5
+			$PlayerNurse release
+			Destroy $RightHandReach
+			$Patient play OpenRight false
+			wait 1
+		Endif
+		
+		Destroy $EyeLight
+		Do 'Intervention/AssessPupilReaction'
+		wait .5
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+		Player align $PlayerStart
+		$Patient reset
+		$UseToolButton reset
+		$Patient release
+	Endif
+
+
+	If
+		$PhysicalExamination isOnAndPressed
+	Then
+		$PhysicalExamination reset
+		$GlobalVar setglobal 'UsingTool' true
+		$UIMan closetoolinventory
+		
+		If
+			$Oriented = true
+		Then
+			$Patient headturn Player
+			$GenericPlayerLine = 'Can you move your fingers for me please?'
+			$GenericPatientLine = 'Sure.'
+	
+			Do 'GenericChat.txt'
+			If 
+				$BedNumber < 3
+			Then
+				Player lookAtLegacy $CannulaIVPos 0 .25 0.25
+			Else
+				Player lookAtLegacy $CannulaIVPos 0 .25 -0.25
+			Endif
+	
+			wait 1
+			$Patient release
+			wait 1
+			$Patient play FingerWiggle
+			wait 4
+		Endif
+		If
+			$Oriented = false
+		Then
+			Prompt 'You attempt to get the patient's attention but they don't seem oriented'
+			wait 3
+			Prompt ''
+		Endif
+
+		If 
+			$BedNumber < 3
+		Then
+			Player lookAtLegacy $PatientFace 0.125 0.28 0.1225
+		Else
+			Player lookAtLegacy $PatientFace -0.125 0.28 -0.1225
+		EndIf
+
+		$Patient headturn Player
+		wait 4
+		$Patient release
+
+		If
+			$PhysicalExamExtra = true
+		Then
+			Do 'Intervention/PhysicalExamExtra.txt'
+		Endif
+
+		Player align $PlayerStart
+		If
+			$isEWS = true
+		Then
+			$ToolPrompt = $PhysicalExamResponse
+			Do 'ToolPrompt.txt'
+		Else
+			If
+				$PhysicalExamExtra = true
+			Then
+				$ToolPrompt = $PhysicalExamResponse
+				Do 'ToolPrompt.txt'
+			Else
+				$ToolPrompt = 'Nil abnormality seen.'
+				Do 'ToolPrompt.txt'
+			Endif
+		Endif
+		$Patient reset
+		$UseToolButton reset
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+	Endif
+
+
+	If
+		$LimbMovement isOnAndPressed
+	Then
+		$LimbMovement reset
+		$GlobalVar setglobal 'UsingTool' true
+		$UIMan closetoolinventory
+		Do 'Intervention/LimbAssessment.txt'
+		$Patient reset
+		$UseToolButton reset
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+	Endif
+
+
+	If
+		$BloodGlucose isOnAndPressed
+	Then
+		$BloodGlucose reset
+		$GlobalVar setglobal 'UsingTool' true
+		$UIMan closetoolinventory
+		$PlayerNurse play LeanIn
+		Wait 3
+		$ToolPrompt = $BloodGlucoseLevel + 'mmol/L'
+		Do 'ToolPrompt.txt'
+		$Patient reset
+		$UseToolButton reset
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+	Endif
+
+# $Vitals is the vitals monitor screen and setVitals updates the numbers on the screen
+	If
+		$ECG isOnAndPressed
+	Then
+		$ECG reset
+		$GlobalVar setglobal 'UsingTool' true
+		$UIMan closetoolinventory
+		Do 'Intervention/AssessECG.txt'
+		$Patient reset
+		$UseToolButton reset
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+	Endif
+
+
+#Intervention Section - Checks to see if you can run interventions during the current stage
+
+	If
+		$OxygenTherapy isOnAndPressed
+	Then
+		$OxygenTherapy reset
+		$GlobalVar setglobal 'UsingTool' true
+		Do 'CheckInterventionLimit'
+		If
+			$CanIntervention = true
+		Then
+			$UIMan closetoolinventory
+			Do 'Intervention/OxygenTherapy.txt'
+			$Patient reset
+			$UseToolButton reset
+		Endif
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+	Endif
+
+
+	If
+		$ApplyPressure isOnAndPressed
+	Then
+		$ApplyPressure reset
+		$GlobalVar setglobal 'UsingTool' true
+		ScoreTracker TaskCompleted $PatientType 'Task_ApplyPressure'
+		$TakenAction = true
+			If
+				$Bleeding = true
+			Then
+				If
+					$IVSet == true
+				Then
+					Do 'CheckInterventionLimit'
+					If
+						$CanIntervention = true
+					Then
+						$UIMan closetoolinventory
+						Do 'InterventionReduce.txt'
+						$PlayerNurse play LeanIn
+						Prompt 'Bleeding site is cleaned and gauze is applied.'
+						wait 2
+						Prompt ''
+						If
+							$Stage == 2
+						Then
+							turnOn $EWSCheck
+						Endif
+					Endif
+				Endif
+			Else
+				$ToolPrompt = 'There is no visible bleeding site seen.'
+				Do 'ToolPrompt.txt'
+			Endif
+		$GlobalVar setglobal 'UsingTool' false
+	Endif
+
+# $IVSet is a check to see if the patient has a cannula applied
+	If
+		$IVDrip isOnAndPressed
+	Then
+		$IVDrip reset
+		$GlobalVar setglobal 'UsingTool' true
+		If
+			$IVSet == true
+		Then
+			Do 'CheckInterventionLimit'
+			If
+				$CanIntervention = true
+			Then
+				$UIMan closetoolinventory
+				Do 'Intervention/GetIVDrip.txt'
+			Endif
+		Else
+			$ToolPrompt = 'A cannula should be attached first.'
+			Do 'ToolPrompt.txt'
+		Endif
+		$Patient reset
+		$UseToolButton reset
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+	Endif
+
+	If
+		$IVCannula isOnAndPressed
+	Then
+		$IVCannula reset
+		$GlobalVar setglobal 'UsingTool' true
+		Do 'CheckInterventionLimit'
+		If
+			$CanIntervention = true
+		Then
+			$UIMan closetoolinventory
+			Do 'Intervention/InsertIVCannula.txt'
+			$Patient reset
+			$UseToolButton reset
+		Endif
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+	Endif
+
+	If
+		$GlucoseSachet isOnAndPressed
+	Then
+		$GlucoseSachet reset
+		$GlobalVar setglobal 'UsingTool' true
+		If
+			$Oriented = true
+		Then
+			Do 'CheckInterventionLimit'
+			If
+				$CanIntervention = true
+			Then
+				$UIMan closetoolinventory
+				Do 'Intervention/OralGlucose.txt'
+				$Patient reset
+				$UseToolButton reset
+			Endif
+		Else
+			$UIMan closetoolinventory
+			$ToolPrompt = $GlucoseResponse
+			Do 'ToolPrompt.txt'
+		Endif
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+	Endif
+
+	If
+		$SpotMonitorFreq isOnAndPressed
+	Then
+		$SpotMonitorFreq reset
+		$GlobalVar setglobal 'UsingTool' true
+		Do 'CheckInterventionLimit'
+		If
+			$CanIntervention = true
+		Then
+			$UIMan closetoolinventory
+			Do 'Intervention/SpotMonitorFreq.txt'
+			$Patient reset
+			$UseToolButton reset
+		Endif
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+	Endif
+
+	If
+		$InformMedicalTeam isOnAndPressed
+	Then
+		$InformMedicalTeam reset
+		ScoreTracker TaskCompleted $PatientType 'Task_InformMedicalTeam'
+		$TakenAction = true
+		$GlobalVar setglobal 'UsingTool' true
+		Do 'CheckInterventionLimit'
+		If
+			$CanIntervention = true
+		Then
+			$UIMan closetoolinventory
+			If
+				$isEWS = false
+			Then
+				$ToolPrompt = 'MO: Please continue to monitor the patient and call me back for abnormal findings'
+				Do 'ToolPrompt.txt'
+			Else
+				If
+					$Stage = 1
+				Then
+					$ToolPrompt = 'MO: Please continue to monitor the patient and call me back for abnormal findings'
+					Do 'ToolPrompt.txt'
+				Endif
+				If
+					$Stage = 2
+				Then
+					$ToolPrompt = 'Noted, I will review the patient in a short while.'
+					Do 'ToolPrompt.txt'
+				Endif
+				If
+					$Stage = 3
+				Then
+					$UIMan closetoolinventory
+					Do 'InterventionReduce.txt'
+					$ToolPrompt = 'MO: I am occupied with another patient, I will be able to reach the ward in 20 minutes.'
+					Do 'ToolPrompt.txt'
+					Do 'Intervention/Abnormal.txt'
+				Endif
+			Endif
+			$Patient reset
+			$UseToolButton reset
+		Endif
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+	Endif

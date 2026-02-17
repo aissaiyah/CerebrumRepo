@@ -1,0 +1,333 @@
+# NEWS_Start.txt - Main NEWS setup file.  Sets up variables for scene objects, etc.
+
+
+###########################################
+# Setup Stage Number
+###########################################
+
+$Stage = '1'
+$GlobalVar setglobal 'Stage' $Stage
+$StageFolderPrefix = 'NEWS_Nurse/Stage' + Stage + '/'
+
+###########################################
+# Setup Scoring
+###########################################
+
+#Setup Task Numbers for this patient
+Do 'NEWS_Nurse/TaskSetup/DefaultPatientVariables'    
+
+#Setup Task Values for this patient
+If
+    $isEWS = true
+Then
+    $ScoringSetup = StageFolderPrefix + 'ScoringNews.txt'
+Else
+    $ScoringSetup = StageFolderPrefix + 'ScoringNon.txt'
+Endif
+Do $ScoringSetup                 
+
+$ScoreTracker = 'ScoreTracker'
+<<<<<<< HEAD
+#A bit of a hack to make sure stage start message only sent once
+If
+   $BedNumber = 1
+Then
+   $ScoreTracker SetStage 1
+   $ScoreTracker NumItems 8
+Endif
+
+#Test of ScoreTracker TaskCompleted:
+#ScoreTracker TaskCompleted $PatientType 'Task_OxygenTherapy'
+#Prompt 'TaskCompleted ' + PatientType
+=======
+$ScoreTracker SetStage 1
+$ScoreTracker NumItems 8
+ScoreTracker TaskCompleted 'Task_TakeNoAction'
+#ScoreTracker TaskCompleted 'Task_OxygenTherapy'
+#Prompt 'TaskTest'
+>>>>>>> 2e5097aee50c3caaca351fd808cf340707e641bd
+#Wait 5
+
+###########################################
+# Setup Canvases
+###########################################
+
+$SumCanvas = 'SummaryCanvas'
+$Summary = 'SummaryCanvas/Background/Text'
+$SummaryText = SumCanvas + '/TopSummary'
+$SummaryExit = SumCanvas + '/OKButton'
+$SummaryBlack = SumCanvas + '/Black'
+$SummaryInfo = SumCanvas + '/InfoButton'
+$SummaryInfo off
+$SumButton = SummaryInfo + '/Information' #'JoystickCanvas/Summary'
+#TurnOn SummaryCanvas/OKButton
+#$TurnOff SummaryCanvas/Canvas/Black
+
+$PatCan = 'PatientCanvas'
+#Do 'Setup/PatientCanvas.txt'
+$OxyCan = 'OxygenTherapyCanvas'
+$ECGCan = 'ECGCheckCanvas'
+$OralCan = 'OralGlucose'
+$IVCannulaCan = 'IVCannula'
+$IVDripCan = 'IVDrip'
+$ComaCheckCan = 'ComaCanvas'
+$SpotMonitorCan = 'SpotMonitorCanvas'
+$AbCan = 'Abnormal Findings'
+$InterventionsCanvas = 'ToolCanvas/Interventions'
+$AssessmentsCanvas = 'ToolCanvas/Assessments'
+$ToolDescription = 'ToolCanvas/ToolDescription'
+$ChecklistButton = 'ToolCanvas/Checklist'
+$EWSCheck = 'ToolCanvas/EWSPatient'
+$EWSChoiceCanvas = 'EWSCanvas'
+$EWSQuestion = 'EWSCanvas/Background'
+$EWSYES = 'EWSCanvas/Background/YES'
+$EWSNO = 'EWSCanvas/Background/NO'
+$EWSCorrect = 'EWSCanvas/Background/Correct'
+$EWSWrong = 'EWSCanvas/Background/Wrong'
+$Timer = 15
+$TimeManager = 'UIManager'
+
+$CheckCanvas = 'PatientChecklist'
+$CheckPat1 = $CheckCanvas + '/Background/Patient 1'
+$CheckPat2 = $CheckCanvas + '/Background/Patient 2'
+$CheckPat3 = $CheckCanvas + '/Background/Patient 3'
+$CheckPat4 = $CheckCanvas + '/Background/Patient 4'
+$CheckPat5 = $CheckCanvas + '/Background/Patient 5'
+$CheckmarkPat1 = $CheckCanvas + '/Image/Background/Check1'
+$CheckmarkPat2 = $CheckCanvas + '/Image/Background/Check2'
+$CheckmarkPat3 = $CheckCanvas + '/Image/Background/Check3'
+$CheckmarkPat4 = $CheckCanvas + '/Image/Background/Check4'
+$CheckmarkPat5 = $CheckCanvas + '/Image/Background/Check5'
+
+$Check_End = $CheckCanvas + '/Background/End'
+$Pat1Name = 
+$GlobalVar getglobal 'PatientName1'
+$Pat2Name = 
+$GlobalVar getglobal 'PatientName2'
+$Pat3Name = 
+$GlobalVar getglobal 'PatientName3'
+$Pat4Name = 
+$GlobalVar getglobal 'PatientName4'
+$Pat5Name = 
+$GlobalVar getglobal 'PatientName5'
+
+$CheckPat1 setItemText $Pat1Name
+$CheckPat2 setItemText $Pat2Name
+$CheckPat3 setItemText $Pat3Name
+$CheckPat4 setItemText $Pat4Name
+$CheckPat5 setItemText $Pat5Name
+
+turnOff $CheckmarkPat1
+turnOff $CheckmarkPat2
+turnOff $CheckmarkPat3
+turnOff $CheckmarkPat4
+turnOff $CheckmarkPat5
+
+wait .1
+
+$P1Global = '0'
+$GlobalVar setGlobal 'P1' $P1Global
+$P2Global = '0'
+$GlobalVar setGlobal 'P2' $P2Global
+$P3Global = '0'
+$GlobalVar setGlobal 'P3' $P3Global
+$P4Global = '0'
+$GlobalVar setGlobal 'P4' $P4Global
+$P5Global = '0'
+$GlobalVar setGlobal 'P5' $P5Global
+
+
+
+$BackECG = 'ECGCheckCanvas/Choices/Exit'
+
+$PupilCanvas = 'PupilCanvas'
+$ComaTestCan = 'ComaTestCanvas'
+$ComaTestCan off
+$PupilCanvas off
+#$VitalsCanvas off
+$EWSWrong off
+$EWSCorrect off
+PatInfoCanvas off
+PatientPreCanvas off
+$ComaCheckCan off
+$PC_Info on
+$IVCannulaCan off
+$SpotMonitorCan off
+$IVDripCan off
+$OralCan off
+$OxyCan off
+$ECGCan off
+$AbCan off
+$EWSCheck off
+$EWSChoiceCanvas off
+$CheckCanvas off
+End off
+
+
+#This is how to update the message handler of an object:
+#$Patient component.add 'ObjectMessageHandler'
+#$Patient component.remove 'ObjectMessageHandlerBase'
+#This is how to add and remove components
+#$Patient component.add 'RandomID'
+#$Patient component.on 'Animator'
+#$Patient component.off 'Animator'
+#$Patient component.remove 'Animator'
+
+
+$PatientChecks = 0
+$PatientCheckTotal = false
+$GlobalVar setglobal 'PatientCheckDone' $PatientCheckTotal
+
+$Patient reset
+
+$Bed clickable false
+$WristTag reset
+
+
+ALL/WristTag localMoveX -0.2
+ALL/WristTag localMoveZ 0.2
+
+
+$Nurse = 'Nurse_01(Clone)'
+$Nurse reset
+$NurseFace = $Nurse + '/Eyes'
+$Player = 'Player'
+$LeftHandSpot = 'LeftHandSpot'
+$RightHandSpot = 'RightHandSpot'
+$Scene_Exit = 'JoystickCanvas/Exit'
+$Desk = 'table1(Clone)'
+
+$DishPos = 'Positions/DishPos'
+$IVLook = 'Positions/IVLook'
+
+$Scene_Exit = 'JoystickCanvas/Exit'
+#$PatLook = 'Bed4 close'
+$PatLook = 'PatLook'
+$DeskStart = Cart + '/Computer1 far'
+
+<<<<<<< HEAD
+$Vitalsmonitor = 'BedsideHeadLeft' + BedNumber +'/Computer1'
+=======
+$Vitalsmonitor = 'BedsideHeadLeft' + PatientNumber +'/VitalsSpotMonitor(Clone)'
+>>>>>>> 2e5097aee50c3caaca351fd808cf340707e641bd
+$Monitorlook = $Vitalsmonitor + '/Close'
+$VitalsCanvas = $Vitalsmonitor + '/SpotCanvas'
+$VitalsCanvas off
+
+#INFUSION SET
+Do 'Setup/BloodInfusionStand.txt'
+$Cart = 'Cart' + BedNumber
+$COWComputer = Cart + '/Computer1'
+$Soap = Cart + '/Misc6'
+$Gloves = Cart + '/Misc9'
+$KidneyDish = Cart + '/Misc2'
+$BloodBag = Cart + '/Misc4'
+
+$Set = Cart + '/Misc3'
+$PressureCuff = Cart + '/Misc7'
+$Wipe = Cart + '/Misc2/Wipe1'
+$Wipe1 = Cart + '/Misc2/Wipe1'
+$Wipe2 = Cart + '/Misc2/Wipe2'
+$Syringe = Cart + '/Misc2/Syringe'
+$BrokenClamp = 'COW0(Clone)/InfusionClamp(Clone)'
+$Gloves clickable true
+$PressureCuff clickable true
+
+$DishDefPos = 'COW0(Clone)/DishPos'
+$GlovesDefPos = 'COW0(Clone)/GlovesPos'
+$CuffDefPos = 'COW0(Clone)/CuffPos'
+$SetTablePos = 'COW0(Clone)/Pos05'
+$BagTableSpot = 'COW0(Clone)/Pos05'
+$SoapDefPos = 'COW0(Clone)/Pos06'
+
+#$Wastebin = 'WastebinScene06(Clone)'
+#$Wastebin = 'Bin2'
+#$BrokenClamp align $Wastebin
+$Vitalsmonitor off
+$bbpos = 'COW0(Clone)/Pos03'
+$BloodBag align $bbpos 0
+#Prompt 'aligned' 
+Wait .15
+
+$BloodBag rotatetoz 90 0
+$BloodBag localmoveX -.10 0
+
+$InfusionStand rotatetoy 0
+$Gloves align $GlovesDefPos
+$PressureCuff align $CuffDefPos
+$KidneyDish align $DishDefPos
+$Set localmovez .1
+
+#$SumCanvas = 'SummaryCanvas/Background'
+
+$UIMan = 'UIManager'
+$UseToolButton = 'ToolCanvas/UseToolButton'
+$CloseTools = 'ToolCanvas/Assessments/CloseToolInventory'
+$UseToolButton reset
+$CloseTools reset
+
+Do 'Setup/PatientCanvas.txt'
+
+#### Dialogue Setup
+
+$DialogCanvas = 'DialogueCanvas'
+   If
+      Player exists $DialogCanvas 
+   Else
+        Create DialogueCanvas 'DialogueCanvas'
+   Endif
+
+   #Do  'Setup/PatientCanvas.txt'
+
+$PatientSpeechBubble = 'DialogueCanvas/Patient Speak'
+$PlayerSpeechBubble = 'DialogueCanvas/Player Speak'
+$PatientSpeech = 'DialogueCanvas/Patient Speak/Text'
+$PlayerSpeech = 'DialogueCanvas/Player Speak/Text'
+Wait .1
+$PlayerSpeechBubble close
+$PatientSpeechBubble close
+$Phone = $Desk + '/Telephone(Clone)'
+
+#### State Variables
+$ChamberAmount = 0
+$BagCombined = false
+$InfusionStarted = false
+$InfusionSetHung = false
+$InfusionSetMoved = false
+$BloddBagMoved = false
+
+$CannulaIV = 'CannulaIV'
+$CannulaIVEnd = $CannulaIV + '/CannulaEnd'
+$PlayerNurse = 'Player/NursePlayer'
+$NurseBodyGloves = PlayerNurse + '/BodyGloves'
+$NurseBodyNoGloves = PlayerNurse + '/BodyNoGloves'
+turnOff $NurseBodyGloves 
+turnOn $NurseBodyNoGloves 
+
+
+$ClampOpen = false
+$IVConnected = false
+$ii = 0
+
+Label 'N1Loop'
+#$ii = ii + 1
+#Speaker1 'N1: i= ' + ii
+#Wait 1
+#Goto 'N1Loop'
+
+$Nurse speaker.color 1 .5 .5
+$NurseHead = $Nurse + '/metarig/Jaw'
+#$PatientHead = $Patient + '/Jaw'
+#$Patient speaker.object $PatientHead
+$Nurse speaker.object $NurseHead
+$Patient speaker.color .5 .5 1
+
+
+#######################################Remove this prompt later
+#Prompt 'You are now in Stage 1'
+#Wait .5
+#Prompt ''
+
+turnOff $Nurse
+$SceneStart = 'NEWS_Nurse/MainLoop.txt'
+Do $SceneStart

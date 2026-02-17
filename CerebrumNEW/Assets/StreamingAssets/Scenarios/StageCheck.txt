@@ -1,0 +1,53 @@
+# StageCheck.txt checks to see if the player has talked to each patient to move to stage 2
+# $testvalue - these hold the true/false values of if the player has spoken to a specific patient yet
+# $PatientCheckTotal is the boolean that when true moves the player to Stage 2
+
+#Sets global variable P1, etc. to true
+$PGlobal = 'P' + BedNumber
+$PTrue = '1'
+$GlobalVar setglobal $PGlobal $PTrue
+
+$testvalue =
+$GlobalVar getGlobal 'P1'
+$testvalue2 =
+$GlobalVar getGlobal 'P2'
+$testvalue3 =
+$GlobalVar getGlobal 'P3'
+$testvalue4 =
+$GlobalVar getGlobal 'P4'
+$testvalue5 =
+$GlobalVar getGlobal 'P5'
+
+
+#If
+#	$testvalue2 = 1
+#Then
+	#$NextStage = Stage + 1
+	#Prompt 'Hack to skip to Stage ' + NextStage + ' after patient 1 is checked in StageCheck.txt'
+	#$GlobalVar setglobal 'PatientCheckDone' true
+	#Wait 2
+	#Prompt ''
+#Endif
+
+If
+	$testvalue = 1
+Then
+	If
+		$testvalue2 = 1
+	Then
+		If
+			$testvalue3 = 1
+		Then
+			If
+				$testvalue4 = 1
+			Then
+				If
+					$testvalue5 = 1
+				Then
+					$GlobalVar setglobal 'PatientCheckDone' true
+					$TimeManager stoptimer
+				Endif
+			Endif
+		Endif
+	Endif
+Endif

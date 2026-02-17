@@ -1,0 +1,45 @@
+#$PatCan off
+$AbCan on
+$Escalate = AbCan + '/Choices/Escalate'
+$Continue = AbCan + '/Choices/Monitor'
+$AbExit = Abcan + '/Choices/Exit'
+
+
+Label 'Loop'
+
+If
+	$Escalate pressed
+Then
+	$Escalate reset
+	Prompt 'Noted, I will come and see the patient as soon as possible'
+	wait 1
+	Prompt ''
+	ScoreTracker taskCorrect 2 1
+	$AbCan off
+	$EndGame on
+	#Do 'EndCheck.txt'
+	Return
+Endif
+
+If
+	$Continue pressed
+Then
+	$Continue reset
+	Prompt $AbnormalResponse
+	wait 1.5
+	Prompt 'You should step up monitoring frequency and alert the medical attention immediately.'
+	wait 1.5
+	Prompt ''
+	$AbCan off
+	Return
+Endif
+
+If
+	$AbExit pressed
+Then
+	$AbExit reset
+	$AbCan off
+	Return
+Endif
+
+Goto 'Loop'

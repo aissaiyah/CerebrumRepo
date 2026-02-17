@@ -1,0 +1,44 @@
+# 'OpenUrineBag'
+Prompt 'UrineBag'
+wait .31
+Prompt ''
+
+If
+	Do 'AnswerIs' 'Open urinary bag package?' 'No'
+Then
+	Return
+Endif
+
+
+
+#setup variables for function calls
+$Item = 'UrineBagPackage'
+$ItemObj = $UrineBag
+$ItemPos = CartPos9
+$UrineBag = ItemObj + 'Instance'  #DropFromPackage adds Instance to name
+
+
+ZoomSpot localMoveZ 0.12 0   #move so not tooo close to camera
+
+#Grab item, and tear package open.
+Do 'Actions/UCG/GrabAndOpenPackage' $Item $PlayerStart
+
+ZoomSpot localMoveZ -0.12 0  #move back to where it was
+
+#pour package
+Do 'Actions/UCG/PourPackage' $Item $ItemPos 0.15
+
+#drop object from package
+Do 'Actions/UCG/DropFromPackage' $Item $ItemObj $ItemPos
+
+Wait 1
+
+#Stop pour
+Do 'Actions/UCG/StopPackagePour' $Item 
+
+#Throw away package
+Do 'Actions/UCG/ThrowAwayPackage' $Item 
+
+
+
+

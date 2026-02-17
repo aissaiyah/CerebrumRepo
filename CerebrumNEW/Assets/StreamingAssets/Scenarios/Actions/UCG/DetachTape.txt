@@ -1,0 +1,35 @@
+#DetachTape
+
+Prompt 'Tape'
+wait 1
+Prompt ''
+
+
+If
+	Do 'AnswerIsNo'   'Prepare Tape?'
+Then
+	Return
+Endif
+
+$DetachedTape = 'DetachedTape'
+$Item = $Tape
+Do 'Actions/UCG/GrabAndOpenPackage' $Item $Cart1LookMedium
+wait .5
+Do 'Actions/UCG/ThrowAwayPackage' $Item $Cart1LookMedium
+wait .5
+$PlayerNurse localMoveY 0.4 0
+wait 0
+$PlayerNurse play LeanIn
+Wait 1
+Create $DetachedTape $DetachedTape
+$DetachedTape align $Cart1Pos6 0
+
+Destroy $Tape
+
+Prompt 'Tape is prepped.'
+wait 1
+Prompt ''
+wait 1
+$PlayerNurse localMoveY -0.4 0
+wait 1
+$Player align $Cart1Look

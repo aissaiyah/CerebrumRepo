@@ -1,0 +1,47 @@
+#########################################
+#  PATIENT INFO
+#########################################
+
+$PatientName = 'Lim Ah Nee'
+$PatientIC = 'S1112223A'
+$BloodType = 'B-'
+$AgeInYears = 73
+$PatientModel = 'PatientMale70'
+$PatientDiag = 'Tear of the distal supraspinatus tendon'
+$PatientGender = 'Male'
+$PatientSummary = 'Mr Lim Ah Nee, admitted electively for left shoulder arthroscopic cuff repair. He has past medical history of diabetes mellitus. Post op instruction: hourly parameter for the next 4 hours.'
+
+$Temperature = 36.5
+$HR = 70
+$BP = '150/71' #mmHg
+$BPSys = 150
+$Respiration = 20
+$SpO2 = 100
+$OxygenSupplement = 'No'
+$LevelOfConscious =  'Alert'
+$Pat_Oxystored = 0
+$Pat_LOCstored = 0
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+#Do 'NEWS/GetPatient.txt'
+
+Create $PatientModel 'PatientA'
+PatientA align $Patient 0
+$Patient = 'PatientA'
+
+$PatLookPlayer = Patient + '/TurntoPlayer'
+$PatLookReset = Patient + '/TurnForward'
+
+$CuffPos = Patient + '/CuffPos'
+$CannulaIVPos = Patient + '/CannulaIVPos'
+$PatientFace = Patient + '/head.x'
+$PatientHead = Patient + '/Jaw'
+$PatientOxygenSupplier = Patient + '/OxygenSuppliers'
+$PatientMask = false
+$PatientNasal = false
+
+
+Do 'NEWS_Nurse/SetupPatient.txt'

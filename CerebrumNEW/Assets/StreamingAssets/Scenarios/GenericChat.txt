@@ -1,0 +1,34 @@
+# GenericChat.txt enables the speech bubbles and creates text when speaking with a patient
+
+If
+    $SpeechBubbles == 1
+Then
+    $PlayerSpeechBubble open
+    $PlayerSpeech write $GenericPlayerLine
+    Wait 2
+    $PatientSpeechBubble open
+    $PatientSpeech write $GenericPatientLine
+    Wait 4
+    $PlayerSpeechBubble close
+    $PatientSpeechBubble close
+    Return
+Else
+    ############### NEW
+    $PlayerLower = 'Player/DialogSpot'
+    $PlayerLower speaks $'You: ' + GenericPlayerLine
+    Wait 2
+    $Patient speaks $'Patient: ' + GenericPatientLine
+    Wait 4
+    $PlayerLower speaks ''
+    $Patient speaks ''
+    Return
+Endif
+Return
+
+############### ORIG
+#Prompt 'You: ' + GenericPlayerLine
+Wait 2
+#Speaker1 'Patient: ' + GenericPatientLine
+Wait 2
+Prompt ''
+Speaker1 ''

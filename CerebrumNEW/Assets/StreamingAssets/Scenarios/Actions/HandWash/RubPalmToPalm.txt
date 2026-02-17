@@ -1,0 +1,49 @@
+#H1RubPalms - rub palm of chosen hand on dorsal of other hand
+#Do 'H1RubPalms' ['right'|'left']
+#Param[1] : $WhichHand
+#Requires:
+# $PlayerNurse, $LeftHandSpot, $RightHandSpot, $NurseLeftHandDorsum, $NurseRightHandDorsum
+
+#Do 'RubPalmToPalm' $param[1]
+
+#Prompt 'RubPalms'
+
+############# Get parameters
+If
+    $param[0] > 0
+Then
+    $whichHand = param[1]
+    $handShape = param[2]
+Else
+    $whichHand = 'right'
+    $handShape = 'palm'
+Endif 
+
+#$whichHand = 'right'
+
+Prompt 'RubPalms: ' + whichHand
+Wait 2
+#Prompt ''
+
+$motionType = 'moveForward'
+
+############# Set hand-specific variables and reach out other hand
+If
+    $whichHand == 'right'
+Then
+    $HandTarget = NurseLeftHandPalm
+Else
+    $HandTarget = NurseRightHandPalm
+Endif
+
+#Prompt 'Calling RubHands HandTarget ' + HandTarget + 'whichhand ' +  whichHand
+#Wait 2
+
+$RubDur = 0.5
+#$HandTarget = 'Palm'
+#Do 'Actions/HandWash/RubHands.txt' $whichHand $HandTarget 'palm' 'default' $motionType 0.05 $MiddleHandSpot 'palm' 'rotateup' $motionType 0.05 5 2 20
+#Prompt 'Actions/HandWash/RubHands.txt ' + whichHand  + ' target = ' + HandTarget #+ ', shape =' + MainGrabPoint
+#Wait 5
+Do 'Actions/HandWash/RubHands.txt' $whichHand $HandTarget $handShape 'default' $motionType 0.05 $HandPalm $MiddleHandSpot $handShape 'vertical' $motionType 0.05 $HandPalm 5 $RubDur 20 0 false 
+
+

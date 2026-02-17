@@ -1,0 +1,48 @@
+#########################################
+#  PATIENT INFO
+#########################################
+
+$PatientName = 'Wee Song Kok'
+$PatientIC = 'S1257567T'
+#$BloodType = 'B-'
+$AgeInYears = 75
+$PatientModel = 'PatientMale70'
+$PatientDiag = 'Pneumonia'
+$PatientProf = 'Male, 75 years old'
+$PatientSummary = 'Patient was admitted from Emergency department for pneumonia.  He has complained of breathless during the handover. He was put on oxygen therapy (nasal prong).'
+
+
+$Temperature = 36.8
+$HR = 70
+$BP = '120/51' #mmHg
+$BPSys = 120
+$Respiration = 20
+$SpO2 = 100
+$OxygenSupplement = 'Yes'
+$LevelOfConscious =  'Alert'
+$Pat_Oxystored = 0
+$Pat_LOCstored = 0
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+#Do 'NEWS/GetPatient.txt'
+
+Create $PatientModel 'PatientNEWS1'
+PatientNEWS1 align $Patient 0
+$Patient = 'PatientNEWS1'
+
+$PatLookPlayer = Patient + '/TurntoPlayer'
+$PatLookReset = Patient + '/TurnForward'
+
+$CuffPos = Patient + '/CuffPos'
+$CannulaIVPos = Patient + '/CannulaIVPos_L'
+$PatientFace = Patient + '/head.x'
+$PatientHead = Patient + '/Jaw'
+$PatientMask = Patient + '/OxygenSuppliers/MaskGroup'
+$PatientNasal = Patient + '/OxygenSuppliers/NasalCannula'
+$PatientMask off
+$PatientNasal on
+
+Do 'NEWS_Nurse/SetupPatient.txt'

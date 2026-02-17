@@ -1,0 +1,14 @@
+#GrabUrineBag
+
+$Item = $UrineBag
+$Grab = 'grab' + OtherHand
+#$Player localMoveZ 0.3
+#Wait 1
+
+$PlayerNurse $Grab $Item 1 'grip' 'default' 
+Wait 2
+#$Player localMoveZ -0.3
+#Wait 0.5
+
+$UrineBag localMoveZ 0.2 1
+wait 1

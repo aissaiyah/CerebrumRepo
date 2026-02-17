@@ -1,0 +1,89 @@
+If
+	$SyringeFull = true
+Then
+
+	ZoomSpot Menu.Question 'Test Catheter balloon for leaks?'
+	ZoomSpot Menu.Choices 'Yes','No'
+	ZoomSpot Menu.on ZoomSpot
+	WaitFor
+		ZoomSpot Menu.Done
+	Wait .1
+	If
+		ZoomSpot menu.result 'Yes'
+	Then
+
+		$CatheterPort = $CatheterBalloon + '/Handle/Port'
+		wait 1
+
+		Player align $CartLook 0.5
+		Wait 0.5
+		#move player closer for grab
+		$Player localMoveZ 0.25 0.5
+		wait 1
+		$Player localrotatex 30 0.5
+		wait 1
+		$Item = $Syringe
+		$Grab = 'grab' + ActiveHand
+		Do 'SetGripSize' $ActiveHand 0.2
+#		$Syringe localRotatetoZ -150 0.3 
+		$PlayerNurse $Grab $Item 1 'dip' 'default' 
+		Wait 1
+
+
+		$Syringe align $CatheterPort 1
+		wait 1.1
+
+		$Syringe localrotatey 25 .1
+		wait .2
+		$Syringe localrotatex 20 .1
+		wait .2
+		$Syringe localmovez -.01 .1
+		wait .2
+
+		#push in water
+		$Plunger localmovey -.06 2
+		turnOff $SyringeWater
+		$CatheterBalloon play Grow true
+		wait 2
+
+
+		$ItemHoldSpot = $CatheterBalloon + '/' + ActiveHand + 'Rotator'
+		Wait 0
+		$ItemHoldSpot localmovey .08 0
+		wait 0
+
+		#Grab Package
+		$Grab = 'grab' + OtherHand + '.elbowout'
+		$PlayerNurse $Grab $ItemHoldSpot 0.5 'dip' 'default' 
+		Wait 2
+		Prompt 'No leaks found.  Balloon is intact.'
+		wait 2
+		Prompt ''
+		$Release = 'release' + OtherHand
+		$PlayerNurse $Release 1 'dip'
+		wait 1
+
+		#pull out water
+		$Plunger localmovey .06 2
+		wait 2
+		turnOn $SyringeWater
+		$CatheterBalloon play Grow false
+		wait 2
+
+		#put back curled version
+		$CatheterBalloon clickable false
+		wait 1
+		$Syringe align $CatheterPos 1
+		Wait 1
+		$Syringe localmovez .08 .5
+		wait .5
+
+		$Release = 'release' + ActiveHand
+		$PlayerNurse $Release 1 'dip'
+		Do 'SetGripSize' $ActiveHand 0.5
+		Wait 1
+		Player align $CartLook 0.5
+
+		turnOn $Stage4Button
+	Endif
+Endif

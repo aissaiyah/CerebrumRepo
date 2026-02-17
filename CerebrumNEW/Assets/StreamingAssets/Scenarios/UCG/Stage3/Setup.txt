@@ -1,0 +1,228 @@
+# UCG3Setup.txt - Main UCG setup file.  Sets up variables for scene objects, etc.
+#Wait 10000
+$Stage = '3'
+
+Do 'UCG/SetupVariables'
+
+###########################################
+# Setup Stage Number
+###########################################
+
+$GlobalVar setglobal 'Stage' $Stage
+$StageFolderPrefix = 'UCG/Stage' + Stage + '/'
+
+$DefaultBedNumber = 4
+$PlayerStart = Bed + '/MediumLeft'
+$UrinaryProcPos = Bed + '/UrinaryProcPos'
+#Move camera to DefaultBedNumber, which then sets it as the current patient
+If 
+    $BedNumber = DefaultBedNumber
+Then
+    Do 'UCG/COWSetup.txt'
+    #Prompt 'Default Patient is ' + BedNumber
+	Player align $PlayerStart .05
+    $BathroomSignName = 'BathroomSign' + PatientGender
+    $BathroomSignLoc = 'RoomLrgDoubleWard_base2/BathroomSign'
+    If
+        $PatientGender = 'Female'
+    Then
+        $BathroomSign = 'women sign'
+    Else
+        $BathroomSign = 'men sign'
+    Endif
+    Create $BathroomSign $BathroomSignName
+    $BathroomSignName align $BathroomSignLoc 0
+Endif
+
+$Curtain = 'CurtainMain'
+$Curtain clickable true
+$Curtain outline.on
+$CurtainClosed = 'CurtainClosed'
+turnOff $CurtainClosed
+
+#turnOff $EndGameButton
+$EndGameButton off
+
+$RightHandImage setimagecolor alpha 1
+$LeftHandImage setimagecolor alpha .2
+
+########Turn on when not testing
+#turnoff $Stage4Button
+#turnoff $Stage2Button
+
+###########################################
+# Setup Scoring
+###########################################
+
+
+#Setup Task Numbers for this patient
+Do 'NEWS_Nurse/TaskSetup.txt'    
+
+#Setup Task Values for this patient
+If
+    $isEWS = true
+Then
+    $ScoringSetup = StageFolderPrefix + 'ScoringNews.txt'
+Else
+    $ScoringSetup = StageFolderPrefix + 'ScoringNon.txt'
+Endif
+Do $ScoringSetup                 
+
+$ScoreTracker = 'ScoreTracker'
+#A bit of a hack to make sure stage start message only sent once
+If
+   $BedNumber = 1
+Then
+   $ScoreTracker SetStage 1
+   $ScoreTracker NumItems 8
+Endif
+
+$GlobalVar setglobal 'Gender' $PatientGender
+wait .1
+$ScenarioGender =
+$GlobalVar getglobal 'Gender'
+
+$ScenarioStruggle = UCStruggle
+#$GlobalVar getglobal 'PatientStruggle'
+/*
+#For testing struggle
+If
+    $(ScenarioStruggle == false)
+Then
+    #Prompt 'FALSE:ScenarioStruggle = ' + ScenarioStruggle
+    #Continue
+Else
+    #Prompt 'TRUE:ScenarioStruggle = ' + ScenarioStruggle
+    $GlobalVar setglobal 'PatientStruggle' $UCStruggle
+
+    $ScenarioStruggle = UCStruggle
+#    $GlobalVar getglobal 'PatientStruggle'
+Endif
+*/
+$TakenAction = false
+
+#ScoreTracker TaskCompleted $PatientType 'Task_TakeNoAction'
+#Test of ScoreTracker TaskCompleted:
+#ScoreTracker TaskCompleted $PatientType 'Task_OxygenTherapy'
+#Prompt 'TaskCompleted ' + PatientType
+#Wait 5
+
+###########################################
+# Setup Canvases
+###########################################
+
+$SummaryInfo off
+#TurnOn SummaryCanvas/OKButton
+#$TurnOff SummaryCanvas/Canvas/Black
+
+
+$EWSWrong off
+$EWSCorrect off
+PatInfoCanvas off
+PatientPreCanvas off
+$PC_Info on
+$ECGCan off
+$EWSCheck off
+$EndGame off
+$EWSChoiceCanvas off
+End off
+
+
+#This is how to update the message handler of an object:
+#$Patient component.add 'ObjectMessageHandler'
+#$Patient component.remove 'ObjectMessageHandlerBase'
+#This is how to add and remove components
+#$Patient component.add 'RandomID'
+#$Patient component.on 'Animator'
+#$Patient component.off 'Animator'
+#$Patient component.remove 'Animator'
+
+
+$PatientChecks = 0
+$PatientCheckTotal = false
+$GlobalVar setglobal 'PatientCheckDone' $PatientCheckTotal
+$Patient reset
+$Bed clickable false
+$WristTag reset
+
+
+ALL/WristTag localMoveX -0.2
+ALL/WristTag localMoveZ 0.2
+
+
+#$SumCanvas = 'SummaryCanvas/Background'
+
+$UIMan = 'UIManager'
+$UseToolButton = 'ToolCanvas/UseToolButton'
+$CloseTools = 'ToolCanvas/Assessments/CloseToolInventory'
+$UseToolButton reset
+$CloseTools reset
+
+Do 'Setup/PatientCanvas.txt'
+
+#### Dialogue Setup
+
+$DialogCanvas = 'DialogueCanvas'
+   If
+      Player exists $DialogCanvas 
+   Else
+        Create DialogueCanvas 'DialogueCanvas'
+   Endif
+
+   #Do  'Setup/PatientCanvas.txt'
+
+$PatientSpeechBubble = 'DialogueCanvas/Patient Speak'
+$PlayerSpeechBubble = 'DialogueCanvas/Player Speak'
+$PatientSpeech = 'DialogueCanvas/Patient Speak/Text'
+$PlayerSpeech = 'DialogueCanvas/Player Speak/Text'
+Wait .1
+$PlayerSpeechBubble close
+$PatientSpeechBubble close
+
+$SyringeFull = false
+$AntisepticCotton = false
+
+
+$CannulaIV = 'CannulaIV'
+$CannulaIVEnd = $CannulaIV + '/CannulaEnd'
+$PlayerNurse = 'Player/NursePlayer'
+$NurseBodyGloves = PlayerNurse + '/BodyGloves'
+$NurseBodyNoGloves = PlayerNurse + '/BodyNoGloves'
+turnOff $NurseBodyGloves 
+turnOn $NurseBodyNoGloves 
+
+
+$CartClothFolded outline.on
+$ContinenceSheet outline.on
+$InjectionWater outline.on
+$Antiseptic outline.on
+$SyringePackage outline.on
+$LubricantPackage outline.on
+$Lubricant outline.on
+$Catheter outline.on
+$Gloves outline.on
+$Syringe outline.on
+$Tape outline.on
+$CottonBalls outline.on
+
+$CartClothFolded clickable true
+$ContinenceSheet clickable true
+$InjectionWater clickable true
+$Antiseptic clickable true
+$SyringePackage  clickable true
+$Lubricant clickable true
+$LubricantPackage clickable true
+$Catheter clickable true
+$Gloves clickable true
+$Syringe clickable true
+$Tape clickable true
+$CottonBalls clickable true
+
+$Patient speaker.color .5 .5 1
+$Patient outline.on
+
+$SceneStart = 'UCG/Stage3/Loop.txt'
+
+Do 'Setup/NursePlayer'
+
+Do $SceneStart

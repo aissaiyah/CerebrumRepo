@@ -1,0 +1,21 @@
+#MustDoFirst $Item $Message
+#Display warning message if item is pressed
+#Check if clicked on $Item.  If so, Do $Action.
+
+If
+	$param[0] > 0
+Then
+	$Item = param[1]
+	$Message = param[2]
+Endif
+		
+		
+
+If
+	$Item pressed
+Then
+	$Item reset
+	Prompt $Message
+	wait 1.5
+	Prompt ''
+Endif

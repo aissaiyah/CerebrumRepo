@@ -1,0 +1,48 @@
+#########################################
+#  PATIENT INFO
+#########################################
+
+$PatientName = 'Teng Nelson'
+$PatientIC = 'S2833365H'
+$BloodType = 'B-'
+$AgeInYears = 80
+$PatientModel = 'PatientMale50Diaper'
+$PatientDiag = 'Urinary tract infection'
+$PatientProf = 'Male, 80 years old'
+$PatientSummary = 'Patient was recently discharged from hospital for prostate cancer. During his previous admission,  he had urinary catheter inserted. However he had developed urinary tract infection after discharge.  He was readmitted for heamaturia and fever.'
+
+
+$Temperature = 38.8
+$HR = 85
+$BP = '138/67' #mmHg
+$BPSys = 138
+$Respiration = 20
+$SpO2 = 98
+$OxygenSupplement = 'No'
+$LevelOfConscious =  'Alert'
+$Pat_Oxystored = 0
+$Pat_LOCstored = 0
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+#Do 'NEWS/GetPatient.txt'
+$PatLookPlayer = Patient + '/TurntoPlayer'
+$PatLookReset = Patient + '/TurnForward'
+
+Create $PatientModel 'PatientNEWS5'
+PatientNEWS5 align $Patient 0
+turnOff $Patient
+$Patient = 'PatientNEWS5'
+
+$CuffPos = Patient + '/CuffPos'
+$CannulaIVPos = Patient + '/CannulaIVPos'
+$PatientFace = Patient + '/head.x'
+$PatientHead = Patient + '/Jaw'
+$PatientMask = Patient + '/OxygenSuppliers/MaskGroup'
+$PatientNasal = Patient + '/OxygenSuppliers/NasalCannula'
+$PatientMask off
+$PatientNasal off
+
+Do 'NEWS_Nurse/SetupPatient.txt'

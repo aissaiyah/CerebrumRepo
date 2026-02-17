@@ -1,0 +1,57 @@
+########### INFLATION ###########
+
+#Player align $UrinaryProcPos 1
+#Wait 1
+#Player localRotateX 30 1
+#Wait 1
+Player localRotateY 30 1
+Wait 1
+
+$Choice1 = 'Inflate the balloon with 10 CC water for injection'
+$Choice2 = 'Insert another 2.5cm and inflate the balloon with 10cc water for injection.'
+ZoomSpot Menu.Question 'What should you do next?'
+ZoomSpot Menu.Choices $Choice1,$Choice2
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait .1
+If
+	ZoomSpot menu.result $Choice2
+Then
+	#Insert 2.5cm
+	$TempCatheter localmovez .025 1
+	wait 1
+Endif
+
+$Grab = 'grab' + ActiveHand
+Do 'SetGripSize' $ActiveHand 0.2
+$PlayerNurse $Grab $Syringe 1 'dip' 'default' 
+Wait 1
+
+#	$Syringe align $CatheterPort 1
+#	wait 1
+	$Syringe align $CatheterPort 1
+	wait 1
+	$Syringe localmovez -.01 .1
+	wait .2
+	$Plunger localmovey -.06 2
+	wait 2
+	turnOff $SyringeWater
+
+$Syringe align $CatheterPos 1
+Wait 1
+$Syringe localmovez .08 .5
+wait .5
+$Syringe attachto $UCGKidneyDish
+
+$Release = 'release' + ActiveHand
+$PlayerNurse $Release 1 'dip'
+
+
+$TempCatheter localmovez -.01 .1
+wait .2
+$TempCatheter localmovez .01 .1
+wait .2
+Do 'SetGripSize' $ActiveHand 0.5
+
+$CatheterInserted = true

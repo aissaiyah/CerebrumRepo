@@ -1,0 +1,22 @@
+# 'PourPackage' $Package $Target $Height
+#Prompt 'PourPackage num params = ' + param[0]
+#Wait 1
+
+If
+	$param[0] > 0
+Then
+	$Package = param[1]
+	$Target = param[2]
+	$Height = param[3]
+Endif
+$Player lookAt $Target 0.0 0.25 -0.12 0.5 -1
+Wait 0.5
+
+#Move 15cm over container over 1/2 second
+$Package moveAbove $Target $Height 0.5
+Wait .6
+
+#Pour
+$Package localrotateX -90 1
+wait 0.5
+

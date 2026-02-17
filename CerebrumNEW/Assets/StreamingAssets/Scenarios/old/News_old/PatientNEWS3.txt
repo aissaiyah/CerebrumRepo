@@ -1,0 +1,51 @@
+#########################################
+#  PATIENT INFO
+#########################################
+
+$PatientName = 'Steve Lim'
+$PatientIC = 'S107978B'
+$BloodType = 'B-'
+$AgeInYears = 82
+$PatientModel = 'PatientMale50'
+$PatientDiag = 'Right fingers gangrene'
+$PatientProf = 'Male, 82 years old'
+$PatientSummary = 'Patient was admitted  for ray amputations due to gangrene. It is his 1st POD upon receiving him from previous shift, the  nurse noted he is in low mood and refuse to talk. Otherwise he is did not have other complain.'
+
+
+$Temperature = 36.4
+$HR = 85
+$BP = '120/50' #mmHg
+$BPSys = 120
+$Respiration = 20
+$SpO2 = 98
+$OxygenSupplement = 'No'
+$LevelOfConscious =  'Alert'
+$Pat_Oxystored = 0
+$Pat_LOCstored = 0
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+#Do 'NEWS/GetPatient.txt'
+$PatLookPlayer = Patient + '/TurntoPlayer'
+$PatLookReset = Patient + '/TurnForward'
+
+
+Create $PatientModel 'PatientNEWS3'
+PatientNEWS3 align $Patient 0
+turnOff $Patient
+$Patient = 'PatientNEWS3'
+
+
+$CuffPos = Patient + '/CuffPos'
+$CannulaIVPos = Patient + '/CannulaIVPos'
+$PatientFace = Patient + '/head.x'
+$PatientHead = Patient + '/Jaw'
+$PatientMask = Patient + '/OxygenSuppliers/MaskGroup'
+$PatientNasal = Patient + '/OxygenSuppliers/NasalCannula'
+$PatientMask off
+$PatientNasal off
+
+
+Do 'NEWS_Nurse/SetupPatient.txt'

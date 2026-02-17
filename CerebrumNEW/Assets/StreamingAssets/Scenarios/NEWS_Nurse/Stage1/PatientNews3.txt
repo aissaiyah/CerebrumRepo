@@ -1,0 +1,53 @@
+#########################################
+#  PATIENTNEWS3 INFO INIT - Fentanyl overdose scenario
+#########################################
+
+$PatientName = 'Loh Kok Liang'
+$isEWS = true
+$PatientIC = 'S5566778C'
+$BloodType = 'O-'
+$AgeInYears = 77
+$PatientModel = 'uAvatar'
+$PatientDiag = 'Acute urinary retention'
+$PatientGender = 'Male'
+$PatientSummary = 'Patient with medical history of hypertension and recto sigmoid adenocarcinoma, admitted for acute urinary retention. He has chronic pain resulting from his malignancy. He was started on S/C Fentanyl 30mcg/hr with PRN boluses. He went for an Interventional Radiology for CVC line insertion. Post-procedure, he complained of intense pain resulting from his malignancy. Bolus dose of Fentanyl 10mcg of  was administered. Patient was on hourly parameters post procedure.'
+
+$PatientType = 'News3'
+
+$Temperature = 36.4
+$HR = 82
+$BP = '95/50'
+$BPSys = 95
+$Respiration = 14
+$SpO2 = 98
+
+$PainScore = 'Pain Score: 2/10'
+
+$AbnormalResponse = 'Patient is showing the signs and symptoms of Fentanyl overdose'
+
+$PatientSpeak = 'I am feeling sleepy, please do not disturb me.'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNewsC_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientObjName align $Patient 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'NEWS_Nurse/SetupPatient.txt'
+
+$HeadAmount = 80
+$WeightAmount = 25.0
+
+Do 'PatientCreations/Age/75.txt'
+Do 'PatientCreations/Head/Head2.txt'
+Do 'PatientCreations/Height/Average.txt'
+Do 'PatientCreations/Expressions/Frown.txt'
+Do 'PatientCreations/Weight/Weight.txt'
+
+$Patient play BreathingSpeed true .75

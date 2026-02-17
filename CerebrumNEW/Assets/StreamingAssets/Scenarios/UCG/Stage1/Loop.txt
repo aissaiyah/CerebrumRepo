@@ -1,0 +1,346 @@
+#/PatientCanvas off
+JoystickCanvas on
+$InfusionStand off
+$Vitalsmonitor outline.on
+#Prompt 'Playerstart = ' + PlayerStart
+Wait .51
+
+$Smile = 'PatientCreations/Expressions/Smile.txt'
+#Prompt 'Smile'
+#Do 'Smile'
+#Prompt 'Smile 5'
+#Wait 1
+#Prompt ''
+#Do $Smile 20
+
+
+$PlayerStart = Bed + '/Medium'
+
+$COW = 'COW'
+$COWPos = Bed + '/COWPos'
+$COWMonitor = $COW + '/Computer01/COWComputer'
+$COWMonitorLook = $COWMonitor + '/MonitorLook'
+$COWMonitorExit = $COWMonitor + '/Canvas/Exit'
+
+$COWMonitor outline.on
+
+If
+	$Patient isCurrent
+Then
+	$COW align $COWPos 0
+Endif
+
+wait .5
+
+WipeCanvas off
+/SyringeCanvas off
+/IVCanvas off
+/DripCanvas off
+
+$Soap outline.on
+$Gloves outline.on
+$KidneyDish outline.on
+$KidneyDish reset
+
+$BloodBag outline.on
+$Set outline.on
+$PressureCuff outline.on
+$Vitalsmonitor on
+#$Patient outline.off
+#$Vitalsmonitor outline.off
+
+$Wipe1 outline.on
+$Wipe1 reset
+$Phone outline.on
+$Phone clickable true
+
+Do 'SummaryCheck.txt'
+$ConfirmPatient = '/ToolCanvas/ConfirmPatient'
+
+wait .1
+
+If
+	$Patient isCurrent
+Then
+	$GlobalVar setglobal 'UsingTool' true
+	turnOff $ConfirmPatient
+	Player align $COWMonitorLook 1
+	turnOn $COWMonitorExit
+	turnOff JoystickCanvas
+	turnOff $SumButton
+	label 'COWStartLoop'
+	If
+		$COWMonitorExit pressed
+	Then
+		$COWMonitorExit reset
+		Player align $PlayerStart 1
+		turnOff $COWMonitorExit
+		Wait 1
+		$COWMonitor reset
+		$GlobalVar setglobal 'UsingTool' false
+		turnOn JoystickCanvas
+		turnOn $SumButton
+		turnOn $ConfirmPatient
+		Goto 'LoopN1'
+	Endif
+	Goto 'COWStartLoop'
+Endif
+
+#Do 'Actions/HandWash/7Steps.txt'
+
+$GlobalVar setglobal 'UsingTool' false
+
+Label 'LoopN1'
+
+	$UsingTool =
+	  $GlobalVar getGlobal 'UsingTool'
+
+	If
+		$SumButton pressed
+	Then
+		$SumButton reset
+		$GlobalVar setglobal 'UsingTool' true
+		$CheckCanvas off
+		PatInfoCanvas off
+		If
+			$InterventionsCanvas isOn
+		Then
+			$UIMan closetoolinventory
+		Endif
+		Do 'SummaryCheck.txt'
+		$GlobalVar setglobal 'UsingTool' false
+	Endif
+
+	If
+		$PatientCheckTotal = true
+	Then
+		wait 1    #wait for all GMs to finish up
+		Do 'NEWS_Nurse/ChangeStage.txt'
+	Endif
+
+
+	If
+		$EndGame isOnAndPressed
+	Then
+		#Do 'EndCheck.txt'
+		If
+			$BedNumber = 1
+		Then
+			ScoreTracker EndStage
+		Endif
+
+		Wait 1
+
+		If
+            $BedNumber = 1
+        Then		
+            ScoreTracker CloseStage
+        Endif
+        
+        Wait 1  #needed for scorm
+        SceneManager switchtoscene Scenes/MainMenu
+	Endif
+
+	If
+		$Patient isCurrent
+	Then
+		If
+			$Patient pressed
+		Then
+			$GlobalVar setglobal 'UsingTool' true
+	#		Speaker2 'N1: Patient = ' + PatientName
+			Player align $PlayerStart 0.5
+			Wait .5
+			$Patient reset
+			$Patient outline.off
+			turnOff $ConfirmPatient
+			$Patient headturn Player
+			Do 'UCG/EngagePatient.txt'
+			$Patient outline.on
+			JoystickCanvas on
+			turnOn $ConfirmPatient
+			$GlobalVar setglobal 'UsingTool' false
+			#Player align PlayerStart
+		Endif
+	Else
+
+		If
+			$Patient pressed
+		Then
+			$Patient reset
+
+			$GlobalVar setglobal 'UsingTool' true
+			If
+				/PatientPreCanvas isoff
+			Then
+				Player align $PlayerStart 0.5
+				COW align $COWPos 0
+				#Prompt 'Moving to patient ' + PatientName
+			Else
+				$Patient reset
+			Endif
+				$GlobalVar setglobal 'UsingTool' false
+			Wait 1
+			#Prompt ''
+		
+		Endif
+		Wait 1
+#		Prompt ''
+		Goto 'LoopN1'		
+	Endif
+
+	If
+		$COWMonitor pressed
+	Then
+		$COWMonitor reset
+		$GlobalVar setglobal 'UsingTool' true
+		turnOff $ConfirmPatient
+		Player align $COWMonitorLook 1
+		turnOn $COWMonitorExit
+		turnOff JoystickCanvas
+		turnOff $SumButton
+		label 'COWLoop'
+		If
+			$COWMonitorExit pressed
+		Then
+			$COWMonitorExit reset
+			Player align $PlayerStart 1
+			turnOff $COWMonitorExit
+			Wait 1
+			$COWMonitor reset
+			$GlobalVar setglobal 'UsingTool' false
+			turnOn JoystickCanvas
+			turnOn $SumButton
+			turnOn $ConfirmPatient
+			Goto 'LoopN1'
+		Endif
+		Goto 'COWLoop'
+	Endif
+
+	If
+		$ConfirmPatient pressed
+	Then
+		$ConfirmPatient reset
+		ZoomSpot Menu.Question 'Is this the correct patient?'
+		ZoomSpot Menu.Choices 'Yes','No','Unsure'
+		ZoomSpot Menu.on ZoomSpot
+		WaitFor
+			ZoomSpot Menu.Done
+		Wait .1
+		If
+			ZoomSpot menu.result $Yes
+		Then
+			If
+				$NeedsPerformed = true
+			Then
+				Prompt 'This is the correct patient.'
+				$ConfirmPatient reset
+				wait 2
+				Prompt ''
+				Player align $PlayerStart 0.5
+				$Patient headturn Player
+				$GenericPlayerLine = 'Hi ' + PatientName + ', I will need to insert a urine tube, as ordered by the Doctor for your bladder distension. I will now gather the requisites and come back to you.'
+				$GenericPatientLine = 'Alright.'
+				Do 'GenericChat.txt'
+				wait .5
+				$GenericPlayerLine = 'May I ask if you have any drug allergies or allergies to any cleansing solutions?'
+				$GenericPatientLine = 'No I do not.'
+				Do 'GenericChat.txt'
+				wait .5
+				$GenericPlayerLine = 'Alright, I will now go to gather the requisites and come back to you.'
+				$GenericPatientLine = 'Thank you.'
+				Do 'GenericChat.txt'
+				wait .5
+				SceneManager switchtoscene Scenes/UCG/UCG02
+				wait 3
+				Return
+			Else
+				Prompt 'This is not the correct patient. Please find the correct patient.'
+				$ConfirmPatient reset
+				wait 3
+				Prompt ''
+			Endif
+		Endif
+	Endif
+
+	If
+		$PatientSign pressed
+	Then
+		$PatientSign reset
+		$GlobalVar setglobal 'UsingTool' true
+		Player align $LookAtPatientSign 1
+		$ECGCan on
+		turnOff $ConfirmPatient
+		label 'signLoop'
+		If
+			$BackECG pressed
+		Then
+			$BackECG reset
+			$ECGCan off
+			ZoomSpot Menu.Question 'Is this the correct patient?'
+			ZoomSpot Menu.Choices 'Yes','No','Unsure'
+			ZoomSpot Menu.on ZoomSpot
+			WaitFor
+				ZoomSpot Menu.Done
+			Wait .1
+			Player align $PlayerStart 1
+			Wait .5
+			turnOn $ConfirmPatient
+			$GlobalVar setglobal 'UsingTool' false
+			$PatientSign reset
+			Goto 'LoopN1'
+		Endif
+		Goto 'signLoop'
+	Endif
+
+	
+
+	If
+		$Wristband pressed
+	Then
+		$Wristband reset
+		$Patient outline.off
+		$Patient clickable false
+		Player align $BandView 1
+		ZoomSpot Menu.Question 'Is this the correct patient?'
+		ZoomSpot Menu.Choices 'Yes','No','Unsure'
+		ZoomSpot Menu.on ZoomSpot
+		WaitFor
+			ZoomSpot Menu.Done
+		Wait .1
+		$Patient reset
+		$Patient outline.on
+		Player align $PlayerStart 0.5
+	Endif
+
+	If
+		$Vitalsmonitor pressed
+	Then
+		$Vitalsmonitor reset
+		Do 'ToolTxt/AssessECG.txt'
+	Endif
+
+	If
+		$Pat_Back pressed
+	Then
+		$Pat_Back reset
+		PatInfoCanvas off
+	Endif
+
+	If
+		$Scene_Exit pressed
+	Then 
+		$Scene_Exit reset
+		#ScoreTracker rangecomplete 0-14
+		Do 'EndCheck.txt'
+	Endif
+
+	If
+		$Check_End pressed
+	Then
+		$Check_End reset
+		$CheckCanvas off
+	Endif
+
+	Wait .2
+Goto 'LoopN1'

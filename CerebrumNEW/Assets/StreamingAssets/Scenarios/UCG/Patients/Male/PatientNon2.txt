@@ -1,0 +1,51 @@
+#########################################
+#  PATIENTNon2 INFO INIT
+#########################################
+
+$PatientName = 'Atan Bin Abu'
+$isEWS = false
+$PatientIC = 'S7600553E'
+$BloodType = 'B-'
+$AgeInYears = 45
+$PatientModel = 'uAvatar'
+$PatientDiag = 'Right leg Cellulitis'
+$PatientGender = 'Male'
+$PatientSummary = ''
+
+$PatientType = 'Non2'
+
+$Temperature = 37.7
+$HR = 80
+$BP = '105/60'
+$BPSys = 105
+$Respiration = 20
+$SpO2 = 99
+
+$PainScore = 'Pain Score: 0/10'
+
+$PatientSpeak = 'Hi, I am feeling feverish right now. Can you please call the doctor to see me now?'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNon2_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientObjName align $Patient 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'UCG/SetupPatient.txt'
+
+$HeadAmount = 80.0
+$WeightAmount = 75.0
+
+#Do 'PatientCreations/FemaleTest2.txt'
+Do 'PatientCreations/Head/Head0.txt'
+Do 'PatientCreations/Height/Average.txt'
+#Do 'PatientCreations/Weight/Average.txt'
+#Do 'PatientCreations/Gender/Male.txt'
+
+$Patient outline.off

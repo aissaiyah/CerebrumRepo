@@ -1,0 +1,53 @@
+Prompt 'Lubricant'
+wait 1
+Prompt ''
+
+$CatheterPort = $CatheterBalloon + '/Handle/Port'
+
+If
+	$CatheterBalloon isOn
+Then
+
+	If
+		Do 'AnswerIsNo' 'Lubricate Catheter?'
+	Then
+		Return
+	Endif
+
+	$Player align $CartLook 1
+	wait 1
+	$Item = $Lubricant
+	$Grab = 'grab' + ActiveHand
+	$PlayerNurse $Grab $Item 1 'tweeze' 'default' 
+	Wait 1
+
+	$Lubricant moveAbove $CatheterPort .08 1
+	wait 1
+
+
+	$PlayerNurse localMoveY 0.45 0
+	$PlayerNurse play LeanIn
+	Wait 1
+
+	$Lubricant localmovex -.08 .2
+	wait .3
+	$Lubricant localrotatex -145 .2
+	wait .3
+	$Lubricant localrotatex 145 .2
+	wait .2
+	Destroy $Lubricant
+
+	$Release = 'release' + ActiveHand
+	$PlayerNurse $Release 1 'tweeze'
+	Wait 2.5
+	
+	$PlayerNurse localMoveY -0.45 0
+	
+
+	Prompt 'Catheter is lubricated'
+	wait 1.5
+	Prompt ''
+
+
+
+Endif

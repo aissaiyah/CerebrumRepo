@@ -1,0 +1,80 @@
+#CreateCanvases
+Prompt 'Creating Canvases'
+
+
+$SummaryCanvasObj = 'NEWSSummaryCanvas'
+$SummaryCanvas = 'SummaryCanvas'
+Create $SummaryCanvasObj $SummaryCanvas
+$SummaryCanvas parentTo '===CANVASES==='
+
+$ComaTestCanvas = 'ComaTestCanvas'
+Create $ComaTestCanvas $ComaTestCanvas
+$ComaTestCanvas parentTo '===CANVASES==='
+
+$ECGCheckCanvas = 'ECGCheckCanvas'
+Create $ECGCheckCanvas $ECGCheckCanvas
+$ECGCheckCanvas parentTo '===CANVASES==='
+
+$IVCannulaCanvas = 'IVCannulaCanvas'
+Create $IVCannulaCanvas $IVCannulaCanvas
+$IVCannulaCanvas parentTo '===CANVASES==='
+
+$IVDripCanvas = 'IVDripCanvas'
+Create $IVDripCanvas $IVDripCanvas
+$IVDripCanvas parentTo '===CANVASES==='
+
+$OralGlucoseCanvas = 'OralGlucoseCanvas'
+Create $OralGlucoseCanvas $OralGlucoseCanvas
+$OralGlucoseCanvas parentTo '===CANVASES==='
+
+$OxygenTherapyCanvas = 'OxygenTherapyCanvas'
+Create $OxygenTherapyCanvas $OxygenTherapyCanvas
+$OxygenTherapyCanvas parentTo '===CANVASES==='
+
+$PupilCanvas = 'PupilCanvas'
+Create $PupilCanvas $PupilCanvas
+$PupilCanvas parentTo '===CANVASES==='
+
+$SpotMonitorCanvas = 'SpotMonitorCanvas'
+Create $SpotMonitorCanvas $SpotMonitorCanvas
+$SpotMonitorCanvas parentTo '===CANVASES==='
+
+#$ToolCanvas = 'ToolCanvas'
+#Create $ToolCanvas $ToolCanvas
+#$ToolCanvas parentTo '===CANVASES==='
+
+$PatientCanvas = 'PatientCanvas'
+Create $PatientCanvas $PatientCanvas
+$PatientCanvas parentTo '===CANVASES==='
+
+$PatientPreCanvas = 'PatientPreCanvas'
+Create $PatientPreCanvas $PatientPreCanvas
+$PatientPreCanvas parentTo '===CANVASES==='
+
+$PatInfoCanvas = 'PatInfoCanvas'
+Create $PatInfoCanvas $PatInfoCanvas
+$PatInfoCanvas parentTo '===CANVASES==='
+
+$PatientChecklistCanvas = 'PatientChecklistCanvas'
+Create $PatientChecklistCanvas $PatientChecklistCanvas
+$PatientChecklistCanvas parentTo '===CANVASES==='
+
+$EWSCanvas = 'EWSCanvas'
+Create $EWSCanvas $EWSCanvas
+$EWSCanvas parentTo '===CANVASES==='
+
+$DialogueCanvas = 'DialogueCanvas'
+Create $DialogueCanvas $DialogueCanvas
+$DialogueCanvas parentTo '===CANVASES==='
+
+$AbnormalFindingsCanvas = 'AbnormalFindingsCanvas'
+Create $AbnormalFindingsCanvas $AbnormalFindingsCanvas
+$AbnormalFindingsCanvas parentTo '===CANVASES==='
+
+####### This one triggers game
+$EndCanvas = 'EndCanvas'
+Create $EndCanvas $EndCanvas
+$EndCanvas parentTo '===CANVASES==='
+
+#Prompt 'Created Canvases'
+Prompt ''

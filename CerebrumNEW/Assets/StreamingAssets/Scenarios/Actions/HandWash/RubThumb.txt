@@ -1,0 +1,35 @@
+#RubWrappedHand - rub palm of chosen hand on dorsal of other hand
+#Do 'RubWrappedHand' ['right'|'left']
+#Param[1] : $WhichHand
+#Requires:
+# $PlayerNurse, $LeftHandSpot, $RightHandSpot, $LeftMainHandTarget, $RightMainHandTarget
+
+############# Get parameters
+If
+    $param[0] > 0
+Then
+    $whichHand = param[1]
+Else
+    $whichHand = 'right'
+Endif 
+
+#Prompt 'RubThumb: ' + whichHand
+#Wait 2
+#Prompt ''
+
+$mainmotionType = 'localrotatez' #'moveforward'
+$othermotionType = 'moveforward'
+
+If
+    $whichHand == 'right'
+Then
+    $MainHandTarget = NurseLeftThumbPos
+Else
+    $MainHandTarget = NurseRightThumbPos
+Endif
+
+$StartAtTop = true
+$RubDur = 0.5
+
+Do 'Actions/HandWash/RubHands.txt' $whichHand $MainHandTarget 'grip' 'backward' $mainmotionType 50.09 $HandGrip 'MiddleHandSpot' 'perpendicular' 'default' $othermotionType 0.001 $HandPalm 5 $RubDur 0 0 true
+#$StartAtTop = false

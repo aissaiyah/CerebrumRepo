@@ -1,0 +1,47 @@
+# 'OpenCatheter'
+Prompt 'Catheter'
+wait .51
+Prompt ''
+
+If
+	Do 'AnswerIs' 'Open catheter?' 'No'
+Then
+	Return
+Endif
+
+
+
+#setup variables for function calls
+$Item = Catheter
+$ItemObj = $CatheterBalloon
+$ItemPos = CatheterPos
+$CatheterBalloon = ItemObj + 'Instance'  #DropFromPackage adds Instance to name
+
+
+
+#Grab item, and tear package open.
+Do 'Actions/UCG/GrabAndOpenPackage' $Item $CartLook
+
+#pour package
+#Move 15cm over container over 1/2 second
+$Item moveAbove $ItemPos 0.15 0.5
+Wait .6
+
+#Pour
+$Package localrotateX -90 1
+wait 0.5
+
+#drop object from package
+Do 'Actions/UCG/DropFromPackage' $Item $ItemObj $ItemPos
+
+Wait 1
+
+#Stop pour
+Do 'Actions/UCG/StopPackagePour' $Item 
+
+#Throw away package
+Do 'Actions/UCG/ThrowAwayPackage' $Item 
+
+
+
+

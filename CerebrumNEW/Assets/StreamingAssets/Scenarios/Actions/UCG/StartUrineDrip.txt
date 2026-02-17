@@ -1,0 +1,14 @@
+#Do 'Actions/UCG/StartUrineDrip'
+
+If
+	$CatheterInsertedCorrectly = true
+Then
+	$PouringLiquid = 'UrineParticles'
+	Create $PouringLiquid $PouringLiquid
+	Wait 0
+	$PouringLiquid align $CatheterTubeEnd 0.1
+	Wait 0.1
+	$PouringLiquid localmoveZ -.02 0
+	Wait 0
+	$PouringLiquid attachto $CatheterTubeEnd
+Endif

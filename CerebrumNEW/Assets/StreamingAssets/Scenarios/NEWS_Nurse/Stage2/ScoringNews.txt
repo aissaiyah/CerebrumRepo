@@ -1,0 +1,14 @@
+#########################################
+#  PATIENTNEWS SCORING INIT
+#########################################
+
+#NEWS1 scoring : -5	5	-5	-1	-2	-1	5	10
+
+$Task_TakeNoAction_Value         = -5
+$Task_OxygenTherapy_Value        = 5
+$Task_OralGlucose_Value          = -5
+$Task_IVCannula_Value            = -1
+$Task_IVDrip_Value               = -2
+$Task_ApplyPressure_Value        = -1
+$Task_SpotMonitorFrequency_Value = 5
+$Task_InformMedicalTeam_Value    = 10

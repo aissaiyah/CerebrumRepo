@@ -1,0 +1,30 @@
+# UCG1Setup.txt - Main UCG setup file.  Sets up variables for scene objects, etc.
+
+
+###########################################
+# World Setup 
+###########################################
+
+$PlayerNurse = 'Player/NursePlayer'
+$MaleNurseHair = PlayerNurse + '/Hair'
+$FemaleNurseHair = PlayerNurse + '/HairFemale'
+
+
+$Nurse = 'Nurse_01(Clone)'
+
+If
+    $PatientGender == 'Male'
+Then
+#    $NurseHead = $Nurse + '/metarig/Jaw'
+    turnOn $MaleNurseHair
+    turnOff $FemaleNurseHair
+Else
+    turnOff $MaleNurseHair
+    turnOn $FemaleNurseHair
+    $Nurse2 =  'NurseFemale' 
+    Create $Nurse2 $Nurse2
+    $Nurse2 align $Nurse 0
+    turnOff $Nurse
+    $Nurse = Nurse2
+#    $NurseHead = $Nurse + '/mixamorig8:Head'
+Endif

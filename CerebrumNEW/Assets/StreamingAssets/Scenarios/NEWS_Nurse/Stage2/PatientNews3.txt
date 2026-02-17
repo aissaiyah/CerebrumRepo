@@ -1,0 +1,27 @@
+#########################################
+#  PATIENTNEWS3 INFO STAGE 2
+#########################################
+
+$HR = 85
+$BP = '92/43' #mmHg
+$BPSys = 92
+$Respiration = 12
+$SpO2 = 90
+
+$LevelOfConscious =  $LOCResponse2
+
+$Verbal = $VerbalResponse4
+$Eyes = $EyeResponse3
+$Body = $MotorResponse5
+
+$PhysicalExamResponse = 'Drowsy looking.'
+$Oriented = false
+
+$FreqHourlyResponse = 'Patient is showing the signs and symptoms of Fentanyl overdose, you should step up monitoring frequency and alert the medical team immediately.'
+$FreqShiftResponse = 'Patient is showing the signs and symptoms of Fentanyl overdose, you should step up monitoring frequency and alert the medical team immediately.'
+
+$PatientSpeak = 'Patient looks drowsy and unable to answer your questions'
+
+$isEyesOpen = false
+
+$Vitals setVitals $HR $SPO2 $BP $Respiration

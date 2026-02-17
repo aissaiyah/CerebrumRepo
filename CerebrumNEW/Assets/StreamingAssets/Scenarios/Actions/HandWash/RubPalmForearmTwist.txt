@@ -1,0 +1,44 @@
+#H2RubPalmDorsumFingersInterlaced - rub palm of chosen hand on dorsal of other hand
+#Do 'H2RubPalmDorsumFingersInterlaced' ['right'|'left']
+#Param[1] : $WhichHand
+#Requires:
+# $PlayerNurse, $LeftHandSpot, $RightHandSpot, $NurseLeftHandDorsum, $NurseRightHandDorsum
+
+############# Get parameters
+If
+    $param[0] > 0
+Then
+    $whichHand = param[1]
+Else
+    $whichHand = 'right'
+Endif 
+
+#Prompt 'RubPalmForearm: ' + whichHand
+#Wait 1
+#Prompt ''
+
+$motionType = 'localrotatey'  #'moveright'
+
+If
+    $whichHand == 'right'
+Then
+    $HandDorsum = 'NurseLeftForearm'
+Else
+    $HandDorsum = 'NurseRightForearm'
+Endif
+
+$StartAtTop = false
+
+$RubDur = 0.5
+
+$MainHandTarget = HandDorsum+'P1'
+Do 'Actions/HandWash/RubHands.txt' $whichHand $MainHandTarget 'palm' 'default' $motionType 0.1 $HandPalm 'MiddleHandSpotHigh' 'palm' 'flipped' $motionType 0.0 $HandPalm 5 $RubDur 90 0 0
+
+$MainHandTarget = HandDorsum+'P2'
+Do 'Actions/HandWash/RubHands.txt' $whichHand $MainHandTarget 'palm' 'default' $motionType 0.1 $HandPalm 'MiddleHandSpotHigh' 'palm' 'vertical' $motionType 0.0 $HandPalm 5 $RubDur 90 0 0
+
+$MainHandTarget = HandDorsum+'P3'
+Do 'Actions/HandWash/RubHands.txt' $whichHand $MainHandTarget 'palm' 'default' $motionType 0.1 $HandPalm 'MiddleHandSpotHigh' 'palm' 'default' $motionType 0.0 $HandPalm 5 $RubDur 90 0 0
+
+$MainHandTarget = HandDorsum+'P4'
+Do 'Actions/HandWash/RubHands.txt' $whichHand $MainHandTarget 'palm' 'default' $motionType 0.1 $HandPalm 'MiddleHandSpotHigh' 'palm' 'default' $motionType 0.0 $HandPalm 5 $RubDur -90 0 0

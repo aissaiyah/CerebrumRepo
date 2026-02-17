@@ -1,0 +1,54 @@
+$Pat_Name = '/PatInfoCanvas/Background/Name' 
+$Pat_IC = '/PatInfoCanvas/Background/IC' 
+$Pat_Diagnosis = '/PatInfoCanvas/Background/Diagnosis' 
+$Pat_Profile = '/PatInfoCanvas/Background/Profile' 
+$Pat_Sum = '/PatInfoCanvas/Background/SumText'
+$Pat_Back = '/PatInfoCanvas/Background/End'
+$Pre_Speak = '/PatientPreCanvas/Choices/Speak'
+$Pre_End = '/PatientPreCanvas/Choices/End'
+
+$PatientDialogueChoices = '/PatientDialogueChoices'
+$Dialogue_Name = '/PatientDialogueChoices/Choices/Name'
+$Dialogue_IC = '/PatientDialogueChoices/Choices/IC'
+$Dialogue_Gender = '/PatientDialogueChoices/Choices/Gender'
+$Dialogue_End = '/PatientDialogueChoices/Choices/EndDialogue'
+
+$PatientDialogueChoices off
+
+$Pat_Temp = $VitalsCanvas + '/Background/Temp'
+$Pat_HR = $VitalsCanvas + '/Background/HR'
+$Pat_BP = $VitalsCanvas + '/Background/BP'
+$Pat_Resp = $VitalsCanvas + '/Background/Respiration'
+$Pat_SPO2 = $VitalsCanvas + '/Background/SpO2'
+
+Wait .1
+
+$Pat_TempRisk = $VitalsCanvas + '/Background/TempRiskBG/Text'
+$Pat_TempRiskBG = $VitalsCanvas + '/Background/TempRiskBG'
+
+$Pat_HRRisk = $VitalsCanvas + '/Background/HRRiskBG/Text'
+$Pat_HRRiskBG = $VitalsCanvas + '/Background/HRRiskBG'
+
+$Pat_BPRisk = $VitalsCanvas + '/Background/BPRiskBG/Text'
+$Pat_BPRiskBG = $VitalsCanvas + '/Background/BPRiskBG'
+
+$Pat_RespRisk = $VitalsCanvas + '/Background/RespRiskBG/Text'
+$Pat_RespRiskBG = $VitalsCanvas + '/Background/RespRiskBG'
+
+$Pat_SPO2Risk = $VitalsCanvas + '/Background/SpO2RiskBG/Text'
+$Pat_SPO2RiskBG = $VitalsCanvas + '/Background/SpO2RiskBG'
+
+$Pat_OxyRisk = $VitalsCanvas + '/Background/SupplementOxyRiskBG/Text'
+$Pat_OxyRiskBG = $VitalsCanvas + '/Background/SupplementOxyRiskBG'
+
+$Pat_LOCRisk = $VitalsCanvas + '/Background/LOCRiskBG/Text'
+$Pat_LOCRiskBG = $VitalsCanvas + '/Background/LOCRiskBG'
+
+$PatRiskBG = $VitalsCanvas + '/Background/RiskLevelBG'
+
+Wait .1
+$Pat_Oxy = $VitalsCanvas + '/Background/OxygenDropdown'
+$Pat_LOC = $VitalsCanvas + '/Background/LOCDropdown'
+$PatRisk = $VitalsCanvas + '/Background/RiskLevel'
+$PatRiskResponse = $VitalsCanvas + '/Background/RiskResponse'
+$CloseVitals = $VitalsCanvas + '/Background/CloseButton'

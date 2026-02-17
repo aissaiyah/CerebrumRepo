@@ -1,0 +1,17 @@
+#INFUSION SET
+$InfusionStand = 'InfusionStandBlood(Clone)'
+$SetBag = $InfusionStand+ '/BloodBag'
+$IVEnd = $SetBag + '/Valve'
+$IVEndTarget = $InfusionStand+ '/IVEndTarget'
+$IVEndTarget reset
+$IVLine = $InfusionStand+ '/LINE/InfusionLine/IVLine'
+$IVLineBlood = $IVLine + '/IV_blood'
+
+#turnOff $IVLineBlood  #Causing error
+$InfusionSetBlood = $SetBag
+$InfusionClamp = $InfusionStand + '/IVClamp'
+$InfusionClamp outline.on
+$InfusionChamber = $InfusionStand + '/LINE/BloodChamber'
+$PoleLook = $InfusionStand + '/Close'
+$ChamberBlood = $InfusionChamber + '/TestTube_fillable'
+$ChamberBlood fillAmount 0.0

@@ -1,0 +1,96 @@
+
+$ScoreTracker = 'ScoreTracker'
+
+$TakenAction = false
+$CurtainClosed = 'CurtainClosed'
+
+###########################################
+# Setup Canvases
+###########################################
+
+$SumCanvas = 'SummaryCanvas'
+$Summary = 'SummaryCanvas/Background/Text'
+$SummaryText = SumCanvas + '/TopSummary'
+$SummaryExit = SumCanvas + '/OKButton'
+$SummaryBlack = SumCanvas + '/Black'
+$SummaryInfo = SumCanvas + '/InfoButton'
+$SumButton = SummaryInfo + '/Information' #'JoystickCanvas/Summary'
+
+
+$PatCan = 'PatientCanvas'
+$ECGCan = 'ECGCheckCanvas'
+
+$EWSCheck = 'ToolCanvas/EWSPatient'
+$EndGame = 'ToolCanvas/EndGame'
+$EWSChoiceCanvas = 'EWSCanvas'
+$EWSQuestion = 'EWSCanvas/Background'
+$EWSYES = 'EWSCanvas/Background/YES'
+$EWSNO = 'EWSCanvas/Background/NO'
+$EWSCorrect = 'EWSCanvas/Background/Correct'
+$EWSWrong = 'EWSCanvas/Background/Wrong'
+#$Timer = 15
+#$TimeManager = 'UIManager'
+
+$BackECG = 'ECGCheckCanvas/Choices/Exit'
+
+
+$Scene_Exit = 'JoystickCanvas/Exit'
+$PatLook = 'PatLook'
+$COWPos = Bed + '/COWPos'
+
+$Vitalsmonitor = 'BedsideHeadLeft' +BedNumber +'/VitalsSpotMonitor(Clone)'
+$Monitorlook = $Vitalsmonitor + '/Close'
+$VitalsCanvas = $Vitalsmonitor + '/SpotCanvas'
+
+
+#$SumCanvas = 'SummaryCanvas/Background'
+
+$UIMan = 'UIManager'
+$UseToolButton = 'ToolCanvas/UseToolButton'
+$CloseTools = 'ToolCanvas/Assessments/CloseToolInventory'
+$UseToolButton reset
+$CloseTools reset
+
+
+$DialogCanvas = 'DialogueCanvas'
+
+
+$PatientSpeechBubble = 'DialogueCanvas/Patient Speak'
+$PlayerSpeechBubble = 'DialogueCanvas/Player Speak'
+$PatientSpeech = 'DialogueCanvas/Patient Speak/Text'
+$PlayerSpeech = 'DialogueCanvas/Player Speak/Text'
+
+$Phone = $Desk + '/Telephone(Clone)'
+
+
+
+$CannulaIV = 'CannulaIV'
+$CannulaIVEnd = $CannulaIV + '/CannulaEnd'
+$PlayerNurse = 'Player/NursePlayer'
+$NurseBodyGloves = PlayerNurse + '/BodyGloves'
+$NurseBodyNoGloves = PlayerNurse + '/BodyNoGloves'
+
+$ClampOpen = false
+$IVConnected = false
+
+$Nurse = 'Nurse_01(Clone)'
+
+$ActiveHand = 'Right'
+$OtherHand = 'Left'
+
+$PatientButton = 'ProcedureCanvas/Choices/PatientButton'
+$CartButton = 'ProcedureCanvas/Choices/CartButton'
+$Cart1Button = 'ProcedureCanvas/Choices/Cart2Button'
+$LeftHandButton = 'ProcedureCanvas/Choices/LeftHandButton'
+$RightHandButton = 'ProcedureCanvas/Choices/RightHandButton'
+$LeftHandImage = 'ProcedureCanvas/Choices/LeftHandButton/Button'
+$RightHandImage = 'ProcedureCanvas/Choices/RightHandButton/Button'
+$ProcedureButton = 'ProcedureCanvas/Choices/ProcedureButton'
+$Stage4Button = 'ProcedureCanvas/Choices/Stage4Button'
+$Stage2Button = 'ProcedureCanvas/Choices/Stage2Button'
+$EndGameButton = 'ProcedureCanvas/Choices/EndGame'
+
+$EndCanvas = 'EndC'
+$MainMenu = 'Scenes/UCG/UCGMainMenu'
+
+

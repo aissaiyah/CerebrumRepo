@@ -1,0 +1,9 @@
+###Patient Variables
+$Bed4 = 'Bed4'
+$Patient4 = 'Bed4/Patient1/TEMP_Patient'
+$Bed off
+ScoreTracker numitems 3
+Player align CenterofWard
+Prompt $Bed4
+wait 1
+DO 'NEWS_Nurse/MainLoop.txt'

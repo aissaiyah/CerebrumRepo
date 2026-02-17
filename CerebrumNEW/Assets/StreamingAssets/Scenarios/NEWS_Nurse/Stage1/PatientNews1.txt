@@ -1,0 +1,52 @@
+#########################################
+#  PATIENTNEWS1 INFO INIT - Transient ischemic attack then develop to stroke
+#########################################
+
+$PatientName = 'Lim Ah Nee'
+$isEWS = true
+$PatientIC = 'S1112223A'
+$BloodType = 'B-'
+$AgeInYears = 73
+$PatientModel = 'uAvatar'
+$PatientDiag = 'Tear of the distal supraspinatus tendon'
+$PatientGender = 'Male'
+$PatientSummary = 'Mr Lim Ah Nee, admitted electively for left shoulder arthroscopic cuff repair. He has past medical history of diabetes mellitus. Post op instruction: hourly parameter for the next 4 hours.'
+
+$PatientType = 'News1'
+
+$Temperature = 36.5
+$HR = 70
+$BP = '150/71'
+$BPSys = 150
+$Respiration = 20
+$SpO2 = 100
+
+$PainScore = 'Pain Score: 0/10'
+
+$AbnormalResponse = 'Patient is showing the signs and symptoms of stroke.'
+
+$PatientSpeak = 'Hi! I am generally good, however I feel a funny feeling on my face and I have trouble speaking properly. Is this normal post operation? '
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNewsA_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientBedLoc = $Patient
+$PatientObjName align $PatientBedLoc 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'NEWS_Nurse/SetupPatient.txt'
+
+$HeadAmount = 80.0
+$WeightAmount = 20.0
+
+Do 'PatientCreations/Age/75.txt'
+Do 'PatientCreations/Head/Head3.txt'
+Do 'PatientCreations/Height/Short.txt'
+Do 'PatientCreations/Weight/Weight.txt'
+Do 'PatientCreations/Expressions/Frown.txt'

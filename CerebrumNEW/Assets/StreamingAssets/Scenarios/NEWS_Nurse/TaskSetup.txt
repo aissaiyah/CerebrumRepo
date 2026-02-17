@@ -1,0 +1,30 @@
+# TaskSetup.txt - Sets up variables for Tasks 
+
+$TaskOffset = 0
+#If
+#    $isEWS = true
+#Then
+#    $TaskOffset = BedNumber * 10
+#Else
+#    $TaskOffset = 100 + BedNumber * 10
+#Endif
+
+$Task_TakeNoAction            = 0 + TaskOffset
+$Task_OxygenTherapy           = 1 + TaskOffset
+$Task_OralGlucose             = 2 + TaskOffset
+$Task_IVCannula               = 3 + TaskOffset
+$Task_IVDrip                  = 4 + TaskOffset
+$Task_ApplyPressure           = 5 + TaskOffset
+$Task_SpotMonitorFrequency    = 6 + TaskOffset
+$Task_InformMedicalTeam       = 7 + TaskOffset
+
+
+
+
+
+
+#Label 'InitScore'
+#    $MyTask_Number = MyTask + '_Number'
+#    $MyTask_Value = MyTask + 'Value'
+#    $$MyTask_Number = 
+#Return

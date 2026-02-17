@@ -1,0 +1,70 @@
+#Drink the OralGlucose cup
+
+$DrinkCup = 'CupFillable'
+
+#Turn on Oral Canvas for amount options
+$OralCan on
+$Fifteen = OralCan + '/Choices/15g'
+$Thirty = OralCan + '/Choices/30g'
+$NotReq = OralCan + '/Choices/NotRequired'
+$OralExit = OralCan + '/Choices/Exit'
+
+
+
+Label 'OGLoop'
+
+	If
+		$Fifteen pressed
+	Then
+		$Fifteen reset
+		ScoreTracker TaskCompleted $PatientType 'Task_OralGlucose'
+		$TakenAction = true
+		Prompt 'The patient drinks 15g of glucose drink.'
+		$DrinkCupAmount = 0.3
+		$BloodGlucoseLevel = BloodGlucoseLevel + 3.0
+		$OralCan off
+		Do 'InterventionReduce.txt'
+		Goto 'TakeDrink'
+	Endif
+
+	If
+		$Thirty pressed
+	Then
+		$Thirty reset
+		ScoreTracker TaskCompleted $PatientType 'Task_OralGlucose'
+		$TakenAction = true
+		Prompt 'The patient drinks 30g of glucose drink.'
+		$DrinkCupAmount = 0.6
+		$BloodGlucoseLevel = BloodGlucoseLevel + 6.0
+		$OralCan off
+		Do 'InterventionReduce.txt'
+		Goto 'TakeDrink'
+	Endif
+
+	If
+		$NotReq pressed
+	Then
+		$NotReq reset
+		$OralCan off
+		Return
+	Endif
+
+	If
+		$OralExit pressed
+	Then
+		$OralExit reset
+		$OralCan off
+		Return
+	Endif
+
+Goto 'OGLoop'
+
+Label 'TakeDrink'
+
+	Do 'Action/GivePatientCup'
+	Wait 2   #delay before drink
+	Do 'Action/PatientDrinkCup'
+	Do 'Action/TakePatientCup'
+
+
+Return

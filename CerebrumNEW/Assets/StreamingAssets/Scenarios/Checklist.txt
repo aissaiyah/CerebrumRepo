@@ -1,0 +1,51 @@
+# Checklist.txt is ran when the checklist button is pressed
+# It displays the checklist and crosses off the names of the patients you have already spoken to
+#
+# $GlobalVar is the empty game object that holds all of the global variables in the scene
+# 'P1', 'P2', 'P3', etc. are booleans (true/false) that are true if you have spoken to a patient and false if not
+# $testvalues are set by the booleans and checked to determine if the names in the checklist need to be struken through
+# $CheckPat is the patient's name on the checklist
+# $ChecklistButton is the button used to open and close the checklist
+
+$testvalue =
+$GlobalVar getGlobal 'P1'
+$testvalue2 =
+$GlobalVar getGlobal 'P2'
+$testvalue3 =
+$GlobalVar getGlobal 'P3'
+$testvalue4 =
+$GlobalVar getGlobal 'P4'
+$testvalue5 =
+$GlobalVar getGlobal 'P5'
+
+$CheckCanvas on
+
+If
+	$testvalue = 1
+Then
+	turnOn $CheckmarkPat1
+Endif
+
+If
+	$testvalue2 = 1
+Then
+	turnOn $CheckmarkPat2
+Endif
+
+If
+	$testvalue3 = 1
+Then
+	turnOn $CheckmarkPat3
+Endif
+
+If
+	$testvalue4 = 1
+Then
+	turnOn $CheckmarkPat4
+Endif
+
+If
+	$testvalue5 = 1
+Then
+	turnOn $CheckmarkPat5
+Endif

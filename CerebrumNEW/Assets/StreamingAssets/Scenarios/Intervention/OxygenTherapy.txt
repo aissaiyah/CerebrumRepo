@@ -1,0 +1,205 @@
+$OxyCan on
+$Nasal = OxyCan + '/Choices/Nasal Prong'
+$Mask = OxyCan + '/Choices/Non-rebreather Mask'
+$Venturi = OxyCan + '/Choices/Venturi Mask'
+$Remove = OxyCan + '/Choices/RemoveOxygenTherapy'
+$OxyExit = OxyCan + '/Choices/Exit'
+
+
+Label 'Loop'
+
+If
+	$Nasal pressed
+Then
+	$PlayerNurse play LeanIn
+	Wait 1
+	$Nasal reset
+	$OxygenSupplement = 'Yes'
+	$Pat_Oxystored = 2
+	If
+		$PatientMask = true
+	Then
+		$PatientMask = false
+		Destroy $MaskName
+		$OxygenTube = $OxygenPos + '/Bone.003'
+		Destroy $OxygenTube
+		wait .1
+	Endif
+	If
+		$PatientVenturi = true
+	Then
+		$PatientVenturi = false
+		Destroy $VenturiName
+		$OxygenTube = $OxygenPos + '/Bone.003'
+		Destroy $OxygenTube
+		wait .1
+	Endif
+	If
+		$PatientNasal = true
+	Then
+		$OxyCan off
+		Return
+	Endif
+	$PatientNasal = true
+	Do 'Intervention/ApplyOxygen.txt'
+	$ScoreTracker taskcorrect 0 true
+	Do 'InterventionReduce.txt'
+	ScoreTracker TaskCompleted $PatientType 'Task_OxygenTherapy'
+	$TakenAction = true
+	$PlayerNurse release
+	Return
+Endif
+
+If
+	$Mask pressed
+Then
+	$PlayerNurse play LeanIn
+	Wait 1
+	$Mask reset
+	$OxygenSupplement = 'Yes'
+	$Pat_Oxystored = 2
+	If
+		$PatientNasal = true
+	Then
+		$PatientNasal = false
+		Destroy $NasalName
+		$OxygenTube = $OxygenPos + '/Bone.004 1'
+		Destroy $OxygenTube
+		wait .1
+	Endif
+	If
+		$PatientVenturi = true
+	Then
+		$PatientVenturi = false
+		Destroy $VenturiName
+		$OxygenTube = $OxygenPos + '/Bone.003'
+		Destroy $OxygenTube
+		wait .1
+	Endif
+	If
+		$PatientMask = true
+	Then
+		$OxyCan off
+		Return
+	Endif
+	$PatientMask = true
+	Do 'Intervention/ApplyOxygen.txt'
+	$ScoreTracker taskcorrect 0 true
+	Do 'InterventionReduce.txt'
+	ScoreTracker TaskCompleted $PatientType 'Task_OxygenTherapy'
+	$TakenAction = true
+	$PlayerNurse release
+	Return
+Endif
+
+If
+	$Venturi pressed
+Then
+	$PlayerNurse play LeanIn
+	Wait 1
+	$Venturi reset
+	$OxygenSupplement = 'Yes'
+	$Pat_Oxystored = 2
+	If
+		$PatientNasal = true
+	Then
+		$PatientNasal = false
+		Destroy $NasalName
+		$OxygenTube = $OxygenPos + '/Bone.004 1'
+		Destroy $OxygenTube
+		wait .1
+	Endif
+	If
+		$PatientMask = true
+	Then
+		$PatientMask = false
+		Destroy $MaskName
+		$OxygenTube = $OxygenPos + '/Bone.003'
+		Destroy $OxygenTube
+		wait .1
+	Endif
+	If
+		$PatientVenturi = true
+	Then
+		$OxyCan off
+		Return
+	Endif
+	$PatientVenturi = true
+	Do 'Intervention/ApplyOxygen.txt'
+	$ScoreTracker taskcorrect 0 true
+	Do 'InterventionReduce.txt'
+	ScoreTracker TaskCompleted $PatientType 'Task_OxygenTherapy'
+	$TakenAction = true
+	$PlayerNurse release
+	Return
+Endif
+
+If
+	$Remove pressed
+Then
+	$PlayerNurse play LeanIn
+	Wait 1
+	$Remove reset
+	$ScoreTracker taskcorrect 0 false
+	If
+		$PatientNasal = true
+	Then
+		$PatientNasal = false
+		Destroy $NasalName
+		$OxygenTube = $OxygenPos + '/Bone.004 1'
+		Destroy $OxygenTube
+		$OxygenSupplement = 'No'
+		$Pat_Oxystored = 1
+		$OxyCan off
+		wait .1
+		Do 'InterventionReduce.txt'
+		Return
+	Else
+		If
+			$PatientMask = true
+		Then
+			$PatientMask = false
+			Destroy $MaskName
+			$OxygenTube = $OxygenPos + '/Bone.003'
+			Destroy $OxygenTube
+			$OxygenSupplement = 'No'
+			$Pat_Oxystored = 1
+			$OxyCan off
+			wait .1
+			Do 'InterventionReduce.txt'
+			Return
+		Else
+			If
+				$PatientVenturi = true
+			Then
+				$PatientVenturi = false
+				Destroy $VenturiName
+				$OxygenTube = $OxygenPos + '/Bone.003'
+				Destroy $OxygenTube
+				$OxygenSupplement = 'No'
+				$Pat_Oxystored = 1
+				$OxyCan off
+				wait .1
+				Do 'InterventionReduce.txt'
+				Return
+			Else
+				$ToolPrompt = 'No Oxygen Therapy applied, nothing to remove.'
+				Do 'ToolPrompt.txt'
+				$OxyCan off
+				Return
+			Endif
+		Endif
+	Endif
+	$PlayerNurse release
+Endif
+
+
+If
+	$OxyExit pressed
+Then
+	$OxyExit reset
+	$OxyCan off
+	Return
+Endif
+
+Goto 'Loop'

@@ -1,0 +1,116 @@
+If
+	$Pat_Oxy says 'No'
+Then
+	$RiskLevelNum = $RiskLevelNum + 0
+	$OxyChoice = 1
+	$Pat_OxyRisk setItemText '0'
+	$Pat_OxyRiskBG setimagecolor green
+Else
+	If
+		$Pat_Oxy says ''
+	Then
+		$RiskLevelNum = $RiskLevelNum + 0
+		$OxyChoice = 0
+		$Pat_OxyRisk setItemText '?'
+		$Pat_OxyRiskBG setimagecolor gray
+	Else
+		$RiskLevelNum = $RiskLevelNum + 2
+		$OxyChoice = 2
+		$Pat_OxyRisk setItemText '2'
+		$Pat_OxyRiskBG setimagecolor orange
+	Endif
+EndIf
+
+
+If
+	$Pat_LOC says 'Alert'
+Then
+	$RiskLevelNum = $RiskLevelNum + 0
+	$RiskLevelBool = false
+	$Pat_LOCRisk setItemText '0'
+	$Pat_LOCRiskBG setimagecolor green
+Else
+	If
+		$Pat_LOC says ''
+	Then
+		$RiskLevelNum = $RiskLevelNum + 0
+		$RiskLevelBool = false
+		$Pat_LOCRisk setItemText '?'
+		$Pat_LOCRiskBG setimagecolor gray
+	Else
+		$RiskLevelNum = $RiskLevelNum + 3
+		$Pat_LOCRisk setItemText '3'
+		$Pat_LOCRiskBG setimagecolor red
+		$RiskLevelBool = true
+	Endif
+EndIf
+
+If
+$Pat_LOC says ''
+Then
+$LOCChoice = 0
+Endif
+
+If
+$Pat_LOC says 'Alert'
+Then
+$LOCChoice = 1
+Endif
+
+If
+$Pat_LOC says 'Voice'
+Then
+$LOCChoice = 2
+Endif
+
+If
+$Pat_LOC says 'Pain'
+Then
+$LOCChoice = 3
+EndIf
+
+If
+$Pat_LOC says 'Unresponsive'
+Then
+$LOCChoice = 4
+EndIf
+
+If
+$RiskLevelNum <= 4
+Then
+	If
+	$RiskLevelBool = true
+	Then
+	$PatRisk setItemText $RiskLevelNum + ' Medium'
+	$PatRiskBG setimagecolor orange
+	$PatRiskResponse setItemText 'Recheck parameter if needed. Inform doctor within 15 minutes.'
+	Else
+	$PatRisk setItemText $RiskLevelNum + ' Low'
+	$PatRiskBG setimagecolor green
+	$PatRiskResponse setItemText 'Continue monitoring. Inform doctor for any concern.'
+	Endif
+Endif
+
+If
+$RiskLevelNum >= 5
+Then
+	If
+	$RiskLevelNum <= 6
+	Then
+	$PatRisk setItemText $RiskLevelNum + ' Medium'
+	$PatRiskBG setimagecolor orange
+	$PatRiskResponse setItemText 'Recheck parameter if needed. Inform doctor within 15 minutes.'
+	Endif
+Endif
+
+If
+$RiskLevelNum >= 7
+Then
+$PatRisk setItemText $RiskLevelNum + ' High'
+$PatRiskBG setimagecolor red
+$PatRiskResponse setItemText 'Inform doctor immediately. Start monitoring every 15 minutes.'
+Endif
+
+$Pat_OxyRiskBG setimagecolor alpha .4
+$Pat_LOCRiskBG setimagecolor alpha .4
+$PatRiskBG setimagecolor alpha .4

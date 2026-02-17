@@ -1,0 +1,36 @@
+#ChangeStage.txt - change stage 
+
+$Stage = Stage + 1
+Prompt 'Incr stage ' + Stage
+Wait 5
+$StageFolderPrefix = 'NEWS_Nurse/Stage' + Stage + '/'
+$ConfigurePatientStage = StageFolderPrefix + 'Patient' + PatientType + '.txt'
+Do $ConfigurePatientStage
+
+#Setup Task Values for this patient
+#Prompt 'DO4'
+Do 'NEWS_Nurse/ScoringSetup.txt'   
+
+$TimeManager settimer $Timer
+$TimeManager stoptimer
+If
+	$TakenAction = false
+Then
+	ScoreTracker TaskCompleted $PatientType 'Task_TakeNoAction'
+Endif
+If
+	$GlucoseDrip = true
+Then
+	$BloodGlucoseLevel = BloodGlucoseLevel + 2.0
+Endif
+$TakenAction = false
+If
+	$BedNumber = 1
+Then
+	ScoreTracker EndStage
+	ScoreTracker CloseStage
+	$ScoreTracker SetStage Stage
+	$ScoreTracker NumItems 8
+Endif
+Do 'NEWS_Nurse/ConfigurePatient.txt'
+Do 'SummaryCheck.txt'

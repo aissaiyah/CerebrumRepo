@@ -1,0 +1,19 @@
+Player lookat $InfusionClamp
+
+
+If
+	Do 'AnswerIsNo' 'Open Clamp?'
+Then
+	Return
+Endif
+
+
+	$ClampOpen = true
+	#If
+	#	$TaskNum > -1
+	#Then
+		ScoreTracker taskCorrect $TaskNum 1
+
+	Prompt 'The Clamp has been opened.'
+	Wait 1
+	Prompt ''

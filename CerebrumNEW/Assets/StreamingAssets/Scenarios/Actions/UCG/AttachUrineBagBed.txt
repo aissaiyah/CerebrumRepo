@@ -1,0 +1,55 @@
+
+$UrineBagPos = $Bed + '/UrinaryPos'
+
+
+$Item = $UrineBag
+$Grab = 'grab' + OtherHand
+#$Player localMoveZ 0.3
+#Wait 1
+
+ 
+$PlayerNurse $Grab $Item 1 'grip' 'default' 
+Wait 2
+#$Player localMoveZ -0.3
+#Wait 0.5
+
+Prompt ''
+
+$UrineBag localMoveZ 0.2 1
+wait 1
+
+Do 'Actions/UCG/MoveWithPackage' $Item $PlayerStart
+wait 1
+
+
+$UrineBagLocation = 'Bed'
+
+ZoomSpot Menu.Question 'What should you take note of when hanging the urinary bag?'
+ZoomSpot Menu.Choices 'Bag should be lower than the patients level of the bladder','Bag should not be touching the floor','Tubing should not be kinked','All of the above'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait .1
+
+
+##### If catheter already inserted, attach catheter to bag
+
+If
+	$CatheterInserted
+Then
+	Do 'Actions/UCG/AttachUrineBagCatheter'
+Else
+	$PlayerNurse play LeanIn
+	wait .5
+Endif
+
+$Release = 'release' + OtherHand
+$PlayerNurse $Release 0.5 'dip'
+$UrineBag align $UrineBagPos 1
+wait 7
+$UrineBag outline.off
+
+
+wait .1
+$Player align $PlayerStart
+Wait 1

@@ -1,0 +1,12 @@
+If
+	$PhysicalExamExtraLocation = 'RightArm'
+Then
+	If 
+		$BedNumber < 3
+	Then
+		Player lookAtLegacy $PatientRightHand 0 .25 -0.25
+	Else
+		Player lookAtLegacy $PatientRightHand 0 .25 0.25
+	EndIf
+	wait 3
+Endif

@@ -1,0 +1,44 @@
+# ChooseStageMenu.txt checks for which scene button is pressed to load into
+
+#### SET RandomStage TO true FOR RANDOM STAGE BUTTON 
+$RandomStage = true
+
+If
+    $RandomStage == true
+Then
+    TurnOn SceneRandom
+    TurnOff Scene01
+    TurnOff Scene02
+    TurnOff Scene03
+Endif
+    
+
+Label 'GameLoop'
+    If
+        Stages/Buttons/Scene01 isOnAndPressed
+    Then
+        Stages/Buttons/Scene01 reset
+        SceneManager switchtoscene Scenes/NEWS/NEWS1
+    Endif
+    If
+        Stages/Buttons/Scene02 isOnAndPressed
+    Then
+        Stages/Buttons/Scene02 reset
+        SceneManager switchtoscene Scenes/NEWS/NEWS2
+    Endif
+
+    If
+        Stages/Buttons/Scene03 isOnAndPressed
+    Then
+        Stages/Buttons/Scene03 reset
+        SceneManager switchtoscene Scenes/NEWS/NEWS3
+    Endif
+
+    If
+        Stages/Buttons/SceneRandom isOnAndPressed
+    Then
+        Stages/Buttons/SceneRandom reset
+        SceneManager switchtoscene Scenes/NEWS/RandomNEWS
+    Endif
+    Wait .1
+goto 'GameLoop'
