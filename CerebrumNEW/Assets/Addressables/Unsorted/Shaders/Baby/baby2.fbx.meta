@@ -1,0 +1,3333 @@
+fileFormatVersion: 2
+guid: 9ec9e35d116be8a45b84e98e753691b9
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: blendshapes
+    100004: body
+    100006: catheterTape
+    100008: chestTarget
+    100010: diaper
+    100012: faceTape
+    100014: head
+    100016: headEnd
+    100018: IV_spot
+    100020: ivInput_mesh
+    100022: ivTape_mesh
+    100024: IVTarget
+    100026: jaw
+    100028: jawEnd
+    100030: L_ankle
+    100032: L_ball
+    100034: L_btmLid
+    100036: L_btmLid_end
+    100038: L_clavicle
+    100040: L_elbow
+    100042: L_eye
+    100044: L_eye 1
+    100046: L_hand
+    100048: L_hip
+    100050: L_index_a
+    100052: L_index_b
+    100054: L_index_c
+    100056: L_indexEnd
+    100058: L_knee
+    100060: L_middle_a
+    100062: L_middle_b
+    100064: L_middle_c
+    100066: L_middleEnd
+    100068: L_pinky_a
+    100070: L_pinky_b
+    100072: L_pinky_c
+    100074: L_pinkyEnd
+    100076: L_ring_a
+    100078: L_ring_b
+    100080: L_ring_c
+    100082: L_ringEnd
+    100084: L_shoulder
+    100086: L_thumb_a
+    100088: L_thumb_b
+    100090: L_thumb_c
+    100092: L_thumbEnd
+    100094: L_toe
+    100096: L_topLid
+    100098: L_topLid_end
+    100100: L_wrist
+    100102: m_baby_kg_7_baby_geo
+    100104: mouthTarget
+    100106: neck
+    100108: pelvis
+    100110: R_ankle
+    100112: R_ball
+    100114: R_btmRid
+    100116: R_btmRid_end
+    100118: R_clavicle
+    100120: R_elbow
+    100122: R_eye
+    100124: R_eye 1
+    100126: R_hand
+    100128: R_hip
+    100130: R_index_a
+    100132: R_index_b
+    100134: R_index_c
+    100136: R_indexEnd
+    100138: R_knee
+    100140: R_middle_a
+    100142: R_middle_b
+    100144: R_middle_c
+    100146: R_middleEnd
+    100148: R_pinky_a
+    100150: R_pinky_b
+    100152: R_pinky_c
+    100154: R_pinkyEnd
+    100156: R_ring_a
+    100158: R_ring_b
+    100160: R_ring_c
+    100162: R_ringEnd
+    100164: R_shoulder
+    100166: R_thumb_a
+    100168: R_thumb_b
+    100170: R_thumb_c
+    100172: R_thumbEnd
+    100174: R_toe
+    100176: R_topRid
+    100178: R_topRid_end
+    100180: R_wrist
+    100182: root
+    100184: spine1
+    100186: spine2
+    100188: spine3
+    100190: umbilicalCatheter
+    100192: umbillicalRig:catheterCord
+    100194: umbillicalRig:m_baby_kg_7_baby_geo
+    100196: umbillicalRig:masterCtrl
+    100198: umbillicalRig:umb_j1
+    100200: umbillicalRig:umb_j10
+    100202: umbillicalRig:umb_j11
+    100204: umbillicalRig:umb_j12
+    100206: umbillicalRig:umb_j13
+    100208: umbillicalRig:umb_j14
+    100210: umbillicalRig:umb_j15
+    100212: umbillicalRig:umb_j16
+    100214: umbillicalRig:umb_j17
+    100216: umbillicalRig:umb_j18
+    100218: umbillicalRig:umb_j19
+    100220: umbillicalRig:umb_j2
+    100222: umbillicalRig:umb_j3
+    100224: umbillicalRig:umb_j4
+    100226: umbillicalRig:umb_j5
+    100228: umbillicalRig:umb_j6
+    100230: umbillicalRig:umb_j7
+    100232: umbillicalRig:umb_j8
+    100234: umbillicalRig:umb_j9
+    100236: umbillicalRig:umbilicalCatheter
+    100238: umbillicalRig:umbilicalRig
+    400000: //RootNode
+    400002: blendshapes
+    400004: body
+    400006: catheterTape
+    400008: chestTarget
+    400010: diaper
+    400012: faceTape
+    400014: head
+    400016: headEnd
+    400018: IV_spot
+    400020: ivInput_mesh
+    400022: ivTape_mesh
+    400024: IVTarget
+    400026: jaw
+    400028: jawEnd
+    400030: L_ankle
+    400032: L_ball
+    400034: L_btmLid
+    400036: L_btmLid_end
+    400038: L_clavicle
+    400040: L_elbow
+    400042: L_eye
+    400044: L_eye 1
+    400046: L_hand
+    400048: L_hip
+    400050: L_index_a
+    400052: L_index_b
+    400054: L_index_c
+    400056: L_indexEnd
+    400058: L_knee
+    400060: L_middle_a
+    400062: L_middle_b
+    400064: L_middle_c
+    400066: L_middleEnd
+    400068: L_pinky_a
+    400070: L_pinky_b
+    400072: L_pinky_c
+    400074: L_pinkyEnd
+    400076: L_ring_a
+    400078: L_ring_b
+    400080: L_ring_c
+    400082: L_ringEnd
+    400084: L_shoulder
+    400086: L_thumb_a
+    400088: L_thumb_b
+    400090: L_thumb_c
+    400092: L_thumbEnd
+    400094: L_toe
+    400096: L_topLid
+    400098: L_topLid_end
+    400100: L_wrist
+    400102: m_baby_kg_7_baby_geo
+    400104: mouthTarget
+    400106: neck
+    400108: pelvis
+    400110: R_ankle
+    400112: R_ball
+    400114: R_btmRid
+    400116: R_btmRid_end
+    400118: R_clavicle
+    400120: R_elbow
+    400122: R_eye
+    400124: R_eye 1
+    400126: R_hand
+    400128: R_hip
+    400130: R_index_a
+    400132: R_index_b
+    400134: R_index_c
+    400136: R_indexEnd
+    400138: R_knee
+    400140: R_middle_a
+    400142: R_middle_b
+    400144: R_middle_c
+    400146: R_middleEnd
+    400148: R_pinky_a
+    400150: R_pinky_b
+    400152: R_pinky_c
+    400154: R_pinkyEnd
+    400156: R_ring_a
+    400158: R_ring_b
+    400160: R_ring_c
+    400162: R_ringEnd
+    400164: R_shoulder
+    400166: R_thumb_a
+    400168: R_thumb_b
+    400170: R_thumb_c
+    400172: R_thumbEnd
+    400174: R_toe
+    400176: R_topRid
+    400178: R_topRid_end
+    400180: R_wrist
+    400182: root
+    400184: spine1
+    400186: spine2
+    400188: spine3
+    400190: umbilicalCatheter
+    400192: umbillicalRig:catheterCord
+    400194: umbillicalRig:m_baby_kg_7_baby_geo
+    400196: umbillicalRig:masterCtrl
+    400198: umbillicalRig:umb_j1
+    400200: umbillicalRig:umb_j10
+    400202: umbillicalRig:umb_j11
+    400204: umbillicalRig:umb_j12
+    400206: umbillicalRig:umb_j13
+    400208: umbillicalRig:umb_j14
+    400210: umbillicalRig:umb_j15
+    400212: umbillicalRig:umb_j16
+    400214: umbillicalRig:umb_j17
+    400216: umbillicalRig:umb_j18
+    400218: umbillicalRig:umb_j19
+    400220: umbillicalRig:umb_j2
+    400222: umbillicalRig:umb_j3
+    400224: umbillicalRig:umb_j4
+    400226: umbillicalRig:umb_j5
+    400228: umbillicalRig:umb_j6
+    400230: umbillicalRig:umb_j7
+    400232: umbillicalRig:umb_j8
+    400234: umbillicalRig:umb_j9
+    400236: umbillicalRig:umbilicalCatheter
+    400238: umbillicalRig:umbilicalRig
+    2300000: faceTape
+    2300002: L_eye 1
+    2300004: R_eye 1
+    3300000: faceTape
+    3300002: L_eye 1
+    3300004: R_eye 1
+    4300000: faceTape
+    4300002: L_eye
+    4300004: R_eye
+    4300006: diaper
+    4300008: catheterTape
+    4300010: umbillicalRig:catheterCord
+    4300012: ivInput_mesh
+    4300014: ivTape_mesh
+    4300016: body
+    7400000: In flex
+    7400002: Flex Idle
+    7400004: Out flex
+    7400006: In extend
+    7400008: Extend Idle
+    7400010: Out Extend
+    7400012: Head
+    7400014: Still
+    7400016: Remove ETT 1
+    7400018: Remove ETT 2
+    7400020: Still 2
+    9500000: //RootNode
+    13700000: body
+    13700002: catheterTape
+    13700004: diaper
+    13700006: ivInput_mesh
+    13700008: ivTape_mesh
+    13700010: umbillicalRig:catheterCord
+    2186277476908879412: ImportLogs
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 37d5f64204ed6214ba0c8aaada15f886, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_baby_kg_7_baby_mat1
+    second: {fileID: 2100000, guid: 2952af6f18e9ffd4c8c946d3cf3f18d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_baby_kg_7_diaper_mat1
+    second: {fileID: 2100000, guid: e2d0dbf20a090a7459fd3c75fdc37295, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_baby_kg_7_iv_input_mat1
+    second: {fileID: 2100000, guid: 402e5ed35520d2444a6653dbffa1feca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: m_baby_kg_7_iv_tape_mat1
+    second: {fileID: 2100000, guid: a29a13fc6b4313945afee6af06148ca7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: umbillicalRig_m_baby_kg_7_baby_mat
+    second: {fileID: 2100000, guid: 2952af6f18e9ffd4c8c946d3cf3f18d4, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: In flex
+      takeName: Take 001
+      firstFrame: 3
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: faceTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/blendshapes
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/body
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/diaper
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivInput_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivTape_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/catheterTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/umbillicalRig:catheterCord
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/pelvis
+        weight: 1
+      - path: root/pelvis/L_hip
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+        weight: 1
+      - path: root/pelvis/R_hip
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
+        weight: 1
+      - path: root/spine1
+        weight: 1
+      - path: root/spine1/spine2
+        weight: 1
+      - path: root/spine1/spine2/chestTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c/L_indexEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c/L_middleEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c/L_pinkyEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c/L_ringEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c/L_thumbEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/headEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd/mouthTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid/L_btmLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye/L_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid/L_topLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid/R_btmRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye/R_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid/R_topRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/IVTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c/R_indexEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c/R_middleEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c/R_pinkyEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c/R_ringEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c/R_thumbEnd
+        weight: 1
+      - path: umbillicalRig:m_baby_kg_7_baby_geo
+        weight: 1
+      - path: umbillicalRig:m_baby_kg_7_baby_geo/umbillicalRig:umbilicalCatheter
+        weight: 1
+      - path: umbillicalRig:masterCtrl
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18/umbillicalRig:umb_j19
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Flex Idle
+      takeName: Take 001
+      firstFrame: 30
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: faceTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/blendshapes
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/body
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/diaper
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivInput_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivTape_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/catheterTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/umbillicalRig:catheterCord
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/pelvis
+        weight: 1
+      - path: root/pelvis/L_hip
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+        weight: 1
+      - path: root/pelvis/R_hip
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
+        weight: 1
+      - path: root/spine1
+        weight: 1
+      - path: root/spine1/spine2
+        weight: 1
+      - path: root/spine1/spine2/chestTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c/L_indexEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c/L_middleEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c/L_pinkyEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c/L_ringEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c/L_thumbEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/headEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd/mouthTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid/L_btmLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye/L_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid/L_topLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid/R_btmRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye/R_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid/R_topRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/IVTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c/R_indexEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c/R_middleEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c/R_pinkyEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c/R_ringEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c/R_thumbEnd
+        weight: 1
+      - path: umbillicalRig:m_baby_kg_7_baby_geo
+        weight: 1
+      - path: umbillicalRig:m_baby_kg_7_baby_geo/umbillicalRig:umbilicalCatheter
+        weight: 1
+      - path: umbillicalRig:masterCtrl
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18/umbillicalRig:umb_j19
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Out flex
+      takeName: Take 001
+      firstFrame: 100
+      lastFrame: 128
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: faceTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/blendshapes
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/body
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/diaper
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivInput_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivTape_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/catheterTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/umbillicalRig:catheterCord
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/pelvis
+        weight: 1
+      - path: root/pelvis/L_hip
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+        weight: 1
+      - path: root/pelvis/R_hip
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
+        weight: 1
+      - path: root/spine1
+        weight: 1
+      - path: root/spine1/spine2
+        weight: 1
+      - path: root/spine1/spine2/chestTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c/L_indexEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c/L_middleEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c/L_pinkyEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c/L_ringEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c/L_thumbEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/headEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd/mouthTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid/L_btmLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye/L_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid/L_topLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid/R_btmRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye/R_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid/R_topRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/IVTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c/R_indexEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c/R_middleEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c/R_pinkyEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c/R_ringEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c/R_thumbEnd
+        weight: 1
+      - path: umbillicalRig:m_baby_kg_7_baby_geo
+        weight: 1
+      - path: umbillicalRig:m_baby_kg_7_baby_geo/umbillicalRig:umbilicalCatheter
+        weight: 1
+      - path: umbillicalRig:masterCtrl
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18/umbillicalRig:umb_j19
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: In extend
+      takeName: Take 001
+      firstFrame: 128
+      lastFrame: 158
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: faceTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/blendshapes
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/body
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/diaper
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivInput_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivTape_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/catheterTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/umbillicalRig:catheterCord
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/pelvis
+        weight: 1
+      - path: root/pelvis/L_hip
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+        weight: 1
+      - path: root/pelvis/R_hip
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
+        weight: 1
+      - path: root/spine1
+        weight: 1
+      - path: root/spine1/spine2
+        weight: 1
+      - path: root/spine1/spine2/chestTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c/L_indexEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c/L_middleEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c/L_pinkyEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c/L_ringEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c/L_thumbEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/headEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd/mouthTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid/L_btmLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye/L_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid/L_topLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid/R_btmRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye/R_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid/R_topRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/IVTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c/R_indexEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c/R_middleEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c/R_pinkyEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c/R_ringEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c/R_thumbEnd
+        weight: 1
+      - path: umbillicalRig:m_baby_kg_7_baby_geo
+        weight: 1
+      - path: umbillicalRig:m_baby_kg_7_baby_geo/umbillicalRig:umbilicalCatheter
+        weight: 1
+      - path: umbillicalRig:masterCtrl
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18/umbillicalRig:umb_j19
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Extend Idle
+      takeName: Take 001
+      firstFrame: 158
+      lastFrame: 218
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: faceTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/blendshapes
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/body
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/diaper
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivInput_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivTape_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/catheterTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/umbillicalRig:catheterCord
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/pelvis
+        weight: 1
+      - path: root/pelvis/L_hip
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+        weight: 1
+      - path: root/pelvis/R_hip
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
+        weight: 1
+      - path: root/spine1
+        weight: 1
+      - path: root/spine1/spine2
+        weight: 1
+      - path: root/spine1/spine2/chestTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c/L_indexEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c/L_middleEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c/L_pinkyEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c/L_ringEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c/L_thumbEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/headEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd/mouthTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid/L_btmLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye/L_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid/L_topLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid/R_btmRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye/R_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid/R_topRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/IVTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c/R_indexEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c/R_middleEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c/R_pinkyEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c/R_ringEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c/R_thumbEnd
+        weight: 1
+      - path: umbillicalRig:m_baby_kg_7_baby_geo
+        weight: 1
+      - path: umbillicalRig:m_baby_kg_7_baby_geo/umbillicalRig:umbilicalCatheter
+        weight: 1
+      - path: umbillicalRig:masterCtrl
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18/umbillicalRig:umb_j19
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Out Extend
+      takeName: Take 001
+      firstFrame: 218
+      lastFrame: 249
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: faceTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/blendshapes
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/body
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/diaper
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivInput_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivTape_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/catheterTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/umbillicalRig:catheterCord
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/pelvis
+        weight: 1
+      - path: root/pelvis/L_hip
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball
+        weight: 1
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+        weight: 1
+      - path: root/pelvis/R_hip
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball
+        weight: 1
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
+        weight: 1
+      - path: root/spine1
+        weight: 1
+      - path: root/spine1/spine2
+        weight: 1
+      - path: root/spine1/spine2/chestTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c/L_indexEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c/L_middleEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c/L_pinkyEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c/L_ringEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c/L_thumbEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/headEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd/mouthTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid/L_btmLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye/L_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid/L_topLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid/R_btmRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye/R_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid/R_topRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/IVTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c/R_indexEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c/R_middleEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c/R_pinkyEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c/R_ringEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c/R_thumbEnd
+        weight: 1
+      - path: umbillicalRig:m_baby_kg_7_baby_geo
+        weight: 1
+      - path: umbillicalRig:m_baby_kg_7_baby_geo/umbillicalRig:umbilicalCatheter
+        weight: 1
+      - path: umbillicalRig:masterCtrl
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18
+        weight: 1
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18/umbillicalRig:umb_j19
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Head
+      takeName: Take 001
+      firstFrame: 145
+      lastFrame: 420
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: faceTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/blendshapes
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/body
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/diaper
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivInput_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivTape_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/catheterTape
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/pelvis
+        weight: 0
+      - path: root/pelvis/L_hip
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+        weight: 0
+      - path: root/pelvis/R_hip
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
+        weight: 0
+      - path: root/spine1
+        weight: 1
+      - path: root/spine1/spine2
+        weight: 1
+      - path: root/spine1/spine2/chestTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c/L_indexEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c/L_middleEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c/L_pinkyEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c/L_ringEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c/L_thumbEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/neck
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/headEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd/mouthTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid/L_btmLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye/L_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid/L_topLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid/R_btmRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye/R_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid/R_topRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/IVTarget
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c/R_indexEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c/R_middleEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c/R_pinkyEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c/R_ringEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c/R_thumbEnd
+        weight: 0
+      - path: umbillicalRig:masterCtrl
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18/umbillicalRig:umb_j19
+        weight: 0
+      - path: umbillicalRig:umbilicalCatheter
+        weight: 0
+      - path: umbillicalRig:umbilicalCatheter/umbillicalRig:catheterCord
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Still
+      takeName: Take 001
+      firstFrame: 900
+      lastFrame: 1050
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: faceTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/blendshapes
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/body
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/diaper
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivInput_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivTape_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/catheterTape
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/pelvis
+        weight: 1
+      - path: root/pelvis/L_hip
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+        weight: 0
+      - path: root/pelvis/R_hip
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
+        weight: 0
+      - path: root/spine1
+        weight: 1
+      - path: root/spine1/spine2
+        weight: 1
+      - path: root/spine1/spine2/chestTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c/L_indexEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c/L_middleEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c/L_pinkyEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c/L_ringEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c/L_thumbEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/neck
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/headEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd/mouthTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid/L_btmLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye/L_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid/L_topLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid/R_btmRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye/R_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid/R_topRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/IVTarget
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c/R_indexEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c/R_middleEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c/R_pinkyEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c/R_ringEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c/R_thumbEnd
+        weight: 0
+      - path: umbillicalRig:masterCtrl
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18/umbillicalRig:umb_j19
+        weight: 0
+      - path: umbillicalRig:umbilicalCatheter
+        weight: 0
+      - path: umbillicalRig:umbilicalCatheter/umbillicalRig:catheterCord
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Remove ETT 1
+      takeName: Take 001
+      firstFrame: 570
+      lastFrame: 600
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: faceTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/blendshapes
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/body
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/diaper
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivInput_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivTape_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/catheterTape
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/pelvis
+        weight: 0
+      - path: root/pelvis/L_hip
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+        weight: 0
+      - path: root/pelvis/R_hip
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
+        weight: 0
+      - path: root/spine1
+        weight: 1
+      - path: root/spine1/spine2
+        weight: 1
+      - path: root/spine1/spine2/chestTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c/L_indexEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c/L_middleEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c/L_pinkyEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c/L_ringEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c/L_thumbEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/neck
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/headEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd/mouthTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid/L_btmLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye/L_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid/L_topLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid/R_btmRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye/R_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid/R_topRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/IVTarget
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c/R_indexEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c/R_middleEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c/R_pinkyEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c/R_ringEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c/R_thumbEnd
+        weight: 0
+      - path: umbillicalRig:masterCtrl
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18/umbillicalRig:umb_j19
+        weight: 0
+      - path: umbillicalRig:umbilicalCatheter
+        weight: 0
+      - path: umbillicalRig:umbilicalCatheter/umbillicalRig:catheterCord
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Remove ETT 2
+      takeName: Take 001
+      firstFrame: 790
+      lastFrame: 825
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: faceTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/blendshapes
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/body
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/diaper
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivInput_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivTape_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/catheterTape
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/pelvis
+        weight: 0
+      - path: root/pelvis/L_hip
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+        weight: 0
+      - path: root/pelvis/R_hip
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
+        weight: 0
+      - path: root/spine1
+        weight: 1
+      - path: root/spine1/spine2
+        weight: 1
+      - path: root/spine1/spine2/chestTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c/L_indexEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c/L_middleEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c/L_pinkyEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c/L_ringEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c/L_thumbEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/neck
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/headEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd/mouthTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid/L_btmLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye/L_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid/L_topLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid/R_btmRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye/R_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid/R_topRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/IVTarget
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c/R_indexEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c/R_middleEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c/R_pinkyEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c/R_ringEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c/R_thumbEnd
+        weight: 0
+      - path: umbillicalRig:masterCtrl
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18/umbillicalRig:umb_j19
+        weight: 0
+      - path: umbillicalRig:umbilicalCatheter
+        weight: 0
+      - path: umbillicalRig:umbilicalCatheter/umbillicalRig:catheterCord
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Still 2
+      takeName: Take 001
+      firstFrame: 900
+      lastFrame: 1145
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: faceTape
+        weight: 1
+      - path: m_baby_kg_7_baby_geo
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/blendshapes
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/body
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/diaper
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivInput_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/IV_spot/ivTape_mesh
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter
+        weight: 1
+      - path: m_baby_kg_7_baby_geo/umbilicalCatheter/catheterTape
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/pelvis
+        weight: 0
+      - path: root/pelvis/L_hip
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball
+        weight: 0
+      - path: root/pelvis/L_hip/L_knee/L_ankle/L_ball/L_toe
+        weight: 0
+      - path: root/pelvis/R_hip
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball
+        weight: 0
+      - path: root/pelvis/R_hip/R_knee/R_ankle/R_ball/R_toe
+        weight: 0
+      - path: root/spine1
+        weight: 1
+      - path: root/spine1/spine2
+        weight: 1
+      - path: root/spine1/spine2/chestTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3
+        weight: 1
+      - path: root/spine1/spine2/spine3/L_clavicle
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_index_a/L_index_b/L_index_c/L_indexEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_middle_a/L_middle_b/L_middle_c/L_middleEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_pinky_a/L_pinky_b/L_pinky_c/L_pinkyEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_ring_a/L_ring_b/L_ring_c/L_ringEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/L_clavicle/L_shoulder/L_elbow/L_wrist/L_hand/L_thumb_a/L_thumb_b/L_thumb_c/L_thumbEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/neck
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/headEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/jaw/jawEnd/mouthTarget
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_btmLid/L_btmLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_eye/L_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/L_topLid/L_topLid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_btmRid/R_btmRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_eye/R_eye 1
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid
+        weight: 1
+      - path: root/spine1/spine2/spine3/neck/head/R_topRid/R_topRid_end
+        weight: 1
+      - path: root/spine1/spine2/spine3/R_clavicle
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/IVTarget
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_index_a/R_index_b/R_index_c/R_indexEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_middle_a/R_middle_b/R_middle_c/R_middleEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_pinky_a/R_pinky_b/R_pinky_c/R_pinkyEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_ring_a/R_ring_b/R_ring_c/R_ringEnd
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c
+        weight: 0
+      - path: root/spine1/spine2/spine3/R_clavicle/R_shoulder/R_elbow/R_wrist/R_hand/R_thumb_a/R_thumb_b/R_thumb_c/R_thumbEnd
+        weight: 0
+      - path: umbillicalRig:masterCtrl
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18
+        weight: 0
+      - path: umbillicalRig:masterCtrl/umbillicalRig:umbilicalRig/umbillicalRig:umb_j1/umbillicalRig:umb_j2/umbillicalRig:umb_j3/umbillicalRig:umb_j4/umbillicalRig:umb_j5/umbillicalRig:umb_j6/umbillicalRig:umb_j7/umbillicalRig:umb_j8/umbillicalRig:umb_j9/umbillicalRig:umb_j10/umbillicalRig:umb_j11/umbillicalRig:umb_j12/umbillicalRig:umb_j13/umbillicalRig:umb_j14/umbillicalRig:umb_j15/umbillicalRig:umb_j16/umbillicalRig:umb_j17/umbillicalRig:umb_j18/umbillicalRig:umb_j19
+        weight: 0
+      - path: umbillicalRig:umbilicalCatheter
+        weight: 0
+      - path: umbillicalRig:umbilicalCatheter/umbillicalRig:catheterCord
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.4
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+    previousCalculatedGlobalScale: 0.4
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
