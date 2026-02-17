@@ -1,0 +1,59 @@
+#########################################
+#  PATIENTNon4 INFO INIT
+#########################################
+
+$PatientName = 'Kumar Sami S/O Balan'
+$isEWS = false
+$PatientIC = 'S2023330P'
+$BloodType = 'B-'
+$AgeInYears = 69
+$PatientModel = 'uAvatar'
+$PatientDiag = 'Right Dorsum Phlebitis'
+$PatientGender = 'Male'
+$PatientSummary = 'Patient was recently discharged from hospital for newly diagnosed leukemia. During his previous admission, IV cannula was inserted on his right dorsum and phlebitis developed over the cannula side. He was readmitted this morning due to worsening of phlebitis site. Right dorsum redness and swelling seen during handover. He is waiting for hand surgeon to see him.'
+
+$PatientType = 'Non4'
+
+$Temperature = 37.5
+$HR = 90
+$BP = '150/80'
+$BPSys = 150
+$Respiration = 18
+$SpO2 = 98
+
+$PainScore = 'Pain Score: 0/10'
+
+$PatientSpeak = 'Hi, when will the hand surgeon be coming? My hand is swelling and painful.'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNon4_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientObjName align $Patient 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'NEWS_Nurse/SetupPatient.txt'
+
+$PhysicalExamExtra = true
+$PhysicalExamExtraLocation = 'RightArm'
+$PhysicalExamResponse = 'Signs of Right Dorsum Phlebitis.'
+
+$HeadAmount = 20
+$WeightAmount = 60.0
+
+Do 'PatientCreations/Age/60.txt'
+Do 'PatientCreations/Head/Head1.txt'
+Do 'PatientCreations/Height/Short.txt'
+Do 'PatientCreations/Weight/Weight.txt'
+
+$PatientRightArm scaleX 1.3
+$PatientRightArm scaleZ 1.3
+
+$PatientBody = Patient + '/body'
+$PatientMat = 'PatientbodyRDorsumPhlebitis'
+$PatientBody setmaterial $PatientMat 0

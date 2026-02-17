@@ -1,0 +1,17 @@
+#EmptyCup
+#Params:
+#$Cup - Cup object will fillable shader
+#$DrinkAmount - starting amount of liquid, 1=full, 0 = empty
+
+Label 'Drink'
+	$Cup fillAmount $DrinkAmount
+	$DrinkAmount = DrinkAmount - 0.01
+	Wait 0.05
+	If
+		$DrinkAmount > 0
+	Then
+		Goto 'Drink'
+	Endif
+	$DrinkAmount = -1     #make sure entirely empty
+	$Cup fillAmount $DrinkAmount
+Return

@@ -1,0 +1,64 @@
+If
+	$PatientNasal = true
+Then	
+	Create $NasalCannula $NasalName
+	wait .1
+    $NasalName align $PatientNasalTarget 0
+    $NasalName parentto $PatientNasalTarget
+
+    $NasalTube = $NasalName + '/NasalCannula/NasalCannula_rig/Bone.001 1/Bone.002 1/Bone.003 1/Bone.004 1'
+    $NasalTube parentto $OxygenPos
+    $NasalTube align $OxygenPos 0
+    $NasalTubeTarget = $NasalName + '/NasalCannula/Nasal_Cannula_Tube_Target'
+    $NasalTubeTarget align $OxygenPos 0
+
+	$NasalTarget = $NasalName + '/NasalCannula/Nasal_Cannula_Target'
+	$NasalTarget align $PatientNasalPos 0
+
+	$OxyCan off
+
+	Return
+Endif
+
+
+If
+	$PatientMask = true
+Then	
+	Create $MaskGroup $MaskName
+	wait .1
+	$MaskName align $PatientMaskTarget 0
+	$MaskName parentto $PatientMaskTarget
+
+	$MaskTube = $MaskName + '/Mask/MaskRig/Bone/Bone.010/Bone.009/Bone.008/Bone.007/Bone.006/Bone.005/Bone.004/Bone.003'
+    $MaskTube parentto $OxygenPos
+    $MaskTube align $OxygenPos 0
+    $MaskTubeTarget = $MaskName + '/Mask/MaskTubeTarget'
+    $MaskTubeTarget align $OxygenPos 0
+
+	$OxyCan off
+
+	Return
+Endif
+
+
+If
+	$PatientVenturi = true
+Then	
+	Create $MaskGroup $VenturiName
+	wait .1
+	$VenturiName align $PatientMaskTarget 0
+	$VenturiName parentto $PatientMaskTarget
+
+	$MaskTube = $VenturiName + '/Mask/MaskRig/Bone/Bone.010/Bone.009/Bone.008/Bone.007/Bone.006/Bone.005/Bone.004/Bone.003'
+    $MaskTube parentto $OxygenPos
+    $MaskTube align $OxygenPos 0
+    $MaskTubeTarget = $VenturiName + '/Mask/MaskTubeTarget'
+    $MaskTubeTarget align $OxygenPos 0
+
+	$RebreatherBag = $VenturiName + '/Mask/RebreatherBag'
+	$RebreatherBag off
+	
+	$OxyCan off
+	
+	Return
+Endif

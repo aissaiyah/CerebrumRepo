@@ -1,0 +1,19 @@
+#########################################
+#  PATIENTNEWS1 INFO STAGE 3
+#########################################
+#Prompt 'Stage3 patientnews1'
+
+$BP = '197/86' #mmHg
+$BPSys = 197
+
+If
+	$BloodGlucoseLevel < 12.0
+Then
+	$BloodGlucoseLevel = '12.0'
+Endif
+
+$LimbResponse = 'Severe weakness on right arm and right leg'
+
+$PatientSpeak = 'I cannot move my right arm and right leg! What happened to me?'
+
+$Vitals setVitals $HR $SPO2 $BP $Respiration

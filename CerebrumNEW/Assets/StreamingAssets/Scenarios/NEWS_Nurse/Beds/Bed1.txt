@@ -1,0 +1,8 @@
+Do 'Setup/DefaultPatientVariables'
+$BedNumber = '1'
+$TasksTotal = '3'
+$Bed = 'Bed'+ BedNumber
+$Patient = Bed + '/Placeholder(Clone)'
+$PlayerStage3Start = Bed + '/Medium'
+$BedOxyTarget = Bed + '/Oxygen'
+#Prompt.Offset 0.6

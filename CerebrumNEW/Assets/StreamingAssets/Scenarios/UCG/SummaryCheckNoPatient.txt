@@ -1,0 +1,37 @@
+# SummaryCheck.txt displays a summary between stages to update the player on what is going on
+# This script primarily checks the stage from the Global Variable Holder then creates the prompt accordingly
+# $PatientCheckTotal - whether all patients have been checked
+
+	$GlobalVar setglobal 'SummaryCanvasOpened' true
+
+	$SumCanvas on
+	#$SummaryInfo off
+	$SumCanvas scale 1 .1
+	Wait .1
+
+
+		TurnOn $SummaryExit
+		$SummaryExit reset
+		$SummaryText write You are required to gather all necessary materials to perform a urinary catherterization.
+
+
+
+	Label 'SumCheckLoop'
+		# This is the close/OK button
+		If
+			$SummaryExit pressed
+		Then
+			#Need the Wait command so all summary checks have time to exit.
+			Wait 1.21  #needed to make sure each finishes SumCheckLoop
+			$SummaryExit resetPressed
+			$SumCanvas scale 0 .2
+			TurnOff $SummaryBlack
+			TurnOff $SummaryExit
+			$SumCanvas off
+
+			$GlobalVar setglobal 'SummaryCanvasOpened' false
+			Return
+		Endif
+
+		Wait .1
+	Goto 'SumCheckLoop'

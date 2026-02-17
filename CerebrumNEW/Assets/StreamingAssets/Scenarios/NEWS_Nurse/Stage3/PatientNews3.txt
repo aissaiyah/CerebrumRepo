@@ -1,0 +1,35 @@
+#########################################
+#  PATIENTNEWS3 INFO STAGE 3
+#########################################
+
+$Temperature = 36.9
+$HR = 40
+$BP = '75/50' #mmHg
+$BPSys = 75
+$Respiration = 8
+
+If
+	$OxygenSupplement = 'Yes'
+Then
+	$SpO2 = 92
+Else
+	$SpO2 = 85
+Endif
+
+
+$LevelOfConscious = $LOCResponse4
+$SinusBradycardia = true
+
+$PhysicalExamResponse = 'Drowsy looking and signs of Bradypnea. Lips color is grayish.'
+$PainScore = 'Unable to assess'
+
+$Verbal = $VerbalResponse1
+$Eyes = $EyeResponse1
+$Body = $MotorResponse1
+
+$PupilSize = '2'
+
+$GlucoseResponse = 'Patient is unresponsive'
+$PatientSpeak = 'Patient is unresponsive!'
+
+$Vitals setVitals $HR $SPO2 $BP $Respiration

@@ -1,0 +1,88 @@
+# AssessSpotMonitor.txt moves the camera to view the monitor and show the patients parameters and NEWS Risk score
+#
+# $Monitorlook - where the camera is aligned to view the monitor
+# $ECGCan holds the back button ($BackECG)
+# $VitalsCanvas - the screen attached to the spot monitor
+# Do 'UpdateMonitor.txt' updates the values when looking at the $VitalsCanvas
+#
+#
+# $GlobalVar is the empty game object that holds all of the global variables in the scene
+# $Stage is the current stage number
+
+Player align $Monitorlook 0.5
+wait 1
+
+$ECGCan on
+$BackECG = 'ECGCheckCanvas/Choices/Exit'
+$VitalsCanvas on
+$CloseVitals reset
+
+Do 'UpdateMonitor.txt'
+
+# These are to save and update the dropdowns for if the patient has oxygen supplied to them and their level of consciousness
+
+$Pat_Oxy restoredropdown $Pat_Oxystored
+$Pat_LOC restoredropdown $Pat_LOCstored
+$OxyChoice = $Pat_Oxystored
+$LOCChoice = $Pat_LOCstored
+
+Label 'SMLoop'
+
+	$RiskLevelNum = 0
+	Do 'Intervention/CalculateRiskLevel'
+	Wait .3
+
+	If
+		$BackECG pressed
+	Then
+		$BackECG reset
+		Player align $PlayerStart 0.5
+		$ECGCan off
+		$Pat_Oxystored = $OxyChoice
+		$Pat_LOCstored = $LOCChoice
+		$VitalsCanvas off
+		Wait 1
+		Return
+	Endif
+
+	If
+		$CloseVitals pressed 
+	Then
+		$CloseVitals reset
+		$Pat_Oxystored = $OxyChoice
+		$Pat_LOCstored = $LOCChoice
+
+		If
+			$Pat_Oxy checkaccuracy $OxygenSupplement
+		Then
+			If
+				$Pat_LOC checkaccuracy $LevelOfConscious
+			Then
+				$ECGCan off
+				$VitalsCanvas off
+				Player align $PlayerStart 0.5
+				Wait 1
+				Return
+			Endif
+		Endif
+
+		If
+			$Pat_Oxy checkaccuracy $OxygenSupplement
+		Then
+			#Continue
+		Else
+			$ToolPrompt = 'Oxygen supplement choice is incorrect.'
+			Do 'ToolPrompt.txt'
+		Endif
+	
+		If
+			$Pat_LOC checkaccuracy $LevelOfConscious
+		Then
+			#Continue
+		Else
+			$ToolPrompt = 'Level of Consciousness choice is incorrect.'
+			Do 'ToolPrompt.txt'
+		Endif
+	Endif
+
+Goto 'SMLoop'

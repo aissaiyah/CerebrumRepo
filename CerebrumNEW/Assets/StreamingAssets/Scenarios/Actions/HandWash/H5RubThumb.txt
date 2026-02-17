@@ -1,0 +1,11 @@
+Prompt 'H5RubThumb'
+Wait 1
+Prompt ''
+$PlayerNurse play 'GripSize_R' true 0
+Do 'Actions/HandWash/RubThumb' 'right'
+$PlayerNurse play 'GripSize_R' true 0.5
+
+$PlayerNurse play 'GripSize_L' true 0
+Do 'Actions/HandWash/RubThumb' 'left'
+$PlayerNurse play 'GripSize_L' true 0.5
+Prompt ''

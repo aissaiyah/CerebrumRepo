@@ -1,0 +1,81 @@
+
+$UrineBagPos = $Bed + '/UrinaryPos'
+Prompt 'Attach UrineBag to Catheter'
+wait 1.5
+Prompt ''
+If
+	$CatheterInserted = false
+Then
+	Return
+Endif
+
+If
+	Do 'AnswerIsNo' 'Connect Catheter to Urine Bag?'
+Then
+	Return
+Endif
+ 
+
+$PlayerNurse localMoveY 0.5 0
+$PlayerNurse play LeanIn
+
+
+$UrineBag clickable false
+$UrineBag outline.off
+
+$UCGKidneyDish align $CartPos2 1
+wait 1
+If
+	$PatientGender = 'Male'
+Then
+	$IVLine = 'UCIVLineMale'
+Else
+	$IVLine = 'UCIVLine'
+Endif
+
+
+###### Create IV line
+$IVLineEndEffector = IVLine + '/EndEffector'
+
+Create $IVLine $IVLine
+$IVLine moveto $UrineBagPos 0
+wait 0
+
+#Start from behind so tube facing right way
+$IVLineEndEffector moveBehind $CatheterTubeEnd -0.25 0.5
+Wait 0.5
+$IVLineEndEffector align $CatheterTubeEnd 0.5
+Wait 0.5
+
+Do 'Actions/UCG/StopUrineDrip'
+
+Wait 2
+$PlayerNurse localMoveY -0.5 0
+
+
+
+
+#turnOn $EndGameButton
+$Patient clickable true
+$Patient outline.on
+$UrineBagAttached = true
+If
+	$CatheterInsertedCorrectly = false
+Then
+	Return
+Endif
+
+####### Start to fill IV line and bag with Urine
+$Urine = $UrineBag + '/Urine
+
+turnOn $Urine
+$IVLineUrine = IVLine + '/Urine'
+
+Prompt "uring starting to flow'
+Wait 0.5
+Prompt ''
+#Prompt 'IVline ' + IVLineUrine + ' setOpacity' 
+
+$IVLineUrine setOpacity 1 3
+
+

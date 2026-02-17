@@ -1,0 +1,153 @@
+Prompt 'Gloves'
+wait .3
+Prompt ''
+
+$Item = $Gloves
+$Item2 = $Gloves2
+
+If
+	Do 'AnswerIs' 'Put on gloves?' 'No'
+Then
+	Return
+Endif
+
+$GloveNum = '1'
+
+
+#setup variables for function calls
+
+#Grab item, and tear package open.
+Do 'Actions/UCG/GrabPackage' $Item
+
+Do 'Actions/UCG/ThrowAwayPackage' $Item $Cart1Look
+
+ZoomSpot Menu.Question 'Which part of the glove do you grab?'
+ZoomSpot Menu.Choices 'Inside','Outside'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+
+#Get what is correct answer
+
+If
+    $GloveNum = '1'
+Then
+    $CorrectAnswer = 'Inside'
+Else
+    $CorrectAnswer = 'Outside'
+Endif
+
+
+#Check if correct answer
+If
+    ZoomSpot Menu.Result $CorrectAnswer
+Then
+    Prompt 'Correct answer'
+    Wait 1
+Else
+    Prompt 'Incorrect answer!'
+    Wait 2
+Endif
+Prompt ''
+
+
+#Put hand down
+$PlayerNurse $Release 0.5 'tweeze'
+
+wait 1
+#	Prompt 'gloves 2'
+#    Wait 1
+
+#Turn off glove package
+Destroy $Item
+wait .1
+
+#Turn on gloves on nurse
+turnOn $NurseBodyGloves 
+turnOff $NurseBodyNoGloves 
+Wait .5
+
+#Show newly gloved hand
+If
+    $ActiveHand = 'Right'
+Then
+    $PlayerNurse grabRight RightHandSpot  1 'default'
+Else
+    $PlayerNurse grabLeft LeftHandSpot 1 'default'
+Endif
+
+#Put hands down
+Wait 2.5
+$PlayerNurse release
+
+wait 2
+
+
+
+
+$GloveNum = '2'
+
+#setup variables for function calls
+
+#Grab item, and tear package open.
+Do 'Actions/UCG/GrabPackage' $Item2
+
+Do 'Actions/UCG/ThrowAwayPackage' $Item2 $Cart1Look
+
+ZoomSpot Menu.Question 'Which part of the glove do you grab?'
+ZoomSpot Menu.Choices 'Inside','Outside'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+
+#Get what is correct answer
+If
+    $GloveNum = '1'
+Then
+    $CorrectAnswer = 'Inside'
+Else
+    $CorrectAnswer = 'Outside'
+Endif
+
+
+#Check if correct answer
+If
+    ZoomSpot Menu.Result $CorrectAnswer
+Then
+    Prompt 'Correct answer'
+    Wait 1
+Else
+    Prompt 'Incorrect answer!'
+    Wait 2
+Endif
+Prompt ''
+
+
+#Put hand down
+$PlayerNurse $Release 0.5 'tweeze'
+
+wait 1
+#	Prompt 'gloves 2'
+#    Wait 1
+
+#Turn off glove package
+Destroy $Item2
+wait .1
+
+#Turn on gloves on nurse
+turnOn $NurseBodyGloves 
+turnOff $NurseBodyNoGloves 
+Wait .5
+
+#Show newly gloved hand
+If
+    $ActiveHand = 'Right'
+Then
+    $PlayerNurse grabLeft LeftHandSpot 1 'default'
+Else
+    $PlayerNurse grabRight RightHandSpot  1 'default'
+Endif
+
+#Put hands down
+Wait 2.5
+$PlayerNurse release

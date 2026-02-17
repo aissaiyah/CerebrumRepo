@@ -1,0 +1,44 @@
+
+#H6RubFingersInPalm - rub fingers of both hands on palm of other hand
+#Do 'H6RubFingersInPalm' ['left'|'right']
+#Param[1] : $WhichHand
+#Requires:
+# $PlayerNurse, $LeftHandSpot, $RightHandSpot, $MiddleHandSpot, $NurseLeftHandPalm, $NurseRightHandPalm
+
+
+############# Get parameters
+If
+    $param[0] > 0
+Then
+    $whichHand = param[1]
+    $moveAmount = param[2]
+Else
+    $whichHand = 'right'
+    $moveAmount = 0.03
+Endif 
+$OtherMoveAmount = -0.5 * moveAmount 
+
+#Prompt 'OtherMoveAmount = ' + OtherMoveAmount
+#Wait 5
+
+#Prompt 'FingerDip: ' + whichHand
+#Wait 1
+#Prompt ''
+
+############# Set hand-specific variables and reach out other hand
+If
+    $whichHand == 'right'
+Then
+    $HandTarget = NurseLeftHandPalm
+Else
+    $HandTarget = NurseRightHandPalm
+Endif
+
+$MainMotionType = 'moveForward'
+$OtherMotionType = 'moveRight'
+
+#Prompt 'FingerDip ' + whichHand + ' HandTarget=' + HandTarget
+#Wait 5
+
+#$MainGrabPoint = 'Fingertip'
+Do 'Actions/HandWash/RubHands' $whichHand $HandTarget 'dip' 'palmdown' $MainMotionType $moveAmount $HandFingertip $LeftHandSpot 'pond' 'palmup' $OtherMotionType $OtherMoveAmount $HandPalm 5 1 65 0 0  

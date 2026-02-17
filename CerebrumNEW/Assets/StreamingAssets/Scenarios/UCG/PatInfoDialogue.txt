@@ -1,0 +1,68 @@
+$PatientDialogueChoices on
+
+Label 'DialogueLoop'
+
+If
+	$Dialogue_Name pressed
+Then
+	$Dialogue_Name reset
+	$PatientDialogueChoices off
+
+	If
+		PatInfoCanvas ison
+	Then
+		$PC_Info reset
+		PatInfoCanvas off
+	Endif
+	
+	$GenericPlayerLine = 'What is your name?'
+	$GenericPatientLine = $PatientName
+
+	Do 'GenericChat.txt'
+	wait .5
+	ZoomSpot Menu.Question 'Is this the correct patient?'
+	ZoomSpot Menu.Choices 'Yes','No','Unsure'
+	ZoomSpot Menu.on ZoomSpot
+	WaitFor
+		ZoomSpot Menu.Done
+	Wait .1
+	$PatientDialogueChoices on
+Endif
+
+
+If
+	$Dialogue_IC pressed
+Then
+	$Dialogue_IC reset
+	$PatientDialogueChoices off
+
+	If
+		PatInfoCanvas ison
+	Then
+		$PC_Info reset
+		PatInfoCanvas off
+	Endif
+	
+	$GenericPlayerLine = 'What is your IC?'
+	$GenericPatientLine = $PatientIC
+
+	Do 'GenericChat.txt'
+	wait .5
+	ZoomSpot Menu.Question 'Is this the correct patient?'
+	ZoomSpot Menu.Choices 'Yes','No','Unsure' 
+	ZoomSpot Menu.on ZoomSpot
+	WaitFor
+		ZoomSpot Menu.Done
+	Wait .1
+	$PatientDialogueChoices on
+Endif
+
+If
+	$Dialogue_End pressed
+Then
+	$Dialogue_End resetPressed
+	$PatientDialogueChoices off
+	Return
+Endif
+
+Goto 'DialogueLoop'

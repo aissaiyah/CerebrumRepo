@@ -1,0 +1,19 @@
+#########################################
+#  PATIENTNEWS4 INFO STAGE 2
+#########################################
+
+$Temperature = 36.3
+$BP = '197/86' #mmHg
+$BPSys = 197
+$Respiration = 20
+$SpO2 = 92
+
+If
+	$BloodGlucoseLevel < 8.0
+Then
+	$BloodGlucoseLevel = '8.0'
+Endif
+
+$LimbResponse = 'Mild weakness on right arm and right leg'
+
+$Vitals setVitals $HR $SPO2 $BP $Respiration

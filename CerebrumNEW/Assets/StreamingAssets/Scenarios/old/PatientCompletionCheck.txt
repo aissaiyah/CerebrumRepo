@@ -1,0 +1,44 @@
+$testvalue = 
+	$GlobalVar getGlobal 'P1'
+#Prompt testvalue
+#wait 1
+#Prompt ''
+If
+	$testvalue == 1
+Then
+	Prompt 'Made it here!'
+					$Stage = 2
+					$EWSCheck on
+					$ChecklistButton off
+					Do 'SummaryCheck.txt'
+	#wait 1
+	#Prompt ''
+	$testvalue = 
+		$GlobalVar getGlobal 'P2'
+	If
+		$testvalue == 1
+	Then
+		$testvalue = 
+			$GlobalVar getGlobal 'P3'
+		If
+			$testvalue == 1
+		Then
+			$testvalue = 
+				$GlobalVar getGlobal 'P4'
+			If
+				$testvalue == 1
+			Then
+				$testvalue = 
+					$GlobalVar getGlobal 'P5'
+				If
+					$testvalue == 1
+				Then
+					$Stage = 2
+					$EWSCheck on
+					$ChecklistButton off
+					Do 'SummaryCheck.txt'
+				Endif
+			Endif
+		Endif
+	Endif
+Endif

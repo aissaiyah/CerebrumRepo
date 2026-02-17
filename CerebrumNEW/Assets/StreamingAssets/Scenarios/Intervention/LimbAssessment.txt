@@ -1,0 +1,106 @@
+#Do limb assessment
+
+#Prompt 'Limb Assessment'
+
+If
+	$Oriented = false
+Then
+	$ToolPrompt = 'Unable to assess'
+	Do 'ToolPrompt.txt'
+Else
+Player align $BedEnd .5
+wait 1
+
+$LeftHandReach = 'LeftHandReach'
+$RightHandReach = 'RightHandReach'
+
+Create Locator $LeftHandReach
+Create Locator $RightHandReach
+#Prompt 'Created leftHandReach ' + LeftHandReach
+#Wait 1
+#Prompt 'align with leftHand ' + PatientLeftHand
+
+#For patients 1&2...needs to be flipped for patients 3-5
+$LeftHandReach localRotateToX 0
+Wait 0
+$LeftHandReach localRotateToY 0
+Wait 0
+$LeftHandReach localRotateToZ 0
+Wait 0
+$LeftHandReach moveto $PatientLeftHand 0
+Wait 0
+
+$RightHandReach localRotateToX 0
+Wait 0
+$RightHandReach localRotateToY 0
+Wait 0
+$RightHandReach localRotateToZ 0
+Wait 0
+$RightHandReach moveto $PatientRightHand 0
+Wait 0
+
+If 
+    $BedNumber < 3
+Then
+	$LeftHandReach moveY 0.5
+	Wait 0
+	$LeftHandReach localRotateY 90
+	Wait 0
+	$LeftHandReach localRotateZ 170
+
+	$RightHandReach moveY 0.5
+	Wait 0
+	$RightHandReach localRotateY 90
+	Wait 0
+	$RightHandReach localRotateZ -170
+Else
+	$LeftHandReach moveY 0.5
+	Wait 0
+	$LeftHandReach localRotateY -90
+	Wait 0
+	$LeftHandReach localRotateZ 170
+
+	$RightHandReach moveY 0.5
+	Wait 0
+	$RightHandReach localRotateY -90
+	Wait 0
+	$RightHandReach localRotateZ -170
+Endif
+
+Label 'Reach'
+
+#Prompt Patient + ' grabs  leftHandreach ' + LeftHandReach
+Wait 0
+$Patient $grabLeft $LeftHandReach
+
+Wait 0
+#Prompt 'grab  RightHandreach ' + RightHandReach
+$Patient $grabRight $RightHandReach
+
+If
+	$RightArmWeakness
+Then
+	#Prompt 'RightArmWeakness rotate'
+	$RightHandReach localRotateZ 70 2
+	Wait 2.5
+#	Prompt 'RightArmWeakness move'
+	$RightHandReach moveY -0.3 3
+	Wait 0.3
+#	Wait 2
+Endif
+
+
+Wait 5.5
+$Patient release
+Wait 1
+
+$ToolPrompt = $LimbResponse
+Do 'ToolPrompt.txt'
+
+Destroy $LeftHandReach
+Destroy $RightHandReach
+
+Player align $PlayerStart 0.5
+
+Endif
+Return

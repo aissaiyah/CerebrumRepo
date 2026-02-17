@@ -1,0 +1,94 @@
+
+$SpeechBubbles = 1
+$Yes = 'Yes'
+$No = 'No'
+$Player = 'Player'
+$PatientName = 'Tan Ah Kow'
+$PatientIC = 'S000000X'
+$PatientBloodType = 'A+'
+$BloodType = 'A+'
+$Birthday = '1 January 1968'
+$Birthdate = '01-01-68'
+$CheckMark = 'CheckMark'
+$XMark = 'XMark'
+$Max = 1000
+$Current = 0
+
+$BloodType = 'A+'
+$BloodVolume = '258'
+$BloodID = 'S270118093709'
+$formitemname = ''
+
+$EyeResponseC = 'C : Eyes closed by swelling'
+$EyeResponse1 = '1 : None'
+$EyeResponse2 = '2 : To Pain'
+$EyeResponse3 = '3 : To Speech'
+$EyeResponse4 = '4 : Spontaneously'
+
+$VerbalResponseT = 'T : Endotracheal Tube'
+$VerbalResponse1 = '1 : None'
+$VerbalResponse2 = '2 : Incomprehensible Sounds'
+$VerbalResponse3 = '3 : Inappropriate Words'
+$VerbalResponse4 = '4 : Confused'
+$VerbalResponse5 = '5 : Oriented'
+
+$MotorResponse1 = '1 : None'
+$MotorResponse2 = '2 : Extension to Pain'
+$MotorResponse3 = '3 : Abnormal Flexion'
+$MotorResponse4 = '4 : Flexion to Pain'
+$MotorResponse5 = '5 : Localized Pain'
+$MotorResponse6 = '6 : Obey Command'
+
+$PupilReactionResponse1 = 'Reactive'
+$PupilReactionResponse2 = 'Non-Reactive'
+$PupilReactionResponse3 = 'Eye Closed'
+$PupilReactionResponse4 = 'Fixed'
+$PupilReactionResponse5 = 'NA'
+
+$LOCResponse1 = 'Alert'
+$LOCResponse2 = 'Voice'
+$LOCResponse3 = 'Pain'
+$LOCResponse4 = 'Unresponsive'
+
+$Eyes = $EyeResponse4
+$Verbal = $VerbalResponse5
+$Body = $MotorResponse6
+
+$BloodGlucoseLevel = '5.0'
+$GlucoseDrip = false
+$IVSet = false
+
+$SinusBradycardia = false
+
+$PupilReaction = $PupilReactionResponse1
+$PupilSize = '3'
+
+$PhysicalExamResponse = 'Nil abnormality seen.'
+$LimbResponse = 'Normal power'
+$GlucoseResponse = 'Patient looks drowsy, unable to drink glucose drink' #Only for if the patient can't take the glucose and is not oriented
+$Oriented = true
+$Bleeding = false
+
+$PatientMask = false
+$PatientNasal = false
+$PatientVenturi = false
+
+$isEyesOpen = true
+
+$OxygenSupplement = 'No'
+$LevelOfConscious =  $LOCResponse1
+$Pat_Oxystored = 0
+$Pat_LOCstored = 0
+
+$FreqFifteenResponse = 'Parameter monitoring frequency changed to 15 mins.'
+$FreqHourlyResponse = 'Parameter monitoring frequency changed to hourly.'
+$FreqShiftResponse = 'Parameter monitoring frequency changed to once a shift.'
+
+#HandLocator variables
+$CreateHandLocator = 'Items/CreateHandLocator'
+$HandPalm = 'Palm'
+$HandGrip = 'Grip'
+$HandFingertip = 'Fingertip'
+$HandFingerpad = 'Fingermiddle'
+
+#Return

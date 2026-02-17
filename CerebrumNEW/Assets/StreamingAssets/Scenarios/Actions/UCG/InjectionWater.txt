@@ -1,0 +1,107 @@
+Prompt 'Water for injection'
+wait 1
+Prompt ''
+
+If
+	Do 'AnswerIsNo' 'Pour Water for injection?'
+Then
+	Return
+Endif
+
+
+
+
+$Item = $InjectionWater
+$AmpouleCap = $Item + '/AmpouleBottle/Connector'
+$Grab = 'grab' + ActiveHand
+
+Do 'SetGripSize' $ActiveHand 0.2
+
+$PlayerNurse $Grab $Item 1 'tweeze' 'default' 
+Wait 2
+
+Player align $CartLook 0.5
+Wait 0.5
+$Item align $CartPos1 .5
+wait .5
+#move player closer for grab
+$Player localMoveZ 0.17 0.5
+
+
+
+$InjectionWater localmovey .1 1
+wait .5
+$InjectionWater localmovex .2 1
+wait 1.1
+
+$ItemTearSpot = $Item + 'TweezeLocator' + '/' + OtherHand + 'Rotator'
+$ItemTearSpot moveabove $AmpouleCap 0.07 0.1
+wait .1
+
+$Grab = 'grab' + OtherHand + '.elbowout'
+
+$PlayerNurse $Grab $ItemTearSpot .5 'tweeze' 'default' 
+Wait 1.5
+
+#Tear open
+$ItemTearSpot localRotateY 90 0.3
+Wait .4
+turnOff $AmpouleCap
+$ItemTearSpot localMoveY -10 0.3
+Wait .3
+
+$Release = 'release' + OtherHand
+$PlayerNurse $Release 1 'tweeze'
+Wait 1
+
+
+
+/*
+
+$InjectionWater localmovez .05 .2
+wait .2
+*/
+
+#Move above water
+turnOn $WaterSol
+$WaterSol setOpacity 0 0
+Wait 0
+$InjectionWater moveAbove $WaterSol 0.15 0.5
+Wait 0.5
+$InjectionWater localmovez .06 0.5
+Wait 0.5
+
+
+
+#Pour
+$InjectionWater localrotatex -135 1
+Wait 1
+
+$PouringLiquid = 'LiquidParticles'
+Create $PouringLiquid $PouringLiquid
+Wait 0
+$InjectionWaterOpening = InjectionWater + '/Opening'
+$PouringLiquid align $InjectionWaterOpening 0
+
+$WaterSol setOpacity 0.5 2
+
+wait .5
+$WaterSol moveY 0.03 3
+Wait 3
+
+#Stop pour
+Destroy $PouringLiquid
+Do 'Actions/UCG/StopPackagePour' $Item 
+
+
+#Throw away package
+Do 'Actions/UCG/ThrowAwayPackage' $Item 
+
+Do 'SetGripSize' $ActiveHand 0.5
+Wait 0.5
+#Set hand shape back 
+$Release = 'release'  + ActiveHand
+Do 'SetGripSize' $ActiveHand 0.5
+
+$PlayerNurse $Release 0 'tweeze'
+

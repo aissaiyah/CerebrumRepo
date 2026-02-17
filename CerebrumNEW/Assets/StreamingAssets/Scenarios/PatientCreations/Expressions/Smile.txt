@@ -1,0 +1,11 @@
+#Smile.txt Do 'smile' [duration] - default duration set to 1 sec
+$duration = $param_1
+if 
+    $duration == ' '
+then
+    #prompt 'default smile duration '
+    $duration = 1
+endif
+
+$Patient setblend face 33 50 $duration
+$Patient setblend face 34 50 $duration

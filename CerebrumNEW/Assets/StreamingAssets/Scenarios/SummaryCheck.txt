@@ -1,0 +1,88 @@
+# SummaryCheck.txt displays a summary between stages to update the player on what is going on
+# This script primarily checks the stage from the Global Variable Holder then creates the prompt accordingly
+# $PatientCheckTotal - whether all patients have been checked
+
+If
+	$Patient isCurrent
+Then
+	$GlobalVar setglobal 'SummaryCanvasOpened' true
+
+	$SumCanvas on
+	#$SummaryInfo off
+	$SumCanvas scale .47 .1
+	Wait .1
+
+	$SumButton reset
+	$Stage =
+	$GlobalVar getglobal 'Stage'
+
+	If
+		$Stage = 1
+	Then
+		TurnOn $SummaryExit
+		$SummaryExit reset
+		$SummaryText write You are required to look at the patient order provided on the COW computer, identify and carry out the correct procedure to identify the patient.
+	Endif
+
+	If
+		$Stage = 3
+	Then
+		TurnOn $SummaryExit
+		$EWSCheck off
+		$SummaryExit reset
+		$SummaryText write Prepare your materials to perform a Urinary Catheterization.
+	Endif
+
+	If
+		$Stage = 4
+	Then
+		TurnOn $SummaryExit
+		$EWSCheck off
+		$SummaryExit reset
+		$SummaryText write Perform a Urinary Catheterization.
+	Endif
+
+
+	Label 'SumCheckLoop'
+		# This is the close/OK button
+		If
+			$SummaryExit pressed
+		Then
+			#Need the Wait command so all summary checks have time to exit.
+			Wait .21  #needed to make sure each finishes SumCheckLoop
+			TurnOff $SummaryBlack
+			$SummaryExit resetPressed
+			$SumCanvas scale 0 .2
+			TurnOff $SummaryExit
+			$SumCanvas off
+			$SummaryInfo on
+
+			$GlobalVar setglobal 'PatientCheckDone' false
+			
+			$GlobalVar setglobal 'Stage' $Stage
+			$ChecklistButton reset
+			$PC_Info reset
+			$UseToolButton reset
+			$GlobalVar setglobal 'SummaryCanvasOpened' false
+			Return
+		Endif
+
+		Wait .1
+	Goto 'SumCheckLoop'
+Else
+	$GlobalVar setglobal 'SummaryCanvasOpened' true
+	Label 'WaitForSumCheckClose'
+
+		$SummaryCanvasOpened =
+			$GlobalVar getGlobal 'SummaryCanvasOpened'
+
+		If
+			$SummaryCanvasOpened = false
+		Then
+			Return
+		Endif
+		Wait .1
+
+	Goto 'WaitForSumCheckClose'
+
+Endif

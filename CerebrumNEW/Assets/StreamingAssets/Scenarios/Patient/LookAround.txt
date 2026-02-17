@@ -1,0 +1,56 @@
+# DoTest.txt Tests Do calls
+
+#NOTE: should be changed to be time-based rather than how often called
+#'LookAround'
+#Prompt 'LookAround '
+
+# 6/900 (0.7% of the time) changes or releases look
+$TargetNum = ceil(rand(900))
+
+If
+    $TargetNum > 8
+Then
+    Return
+Endif
+
+$TurnTime  = rand(2) + 0.3
+
+If 
+    $TargetNum > 5
+Then
+    $LookTarget = 'release'
+#    Prompt 'releaseLook ' + TurnTime
+    $Patient releaselook $TurnTime
+#    Wait 2
+#    Prompt ''
+    Return
+Endif
+
+
+
+$OtherBed = 'Bed' + TargetNum + '/BedEnd'
+$LastLookTarget = LookTarget
+
+If 
+    $BedNumber == TargetNum
+Then
+    $LookTarget = Player
+Else
+    $LookTarget = OtherBed
+Endif
+
+#Prompt LastLookTarget + ', new lookat target ' + LookTarget + ' ' + TurnTime
+
+$LookatLocator moveTo $LookTarget $TurnTime
+
+If
+    $LastLookTarget == 'release'
+Then
+#    Wait 1
+#    Prompt 'Turn head to ' + LookTarget
+
+    $Patient HeadTurn $LookatLocator $TurnTime
+#    Wait 1
+Endif
+
+

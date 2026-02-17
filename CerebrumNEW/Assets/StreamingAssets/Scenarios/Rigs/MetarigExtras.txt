@@ -1,0 +1,23 @@
+#########################################
+#  METARIG WITH EXTRA LOCATORS
+#########################################
+
+$PatLookPlayer = Patient + '/TurntoPlayer'
+$PatLookReset = Patient + '/TurnForward'
+
+$CuffPos = Patient + '/CuffPos'
+#$CannulaIVPos = Patient + '/CannulaIVPos'
+$CannulaIVPosHand = Patient + '/CannulaIVPos_L_Hand'
+$CannulaIVPosElbow = Patient + '/CannulaIVPos_L_Elbow'
+$CannulaIVPos = CannulaIVPosHand
+
+$MaskGroup = 'MaskGroup'
+$NasalCannula = 'NasalCannula'
+#$PatientFace = Patient + '/metarig/spine/spine.001/spine.002/spine.003/spine.004'
+$PatientFace = Patient + '/Head'
+$PatientHead = Patient + '/Jaw'
+$PatientLefttEye = Patient + '/LeftEye'
+$PatientRightEye = Patient + '/RightEye'
+$PatientMaskTarget = Patient + '/MaskTarget'
+$PatientNasalTarget = Patient + '/NasalTarget'
+$PatientNasalPos = Patient + '/Nasal'

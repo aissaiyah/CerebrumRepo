@@ -1,0 +1,15 @@
+Player lookat $InfusionClamp
+If
+	Do 'AnswerIsNo'  'Close Clamp?'
+Then
+	Return
+Endif
+
+	$ClampOpen = false
+	#If
+	#	$TaskNum > -1
+	#Then
+		ScoreTracker taskCorrect $TaskNum 1
+	Prompt 'The Clamp has been closed.'
+	Wait 1
+	Prompt ''

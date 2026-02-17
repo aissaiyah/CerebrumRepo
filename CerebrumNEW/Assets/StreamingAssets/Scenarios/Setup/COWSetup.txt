@@ -1,0 +1,57 @@
+#########################################
+#  COW Setup INIT
+#########################################
+
+
+$Bed = 'Bed2'
+		$CartObj = 'COW01'
+		$Cart1Obj = 'Cart'
+		$Cart = 'Cart'
+		$Cart1 = 'Cart1'
+		$CartPos = Bed + '/COWPos'
+
+		Create $CartObj $Cart
+		$Cart align $CartPos 0
+
+		Wait 0
+		$Cart localrotatey 90 0
+		Wait 0
+
+	$CartLook = $Cart + '/close'
+	$Cart1Look = $Cart1 + '/close'
+	$Cart1LookMedium = $Cart1 + '/medium'
+
+#	$ClothPos = $Cart + '/ClothPos'
+
+	$CartCloth = 'cart_cloth'
+	$CartClothFolded = 'cart_cloth_folded'
+
+
+	$CartPos1 = $Cart + '/Pos01'
+	$CartPos2 = $Cart + '/Pos02'
+	$CartPos3 = $Cart + '/Pos03'
+	$CartPos4 = $Cart + '/Pos04'
+	$CartPos5 = $Cart + '/Pos05'
+	$CartPos6 = $Cart + '/Pos06'
+	$CartPos7 = $Cart + '/Pos07'
+	$CartPos8 = $Cart + '/Pos08'
+	$CartPos9 = $Cart + '/Pos09'
+	$CartPosSanitizer = $Cart + '/SanitizerPos'
+	$CartNursePos = $Cart + '/NursePos'
+
+
+	$HandScrubObj = 'handScrub'
+	$HandScrub = 'HandScrub'
+
+	Create $HandScrubObj $HandScrub
+	Wait 0
+
+# 	$HandScrub align $CartPos7 0
+	$HandScrub align $CartPosSanitizer 0
+	Wait 0
+	$HandScrub localRotateY -90 0
+	Wait 0
+	$HandScrub attachto $Cart
+	Wait 0
+
+

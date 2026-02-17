@@ -1,0 +1,36 @@
+#CreateHandLocator - create and configure HandLocator prefab
+#Do CreateHandLocator $TempTarget $TempHandShape $TempGrabPoint
+
+############# Get parameters
+If
+    $param[0] > 0
+Then
+    $TempTarget = param[1]		#target to grab
+    $TempHandShape = param[2]	#hand shape to grab with: #'grip','extension','pinch','ring','thumb','tripod','tweeze'
+    $TempGrabPoint = param[3]	#point on hand to line up: 'palm', fingertip', 'fingermiddle'
+Else
+    $TempTarget = 'MainTarget'
+    $TempHandShape = 'tripod'
+    $TempGrabPoint = 'fingertip'
+Endif 
+
+$HandLocator = 'HandLocator'   #NEW
+
+#Prompt 'CreateHandLocator params:' + TempTarget + ' '  + TempHandShape + ' ' + TempGrabPoint
+#Wait 3
+
+Create $HandLocator $TempTarget
+Wait 0
+#move target's Root so child is at object's origin
+
+#Prompt 'Set Templocator handshape to ' + TempHandShape
+$TempTarget play $TempHandShape  #NEW:Make locator in right hand shape
+Wait 0.5  #anims should be changed to instant change
+
+#Prompt 'Turn off animator hack because can't move root despite there being a mask'
+$TempTarget component.off Animator
+Wait 0
+
+$TempChild = TempTarget + '/' + TempGrabPoint
+$TempTargetChild = TempTarget + '/Root'
+$TempTargetChild alignChild $TempChild $TempTarget 0  #NEW

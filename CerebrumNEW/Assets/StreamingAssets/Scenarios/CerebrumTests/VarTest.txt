@@ -1,0 +1,48 @@
+# ArrayTest.txt Tests Arrays (which are just faked to be variable names with the index appended)
+
+$one = 1
+$two = 2
+$three = 3
+$four = 'fOUr'
+$five = bar
+Prompt '$five = ' + five + 'done'
+Wait 1
+$six = 'v=' + $two + one + $four + '+' + $five #EP can't eval undefined bar so returns false
+$bar = $'bAr'
+$seven = $five + $bar + $four
+Prompt 'EP can\'t eval' + ' $bar for six = ' + $six
+Wait 1
+Prompt '$seven = ' + seven
+Wait 1
+
+If
+    bar == 'bAr'
+Then
+    Prompt 'Bar matches!'
+Else
+    Prompt 'Bar doesn't match!'
+Endif
+Wait 5
+$foo[1] = 'one'
+$foo[two] = 'two'
+$foo_3 = 'three'
+$foo['four'] = 'four'
+$foo_bar = 'five'
+
+Prompt 'foo_1 = ' + foo_1
+Wait 1
+Prompt 'foo_3 = ' + foo_3
+Wait 1
+Prompt 'foo[1] = ' + foo[1]
+Wait 1
+Prompt ' foo[2] = ' + foo[2]
+Wait 2
+Prompt ' foo[3] = ' + foo[3]
+Wait 2
+Prompt ' foo[three] = ' + foo[three]
+Wait 2
+Prompt 'foo[1] = ' + foo[1] + ' foo[2] = ' + foo[2]
+Wait 2
+Prompt 'foo[one] = ' + foo[one] + ' foo[2] = ' + foo[2] + ' foo[1+two] = ' + foo[1+two]
+Wait 2
+Prompt 'foo[four] = ' + foo[four] + ' foo[five] = ' + foo[five] 

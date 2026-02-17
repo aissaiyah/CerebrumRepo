@@ -1,0 +1,12 @@
+# Patient2.txt checks to see if this is the first time you have spoken to the patient
+# If it is your first time, it sets a boolean true to be checked by the Checklist and StageCheck
+# If it is not your first time, it returns
+
+If
+	$P2Global = '0'
+Then
+	$P2Global = '1'
+	$GlobalVar setGlobal 'P2' $P2Global
+Else
+	Return
+Endif

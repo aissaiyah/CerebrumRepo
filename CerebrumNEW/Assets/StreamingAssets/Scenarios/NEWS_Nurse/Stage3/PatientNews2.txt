@@ -1,0 +1,31 @@
+#########################################
+#  PATIENTNEWS2 INFO STAGE 3
+#########################################
+
+$Temperature = 36.9
+$HR = 120
+$BP = '75/50' #mmHg
+$BPSys = 75
+$Respiration = 25
+If
+	$OxygenSupplement = 'Yes'
+Then
+	$SpO2 = 100
+Else
+	$SpO2 = 90
+Endif
+
+$PupilReaction = $PupilReactionResponse4
+
+$Oriented = false
+$isEyesOpen = false
+$LevelOfConscious = $LOCResponse4
+$GlucoseResponse = 'Patient is unresponsive'
+$PatientSpeak = 'Patient is unresponsive!'
+$PainScore = 'Unable to assess'
+
+$Vitals setVitals $HR $SPO2 $BP $Respiration
+
+$Eyes   =    $EyeResponse1
+$Verbal = $VerbalResponse1
+$Body   =  $MotorResponse1

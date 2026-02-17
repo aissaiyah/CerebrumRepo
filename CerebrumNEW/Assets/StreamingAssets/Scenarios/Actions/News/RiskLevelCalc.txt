@@ -1,0 +1,294 @@
+$RiskLevelBool = false
+
+#Calculate Respiration Score
+
+If
+$Respiration <= 8
+Then
+$RiskLevelNum = $RiskLevelNum + 3
+$RiskLevelBool = true
+$Pat_RespRisk setItemText '3'
+$Pat_RespRiskBG setimagecolor red
+Endif
+
+If
+$Respiration >= 9
+Then
+	If
+	$Respiration <= 11
+	Then
+	$RiskLevelNum = $RiskLevelNum + 1
+	$Pat_RespRisk setItemText '1'
+	$Pat_RespRiskBG setimagecolor olive
+	Endif
+Endif
+
+If
+$Respiration >= 12
+Then
+	If
+	$Respiration <= 20
+	Then
+	$RiskLevelNum = $RiskLevelNum + 0
+	$Pat_RespRisk setItemText '0'
+	$Pat_RespRiskBG setimagecolor green
+	Endif
+Endif
+
+If
+$Respiration >= 21
+Then
+	If
+	$Respiration <= 24
+	Then
+	$RiskLevelNum = $RiskLevelNum + 2
+	$Pat_RespRisk setItemText '2'
+	$Pat_RespRiskBG setimagecolor orange
+	Endif
+Endif
+
+If
+$Respiration >= 25
+Then
+$RiskLevelNum = $RiskLevelNum + 3
+$RiskLevelBool = true
+$Pat_RespRisk setItemText '3'
+$Pat_RespRiskBG setimagecolor red
+Endif
+
+
+#Calculate Oxygen Saturation Score
+
+If
+$SpO2 <= 91
+Then
+$RiskLevelNum = $RiskLevelNum + 3
+$RiskLevelBool = true
+$Pat_SPO2Risk setItemText '3'
+$Pat_SPO2RiskBG setimagecolor red
+Endif
+
+If
+$SpO2 >= 92
+Then
+	If
+	$SpO2 <= 93
+	Then
+	$RiskLevelNum = $RiskLevelNum + 2
+	$Pat_SPO2Risk setItemText '2'
+	$Pat_SPO2RiskBG setimagecolor orange
+	Endif
+Endif
+
+If
+$SpO2 >= 94
+Then
+	If
+	$SpO2 <= 95
+	Then
+	$RiskLevelNum = $RiskLevelNum + 1
+	$Pat_SPO2Risk setItemText '1'
+	$Pat_SPO2RiskBG setimagecolor olive
+	Endif
+Endif
+
+If
+$SpO2 >= 96
+Then
+$RiskLevelNum = $RiskLevelNum + 0
+$Pat_SPO2Risk setItemText '0'
+$Pat_SPO2RiskBG setimagecolor green
+Endif
+
+
+
+#Calculate Temp Score
+
+If
+$Temperature <= 35.0
+Then
+$RiskLevelNum = $RiskLevelNum + 3
+$RiskLevelBool = true
+$Pat_TempRisk setItemText '3'
+$Pat_TempRiskBG setimagecolor red
+Endif
+
+If
+$Temperature >= 35.1
+Then
+	If
+	$Temperature <= 36.0
+	Then
+	$RiskLevelNum = $RiskLevelNum + 1
+	$Pat_TempRisk setItemText '1'
+	$Pat_TempRiskBG setimagecolor olive
+	Endif
+Endif
+
+If
+$Temperature >= 36.1
+Then
+	If
+	$Temperature <= 38.0
+	Then
+	$RiskLevelNum = $RiskLevelNum + 0
+	$Pat_TempRisk setItemText '0'
+	$Pat_TempRiskBG setimagecolor green
+	Endif
+Endif
+
+If
+$Temperature >= 38.1
+Then
+	If
+	$Temperature <= 39.0
+	Then
+	$RiskLevelNum = $RiskLevelNum + 1
+	$Pat_TempRisk setItemText '1'
+	$Pat_TempRiskBG setimagecolor olive
+	Endif
+Endif
+
+If
+$Temperature >= 39.1
+Then
+$RiskLevelNum = $RiskLevelNum + 2
+$Pat_TempRisk setItemText '2'
+$Pat_TempRiskBG setimagecolor orange
+Endif
+
+
+
+#Calculate BP Score
+
+If
+$BPSys <= 90
+Then
+$RiskLevelNum = $RiskLevelNum + 3
+$RiskLevelBool = true
+$Pat_BPRisk setItemText '3'
+$Pat_BPRiskBG setimagecolor red
+Endif
+
+If
+$BPSys >= 91
+Then
+	If
+	$BPSys <= 100
+	Then
+	$RiskLevelNum = $RiskLevelNum + 2
+	$Pat_BPRisk setItemText '2'
+	$Pat_BPRiskBG setimagecolor orange
+	Endif
+Endif
+
+If
+$BPSys >= 101
+Then
+	If
+	$BPSys <= 110
+	Then
+	$RiskLevelNum = $RiskLevelNum + 1
+	$Pat_BPRisk setItemText '1'
+	$Pat_BPRiskBG setimagecolor olive
+	Endif
+Endif
+
+If
+$BPSys >= 111
+Then
+	If
+	$BPSys <= 219
+	Then
+	$RiskLevelNum = $RiskLevelNum + 0
+	$Pat_BPRisk setItemText '0'
+	$Pat_BPRiskBG setimagecolor green
+	Endif
+Endif
+
+If
+$BPSys >= 220
+Then
+$RiskLevelNum = $RiskLevelNum + 3
+$RiskLevelBool = true
+$Pat_BPRisk setItemText '3'
+$Pat_BPRiskBG setimagecolor red
+Endif
+
+
+
+#Calculate HR Score
+
+If
+$HR <= 40
+Then
+$RiskLevelNum = $RiskLevelNum + 3
+$RiskLevelBool = true
+$Pat_HRRisk setItemText '3'
+$Pat_HRRiskBG setimagecolor red
+Endif
+
+If
+$HR >= 41
+Then
+	If
+	$HR <= 50
+	Then
+	$RiskLevelNum = $RiskLevelNum + 1
+	$Pat_HRRisk setItemText '1'
+	$Pat_HRRiskBG setimagecolor olive
+	Endif
+Endif
+
+If
+$HR >= 51
+Then
+	If
+	$HR <= 90
+	Then
+	$RiskLevelNum = $RiskLevelNum + 0
+	$Pat_HRRisk setItemText '0'
+	$Pat_HRRiskBG setimagecolor green
+	Endif
+Endif
+
+If
+$HR >= 91
+Then
+	If
+	$HR <= 110
+	Then
+	$RiskLevelNum = $RiskLevelNum + 1
+	$Pat_HRRisk setItemText '1'
+	$Pat_HRRiskBG setimagecolor olive
+	Endif
+Endif
+
+If
+$HR >= 111
+Then
+	If
+	$HR <= 130
+	Then
+	$RiskLevelNum = $RiskLevelNum + 2
+	$Pat_HRRisk setItemText '2'
+	$Pat_HRRiskBG setimagecolor orange
+	Endif
+Endif
+
+If
+$HR >= 131
+Then
+$RiskLevelNum = $RiskLevelNum + 3
+$RiskLevelBool = true
+$Pat_HRRisk setItemText '3'
+$Pat_HRRiskBG setimagecolor red
+Endif
+
+$Pat_TempRiskBG setimagecolor alpha .4
+$Pat_HRRiskBG setimagecolor alpha .4
+$Pat_BPRiskBG setimagecolor alpha .4
+$Pat_RespRiskBG setimagecolor alpha .4
+$Pat_SPO2RiskBG setimagecolor alpha .4
+
+Do 'ToolTxt/RiskLevelDropDownCalc.txt'

@@ -1,0 +1,37 @@
+$Player align $PlayerCOWLook
+Wait .51
+#Player lookat COWFocus
+$KidneyDish outline.on
+$DoorSingle outline.on
+Label 'KidneyLoop'
+	If
+		$KidneyDish pressed
+	Then
+		ScoreTracker taskCorrect 1 true
+		$KidneyDish reset
+		$KidneyDish moveto $KidDishOrig
+		Wait .2
+		$KidneyDish outline.off
+	Endif
+	If
+		$DoorSingle pressed
+	Then
+		$DoorSingle reset
+		Do 'Actions/StorageRoom/Door.txt'
+	Endif
+If
+		$Scene_Exit pressed
+	Then 
+		$Scene_Exit resetPressed
+		ScoreTracker rangecomplete 0-1
+		Do 'EndCheck.txt'
+	Endif
+If
+		$SumButton pressed
+	Then 
+		$SceneStart = 'Actions/StorageRoom/PlayertoCOW.txt'
+		$SumButton resetPressed
+		Do 'SummaryCheck.txt'
+	Endif
+Wait .2
+Goto 'KidneyLoop'

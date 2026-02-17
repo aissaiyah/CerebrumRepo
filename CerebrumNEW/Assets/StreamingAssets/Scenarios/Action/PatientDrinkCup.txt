@@ -1,0 +1,26 @@
+#PatientDrinkCup - Patient drinks the cup liquid
+# $DrinkCup - cup object
+# $DrinkCupAmount - amount to fill cup
+
+#$DrinkCup = 'CupFillable'
+	
+	#raise glass to mouth
+	$DrinkCup attachto $PatientHand
+	#Prompt 'Parented to hand'
+	Wait 0
+
+	#bring drink to mouth
+	#Prompt 'Bring to mouth ' + PatientMouth
+	#Wait 3.5
+	$Patient $grabLeft $PatientMouth
+	Wait 1.5
+	$Patient setblend face 30 100
+	#Empty cup
+	$DrinkAmount = DrinkCupAmount
+	$Cup = DrinkCup
+	Do 'Action/EmptyCup'
+
+	#bring drink back down, 
+	$Patient setblend face 30 0
+	$Patient release
+	Wait 1

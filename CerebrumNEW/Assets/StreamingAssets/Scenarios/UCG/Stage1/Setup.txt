@@ -1,0 +1,203 @@
+# UCG1Setup.txt - Main UCG setup file.  Sets up variables for scene objects, etc.
+Wait 0.5
+
+$Stage = '1'
+Do 'UCG/SetupVariables'
+
+###########################################
+# Setup Stage Number
+###########################################
+
+$Stage = '1'
+$GlobalVar setglobal 'Stage' $Stage
+$StageFolderPrefix = 'UCG/Stage' + Stage + '/'
+
+$GlobalVar setglobal 'Gender' $PatientGender
+wait .1
+$ScenarioGender =
+$GlobalVar getglobal 'Gender'
+
+If 
+    $BedNumber = 4
+Then
+    $GlobalVar setglobal 'PatientStruggle' $UCStruggle
+
+    $ScenarioStruggle =
+    $GlobalVar getglobal 'PatientStruggle'
+Endif
+
+$DefaultBedNumber = 5
+
+#Move camera to DefaultBedNumber, which then sets it as the current patient
+If 
+    $BedNumber = DefaultBedNumber
+Then
+    #Prompt 'Default Patient is ' + BedNumber
+	Player align $PlayerStart .05
+    $BathroomSignName = 'BathroomSign' + PatientGender
+    $BathroomSignLoc = 'RoomLrgDoubleWard_base2/BathroomSign'
+    If
+        $ScenarioGender = 'Female'
+    Then
+        $BathroomSign = 'women sign'
+    Else
+        $BathroomSign = 'men sign'
+    Endif
+    Create $BathroomSign $BathroomSignName
+    $BathroomSignName align $BathroomSignLoc 0
+
+    turnOff $CurtainClosed
+Endif
+
+
+#Currently set up and works only if there are 2 patients being compared
+If 
+    $BedNumber != DefaultBedNumber
+Then
+    Do 'UCG/COWSetup.txt'
+Endif
+
+
+###########################################
+# Setup Scoring
+###########################################
+
+#Setup Task Numbers for this patient
+Do 'NEWS_Nurse/TaskSetup.txt'    
+
+#Setup Task Values for this patient
+If
+    $isEWS = true
+Then
+    $ScoringSetup = StageFolderPrefix + 'ScoringNews.txt'
+Else
+    $ScoringSetup = StageFolderPrefix + 'ScoringNon.txt'
+Endif
+#Do $ScoringSetup                 
+
+$ScoreTracker = 'ScoreTracker'
+#A bit of a hack to make sure stage start message only sent once
+If
+   $BedNumber = 5
+Then
+   $ScoreTracker SetStage 1
+   $ScoreTracker NumItems 8
+Endif
+
+$TakenAction = false
+
+#ScoreTracker TaskCompleted $PatientType 'Task_TakeNoAction'
+#Test of ScoreTracker TaskCompleted:
+#ScoreTracker TaskCompleted $PatientType 'Task_OxygenTherapy'
+#Prompt 'TaskCompleted ' + PatientType
+#Wait 5
+
+###########################################
+# Setup Canvases
+###########################################
+
+
+$SummaryInfo off
+#TurnOn SummaryCanvas/OKButton
+#$TurnOff SummaryCanvas/Canvas/Black
+
+
+
+
+$EWSWrong off
+$EWSCorrect off
+PatientPreCanvas off
+$ECGCan off
+$EWSCheck off
+$EndGame off
+$EWSChoiceCanvas off
+End off
+
+
+#This is how to update the message handler of an object:
+#$Patient component.add 'ObjectMessageHandler'
+#$Patient component.remove 'ObjectMessageHandlerBase'
+#This is how to add and remove components
+#$Patient component.add 'RandomID'
+#$Patient component.on 'Animator'
+#$Patient component.off 'Animator'
+#$Patient component.remove 'Animator'
+
+
+$PatientChecks = 0
+$PatientCheckTotal = false
+$GlobalVar setglobal 'PatientCheckDone' $PatientCheckTotal
+$Patient reset
+$Bed clickable false
+$WristTag reset
+
+
+ALL/WristTag localMoveX -0.2
+ALL/WristTag localMoveZ 0.2
+
+$VitalsCanvas off
+
+
+$UseToolButton reset
+$CloseTools reset
+
+Do 'Setup/PatientCanvas.txt'
+
+#### Dialogue Setup
+
+
+   If
+      Player exists $DialogCanvas 
+   Else
+        Create DialogueCanvas 'DialogueCanvas'
+   Endif
+
+   #Do  'Setup/PatientCanvas.txt'
+
+Wait .1
+$PlayerSpeechBubble close
+$PatientSpeechBubble close
+$Phone = $Desk + '/Telephone(Clone)'
+
+#### State Variables
+$ChamberAmount = 0
+$BagCombined = false
+$InfusionStarted = false
+$InfusionSetHung = false
+$InfusionSetMoved = false
+$BloddBagMoved = false
+
+
+turnOff $NurseBodyGloves 
+turnOn $NurseBodyNoGloves 
+
+
+$ii = 0
+Label 'N1Loop'
+#$ii = ii + 1
+#Speaker1 'N1: i= ' + ii
+#Wait 1
+#Goto 'N1Loop'
+
+If
+    $PatientGender == 'Male'
+Then
+    $NurseHead = $Nurse + '/metarig/Jaw'
+Else
+    $NurseHead = $Nurse + '/mixamorig8:Head'
+Endif
+
+#$PatientHead = $Patient + '/Jaw'
+$Nurse speaker.color 1 .5 .5
+
+#$Patient speaker.object $PatientHead
+$Nurse speaker.object $NurseHead
+$Patient speaker.color .5 .5 1
+
+$Patient outline.on
+
+#turnOff $Nurse
+
+$SceneStart = 'UCG/Stage1/Loop.txt'
+#Prompt 'start scene'
+Do $SceneStart

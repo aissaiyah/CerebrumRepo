@@ -1,0 +1,101 @@
+# SummaryCheck.txt displays a summary between stages to update the player on what is going on
+# This script primarily checks the stage from the Global Variable Holder then creates the prompt accordingly
+# $PatientCheckTotal - whether all patients have been checked
+
+If
+	$Patient isCurrent
+Then
+	$GlobalVar setglobal 'SummaryCanvasOpened' true
+	$SumCanvas on
+	#$SummaryInfo off
+	$SumCanvas scale .47 .1
+	#Wait .1
+
+	$SumButton reset
+	#$Stage =
+	#$GlobalVar getglobal 'Stage'
+
+	If
+		$Stage = 1
+	Then
+		TurnOn $SummaryExit
+		$SummaryExit reset
+		$SummaryText write You have just taken over the shift. Speak to all the patients and perform any assessments necessary to understand the patients assigned to you.
+	Endif
+
+	If
+		$Stage = 2
+	Then
+		If
+			$Stage2Sum = true
+		Then
+			$SummaryText write Well done! You have complete the rounding to all patients under your care!
+			wait 4
+			TurnOn $SummaryExit
+			$SummaryExit reset
+			$SummaryText write One of the patients is deteriorating! Speak to the patients and perform assessments to identify the deteriorating patient.*** ***A new button has been added to select who you think the deteriorating patient is.
+		Else
+			$SummaryText write Unfortunately you were not able to complete round to all patients that are assigned to you. Please speak to all patients to understand their condition when you're taking over from your colleague in the future.
+			wait 6
+			TurnOn $SummaryExit
+			$SummaryExit reset
+			$SummaryText write One of the patients is deteriorating! Speak to the patients and perform assessments to identify the deteriorating patient.*** ***A new button has been added to select who you think the deteriorating patient is.
+		Endif
+		$EWSCheck on
+		#$ChecklistButton off
+		$TimeManager starttimer
+	Endif
+
+	If
+		$Stage = 3
+	Then
+		$EWSCheck off
+		TurnOn $SummaryExit
+		$SummaryExit reset
+		$SummaryText write Patient condition is deteriorating! You are required to perform necessary assessments and render appropriate interventions to him. You are allowed to perform all assessments and all interventions to deteriorating patient.
+	Endif
+
+
+	Label 'SumCheckLoop'
+		# This is the close/OK button
+		If
+			$SummaryExit pressed
+		Then
+			#Need the Wait command so all summary checks have time to exit.
+			Wait .21  #needed to make sure each finishes SumCheckLoop
+			TurnOff $SummaryBlack
+			$SummaryExit resetPressed
+			$SumCanvas scale 0 .2
+			TurnOff $SummaryExit
+			$SumCanvas off
+			$SummaryInfo on
+
+			$GlobalVar setglobal 'PatientCheckDone' false
+			
+			$GlobalVar setglobal 'Stage' $Stage
+			$ChecklistButton reset
+			$PC_Info reset
+			$UseToolButton reset
+			$GlobalVar setglobal 'SummaryCanvasOpened' false
+			Return
+		Endif
+
+		Wait .1
+	Goto 'SumCheckLoop'
+Else
+	$GlobalVar setglobal 'SummaryCanvasOpened' true
+	Label 'WaitForSumCheckClose'
+
+		$SummaryCanvasOpened =
+			$GlobalVar getGlobal 'SummaryCanvasOpened'
+
+		If
+			$SummaryCanvasOpened = false
+		Then
+			Return
+		Endif
+		Wait .1
+
+	Goto 'WaitForSumCheckClose'
+
+Endif

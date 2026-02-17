@@ -1,0 +1,58 @@
+#########################################
+#  PATIENTNon5 INFO INIT
+#########################################
+
+$PatientName = 'Teng Nelson'
+$isEWS = false
+$PatientIC = 'S2833365H'
+$BloodType = 'B-'
+$AgeInYears = 80
+$PatientModel = 'uAvatar'
+$PatientDiag = 'Urinary tract infection'
+$PatientGender = 'Male'
+$PatientSummary = 'Patient was recently discharged from hospital for prostate cancer. During his previous admission,  he had urinary catheter inserted. However he had developed urinary tract infection after discharge.  He was readmitted for heamaturia and fever.'
+
+$PatientType = 'Non5'
+
+$Temperature = 38.8
+$HR = 85
+$BP = '138/67'
+$BPSys = 138
+$Respiration = 20
+$SpO2 = 98
+
+$PainScore = 'Pain Score: 2/10'
+
+$PatientSpeak = 'Hi, I realised there is more blood in my urine compared to yesterday. Is that ok?'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNon5_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientObjName align $Patient 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'NEWS_Nurse/SetupPatient.txt'
+
+$UrinaryPos = 'Bed' + BedNumber + '/UrinaryPos'
+
+$UrinaryCat = 'UrinaryBag'
+$UC = 'UrinaryCat' + BedNumber
+Create $UrinaryCat $UC
+$UC align $UrinaryPos
+
+$HeadAmount = 80
+#$WeightAmount = 75.0
+$WeightAmount = 40.0
+
+Do 'PatientCreations/Age/80.txt'
+Do 'PatientCreations/Head/Head1.txt'
+#Do 'PatientCreations/Height/Average.txt'
+Do 'PatientCreations/Height/Short.txt'
+#Do 'PatientCreations/Weight/Average.txt'
+Do 'PatientCreations/Weight/Weight.txt'

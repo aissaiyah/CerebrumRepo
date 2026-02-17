@@ -1,0 +1,24 @@
+#/StartCanvas off
+#/PatientCanvas off
+Player align $Monitorlook
+ZoomSpot Menu.Question 'Have the vitals changed?'
+ZoomSpot Menu.Choices 'Yes','No'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait 1
+If
+	ZoomSpot menu.result $Yes
+Then
+	$Vitalsmonitor reset
+	ScoreTracker taskCorrect 1 true
+	Wait 1
+#	Do '06/06Start.txt'
+Else
+	$Vitalsmonitor reset
+	ScoreTracker taskCorrect 1 false
+	wait 1
+	#ScoreTracker taskCorrect 1 false
+#	Do '06/06Start.txt'
+Endif
+#/StartCanvas on

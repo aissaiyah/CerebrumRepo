@@ -1,0 +1,130 @@
+# ComaCheck.txt has a pop-up that allows you to enter and measure the patients current Verbal, Eye, and Body response
+#
+# $ComaTestCan is a canvas that has dropdowns to set the current status of the patient
+#
+# $Verbal - Verbal response of the patient
+# $Eyes - Eye response of the patient
+# $Body - Bodily response of the patient
+# $VerbalDD - a dropdown on $ComaTestCan that the player uses to measure the Verbal response of the patient and prompts if incorrect
+# $EyesDD - a dropdown on $ComaTestCan that the player uses to measure the Eye response of the patient and prompts if incorrect
+# $BodyDD - a dropdown on $ComaTestCan that the player uses to measure the Bodily response of the patient and prompts if incorrect
+#
+# $CTButton - Runs the check to see if answers are correct. If correct, closes the canvas. If incorrect, runs the incorrect prompt
+# $CTExitButton - Closes the canvas without checking and applying the answers. Does not affect score.
+#
+# $VR - true or false if the $Verbal dropdown matches what the Patient's value is
+# $ER - true or false if the $Eyes dropdown matches what the Patient's value is
+# $BR - true or false if the $Body dropdown matches what the Patient's value is
+
+$ComaTestCan on
+$VerbalDD = $ComaTestCan + '/Background/VerbalDropdown'
+$EyesDD = $ComaTestCan + '/Background/ReactiveDropdown'
+$BodyDD = $ComaTestCan + '/Background/BodyDropdown'
+$CTButton = $ComaTestCan + '/Background/CloseButton'
+$CTExitButton = $ComaTestCan + '/Background/Exit'
+$TotalText = $ComaTestCan + '/TotalScore'
+
+Label 'ComaLoop'
+
+	$VR = 
+		$VerbalDD checkaccuracy $Verbal
+	$ER = 
+		$EyesDD checkaccuracy $Eyes
+	$BR = 
+		$BodyDD checkaccuracy $Body
+	#Prompt 'E= ' + ER + ', V= ' + VR + ', B= ' + BR
+
+	$VRnum = 
+		$VerbalDD dropdown.choice 
+	$ERnum = 
+		$EyesDD dropdown.choice 
+	$BRnum = 
+		$BodyDD dropdown.choice 
+	
+	$VRnum = VRnum - 1    #adjust for C: choice
+	
+	If
+		$VRnum < 1
+	Then
+		$VRnum = 0
+	Endif
+
+	$ERnum = ERnum - 1     #adjust for T: choice
+	
+	If
+		$ERnum < 1
+	Then
+		$ERnum = 0
+	Endif
+
+	#If
+	#	$BRnum < 1
+	#Then
+	#	$BRnum = 1
+	#Endif
+
+	$Totalnum = VRnum + ERnum + BRnum
+#	Prompt 'E= ' + ERnum + ', V= ' + VRnum + ', B= ' + BRnum + ', total = ' + Totalnum
+	$TotalText setItemText $Totalnum
+
+	If
+		$CTExitButton pressed
+	Then
+		$CTExitButton reset
+		$ComaTestCan off
+		Return
+	Endif
+
+	If
+		$CTButton pressed
+	Then
+		$CTButton reset
+		If
+			$VR
+		Then
+			If
+				$ER
+			Then
+				If
+					$BR
+				Then
+					$ComaTestCan off
+					Return
+				Endif
+			Endif
+		Endif
+
+
+	If
+		$ER
+	Then
+		#Continue
+	Else
+		Prompt 'Appropriate GCS Eye Response score for this patient - ' + Eyes
+		wait 3
+		Prompt ''
+	EndIf
+
+	If
+		$VR
+	Then
+		#Continue
+	Else
+		Prompt 'Appropriate GCS Verbal Response score for this patient - ' + Verbal
+		wait 3
+		Prompt ''
+	EndIf
+
+	If
+		$BR
+	Then
+		#Continue
+	Else
+		Prompt 'Appropriate GCS Motor Response score for this patient - ' + Body
+		wait 3
+		Prompt ''
+	EndIf
+
+	Endif
+	Wait 0.05
+Goto 'ComaLoop'

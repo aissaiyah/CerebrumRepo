@@ -1,0 +1,29 @@
+# DoReturnTest.txt Tests Do calls
+Prompt 'Entering DoReturnTest'
+Wait 3
+$drp1 = $param_1
+$drp2 = $param[2]
+$drp3 = $param[3]
+
+Prompt '1 ReturnTest params are ' + param_1 + ',' + param_2 + ',' + param[3]
+Wait 2 
+Prompt 'ReturnTest param assignments are ' + drp1 + ',' + drp2 + ',' + param[3]
+Wait 2 
+$doretval = 
+    Do 'CerebrumTests/ReturnTest'
+
+Prompt 'Returned from ReturnTest.txt with doretval = ' + doretval
+Wait 1
+return doretval
+
+############################
+Label 'Function2'
+Prompt 'In Function2!!!'
+Wait 3
+$drp1 = $param_1
+$drp2 = $param[2]
+$drp3 = $param[3]
+
+Prompt '1 ReturnTest:Function2 params are ' + param_1 + ',' + param_2 + ',' + param[3]
+Wait 2 
+return 'function2 reached!'

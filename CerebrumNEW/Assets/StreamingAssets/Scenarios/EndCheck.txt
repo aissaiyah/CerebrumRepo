@@ -1,0 +1,52 @@
+#EndCheck.txt - 
+# JoystickCanvas is where the joystick held, turns off to hide the joystick
+# ScoreTracker keeps track of player's score and progress to see how well they did
+# End is the end screen which shows whether you pass or fail
+# $Leave is the exit button on the End screen
+# UICompletion sets the text and numbers on the End screen
+# percentachieved checks if you have a high enough score to pass
+
+/JoystickCanvas off
+ScoreTracker getcompletepercent
+End on
+If
+   $BedNumber = 1
+Then
+    ScoreTracker EndStage
+Endif
+
+Wait .2    #needed for scoring
+
+$Leave = EndCanvas + '/Background/score/Leave'
+$Leave clickable true
+
+If
+    ScoreTracker allcomplete
+Then
+    UICompletion perfect
+Else
+    If
+        ScoreTracker percentachieved 90
+    Then
+        UICompletion good
+    Else
+        UICompletion bad
+    Endif
+Endif
+
+Label 'Loop'
+    If
+        $Leave pressed
+    Then
+        $Leave reset
+        If
+            $BedNumber = 1
+        Then		
+            ScoreTracker CloseStage
+        Endif
+        
+        Wait 1  #needed for scorm
+        SceneManager switchtoscene 
+    Endif
+    Wait .1
+Goto 'Loop'

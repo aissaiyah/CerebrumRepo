@@ -1,0 +1,111 @@
+#ExamineEyes.txt
+#
+
+		#Should move all pupil check and anim to new file
+		If 
+			$BedNumber < 3
+		Then
+			Player lookAtLegacy $PatientFace 0.125 0.3 0.1225
+		Else
+			Player lookAtLegacy $PatientFace -0.125 0.3 -0.1225
+		EndIf
+		$EyeLight = 'EyeLight'
+		Create $EyeLight $EyeLight
+		Wait .05
+		$EyeLight align Player 0
+		Wait .05
+		$Patient headturn Player
+		wait 1.2
+		$EyeLight lookAtLegacy $PatientLeftEye duration 1
+		#$EyeLight localRotateX -20 .5
+		#$EyeLight localRotateY 20 .5
+		
+		wait 2
+
+
+		If
+			$PupilReaction = 'Reactive'
+		Then
+			$PupilReacts = true
+		Else
+			$PupilReacts = false
+		Endif
+
+		#$isEyesOpen = false
+
+		#Do left eye
+		If
+			$isEyesOpen = false
+		Then
+			#Prompt 'Eyes closed:' + PlayerNurse
+			$PlayerNurse On
+			$RightHandReach = 'RightHandReach'
+			Create Locator $RightHandReach
+
+			##### Move to left eye
+
+			$RightHandReach align $PatientRightEye 0
+			Wait 0
+			$RightHandReach parentto $PatientRightEye
+
+			$RightHandReach localRotation 4.436 83.1 37.267 0
+			Wait 0
+			$RightHandReach localPosition -0.206 0.143 -0.098 0
+			Wait 0
+
+
+			$PlayerNurse $grabRight $RightHandReach
+
+			Wait 1
+			$Patient play OpenLeft true
+			wait 3
+		Else
+			#Prompt 'Eyes opened'
+		Endif
+		$Patient play Pupil_Left_Shrink $PupilReacts
+		wait 4
+		$EyeLight lookAtLegacy $PatientRightEye duration 1
+		#$EyeLight localRotateY -18 1
+		$Patient play Pupil_Left_Shrink false
+		Wait 1
+
+		#Do right eye
+		If
+			$isEyesOpen = false
+		Then
+			#Prompt 'Move hand to right eye'
+#			$RightHandReach ilocalMoveY -0.2 0.5  
+			$RightHandReach localPosition -0.146 0.143 -0.1 0.2
+			Wait 0.5
+			$Patient play OpenLeft false
+			wait 1
+			$Patient play OpenRight true
+			wait 3
+		Endif
+		$Patient play Pupil_Right_Shrink $PupilReacts
+		wait 4
+		$EyeLight localRotateY -30 1
+		$Patient play Pupil_Right_Shrink false
+		wait 1
+		If
+			$isEyesOpen = false
+		Then
+			$RightHandReach ilocalMoveY 0.4 0.5  
+			Wait 0.5
+			$PlayerNurse release
+			Destroy $RightHandReach
+			$Patient play OpenRight false
+			wait 1
+		Endif
+		
+		Destroy $EyeLight
+		Do 'Intervention/AssessPupilReaction'
+		wait .5
+		$GlobalVar setglobal 'UsingTool' false
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+		Player align $PlayerStart
+		$Patient reset

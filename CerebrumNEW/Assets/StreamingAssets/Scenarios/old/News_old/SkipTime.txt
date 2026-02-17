@@ -1,0 +1,28 @@
+If
+	$Stage == 2
+Then
+	Do 'EndCheck.txt'
+Endif
+
+If
+	$Stage == 1
+Then
+	$Stage = Stage + 1
+	$BP = 197/86
+	$BPSys = 197
+	$Vitals setVitals $HR $SPO2 $BP $Respiration 
+	Prompt 'You are now in Stage 3. The EWS Patient is Lim Ah Nee.'
+	wait 2
+	Prompt ''
+Endif
+
+If
+	$Stage == 0
+Then
+	$Stage = Stage + 1
+	$Temperature 36.3
+	$Vitals setVitals $HR $SPO2 $BP $Respiration 
+	Prompt 'You are now in Stage 2'
+	wait 1
+	Prompt ''
+Endif

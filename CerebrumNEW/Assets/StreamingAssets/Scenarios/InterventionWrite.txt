@@ -1,0 +1,39 @@
+# Writes how many interventions are available in a given stage
+If
+	$Stage = 1
+Then
+	If
+		$S1IntLimit = '-1'
+	Then
+		$InterventionsNumber write Unlimited
+	Else
+		$InterventionsNumber write $S1IntLimit
+	Endif
+	Return
+Endif
+
+If
+	$Stage = 2
+Then
+	If
+		$S2IntLimit = '-1'
+	Then
+		$InterventionsNumber write Unlimited
+	Else
+		$InterventionsNumber write $S2IntLimit
+	Endif
+	Return
+Endif
+
+If
+	$Stage = 3
+Then
+	If
+		$S3IntLimit = '-1'
+	Then
+		$InterventionsNumber write Unlimited
+	Else
+		$InterventionsNumber write $S3IntLimit
+	Endif
+	Return
+Endif

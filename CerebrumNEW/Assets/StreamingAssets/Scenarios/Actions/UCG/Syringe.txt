@@ -1,0 +1,92 @@
+Prompt 'Syringe'
+wait 1
+Prompt ''
+
+If
+	$SyringeFull = true
+Then
+	Return
+Endif
+
+If
+	Do 'AnswerIsNo' 'Fill Syringe with water?'
+Then
+	Return
+Endif
+
+
+	If
+		$WaterSol isOn
+	Then
+		ZoomSpot Menu.Question 'How many mls would you like to draw?'
+		ZoomSpot Menu.Choices '5ml','10ml','20ml'
+		ZoomSpot Menu.on ZoomSpot
+		WaitFor
+			ZoomSpot Menu.Done
+		Wait .1
+			Player align $CartLook 0.5
+			Wait 0.5
+			#move player closer for grab
+			$Player localMoveZ 0.25 0.5
+			wait 0.5
+
+			$Item = $Syringe
+			$Grab = 'grab' + ActiveHand
+
+			Do 'SetGripSize' $ActiveHand 0.2
+
+			$PlayerNurse $Grab $Item 1 'dip' 'default' 
+			Wait 1
+			$Syringe localmovey .1 .5
+			wait .5
+
+			$Syringe localrotatey -90 .5
+			wait .5
+
+			$Syringe localrotatex 90 .5
+			wait .5
+			$Syringe moveabove $WaterSol .01 1
+			Wait 1
+
+			/*
+			$Syringe localmovez .03 .5
+			wait .5
+			$Syringe localmovey .01 .5
+			wait .5
+			$Syringe localmovex -.04 .5
+			wait .5
+			$Syringe localrotatez -35 .5
+			wait .5
+			$Syringe localrotatex 35 .5
+			wait .5
+			*/
+
+			$Plunger localmovey .06 2.5
+			wait 3
+			turnOn $SyringeWater
+			turnOff $WaterSol
+/*
+			$Syringe localrotatex -35 .3
+			wait .4
+			$Syringe localrotatez 125 .3
+			wait .4
+			$Syringe moveto $CatheterPos 1
+			wait 1
+*/
+			$Syringe align $CatheterPos 1
+			Wait 1
+			$Syringe localmovez .08 .5
+			wait .5
+
+			$SyringeFull = true
+
+			$Release = 'release' + ActiveHand
+			$PlayerNurse $Release 1 'dip'
+			Do 'SetGripSize' $ActiveHand 0.5
+			Wait 1
+			Player align $CartLook 0.5
+	Else
+		Prompt 'Needs Water for injection'
+		wait 2
+		Prompt ''
+	Endif

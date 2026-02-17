@@ -1,0 +1,50 @@
+#########################################
+#  PATIENTNon2 INFO INIT
+#########################################
+
+$PatientName = 'Mohamad Hairil'
+$isEWS = false
+$PatientIC = 'S7600553E'
+$BloodType = 'B-'
+$AgeInYears = 45
+$PatientModel = 'uAvatar'
+$PatientDiag = 'Right leg Cellulitis'
+$PatientGender = 'Male'
+$PatientSummary = 'Patient with medical history of renal insufficiency, hyperlipidemia and atrial fibrillation. He fell and injured his right leg 2 days ago. He presented in Emergency department for infected right leg abrasion, right lower leg redness, swelling and low grade fever. He was diagnosed as post traumatic cellulitis and was prescribed oral cephalexin.'
+
+$PatientType = 'Non2'
+
+$Temperature = 37.7
+$HR = 80
+$BP = '105/60'
+$BPSys = 105
+$Respiration = 20
+$SpO2 = 99
+
+$PainScore = 'Pain Score: 0/10'
+
+$PatientSpeak = 'Hi, I am feeling feverish right now. Can you please call the doctor to see me now?'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNon2_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientObjName align $Patient 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'NEWS_Nurse/SetupPatient.txt'
+
+$HeadAmount = 80.0
+#$WeightAmount = 45.0
+$WeightAmount = 85.0
+
+Do 'PatientCreations/Age/46.txt'
+Do 'PatientCreations/Head/Head2.txt'
+Do 'PatientCreations/Height/Average.txt'
+Do 'PatientCreations/Expressions/Frown.txt'
+Do 'PatientCreations/Weight/Weight.txt'

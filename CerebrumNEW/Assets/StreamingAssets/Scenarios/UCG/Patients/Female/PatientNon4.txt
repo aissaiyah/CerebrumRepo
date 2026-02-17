@@ -1,0 +1,56 @@
+#########################################
+#  PATIENTNon4 INFO INIT
+#########################################
+
+$PatientName = 'Anne Ling'
+$isEWS = false
+$PatientIC = 'S2023330P'
+$BloodType = 'B-'
+$AgeInYears = 69
+$PatientModel = 'uAvatar_Female'
+$PatientDiag = 'Phlebitis'
+$PatientGender = 'Female'
+$PatientSummary = ''
+
+$PatientType = 'Non4'
+
+$Temperature = 37.5
+$HR = 90
+$BP = '150/80'
+$BPSys = 150
+$Respiration = 18
+$SpO2 = 98
+
+$PainScore = 'Pain Score: 0/10'
+
+$PatientSpeak = 'Hi, when will the hand surgeon be coming? My hand is swelling and painful.'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNon4_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientObjName align $Patient 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'UCG/SetupPatient.txt'
+
+$HeadAmount = 20
+$WeightAmount = 75.0
+
+Do 'PatientCreations/FemaleTest4.txt'
+#Do 'PatientCreations/Head/Head0.txt'
+Do 'PatientCreations/Height/Average.txt'
+#Do 'PatientCreations/Weight/Average.txt'
+#Do 'PatientCreations/Gender/Female.txt'
+
+$PatientRightArm scaleX 1.3
+$PatientRightArm scaleZ 1.3
+
+$PatientBody = Patient + '/body'
+$PatientMat = 'PatientbodyRDorsumPhlebitis'
+$PatientBody setmaterial $PatientMat 0

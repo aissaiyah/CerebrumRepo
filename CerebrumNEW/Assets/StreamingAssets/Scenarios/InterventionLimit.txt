@@ -1,0 +1,8 @@
+# Set the limit for amount of interventions per stage
+# Setting to -1 means infinite amount of interventions
+
+$S1IntLimit = 2
+$S2IntLimit = 2
+$S3IntLimit = '-1'
+
+$CanIntervention = true

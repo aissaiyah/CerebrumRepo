@@ -1,0 +1,63 @@
+# Check to see if you can use an intervention
+If
+	$Stage = 1
+Then
+	If
+		$S1IntLimit > 0
+	Then
+		$CanIntervention = true
+	Else
+		If
+			$S1IntLimit = '-1'
+		Then
+			$CanIntervention = true
+		Else
+			$CanIntervention = false
+		Endif
+	Endif
+Endif
+
+
+If
+	$Stage = 2
+Then
+	If
+		$S2IntLimit > 0
+	Then
+		$CanIntervention = true
+	Else
+		If
+			$S2IntLimit = '-1'
+		Then
+			$CanIntervention = true
+		Else
+			$CanIntervention = false
+		Endif
+	Endif
+Endif
+
+If
+	$Stage = 3
+Then
+	If
+		$S3IntLimit > 0
+	Then
+		$CanIntervention = true
+	Else
+		If
+			$S3IntLimit = '-1'
+		Then
+			$CanIntervention = true
+		Else
+			$CanIntervention = false
+		Endif
+	Endif
+Endif
+
+If
+	$CanIntervention = false
+Then
+	Prompt 'Patient max interventions reached for this stage'
+	wait 2
+	Prompt ''
+Endif

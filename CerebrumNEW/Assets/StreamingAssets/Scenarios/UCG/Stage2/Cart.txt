@@ -1,0 +1,126 @@
+#########################################
+#  UCG Cart - Stage 2
+#########################################
+
+$WaterAmpouleName outline.on
+$SalineAmpouleName outline.on
+$ChlorSachetName outline.on
+$SalineBottleName outline.on
+$IodineBottleName outline.on
+$UC12Name outline.on
+$UC14Name outline.on
+$UC16Name outline.on
+
+$WaterAmpouleName clickable true
+$SalineAmpouleName clickable true
+$ChlorSachetName clickable true
+$SalineBottleName clickable true
+$IodineBottleName clickable true
+$UC12Name clickable true
+$UC14Name clickable true
+$UC16Name clickable true
+
+label 'CartLoop'
+
+	If
+		$WaterAmpouleName pressed
+	Then
+		$WaterAmpouleName reset
+		$ToolName = 'Water for injection'
+		$ToolToDestroy = $WaterAmpouleName
+		Do 'Actions/UCG/ReturnTool.txt'
+	Endif
+
+	If
+		$SalineAmpouleName pressed
+	Then
+		$SalineAmpouleName reset
+		$ToolName = 'Saline Ampoule'
+		$ToolToDestroy = $SalineAmpouleName
+		Do 'Actions/UCG/ReturnTool.txt'
+	Endif
+
+	If
+		$ChlorSachetName pressed
+	Then
+		$ChlorSachetName reset
+		$ToolName = 'Chlorhexidine Sachet'
+		$ToolToDestroy = $ChlorSachetName
+		Do 'Actions/UCG/ReturnTool.txt'
+	Endif
+
+	If
+		$SalineBottleName pressed
+	Then
+		$SalineBottleName reset
+		$ToolName = 'Saline'
+		$ToolToDestroy = $SalineBottleName
+		Do 'Actions/UCG/ReturnTool.txt'
+	Endif
+
+	If
+		$IodineBottleName pressed
+	Then
+		$IodineBottleName reset
+		$ToolName = 'Iodine'
+		$ToolToDestroy = $IodineBottleName
+		Do 'Actions/UCG/ReturnTool.txt'
+	Endif
+
+	If
+		$UC12Name pressed
+	Then
+		$UC12Name reset
+		$ToolName = 'Urinary Catheter - Size 12'
+		$ToolToDestroy = $UC12Name
+		Do 'Actions/UCG/ReturnTool.txt'
+	Endif
+
+	If
+		$UC14Name pressed
+	Then
+		$UC14Name reset
+		$ToolName = 'Urinary Catheter - Size 14'
+		$ToolToDestroy = $UC14Name
+		Do 'Actions/UCG/ReturnTool.txt'
+	Endif
+
+	If
+		$UC16Name pressed
+	Then
+		$UC16Name reset
+		$ToolName = 'Urinary Catheter - Size 16'
+		$ToolToDestroy = $UC16Name
+		Do 'Actions/UCG/ReturnTool.txt'
+	Endif
+
+	If
+		BackButtonCanvas/BackButton pressed
+	Then
+		BackButtonCanvas/BackButton reset
+		BackButtonCanvas off
+		$Player align $PlayerCOWLook
+
+		$WaterAmpouleName outline.off
+		$SalineAmpouleName outline.off
+		$ChlorSachetName outline.off
+		$SalineBottleName outline.off
+		$IodineBottleName outline.off
+		$UC12Name outline.off
+		$UC14Name outline.off
+		$UC16Name outline.off
+		
+		$WaterAmpouleName clickable false
+		$SalineAmpouleName clickable false
+		$ChlorSachetName clickable false
+		$SalineBottleName clickable false
+		$IodineBottleName clickable false
+		$UC12Name clickable false
+		$UC14Name clickable false
+		$UC16Name clickable false
+		
+		Return
+	Endif
+
+	wait .2
+Goto 'CartLoop'

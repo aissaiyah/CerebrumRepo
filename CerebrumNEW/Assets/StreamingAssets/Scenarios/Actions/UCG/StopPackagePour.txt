@@ -1,0 +1,14 @@
+# 'StopPackagePour' $Package
+#Prompt 'StopPackagePour '
+#Wait 1
+
+If
+	$param[0] > 0
+Then
+    $Package = param[1]
+Endif
+
+#Stop pour
+$Package localrotateX 90 .5
+wait .7
+

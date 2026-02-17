@@ -1,0 +1,28 @@
+#CheckHoverOrPressed $Package $ItemName $Action
+#Check if hovering over $Item.  If so, show $ItemName.
+#Check if clicked on $Item.  If so, Do $Action.
+
+If
+	$param[0] > 0
+Then
+	$Item = param[1]
+	$ItemName = param[2]
+	$Action = param[3]
+Endif
+
+
+If
+	$Item hover
+Then
+	$Item labels $ItemName
+Else
+	$Item labels ''
+Endif
+
+If
+	$Item pressed
+Then
+	$Item labels ''
+	$Item reset		
+	Do $Action
+Endif

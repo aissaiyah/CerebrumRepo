@@ -1,0 +1,85 @@
+# SpotMonitorFreq.txt is a tool that changes the monitoring frequency time
+# $SpotMonitorCan - the canvas that shows the choices for monitor times
+# $PerFifteen, $Hour, and $Shift are the buttons for the corresponding frequency settings
+# $MonExit - close button for the tool
+
+$SpotMonitorCan on
+$PerFifteen = SpotMonitorCan + '/Choices/15 Minutes'
+$Hour = SpotMonitorCan + '/Choices/Hourly'
+$Shift = SpotMonitorCan + '/Choices/Shift'
+$MonExit = SpotMonitorCan + '/Choices/Exit'
+
+Label 'Loop'
+
+If
+	$PerFifteen pressed
+Then
+	$PerFifteen reset
+	ScoreTracker TaskCompleted $PatientType 'Task_SpotMonitorFrequency'
+	$TakenAction = true
+	Do 'InterventionReduce.txt'
+	$SpotMonitorCan off
+	Player align $Monitorlook 0.5
+	Prompt $FreqFifteenResponse
+	wait 3
+	Prompt ''
+	Player align $PlayerStart 0.5
+	If
+		$isEWS = true
+	Then
+		ScoreTracker taskCorrect 1 1
+	Endif
+	Return
+Endif
+
+If
+	$Hour pressed
+Then
+	$Hour reset
+	ScoreTracker TaskCompleted $PatientType 'Task_SpotMonitorFrequency'
+	$TakenAction = true
+	Do 'InterventionReduce.txt'
+	$SpotMonitorCan off
+	Player align $Monitorlook 0.5
+	Prompt $FreqHourlyResponse
+	wait 3
+	Prompt ''
+	Player align $PlayerStart 0.5
+	If
+		$isEWS = true
+	Then
+		ScoreTracker taskCorrect 1 -1
+	Endif
+	Return
+Endif
+
+If
+	$Shift pressed
+Then
+	$Shift reset
+	ScoreTracker TaskCompleted $PatientType 'Task_SpotMonitorFrequency'
+	$TakenAction = true
+	Do 'InterventionReduce.txt'
+	$SpotMonitorCan off
+	Player align $Monitorlook 0.5
+	Prompt $FreqShiftResponse
+	wait 3
+	Prompt ''
+	Player align $PlayerStart 0.5
+	If
+		$isEWS = true
+	Then
+		ScoreTracker taskCorrect 1 -1
+	Endif
+	Return
+Endif
+
+If
+	$MonExit pressed
+Then
+	$MonExit reset
+	$SpotMonitorCan off
+	Return
+Endif
+
+Goto 'Loop'

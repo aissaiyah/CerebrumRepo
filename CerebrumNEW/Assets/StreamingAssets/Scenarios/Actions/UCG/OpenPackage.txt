@@ -1,0 +1,57 @@
+#'OpenPackage' $Package - grab and open the Package
+# $Package = param[0] 
+# - Requires ActiveHand, OtherHand
+
+#Prompt 'OpenPackage' $Package
+#wait .51
+#Prompt ''
+
+If
+    $param[0] > 0
+Then
+    $Package = param[1]
+Endif
+
+$ItemPaperGeo = Package + '/' + 'geo_paper'
+$ItemPaperRoot = Package + '/' + 'paper'
+$ItemHoldSpot = Package + '/' + ActiveHand + 'Rotator'
+$ItemTearSpot = Package + '/' + OtherHand + 'Rotator'
+$ItemTearSpot align $ItemHoldSpot 0
+Wait 0
+
+#$ItemTearSpot localRotateZ 30 0
+#$ItemTearSpot localRotateY -180 0
+#Wait 0
+
+#Grab with other hand
+$Grab = 'grab' + OtherHand + '.elbowout'
+
+#	Prompt 'grab otherhand ' + ItemTearSpot
+$PlayerNurse $Grab $ItemTearSpot .5 'dip' 'default' 
+Wait 1.5
+
+$PlayerHandName = 'Nurse' + OtherHand + 'Hand'
+$PlayerHand =$ PlayerHandName
+
+$PaperBacking = Package + '/PaperGrabSpot'
+$PaperBacking constrainTo $PlayerHand
+Wait 0
+
+#Tear open
+$ItemTearSpot localRotateY 90 0.3
+Wait .4
+$ItemTearSpot localMoveY -.1 0.3
+Wait 0.3
+
+$ItemPaperRoot constrainTo $PlayerHand
+Wait 0
+
+$Release = 'release' + OtherHand
+$PlayerNurse $Release 1 'dip'
+Wait 1
+#have Package move freely (with hand attached)
+$PaperBacking releaseConstraint 
+
+$ItemPaperRoot localMoveY -1
+Wait 1
+turnOff $ItemPaperGeo

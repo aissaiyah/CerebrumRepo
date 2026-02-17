@@ -1,0 +1,74 @@
+# EWSCheck.txt is the button used in the second Stage to select the patient that the player thinks is the EWS patient
+#
+# $EWSChoiceCanvas - asks if you want to select this patient as the EWS patient
+# $EWSCorrect - shows if you picked an EWS patient
+# $EWSWrong - shows if you picked a non-EWS patient
+# $EWSNO - No button to cancel your selection of if a patient is EWS
+# $EWSYES - Yes button to confirm your selection of if a patient is EWS
+#
+# $GlobalVar is the empty game object that holds all of the global variables in the scene
+# $Stage is the current stage number
+
+
+$EWSChoiceCanvas on
+$EWSCorrect off
+$EWSWrong off
+$EWSWrongAnswer = $EWSWrong + '/Wrong Answer'
+
+$EWSName =
+$GlobalVar getglobal 'EWSName'
+
+$WrongText = 'You have selected the wrong patient. Mr. ' + EWSName + ' clinical condition is deteriorating, you are required to act promptly to prevent his condition to deteriorate further.'
+
+Label 'EWSLoop'
+
+	If
+		$EWSNO pressed
+	Then
+		#Need the Wait command so all summary checks have time to exit.
+		Wait .1
+		$EWSNO resetPressed
+		$EWSChoiceCanvas off
+		Return
+	Endif
+
+	If
+		$EWSYES pressed
+	Then
+		#Need the Wait command so all summary checks have time to exit.
+		Wait .1
+		$EWSYES reset
+		$TimeManager stoptimer
+		#Checks if you selected an EWS patient or not
+		#If yes, start Stage 3, if no, move to the EWS patient and start Stage 3
+		If
+			$isEWS = true
+		Then
+			$EWSQuestion off
+			$EWSCorrect on
+			wait 5
+			$EWSChoiceCanvas off
+			$GlobalVar setglobal 'PatientCheckDone' true
+			$EWSCheck off
+			Return
+			#Go to Stage 3
+		Else
+			$EWSQuestion off
+			$EWSWrong on
+			$EWSWrongAnswer setItemText $WrongText
+			wait 5
+			$EWSChoiceCanvas off
+			$PlayerStage3Start =
+			$GlobalVar getglobal 'EWSBed'
+			Player align $PlayerStage3Start 0.5
+			Prompt 'Moving to deteriorating patient!'
+			wait 1 
+			Prompt ''
+			$GlobalVar setglobal 'PatientCheckDone' true
+			$EWSCheck off
+			Return
+			#Go to Stage 3
+		Endif
+	Endif
+	Wait .1
+Goto 'EWSLoop'

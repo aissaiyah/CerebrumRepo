@@ -1,0 +1,28 @@
+# MainMenu.txt checks for which scene button is pressed to load into
+
+
+
+Label 'GameLoop'
+    If
+        Stages/Buttons/Scene01 isOnAndPressed
+    Then
+        Stages/Buttons/Scene01 reset
+        SceneManager switchtoscene Scenes/UCG/UCG01_Female
+    Endif
+
+    If
+        Stages/Buttons/Scene02 isOnAndPressed
+    Then
+        Stages/Buttons/Scene02 reset
+        SceneManager switchtoscene Scenes/UCG/UCG01_Male
+    Endif
+
+    If
+        Stages/Buttons/Scene03 isOnAndPressed
+    Then
+        Stages/Buttons/Scene03 reset
+        SceneManager switchtoscene Scenes/UCG/UCG01_Struggle
+    Endif
+
+    Wait .1
+goto 'GameLoop'

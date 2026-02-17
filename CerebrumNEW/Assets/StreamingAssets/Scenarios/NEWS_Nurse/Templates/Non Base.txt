@@ -1,0 +1,57 @@
+#########################################
+#  PATIENTNonX INFO INIT
+#########################################
+#  Additional things that can be set per patient
+#
+# $Eyes = $EyeResponseX
+# $Verbal = $VerbalResponseX
+# $Body = $MotorResponseX
+# $BloodGlucoseLevel = 'X.X'
+# $PupilReaction = $PupilReactionResponseX
+# $PupilSize = 'X'
+# $PhysicalExamResponse = ''
+# $LimbResponse = ''
+# $GlucoseResponse = 'Patient looks drowsy, unable to drink glucose drink' #Only for if the patient can't take the glucose and is not oriented
+# $Oriented = true/false
+# $Bleeding = true/false
+# $PatientMask = true/false
+# $PatientNasal = true/false
+# $OxygenSupplement = 'Yes'/'No'
+# $LevelOfConscious =  $LOCResponseX
+
+
+$PatientName = ''
+$isEWS = false
+$PatientIC = '' ###Patient number (ex. S1112223A)
+$BloodType = ''
+$AgeInYears = xx
+$PatientModel = 'PatientMale70' ###Change for which model seems to be the best fit
+$PatientDiag = '' ###Diagnosis
+$PatientGender = ''
+$PatientSummary = '' 
+
+$PatientType = 'NonXX' ###Change XX for the number of the Non Patient
+
+$Temperature = xx
+$HR = xx
+$BP = 'xx/xx' #mmHg
+$BPSys = xxx  ###first number in $BP
+$Respiration = xx
+$SpO2 = xxx
+
+$PainScore = 'Pain Score: x/10' ###Change X for pain score
+
+$PatientSpeak = '' ###What the patient says when you speak to them in stage 1
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNonX_B' + BedNumber   ###Change x for next letter (News1 = A, News2 = B...)
+Create $PatientModel $PatientObjName
+$PatientObjName align $Patient 0
+$Patient = PatientObjName
+
+Do 'Rigs/MetarigExtras.txt'
+
+Do 'NEWS_Nurse/SetupPatient.txt'

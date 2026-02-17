@@ -1,0 +1,173 @@
+
+###########################################
+# Setup Stage Number
+###########################################
+
+
+
+$Stage = '1'
+$StageFolderPrefix = 'NEWS_Nurse/Stage' + Stage + '/'
+
+$ScoreTracker = 'ScoreTracker'
+$TakenAction = false
+
+
+###########################################
+# Setup Canvases
+###########################################
+
+$SumCanvas = 'SummaryCanvas'
+$Summary = 'SummaryCanvas/Background/Text'
+$SummaryText = SumCanvas + '/TopSummary'
+$SummaryExit = SumCanvas + '/OKButton'
+$SummaryBlack = SumCanvas + '/Black'
+$SummaryInfo = SumCanvas + '/InfoButton'
+$SumButton = SummaryInfo + '/Information' #'JoystickCanvas/Summary'
+
+
+$PatCan = 'PatientCanvas'
+$OxyCan = 'OxygenTherapyCanvas'
+$ECGCan = 'ECGCheckCanvas'
+$OralCan = 'OralGlucoseCanvas'
+$IVCannulaCan = 'IVCannulaCanvas'
+$IVDripCan = 'IVDripCanvas'
+$ComaCheckCan = 'ComaCanvas'
+$SpotMonitorCan = 'SpotMonitorCanvas'
+$AbCan = 'AbnormalFindingsCanvas'
+$EndCanvas = 'EndCanvas'
+$InterventionsCanvas = 'ToolCanvas/Interventions'
+$AssessmentsCanvas = 'ToolCanvas/Assessments'
+$ToolDescription = 'ToolCanvas/ToolDescription'
+$ChecklistButton = 'ToolCanvas/Checklist'
+$EWSCheck = 'ToolCanvas/EWSPatient'
+$EndGame = 'ToolCanvas/EndGame'
+$EWSChoiceCanvas = 'EWSCanvas'
+$EWSQuestion = 'EWSCanvas/Background'
+$EWSYES = 'EWSCanvas/Background/YES'
+$EWSNO = 'EWSCanvas/Background/NO'
+$EWSCorrect = 'EWSCanvas/Background/Correct'
+$EWSWrong = 'EWSCanvas/Background/Wrong'
+$Timer = 15*60
+$TimeManager = 'UIManager'
+
+$CheckCanvas = 'PatientChecklistCanvas'
+$CheckPat = $CheckCanvas + '/Background/Patient ' + BedNumber
+$CheckPat1 = $CheckCanvas + '/Background/Patient 1'
+$CheckPat2 = $CheckCanvas + '/Background/Patient 2'
+$CheckPat3 = $CheckCanvas + '/Background/Patient 3'
+$CheckPat4 = $CheckCanvas + '/Background/Patient 4'
+$CheckPat5 = $CheckCanvas + '/Background/Patient 5'
+$CheckmarkPat = $CheckCanvas + '/Image/Background/Check' + BedNumber
+$CheckmarkPat1 = $CheckCanvas + '/Image/Background/Check1'
+$CheckmarkPat2 = $CheckCanvas + '/Image/Background/Check2'
+$CheckmarkPat3 = $CheckCanvas + '/Image/Background/Check3'
+$CheckmarkPat4 = $CheckCanvas + '/Image/Background/Check4'
+$CheckmarkPat5 = $CheckCanvas + '/Image/Background/Check5'
+
+$Check_End = $CheckCanvas + '/Background/End'
+
+$BackECG = 'ECGCheckCanvas/Choices/Exit'
+
+$PupilCanvas = 'PupilCanvas'
+$ComaTestCan = 'ComaTestCanvas'
+
+
+$PatientChecks = 0
+$PatientCheckTotal = false
+
+
+$Nurse = 'Nurse_01(Clone)'
+$Nurse reset
+$NurseFace = $Nurse + '/Eyes'
+$Player = 'Player'
+$LeftHandSpot = 'LeftHandSpot'
+$RightHandSpot = 'RightHandSpot'
+$Scene_Exit = 'JoystickCanvas/Exit'
+$Desk = 'table1(Clone)'
+
+$DishPos = 'Positions/DishPos'
+$IVLook = 'Positions/IVLook'
+
+$Scene_Exit = 'JoystickCanvas/Exit'
+#$PatLook = 'Bed4 close'
+$PatLook = 'PatLook'
+$DeskStart = Cart + '/Computer1 far'
+
+$Vitalsmonitor = 'BedsideHeadLeft' +BedNumber +'/VitalsSpotMonitor(Clone)'
+$Monitorlook = $Vitalsmonitor + '/Close'
+$VitalsCanvas = $Vitalsmonitor + '/SpotCanvas'
+
+$VitalsCanvas off
+
+#INFUSION SET
+$Cart = 'Cart' + BedNumber
+$COWComputer = Cart + '/Computer1'
+$Soap = Cart + '/Misc6'
+$Gloves = Cart + '/Misc9'
+$KidneyDish = Cart + '/Misc2'
+$BloodBag = Cart + '/Misc4'
+
+$Set = Cart + '/Misc3'
+$PressureCuff = Cart + '/Misc7'
+$Wipe = Cart + '/Misc2/Wipe1'
+$Wipe1 = Cart + '/Misc2/Wipe1'
+$Wipe2 = Cart + '/Misc2/Wipe2'
+$Syringe = Cart + '/Misc2/Syringe'
+$BrokenClamp = 'COW0(Clone)/InfusionClamp(Clone)'
+
+$DishDefPos = 'COW0(Clone)/DishPos'
+$GlovesDefPos = 'COW0(Clone)/GlovesPos'
+$CuffDefPos = 'COW0(Clone)/CuffPos'
+$SetTablePos = 'COW0(Clone)/Pos05'
+$BagTableSpot = 'COW0(Clone)/Pos05'
+$SoapDefPos = 'COW0(Clone)/Pos06'
+
+#$Wastebin = 'WastebinScene06(Clone)'
+#$Wastebin = 'Bin2'
+#$BrokenClamp align $Wastebin
+
+$bbpos = 'COW0(Clone)/Pos03'
+
+#$SumCanvas = 'SummaryCanvas/Background'
+
+$UIMan = 'UIManager'
+$UseToolButton = 'ToolCanvas/UseToolButton'
+$CloseTools = 'ToolCanvas/Assessments/CloseToolInventory'
+
+$DialogCanvas = 'DialogueCanvas'
+
+$PatientSpeechBubble = 'DialogueCanvas/Patient Speak'
+$PlayerSpeechBubble = 'DialogueCanvas/Player Speak'
+$PatientSpeech = 'DialogueCanvas/Patient Speak/Text'
+$PlayerSpeech = 'DialogueCanvas/Player Speak/Text'
+
+$Phone = $Desk + '/Telephone(Clone)'
+
+#### State Variables
+$ChamberAmount = 0
+$BagCombined = false
+$InfusionStarted = false
+$InfusionSetHung = false
+$InfusionSetMoved = false
+$BloddBagMoved = false
+
+$CannulaIV = 'CannulaIV'
+$CannulaIVEnd = $CannulaIV + '/CannulaEnd'
+$PlayerNurse = 'Player/NursePlayer'
+$NurseBodyGloves = PlayerNurse + '/BodyGloves'
+$NurseBodyNoGloves = PlayerNurse + '/BodyNoGloves'
+
+
+$ClampOpen = false
+$IVConnected = false
+
+$NurseHead = $Nurse + '/metarig/Jaw'
+#$PatientHead = $Patient + '/Jaw'
+
+$grab = 'v0_grab'
+$grabRight = 'v0_grabRight'
+$grabLeft = 'v0_grabLeft'
+
+$SceneStart = 'NEWS_Nurse/MainLoop.txt'
+$EndCanvas = 'EndCanvas'
+$MainMenu = 'Scenes/NEWS/NEWSMainMenu'

@@ -1,0 +1,103 @@
+Prompt 'Cotton Balls'
+wait 1
+Prompt ''
+
+If
+	$AntisepticCotton = true
+Then
+	Return
+Endif
+
+If
+	Do 'AnswerIsNo'  'Soak cotton balls in antiseptic solution?'
+Then
+	Return
+Endif
+
+
+$Player align $CartLook
+wait 1
+If
+	$AntisepticSol isOn
+Then
+	$Forceps = 'Forceps_Straight_IK'
+	$ForcepsHandle = $Forceps + '/IKGrab'
+	
+	Create $Forceps $Forceps
+	#move player closer for grab
+	$Player localMoveZ 0.2 0.5
+	wait .5
+	
+	$Forceps localrotatey -90 0
+	wait 0
+	#$Forceps localrotatex 40 0
+	#wait 0
+
+	$Forceps moveto $CottonBalls 0
+	wait 0
+	$Forceps localmovey .03 0
+	wait 0
+
+	#$PlayerNurse grabRight.elbowin $ForcepsHandle 0 'horizontal' 'R_grip'
+	$Grab = 'grab' + ActiveHand
+	$PlayerNurse $Grab $ForcepsHandle 1 'tweeze' 'default'
+	Wait 1
+
+
+	$CottonBalls attachto $Forceps
+
+	$Forceps moveAbove $AntisepticSol .1 1
+	wait 1
+	$Forceps localmovey -.07 .4
+	wait .5
+
+	/*
+	$Forceps localmovey .05 .4
+	wait .5
+	$Forceps localmovex -.12 .4
+	wait .5
+	$Forceps localrotatex 35 1
+	wait 1
+	$Forceps localmovey -.04 .4
+	wait .4
+	*/
+
+	$CottonBall1 = $CottonBalls + '/Swab_Ball_01'
+	$CottonBall2 = $CottonBalls + '/Swab_Ball_02'
+	$CottonBall3 = $CottonBalls + '/Swab_Ball_03'
+	wait .1
+	$CottonBall1 setColor 0.75,0.4,0.7 2
+	$CottonBall2 setColor 0.75,0.4,0.7 1.2
+	$CottonBall3 setColor 0.75,0.4,0.7 1.8
+	Wait 2
+
+	/*
+	$CottonBall1 setMaterial AntisepticBallMat
+	$CottonBall2 setMaterial AntisepticBallMat
+	$CottonBall3 setMaterial AntisepticBallMat
+    */
+
+#	turnOff $AntisepticSol
+	$AntisepticSol off
+
+	$Forceps moveAbove $UCHolder .1 1
+	wait 1
+	$Forceps localmovez .01 .2
+	wait .3
+	$Forceps localmovey -.07 .4
+	wait .5
+	
+	$CottonBalls detach
+	wait .1
+	Destroy $Forceps
+	$AntisepticCotton = true
+	$Release = 'release' + ActiveHand
+	$PlayerNurse $Release 1 'tweeze' 
+	Wait 1
+	$Player align $CartLook 1
+Else
+	Prompt 'Needs Antiseptic Solution'
+	wait 2
+	Prompt ''
+Endif
+

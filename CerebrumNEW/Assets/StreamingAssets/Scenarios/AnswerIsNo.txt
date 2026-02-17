@@ -1,0 +1,22 @@
+#AnswerIsNo $Question
+$Question = param[1]
+
+If
+	$(SkipConfirm == true)
+Then
+	Return false
+Endif
+
+ZoomSpot Menu.Question $Question
+ZoomSpot Menu.Choices 'Yes','No'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait .1
+If
+	ZoomSpot menu.result 'No'
+Then
+	Return true
+Else
+	Return false
+Endif

@@ -1,0 +1,10 @@
+#S2RubPalms - rub palm of chosen hand on dorsal of other hand
+#Do 'S2RubPalms' ['right'|'left']
+#Param[1] : $WhichHand
+#Requires:
+# $PlayerNurse, $LeftHandSpot, $RightHandSpot, $NurseLeftHandDorsum, $NurseRightHandDorsum
+
+Prompt 'S2RubPalms'
+#Wait 1
+Do 'Actions/HandWash/RubPalmToPalm' 'right' 'palm'
+Prompt ''

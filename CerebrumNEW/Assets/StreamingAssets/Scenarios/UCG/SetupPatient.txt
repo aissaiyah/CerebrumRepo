@@ -1,0 +1,235 @@
+# SetupPatient.txt is ran for each patient to set important variables 
+
+
+$NursePatPos = Bed + '/NursePosLeft'
+$Nurse align $NursePatPos
+$IVPos = Bed + '/NursePosRight'
+$OxygenPos = Bed + '/Oxygen/OxygenFlowMeter'
+
+$PatientProf = PatientGender + ', ' + AgeInYears + ' years old'
+
+# + '/Medium'
+$PlayerStart = Bed + '/Medium'
+
+$PatientProf = PatientGender + ', ' + AgeInYears + ' years old'
+
+$UCStruggle = false
+
+$AgeInDays = -367 * AgeInYears
+$Birthday = 
+    Player getdate $AgeInDays 'dd-MMM-yyyy' 
+$Birthdate = 
+    Player getdate $AgeInDays 'dd-MM-yy'
+$RightArmWeakness = false
+
+$Nurse speaker.color 1 .5 .5
+$NurseHead = $Nurse + '/metarig/Jaw'
+$Patient speaker.object $PatientHead
+$Nurse speaker.object $NurseHead
+$Patient speaker.color .5 .5 1
+#$Vitals = Bed + '/Vitalsmonitor01'
+$Vitals = 'BedsideHeadLeft' + BedNumber + '/VitalsSpotMonitor(Clone)'
+
+# Sets Vitals info on the bedside monitor
+$Vitals setVitals $HR $SPO2 $BP $Respiration 
+
+$GlobalVar = 'GlobalVariableManager'
+
+# Sets the patient sign and the text on the sign, as well as the sign lookat position
+$PatientSign = 'PatientSign' + BedNumber
+$PatientSign outline.on
+$PatientSign reset
+$LookAtPatientSign = $PatientSign + 'LookAtSign'
+$PatientSignNumber = PatientSign + '/BedNumber' 
+$PatientSignNumber setItemText $BedNumber
+$PatientSign4Name = PatientSign + '/PatientName' 
+$PatientSign4Name setItemText $PatientName
+$setname = 'PatientName' + BedNumber
+#$setisews = 'EWSPatientName' + BedNumber
+$GlobalVar setglobal $setname $PatientName
+#$GlobalVar setglobal $setisews $isEWS
+
+$BedEnd = 'Bed' + BedNumber + '/BedEnd'
+
+$Projector = 'BodyProjector'
+$ProjectorName = 'Projector' + BedNumber
+
+If
+    $PatientGender = 'Female'
+Then
+    $AnimController = 'Humans/AnimatorControllers/uAvatarFemale_controller' + BedNumber
+Else
+    $AnimController = 'Humans/AnimatorControllers/uAvatarMale_controller' + BedNumber
+Endif
+$Patient setanimcontroller $AnimController
+
+#$Patient randomtraits
+
+$PatientLabel = 'IDLabelDyn'
+$PatientLabel setItemText $PatientName
+
+$PatientHead = 
+    $Patient getbone 'Jaw'
+$PatientHead = Patient +  '/' + PatientHead
+#Prompt 'Getting PatientHead ' + PatientHead
+Wait 0
+
+$PatientFace =  
+    $Patient getbone 'Head'
+$PatientFace = Patient +  '/' + PatientFace
+
+#Wait 1
+
+$PatientMouth  = 'PatientMouth' + BedNumber
+#Prompt 'Creating ' + PatientMouth
+Create Locator $PatientMouth
+Wait 0
+
+#Prompt 'Moving ' + PatientMouth
+$PatientMouth moveto $PatientHead 0
+Wait 0
+
+#Prompt 'Moved ' + PatientMouth
+#Wait 2
+
+$PatientRightArm = 
+    $Patient getbone 'RightLowerArm'
+$PatientRightArm = Patient +  '/' + PatienRightArm
+#Prompt 'Getting PatienRightArm ' + PatienRightArm
+Wait 0
+
+$PatientRightHand = 
+    $Patient getbone 'RightHand'
+$PatientRightHand = Patient +  '/' + PatientRightHand
+
+$PatientLeftHand = 
+    $Patient getbone 'LeftHand'
+$PatientLeftHand = Patient +  '/' + PatientLeftHand
+
+
+#move and align mouth depending on which side of room patient is on
+If
+    $BedNumber < 3
+Then
+#    Prompt 'Before x mouth move ' + PatientMouth
+#    Wait 2
+    $PatientMouth localrotatey 180 0
+    Wait 0
+    $PatientMouth movex .23 0
+    Wait 0
+    $PatientMouth movez .06 0
+    Wait 0
+    $PatientMouth localrotatez 30 0
+    Wait 0
+    $PatientMouth localrotatey 30 0
+    #Prompt 'After mouth move'
+    #Wait 0
+Else
+    #Prompt 'Before -x mouth move'
+    #Wait 0
+    $PatientMouth movex -.18 0
+    Wait 0
+    $PatientMouth movez -.08 0
+    Wait 0
+    $PatientMouth localrotatez 30 0
+    Wait 0
+    $PatientMouth localrotatex -20 0
+    #Prompt 'After mouth move'
+    #Wait 0
+Endif
+Wait 0
+
+#Prompt 'Attaching ' + PatientMouth
+$PatientMouth attachto $PatientHead
+#Wait 1
+#Prompt ''
+
+#$PatientMouth  =
+#    $Patient getbone 'Jaw'
+
+$PatientMouth  = Patient + '/' + PatientMouth
+
+$PatientHand = 
+    $Patient getbone 'LeftHand'
+$PatientHand = Patient +  '/' + PatientHand
+
+#$PatientMouth  = PatientFace    #should be overridden per patient
+$PatientGenitals = Patient + '/Genitals'
+#Prompt 'Genitals = ' + PatientGenitals
+#Wait 1
+
+$WristbandObj = 'PatientIDBand'
+$Wristband = 'IDBand' + BedNumber
+Create $WristbandObj $Wristband
+$Wristband align $PatientLeftHand 0
+wait .1
+#$Wristband localrotatey 90
+$Wristband localrotatez -90
+$Wristband parentto $PatientLeftHand
+wait .1
+$Wristband localmovex 0.016
+wait .1
+If
+    $PatientGender = 'Female'
+Then
+    $Wristband localmovey 0.009
+Else
+    $Wristband localmovey 0.012
+Endif
+
+$BandNameText = $Wristband + '/Canvas/PatientName'
+$BandICText = $Wristband + '/Canvas/PatientNumber'
+$BandView = $Wristband + '/TagView'
+
+$BandNameText setitemtext $PatientName
+$BandICText setitemtext $PatientIC
+
+
+$MaskName = 'MaskGroup' + BedNumber
+$NasalName = 'NasalCannula' + BedNumber
+$VenturiName = 'VenturiMaskGroup' + BedNumber
+
+If
+    $PatientNasal = true
+Then
+    Create $NasalCannula $NasalName
+    wait .1
+    $NasalName align $PatientNasalTarget 0
+    $NasalName parentto $PatientNasalTarget
+    $NasalTube = $NasalName + '/NasalCannula/NasalCannula_rig/Bone.001 1/Bone.002 1/Bone.003 1/Bone.004 1'
+    $NasalTube parentto $OxygenPos
+    $NasalTube align $OxygenPos 0
+    $NasalTubeTarget = $NasalName + '/NasalCannula/Nasal_Cannula_Tube_Target'
+    $NasalTubeTarget align $OxygenPos 0
+    $NasalTarget = $NasalName + '/NasalCannula/Nasal_Cannula_Target'
+    $Pat_Oxystored = 2
+Endif
+
+If
+    $PatientMask = true
+Then
+    Create $MaskGroup $MaskName
+    wait .1
+	$MaskName align $PatientMaskTarget 0
+	$MaskName parentto $PatientMaskTarget
+    $Pat_Oxystored = 2
+Endif
+
+If
+    $PatientVenturi = true
+Then
+    Create $MaskGroup $VenturiName
+    $VenturiName align $PatientMaskTarget 0
+	$VenturiName parentto $PatientMaskTarget
+	$RebreatherBag = $VenturiName + '/Mask/RebreatherBag'
+	$RebreatherBag off
+    $Pat_Oxystored = 2
+Endif
+
+If
+	$BloodGlucoseLevel < 3.9
+Then
+	$Hypoglycemia = true
+Else
+	$Hypoglycemia = false
+Endif

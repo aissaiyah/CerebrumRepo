@@ -1,0 +1,39 @@
+Prompt 'Hand rub'
+wait 1
+Prompt ''
+
+
+If
+	Do 'AnswerIsNo'  'Perform hand hygiene?'
+Then
+	Return
+Endif
+
+
+	$Standard = 'Standard'
+	$Surgical = 'Surgical'
+	ZoomSpot Menu.Question 'Which hand hygiene should you perform?'
+	ZoomSpot Menu.Choices $Standard,$Surgical
+
+	ZoomSpot Menu.on ZoomSpot
+	WaitFor
+		ZoomSpot Menu.Done
+	Wait .1
+
+	$Player align $CartLook 0.5
+	turnOff JoystickCanvas
+
+	If
+		ZoomSpot menu.result $Standard
+	Then
+		Prompt 'Performing standard hand hygiene'
+		wait 2
+		Prompt ''
+		Do 'Actions/HandWash/StandardHandHygiene.txt'
+	Else
+		Prompt 'Performing surgical hand hygiene'
+		wait 2
+		Prompt ''
+		Do 'Actions/HandWash/SurgicalHandHygiene.txt'
+	Endif
+	turnOn JoystickCanvas

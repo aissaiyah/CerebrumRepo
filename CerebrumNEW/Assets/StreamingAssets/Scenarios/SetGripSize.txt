@@ -1,0 +1,21 @@
+#SetGripSize.txt
+#Do 'SetGripSize' ['Right'|'Left'] gripSize
+
+If
+    $param[0] > 0
+Then
+    $whichHand_SG = param[1]
+    $gripSize = param[2]
+Endif
+
+
+If
+    $whichHand_SG == 'Left'
+Then
+    $GripSizeAnim = 'GripSize_L'
+Else
+    $GripSizeAnim = 'GripSize_R'
+Endif
+
+$PlayerNurse play $GripSizeAnim true $gripSize
+

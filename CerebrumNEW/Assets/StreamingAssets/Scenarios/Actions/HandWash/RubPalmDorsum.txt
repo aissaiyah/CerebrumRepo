@@ -1,0 +1,40 @@
+#H2RubPalmDorsumFingersInterlaced - rub palm of chosen hand on dorsal of other hand
+#Do 'H2RubPalmDorsumFingersInterlaced' ['right'|'left']
+#Param[1] : $WhichHand
+#Requires:
+# $PlayerNurse, $LeftHandSpot, $RightHandSpot, $NurseLeftHandDorsum, $NurseRightHandDorsum
+
+############# Get parameters
+If
+    $param[0] > 0
+Then
+    $whichHand = param[1]
+Else
+    $whichHand = 'right'
+Endif 
+
+#Prompt 'RubPalmDorsum: ' + whichHand
+#Wait 2
+#Prompt ''
+
+$motionType = 'moveforward'
+
+If
+    $whichHand == 'right'
+Then
+    $HandDorsum = NurseLeftHandDorsum
+Else
+    $HandDorsum = NurseRightHandDorsum
+Endif
+
+$RubDur = 0.5
+$HandDorsumRotated = 'HandDorsumRotated'
+Create SpreadLocator $HandDorsumRotated
+Wait 0
+$HandDorsumRotated align $HandDorsum
+Wait 0
+$HandDorsumRotated attachTo $HandDorsum
+Wait 0
+$HandDorsumRotated localRotateX 20
+Wait 0
+Do 'Actions/HandWash/RubHands.txt' $whichHand $HandDorsumRotated 'spread' 'palmdown' $motionType 0.05 $HandPalm $MiddleHandSpot 'spread' 'palmdown' $motionType 0.02 $HandPalm 5 $RubDur 20 0 0

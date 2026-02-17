@@ -1,0 +1,414 @@
+$Player align PlayerOrig
+#$Player lookat PlayerLook
+Debug 'Start.txt'
+#Wait 3
+$Shelf outline.on
+$Cart = 'COW1(Clone)'
+$Cart outline.off
+$CartLook = $Cart + '/close'
+$CartShelfPos1 = 'Positions/ShelfCOWPos1'
+$CartShelfPos2 = 'Positions/ShelfCOWPos2'
+
+$CartPos1 = $Cart + '/Pos01'
+$CartPos2 = $Cart + '/Pos02'
+$CartPos3 = $Cart + '/Pos03'
+$CartPos4 = $Cart + '/Pos04'
+$CartPos5 = $Cart + '/Pos05'
+$CartPos6 = $Cart + '/Pos06'
+$CartPos7 = $Cart + '/Pos07'
+$CartPos8 = $Cart + '/Pos08'
+$CartPos9 = $Cart + '/Pos09'
+
+Do 'UCG/SummaryCheckNoPatient.txt'
+
+$UC12 correctset
+$UC14 correctset
+$Chlorhexidine correctset
+$Saline correctset
+$WaterAmpoule correctset
+
+$DoorSingle outline.on
+
+Label 'Scene4_StartLoop'
+
+	$Shelf1 outline.on
+	$Shelf2 outline.on
+	$Shelf3 outline.on
+
+	$UC12 clickable false
+	$UC14 clickable false
+	$UC16 clickable false
+
+	$SalineAmpoule clickable false
+	$WaterAmpoule clickable false
+	$Chlorhexidine clickable false
+	$Saline clickable false
+	$Iodine clickable false
+	turnOn JoystickCanvas
+
+
+Label 'Scene4_MainLoop'
+
+	If
+		$Cart pressed
+	Then
+		$Cart reset
+		$Cart outline.off
+		Player align $CartLook 1
+		BackButtonCanvas on
+		Do 'UCG/Stage2/Cart.txt'
+	Endif
+
+	If
+		$Shelf1 pressed
+	Then
+		$Shelf1 outline.off
+		$Shelf2 outline.off
+		$Shelf3 outline.off
+		$UC12 outline.off
+		$UC14 outline.off
+		$UC16 outline.off
+		$SalineAmpoule outline.on
+		$WaterAmpoule outline.on
+		$Chlorhexidine outline.off
+		$Saline outline.off
+		$Iodine outline.off
+		$Shelf1 reset
+
+		turnOff JoystickCanvas
+
+		$Cart align $CartShelfPos1 1
+		$SalineAmpoule clickable true
+		$WaterAmpoule clickable true
+		$Player align $SetLook
+		BackButtonCanvas on
+		Wait .51
+		Goto 'Scene4_Shelf1Loop'
+	Endif
+
+	If
+		$Shelf2 pressed
+	Then
+		$Shelf1 outline.off
+		$Shelf2 outline.off
+		$Shelf3 outline.off
+		$UC12 outline.off
+		$UC14 outline.off
+		$UC16 outline.off
+		$SalineAmpoule outline.off
+		$WaterAmpoule outline.off
+		$Chlorhexidine outline.on
+		$Saline outline.on
+		$Iodine outline.on
+		$Shelf2 reset
+
+		turnOff JoystickCanvas
+
+		$Cart align $CartShelfPos1 1
+		$Chlorhexidine clickable true
+		$Saline clickable true
+		$Iodine clickable true
+		$Player align $SetLook1
+		BackButtonCanvas on
+		Wait .51
+		Goto 'Scene4_Shelf2Loop'
+	Endif
+
+	If
+		$Shelf3 pressed
+	Then
+		$Shelf1 outline.off
+		$Shelf2 outline.off
+		$Shelf3 outline.off
+		$UC12 outline.on
+		$UC14 outline.on
+		$UC16 outline.on
+		$SalineAmpoule outline.off
+		$WaterAmpoule outline.off
+		$Chlorhexidine outline.off
+		$Saline outline.off
+		$Iodine outline.off
+		$Shelf3 reset
+
+		turnOff JoystickCanvas
+
+		$Cart align $CartShelfPos2 1
+		$UC12 clickable true
+		$UC14 clickable true
+		$UC16 clickable true
+		$Player align $SetLook2
+		BackButtonCanvas on
+		Wait .51
+		Goto 'Scene4_Shelf3Loop'
+	Endif
+
+	If
+		$DoorButton pressed
+	Then
+		$DoorButton reset
+		$Player lookat $DoorView
+	Endif
+
+	If
+		$DoorSingle pressed
+	Then
+		$DoorSingle reset
+		Do 'Actions/StorageRoom/Door.txt'
+	Endif
+
+	If
+		$Scene_Exit pressed
+	Then 
+		$Scene_Exit resetPressed
+		ScoreTracker rangecomplete 0-1
+		Do 'EndCheck.txt'
+	Endif
+
+Goto 'Scene4_MainLoop'
+
+###########   Shelf 1   ############
+
+Label 'Scene4_Shelf1Loop'
+	
+	If
+		$SalineAmpoule pressed
+	Then
+		$SalineAmpoule reset
+		Prompt 'Saline Ampoule'
+		wait 1
+		Prompt ''
+		$Ampoule = 'Ampoule'
+		$SalineAmpouleName = 'SalineAmpoule'
+		Create $Ampoule $SalineAmpouleName
+		$SalineAmpouleName localrotatey -90 0
+		wait .1
+		$SalineAmpouleName moveto $SalineAmpoule 0
+		$SelectedItem = $SalineAmpouleName
+		$SetOrig = $SetOrig01
+		$SetCOWPosition = $CartPos1
+		turnOn $SalineAmpouleName + '/Canvas'
+		$ExpDateText = $SalineAmpouleName + '/Canvas/ExpDate'
+		turnOn $ExpDateText
+		$ExpDateText setitemdate 80
+		wait .5
+		Do 'Actions/StorageRoom/SetPicking.txt'
+		Goto 'Scene4_StartLoop'
+	Endif
+
+	If
+		$WaterAmpoule pressed
+	Then
+#		$PlayerNurse grabLeft 
+		$WaterAmpoule reset
+		Prompt 'Water for injection Ampoule'
+		wait 1
+		Prompt ''
+		$Ampoule = 'Ampoule'
+		$WaterAmpouleName = 'WaterAmpoule'
+		Create $Ampoule $WaterAmpouleName
+		$WaterAmpouleName localrotatey -90 0
+		wait .1
+		$WaterAmpouleName moveto $WaterAmpoule 0
+		$SelectedItem = $WaterAmpouleName
+		$SetOrig = $SetOrig02
+		$SetCOWPosition = $CartPos2
+		$ExpDateText = $WaterAmpouleName + '/Canvas/ExpDate'
+		turnOn $ExpDateText
+		$ExpDateText setitemdate 80
+		wait .5
+		Do 'Actions/StorageRoom/SetPicking.txt'
+		Goto 'Scene4_StartLoop'
+	Endif
+
+	If
+		BackButtonCanvas/BackButton pressed
+	Then
+		BackButtonCanvas/BackButton reset
+		BackButtonCanvas off
+		$Player align $PlayerCOWLook
+		Goto 'Scene4_StartLoop'
+	Endif
+
+	Wait .1
+
+Goto 'Scene4_Shelf1Loop'
+
+###########   Shelf 2   ############
+
+Label 'Scene4_Shelf2Loop'
+
+	If
+		$Chlorhexidine pressed
+	Then
+		$Chlorhexidine reset
+		Prompt 'Chlorhexidine gluconate sachet'
+		wait 1
+		Prompt ''
+		$ChlorSachet = 'Chlorhexidine_gluconate_sachet'
+		$ChlorSachetName = 'ChlorSachet'
+		Create $ChlorSachet $ChlorSachetName
+		$ChlorSachetName localrotatez 90 0
+		wait .1
+		$ChlorSachetName moveto $Chlorhexidine 0
+		$SelectedItem = $ChlorSachetName
+		$SetOrig = $SetOrig04
+		$SetCOWPosition = $CartPos3
+		$ExpDateText = $ChlorSachetName + '/Canvas/ExpDate'
+		turnOn $ExpDateText
+		$ExpDateText setitemdate 50
+		wait .5
+		Do 'Actions/StorageRoom/SetPicking.txt'
+		Goto 'Scene4_StartLoop'
+	Endif
+
+	If
+		$Saline pressed
+	Then
+		$Saline reset
+		Prompt 'Saline'
+		wait 1
+		Prompt ''
+		$SalineBottle = 'SalineBottle'
+		$SalineBottleName = 'NormalSaline'
+		Create $SalineBottle $SalineBottleName
+		$SalineBottleName moveto $Saline 0
+		$SelectedItem = $SalineBottleName
+		$SetCOWPosition = $CartPos4
+		$SetOrig = $SetOrig06
+		$ExpDateText = $SalineBottleName + '/Canvas/ExpDate'
+		turnOn $ExpDateText
+		$ExpDateText setitemdate 40
+		wait .5
+		Do 'Actions/StorageRoom/SetPicking.txt'
+		Goto 'Scene4_StartLoop'
+	Endif
+
+	If
+		$Iodine pressed
+	Then
+		$Iodine reset
+		Prompt 'Iodine'
+		wait 1
+		Prompt ''
+		$IodineBottle = 'IodineBottle'
+		$IodineBottleName = 'Iodine'
+		Create $IodineBottle $IodineBottleName
+		$IodineBottleName moveto $Iodine 0
+		$SelectedItem = $IodineBottleName
+		$SetOrig = $SetOrig05
+		$SetCOWPosition = $CartPos9
+		$ExpDateText = $IodineBottleName + '/Canvas/ExpDate'
+		turnOn $ExpDateText
+		$ExpDateText setitemdate 2000
+		wait .5
+		Do 'Actions/StorageRoom/SetPicking.txt'
+		Goto 'Scene4_StartLoop'
+	Endif
+
+	If
+		BackButtonCanvas/BackButton pressed
+	Then
+		BackButtonCanvas/BackButton reset
+		BackButtonCanvas off
+		$Player align $PlayerCOWLook
+		Goto 'Scene4_StartLoop'
+	Endif
+
+	Wait .1
+
+Goto 'Scene4_Shelf2Loop'
+
+###########   Shelf 3   ############
+
+Label 'Scene4_Shelf3Loop'
+
+	If
+		$UC12 pressed
+	Then
+		$UC12 reset
+		Prompt 'Urinary Catheter size 12'
+		wait 1
+		Prompt ''
+		$UC12Obj = 'UCGAssets/Sachet_CatheterizationSet'
+		$UC12Name = 'UC12'
+		Create $UC12Obj $UC12Name
+		Wait 0
+		$UC12Label = UC12Name + '/geo_paper'
+		$UC12Label setMaterial 'M_sterile_package_paper_catheter_12'
+
+		$UC12Name localrotatetoz 90
+		wait .01
+		$UC12Name moveto $UC12 0
+		$SelectedItem = $UC12Name
+		$SetOrig = $SetOrig07
+		$SetCOWPosition = $CartPos6
+		$ExpDateText = $UC12Name + '/Canvas/ExpDate'
+		turnOn $ExpDateText
+		$ExpDateText setitemdate 90
+		wait .5
+		Do 'Actions/StorageRoom/SetPicking.txt'
+		Goto 'Scene4_StartLoop'
+	Endif
+
+	If
+		$UC14 pressed
+	Then
+		$UC14 reset
+		Prompt 'Urinary Catheter size 14'
+		wait 1
+		Prompt ''
+		$UC14Obj = 'UCGAssets/Sachet_CatheterizationSet'
+		$UC14Name = 'UC14'
+		Create $UC14Obj $UC14Name
+		$UC14Name localrotatetoz 90
+		wait .01
+		$UC14Name moveto $UC14 0
+		$SelectedItem = $UC14Name
+		$SetOrig = $SetOrig08
+		$SetCOWPosition = $CartPos7
+		$ExpDateText = $UC14Name + '/Canvas/ExpDate'
+		turnOn $ExpDateText
+		$ExpDateText setitemdate 90
+		wait .5
+		Do 'Actions/StorageRoom/SetPicking.txt'
+		Goto 'Scene4_StartLoop'
+	Endif
+
+	If
+		$UC16 pressed
+	Then
+		$UC16 reset
+		Prompt 'Urinary Catheter size 16'
+		wait 1
+		Prompt ''
+		$UC16Obj = 'UCGAssets/Sachet_CatheterizationSet'
+		$UC16Name = 'UC16'
+		Create $UC16Obj $UC16Name
+		Wait 0
+		$UC16Label = UC16Name + '/geo_paper'
+		$UC16Label setMaterial 'M_sterile_package_paper_catheter_16'
+		wait .01
+		$UC16Name moveto $UC16 0
+		$SelectedItem = $UC16Name
+		$SetOrig = $SetOrig09
+		$SetCOWPosition = $CartPos8
+		$ExpDateText = $UC16Name + '/Canvas/ExpDate'
+		turnOn $ExpDateText
+		$ExpDateText setitemdate 90
+		wait .5
+		Do 'Actions/StorageRoom/SetPicking.txt'
+		Goto 'Scene4_StartLoop'
+	Endif
+
+	If
+		BackButtonCanvas/BackButton pressed
+	Then
+		BackButtonCanvas/BackButton reset
+		BackButtonCanvas off
+		$Player align $PlayerCOWLook
+		Goto 'Scene4_StartLoop'
+	Endif
+
+	Wait .1
+
+Goto 'Scene4_Shelf3Loop'

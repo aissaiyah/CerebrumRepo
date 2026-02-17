@@ -1,0 +1,11 @@
+#H7RubWrappedHandOnForearm - rub palm of chosen hand on dorsal of other hand
+#Do 'Actions/HandWash/H7RubWrappedHandOnForearm' 
+#Requires:
+# $PlayerNurse, $LeftHandSpot, $RightHandSpot, $NurseLeftHandDorsum, $NurseRightHandDorsum
+
+Prompt 'H7RubWrappedHandOnForearm'
+#Wait 1
+
+Do 'Actions/HandWash/RubWrappedHand' 'right'
+Do 'Actions/HandWash/RubWrappedHand' 'left'
+Prompt ''

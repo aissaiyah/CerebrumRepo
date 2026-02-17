@@ -1,0 +1,53 @@
+#########################################
+#  PATIENTNon1 INFO INIT
+#########################################
+
+$PatientName = 'Wee Song Kok'
+$isEWS = false
+$PatientIC = 'S1257567T'
+$BloodType = 'B-'
+$AgeInYears = 75
+$PatientModel = 'uAvatar'
+$PatientDiag = 'Pneumonia'
+$PatientGender = 'Male'
+$PatientSummary = 'Patient was admitted from Emergency department for pneumonia.  He has complained of breathless during the handover. He was put on oxygen therapy (nasal prong).'
+
+$PatientType = 'Non1'
+
+$Temperature = 36.8
+$HR = 70
+$BP = '120/52'
+$BPSys = 120
+$Respiration = 20
+$SpO2 = 100
+
+$OxygenSupplement = 'Yes'
+$PatientNasal = true
+
+$PainScore = 'Pain Score: 0/10'
+
+$PatientSpeak = 'Hi, I am generally good with the oxygen mask on. I felt breathless this morning when I was in the bathroom without the oxygen mask.'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNon1_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientObjName align $Patient 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'NEWS_Nurse/SetupPatient.txt'
+
+$HeadAmount = 30.0
+#$WeightAmount = 75.0
+$WeightAmount = 50.0
+
+Do 'PatientCreations/Age/76.txt'
+Do 'PatientCreations/Head/Head0.txt'
+Do 'PatientCreations/Height/Average.txt'
+Do 'PatientCreations/Expressions/Smile.txt'
+Do 'PatientCreations/Weight/Weight.txt'

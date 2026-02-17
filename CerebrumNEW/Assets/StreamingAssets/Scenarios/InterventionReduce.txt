@@ -1,0 +1,31 @@
+# Reduce Intervention Usage after completing an intervention
+
+If
+	$Stage = 1
+Then
+	If
+		$S1IntLimit > 0
+	Then
+		$S1IntLimit = S1IntLimit - 1
+	Endif
+Endif
+
+If
+	$Stage = 2
+Then
+	If
+		$S2IntLimit > 0
+	Then
+		$S2IntLimit = S2IntLimit - 1
+	Endif
+Endif
+
+If
+	$Stage = 3
+Then
+	If
+		$S3IntLimit > 0
+	Then
+		$S3IntLimit = S3IntLimit - 1
+	Endif
+Endif

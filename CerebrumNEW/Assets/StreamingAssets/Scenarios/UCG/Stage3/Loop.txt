@@ -1,0 +1,309 @@
+JoystickCanvas on
+$Patient outline.on
+$Cart outline.off
+$Vitalsmonitor outline.on
+
+$BackECG = 'ECGCheckCanvas/Choices/Exit'
+
+$ClothUnfolded = false
+
+$RightRail = $Bed + '/RightRail'
+$RightRail outline.on
+
+$HandScrub outline.on
+$HandScrub clickable true
+
+$Vitalsmonitor on
+#$Vitalsmonitor outline.off
+
+Do 'SummaryCheck.txt'
+
+$PatientInPosition = false
+
+
+###########FOR SKIPPING TO STAGE 4 QUICKLY
+
+$SkipToStage4 = true
+If 
+	$SkipToStage4
+Then
+$ScenarioStruggle = UCStruggle
+#	$GlobalVar getglobal 'PatientStruggle'
+	GameSpeed 20
+	$SkipConfirm = true    #Skip Yes/No questions
+	wait 2
+
+	#$ActiveHand = 'Left'
+	#$OtherHand = 'Right'
+	wait 1
+
+	Do 'Actions/UCG/UnfoldCloth'
+	wait 1
+	
+	Do 'Actions/UCG/InjectionWater'
+	Do 'Actions/UCG/OpenSyringe'
+	Do 'Actions/UCG/Syringe'
+	Do 'Actions/UCG/OpenCatheter'
+
+	#Do 'Actions/UCG/Antiseptic'
+	#Do 'Actions/UCG/CottonBalls'
+	Do 'Actions/UCG/OpenUrineBagPackage'
+#	Do 'Actions/UCG/AttachUrineBagBed'
+
+#	Do 'Actions/UCG/PositionPatient'
+	Create $DrapePackageObj $DrapePackage
+	Wait 0
+	Do 'Actions/UCG/Drape'
+
+	$SkipConfirm = false
+	GameSpeed 1
+	$DirtyHand = 'Left'
+$ScenarioStruggle = UCStruggle
+
+
+Endif
+########### END OF SKIP FOR STAGE 4
+
+Label 'Stage3Loop'
+
+	Do 'UCG/Stage3/Cart.txt'
+
+	If
+		$HandScrub pressed
+	Then
+		$HandScrub reset
+		Do 'Actions/UCG/HandScrub.txt'
+	Endif
+
+	If
+		$SumButton pressed
+	Then
+		$SumButton reset
+		$CheckCanvas off
+		PatInfoCanvas off
+		Do 'SummaryCheck.txt'
+	Endif
+
+	If
+		$Stage2Button pressed
+	Then
+		$Stage2Button reset
+		If
+			Do 'AnswerIs' 'Return to Prep Room?' 'Yes'
+		Then
+			SceneManager switchtoscene Scenes/UCG/UCG02
+		Endif
+	Endif
+
+	If
+		$PatientCheckTotal = true
+	Then
+		wait 1    #wait for all GMs to finish up
+		Do 'NEWS_Nurse/ChangeStage.txt'
+	Endif
+/*
+	If
+		$EndGame isOnAndPressed
+	Then
+		If
+			Do 'AnswerIsNo' 'Ready to end game?'
+		Then
+			Goto 'LoopN1'
+		Endif
+
+		#Do 'EndCheck.txt'
+		If
+			$BedNumber = 1
+		Then
+			ScoreTracker EndStage
+		Endif
+
+		Wait 1
+
+		If
+            $BedNumber = 1
+        Then		
+            ScoreTracker CloseStage
+        Endif
+        
+        Wait 1  #needed for scorm
+        SceneManager switchtoscene Scenes/MainMenu
+	Endif
+*/
+
+	If
+		$RightRail pressed
+	Then
+		$RightRail reset
+		$RightRail clickable false
+		$RightRail localmovey -.4 .5
+		wait .3
+		$RightRail localrotatex 180 0
+		$RightRail outline.off
+	Endif
+
+	If
+		$LeftHandButton pressed
+	Then
+		Prompt 'Left Hand is Active'
+		Wait 1
+		Prompt ''
+		$LeftHandButton reset
+
+		$RightHandImage setimagecolor alpha .2
+		$LeftHandImage setimagecolor alpha 1
+		$ActiveHand = 'Left'
+		$OtherHand = 'Right'
+	Endif
+
+	If
+		$RightHandButton pressed
+	Then
+		Prompt 'Right Hand is Active'
+		Wait 1
+		Prompt ''
+		$RightHandButton reset
+
+		$RightHandImage setimagecolor alpha 1
+		$LeftHandImage setimagecolor alpha .2
+		$ActiveHand = 'Right'
+		$OtherHand = 'Left'
+	Endif
+
+	If
+		$PatientButton pressed
+	Then
+		$PatientButton reset
+		Player align $PlayerStart 1
+	Endif
+
+	If
+		$CartButton pressed
+	Then
+		$CartButton reset
+		Player align $CartLook 1
+	Endif
+
+	If
+		$Cart1Button pressed
+	Then
+		$Cart1Button reset
+		Player align $Cart1Look 0.5
+	Endif
+
+	If
+		$Cart pressed
+	Then
+		$Cart reset
+		Player align $CartLook 0.5
+	Endif
+
+	If
+		$Cart1 pressed
+	Then
+		$Cart1 reset
+		Player align $Cart1Look 0.5
+	Endif
+
+	If
+		$ProcedureButton pressed
+	Then
+		$ProcedureButton reset
+		Wait 0
+		Player align $UrinaryProcPos 1
+		Wait 1
+		Player lookAt $PatientGenitals -0.05 0.2 .05 1
+		Wait 1
+	Endif
+
+	If
+		$Stage4Button pressed
+	Then
+		$Stage4Button reset
+		$Stage = 4
+		$GlobalVar setglobal 'Stage' $Stage
+		turnOff $Stage4Button
+		$EndGameButton on
+		Do 'UCG/Stage4/Loop.txt'
+	Endif
+
+	If
+		$Curtain pressed
+	Then
+		$Curtain reset
+		turnOff $Curtain
+		turnOn $CurtainClosed
+	Endif
+
+	If
+		$PatientSign pressed
+	Then
+		$PatientSign reset
+		Player align $LookAtPatientSign 1
+		$ECGCan on
+		label 'signLoop'
+		If
+			$BackECG pressed
+		Then
+			$BackECG reset
+			$ECGCan off
+			Player align $PlayerStart 1
+			Wait .5
+			$UseToolButton reset
+			Goto 'LoopN1'
+		Endif
+		Goto 'signLoop'
+	Endif
+
+	If
+		$PatientInPosition = false
+	Then
+		If
+			$Patient pressed
+		Then
+			$Patient reset
+			Do 'Actions/UCG/PositionPatient.txt'
+
+/*
+####JUST FOR TESTING
+		If
+			$PatientGender = 'Male'
+		Then
+			Do 'Actions/UCG/InsertLignocaineInPenis.txt'
+			Do 'Actions/UCG/InsertMaleCatheter.txt'
+		Else
+			Do 'Actions/UCG/InsertFemaleCatheter.txt'
+		Endif
+###END TESTING
+*/
+
+
+		Endif
+	Endif
+
+	If
+		$Vitalsmonitor pressed
+	Then
+		$Vitalsmonitor reset
+		Do 'ToolTxt/AssessECG.txt'
+	Endif
+
+	If
+		$Scene_Exit pressed
+	Then 
+		$Scene_Exit reset
+		#ScoreTracker rangecomplete 0-14
+		Do 'EndCheck.txt'
+	Endif
+
+	If
+		$Check_End pressed
+	Then
+		$Check_End reset
+		$CheckCanvas off
+	Endif
+
+	Do 'Patient/LookAround'
+
+	Wait .2
+Goto 'Stage3Loop'

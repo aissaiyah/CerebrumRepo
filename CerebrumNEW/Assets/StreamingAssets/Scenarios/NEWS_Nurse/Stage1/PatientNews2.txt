@@ -1,0 +1,55 @@
+#########################################
+#  PATIENTNEWS2 INFO INIT - Pulmonary Embolism 
+#########################################
+
+$PatientName = 'Brandon Tan'
+$isEWS = true
+$PatientIC = 'S2233456B'
+$BloodType = 'B+'
+$AgeInYears = 55
+$PatientModel = 'uAvatar'
+$PatientDiag = ' Right knee osteoarthritis'
+$PatientGender = 'Male'
+$PatientSummary = 'Admitted from same day admission for elective surgery. He went for right minimally invasive total knee replacement and was transferred to general ward post surgery. Post op instruction: hourly parameter for the next 4 hours. Patient  complained of breathless when the nurse taking his parameter.'
+
+$PatientType = 'News2'
+
+$Temperature = 37
+$HR = 90
+$BP = '101/60'
+$BPSys = 101
+$Respiration = 20
+$SpO2 = 95
+
+$PainScore = 'Pain Score: 5/10'
+
+$AbnormalResponse = 'Patient is showing the signs and symptoms of pulmonary embolism'
+
+$PatientSpeak = 'Hi! I am feeling okay. I have pain in my right knee. The pain is bearable with the help of pain killers I was served this morning. However, I have yet to start walking since admission, the doctor said I need to start exercise post operation.'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNewsB_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientObjName align $Patient 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'NEWS_Nurse/SetupPatient.txt'
+
+$HeadAmount = 80.0
+$WeightAmount = 65.0
+
+Do 'PatientCreations/Age/45.txt'
+Do 'PatientCreations/Head/Head0.txt'
+Do 'PatientCreations/Height/Average.txt'
+Do 'PatientCreations/Expressions/Dimple.txt'
+Do 'PatientCreations/Weight/Weight.txt'
+
+#moved to S3: $PupilReaction = $PupilReactionResponse4
+$PupilSize = '5'
+#$Patient play LargeFixed

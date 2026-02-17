@@ -1,0 +1,117 @@
+#Player lookAtLegacy $PatLook
+#Player align $PatLook
+/PatientCanvas on
+JoystickCanvas off
+#$PatientFace align $PatLookPlayer
+
+#Get the current patient for below in whatever method that has to be
+$Patient headturn Player
+
+Prompt 'Select an item above to speak to patient.'
+
+Label 'PCLoop_PatientX'
+	If
+		$PC_OxygenTherapy pressed
+	Then
+		$PC_OxygenTherapy reset
+		#/PatientCanvas off
+		Do 'Intervention/OxygenTherapy.txt'
+		$Patient release
+		JoystickCanvas on
+		Return
+	ENDIF
+	Wait .1
+	/PatientCanvas on
+	If
+		$PC_OralGlucose pressed
+	Then
+		$PC_OralGlucose resetPressed
+		#/PatientCanvas off
+		Do 'Intervention/OralGlucose.txt'
+		$Patient release
+		Return
+	Endif
+
+	If
+		$PC_IV pressed
+	Then
+		Prompt ''
+		$PC_IV reset
+		#/PatientCanvas off
+		Do 'Intervention/InsertIVCannula.txt'
+		$Patient release
+		Return
+	Endif
+
+	If
+		$PC_Drip pressed
+	Then
+		Prompt ''
+		$PC_Drip reset
+		#/PatientCanvas off
+		Do 'Intervention/GetIVDrip.txt'
+		$Patient release
+		Return
+	Endif
+	
+	If
+		$PC_Pressure pressed
+	Then
+		Prompt ''
+		$PC_Pressure reset
+		#/PatientCanvas off
+		Prompt 'There is no visible bleeding site seen.'
+		wait 1
+		Prompt ''
+		$Patient release
+		Return
+	Endif
+
+	If
+		$PC_AdjustMonitor pressed
+	Then
+		Prompt ''
+		$PC_AdjustMonitor reset
+		#/PatientCanvas off
+		Do 'Intervention/SpotMonitorFreq.txt'
+		$Patient release
+		Return
+	Endif
+
+	If
+		$PC_Conversation pressed
+	Then
+		Prompt ''
+		$PC_Conversation reset
+		#/PatientCanvas off
+		$GenericPlayerLine = 'How are you feeling?'
+		#$CurrentPatientLine has to be set on choosing the patient to talk to
+		$GenericPatientLine = CurrentPatientLine
+		Do 'GenericChat.txt'
+		$Patient release
+		Return
+	Endif
+
+	If
+		$PC_InformTeam pressed
+	Then
+		Prompt ''
+		$PC_InformTeam reset
+		$PatCan off
+		Prompt 'MO: I do not see an urgency here, please continue to monitor patient and call me back for abnormal findings.'
+		wait 1
+		Prompt ''
+		JoystickCanvas on
+		$Patient release
+		Return
+	Endif
+
+	If
+		$PC_Exit pressed
+	Then
+		$PC_Exit reset
+		#/PatientCanvas off
+		Return
+	Endif
+	Wait .1
+Goto 'PCLoop_PatientX'

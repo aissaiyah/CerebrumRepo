@@ -1,0 +1,29 @@
+	#Do 'Actions/UCG/PatientStruggle'
+	$Patient play Struggle
+	wait 1
+	Prompt 'Patient is struggling!'
+	wait 1
+	Prompt''
+
+	$TempCatheter localmovez -.15 .5
+	wait .5
+	$TempCatheter localmovey -.08 .5
+	wait .5
+
+	Do 'Actions/UCG/ReleaseGenitals' $DirtyHand
+
+	$Release = 'release' + ActiveHand
+	$PlayerNurse $Release 1 'dip'
+	wait 1.5
+
+	Prompt 'Catheter has fallen out of patient.'
+	wait 1
+	Prompt ''
+	wait .1
+	Player align $UrinaryProcPos 0.5
+	wait 0.5
+
+	UCStruggle = false
+#	$GlobalVar setglobal 'PatientStruggle' false
+	wait .1
+

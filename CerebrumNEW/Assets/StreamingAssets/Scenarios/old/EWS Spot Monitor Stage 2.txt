@@ -1,0 +1,55 @@
+$SpotMonitorCan on
+$PerFifteen = SpotMonitorCan + '/Choices/15 Minutes'
+$Hour = SpotMonitorCan + '/Choices/Hourly'
+$Shift = SpotMonitorCan + '/Choices/Shift'
+$SpotMonExit = SpotMonitorCan + '/Choices/Exit'
+
+Label 'Loop'
+
+If
+	$PerFifteen pressed
+Then
+	$PerFifteen reset
+	Prompt 'Parameter monitoring frequency changed to 15 mins.'
+	wait 1
+	Prompt ''
+	ScoreTracker taskCorrect 1 1
+	$SpotMonitorCan off
+	Return
+Endif
+
+If
+	$Hour pressed
+Then
+	$Hour reset
+	Prompt 'Patient is showing the signs and symptoms of stroke.'
+	wait 1.5
+	Prompt 'You should step up monitoring frequency and alert the medical attention immediately.'
+	wait 1.5
+	Prompt ''
+	$SpotMonitorCan off
+	Return
+Endif
+
+If
+	$Shift pressed
+Then
+	$Shift reset
+	Prompt 'Patient is showing the signs and symptoms of stroke.'
+	wait 1.5
+	Prompt 'You should step up monitoring frequency and alert the medical attention immediately.'
+	wait 1.5
+	Prompt ''
+	$SpotMonitorCan off
+	Return
+Endif
+
+If
+	$SpotMonExit pressed
+Then
+	$SpotMonExit reset
+	$SpotMonitorCan off
+	Return
+Endif
+
+Goto 'Loop'

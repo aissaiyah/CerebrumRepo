@@ -1,0 +1,25 @@
+#ReleaseGenitals.txt
+
+
+If
+    $param[0] > 0
+Then
+    $CurrentHand = param[1]
+Else
+    $CurrentHand = DirtyHand
+Endif
+
+
+If
+    $GenitalsGrabbed = true
+Then
+    $GenitalsGrabbed = false
+    If
+        $PatientGender = 'Female'
+    Then
+        Do 'Actions/UCG/ReleaseLabia' $CurrentHand
+    Else
+        Do 'Actions/UCG/ReleasePenis' $CurrentHand
+    Endif
+Endif
+JoystickCanvas on

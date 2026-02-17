@@ -1,0 +1,21 @@
+BackButtonCanvas off
+
+Prompt ToolName
+wait 1
+Prompt ''
+
+$MenuQuestion = 'Return ' + ToolName + '?'
+
+ZoomSpot Menu.Question $MenuQuestion
+ZoomSpot Menu.Choices 'Yes','No'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait .1
+If
+	ZoomSpot menu.result $Yes
+Then
+	Destroy $ToolToDestroy
+Endif
+
+BackButtonCanvas on

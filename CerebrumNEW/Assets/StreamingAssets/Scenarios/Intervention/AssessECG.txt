@@ -1,0 +1,25 @@
+$ECGCan on
+$Vitalsmonitor outline.off
+$BackECG = 'ECGCheckCanvas/Choices/Exit'
+Player align $Monitorlook 0.5
+wait 1
+
+Label 'ECGLoop'
+
+	If
+		$BackECG pressed
+	Then
+		$BackECG reset
+		$ECGCan off
+		Player align $PlayerStart 0.5
+		Wait .5
+		$Vitalsmonitor outline.on
+		If
+			$Stage == 2
+		Then
+			turnOn $EWSCheck
+		Endif
+		Return
+	Endif
+
+Goto 'ECGLoop'

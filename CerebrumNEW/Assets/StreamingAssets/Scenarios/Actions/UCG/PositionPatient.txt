@@ -1,0 +1,56 @@
+$GlobalVar setglobal 'UsingTool' true
+
+JoystickCanvas off
+
+Label 'PositionLoop'
+
+ZoomSpot Menu.Question 'Which position you would like the patient in?'
+ZoomSpot Menu.Choices 'Dorsal recumbent','Knee chest position','Lithotomy','Back'
+ZoomSpot Menu.on ZoomSpot
+WaitFor
+	ZoomSpot Menu.Done
+Wait .1
+If
+	ZoomSpot menu.result 'Dorsal recumbent'
+Then
+	$Player align $PlayerStart
+	Prompt 'Positioning Patient'
+	wait 1
+	$Pillow = $Bed + '/pillow sofa'
+#	turnOff $Pillow
+	If
+		$PatientGender = 'Male'
+	Then
+		Do 'Actions/UCG/RemovePants'
+	Endif
+	$Patient play ExamPos true
+	Prompt ''
+	$PatientInPosition = true
+	wait .1
+	$Patient clickable false
+	wait .1
+	$Patient outline.off
+Else
+	If
+		ZoomSpot menu.result 'Back'
+	Then
+		If
+			$Stage = 3
+		Then
+			#End
+		Else
+			Prompt 'Patient must be positioned before moving forward'
+			wait 3
+			Prompt ''
+			goto 'PositionLoop'
+		Endif
+	Else
+		Prompt 'Incorrect position chosen'
+		wait 2
+		Prompt ''
+		goto 'PositionLoop'
+	Endif
+Endif
+
+JoystickCanvas on
+$GlobalVar setglobal 'UsingTool' false

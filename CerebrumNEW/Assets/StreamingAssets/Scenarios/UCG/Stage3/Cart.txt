@@ -1,0 +1,119 @@
+#########################################
+#  UCG Cart - Stage 3
+#########################################
+
+
+
+$CathWarning = 'Must open the catheterization set first.'
+$CheckHoverOrPressed = 'UCG/CheckHoverOrPressed'
+
+/*
+
+	If
+		$HandScrub pressed
+	Then
+		$HandScrub reset
+		Do 'Actions/UCG/HandScrub.txt'
+	Endif
+*/
+	##########Catheterization Set
+	$CartClothFolded speaker.object $CartClothFolded+'/Sachet_Bag'
+	Do $CheckHoverOrPressed $CartClothFolded 'Catherization Set' 'Actions/UCG/UnfoldCloth.txt'
+
+	##########Hand Hygiene 
+	Do $CheckHoverOrPressed $HandScrub 'Hand Hygiene' 'Actions/UCG/HandScrub.txt'
+
+
+	If
+		$ClothUnfolded = true
+	Then
+
+		####### Prep Cart Actions
+
+		##########InjectionWater Package 
+		Do $CheckHoverOrPressed $InjectionWater 'InjectionWater' 'Actions/UCG/InjectionWater.txt'
+
+		##########Antiseptic Package 
+		Do $CheckHoverOrPressed $Antiseptic 'Antiseptic' 'Actions/UCG/Antiseptic.txt'
+
+		##########Lubricant Package 
+		Do $CheckHoverOrPressed $Lubricant 'Lubricant' 'Actions/UCG/Lubricant.txt'
+
+		##########Syringe Package 
+		Do $CheckHoverOrPressed $SyringePackage 'Syringe' 'Actions/UCG/OpenSyringe.txt'
+
+		##########Lubricant Package
+		Do $CheckHoverOrPressed $LubricantPackage 'Lubricant' 'Actions/UCG/OpenLubricant.txt'
+
+		##########InjectionWater Package  
+		Do $CheckHoverOrPressed $InjectionWaterPackage 'InjectionWater' 'Actions/UCG/OpenInjectionWater.txt'
+
+		##########Catheter Package  
+		Do $CheckHoverOrPressed $Catheter 'Catheter' 'Actions/UCG/OpenCatheter.txt'
+
+		##########UrineBagPackage Package 
+		Do $CheckHoverOrPressed $UrineBagPackage 'UrineBagPackage' 'Actions/UCG/OpenUrineBagPackage.txt'
+	
+
+
+		If
+			$CatheterBalloon pressed
+		Then
+			$CatheterBalloon reset		
+			Do 'Actions/UCG/TestCatheter.txt'
+		Endif
+
+		If
+			$Syringe pressed
+		Then
+			$Syringe reset
+			Do 'Actions/UCG/Syringe.txt'
+		Endif
+
+		If
+			$CottonBalls pressed
+		Then
+			$CottonBalls reset
+			Do 'Actions/UCG/CottonBalls.txt'
+		Endif
+
+		If
+			$UrineBag pressed
+		Then
+			$UrineBag reset
+			Do 'Actions/UCG/AttachUrineBagBed.txt'
+		Endif
+
+	Else
+		#############Cloth not unfolded prompt
+
+		Do 'Actions/UCG/MustDoFirst' $InjectionWater $CathWarning
+		Do 'Actions/UCG/MustDoFirst' $Antiseptic $CathWarning
+		Do 'Actions/UCG/MustDoFirst' $Lubricant $CathWarning
+		Do 'Actions/UCG/MustDoFirst' $SyringePackage $CathWarning
+		Do 'Actions/UCG/MustDoFirst' $LubricantPackage $CathWarning
+		Do 'Actions/UCG/MustDoFirst' $InjectionWaterPackage $CathWarning
+		Do 'Actions/UCG/MustDoFirst' $Catheter $CathWarning
+		Do 'Actions/UCG/MustDoFirst' $CatheterBalloon $CathWarning
+		Do 'Actions/UCG/MustDoFirst' $Syringe $CathWarning
+		Do 'Actions/UCG/MustDoFirst' $CottonBalls $CathWarning
+		Do 'Actions/UCG/MustDoFirst' $UrineBagPackage $CathWarning
+
+	Endif
+
+
+	##########ContinenceSheet Package 
+	Do $CheckHoverOrPressed $ContinenceSheet 'ContinenceSheet' 'Actions/UCG/ContinenceSheet.txt'
+
+	##########Gloves Package 
+	Do $CheckHoverOrPressed $Gloves 'Gloves' 'Actions/UCG/Gloves.txt'
+
+	##########Tape Package 
+	Do $CheckHoverOrPressed $Tape 'Tape' 'Actions/UCG/DetachTape.txt'
+
+	##########Tape  
+	Do $CheckHoverOrPressed $DetachedTape 'Tape' 'Actions/UCG/TapeCatheter.txt'
+
+	Wait 0.01
+Return
+

@@ -1,0 +1,39 @@
+#########################################
+#  RIG WITH EXTRA LOCATORS
+#########################################
+
+$LookTarget = 'release'
+
+$LookatLocator = 'LookatLocator'+BedNumber 
+Create Locator $LookatLocator
+
+If 
+    $RigType == 'metarig'
+Then
+    Do 'Rigs/MetarigExtras.txt'
+    Return
+Endif
+
+#Otherwise uAvatar
+
+$PatLookPlayer = Patient + '/TurntoPlayer'
+$PatLookReset = Patient + '/TurnForward'
+
+$CuffPos = Patient + '/CuffPos'
+#$CannulaIVPos = Patient + '/CannulaIVPos'
+$CannulaIVPosHand = Patient + '/CannulaIVPos_L_Hand'
+$CannulaIVPosElbow = Patient + '/CannulaIVPos_L_Elbow'
+$CannulaIVPosRHand = Patient + '/CannulaIVPos_R_Hand'
+$CannulaIVPosRElbow = Patient + '/CannulaIVPos_R_Elbow'
+$CannulaIVPos = CannulaIVPosHand
+
+$MaskGroup = 'MaskGroup'
+$NasalCannula = 'NasalCannula'
+#$PatientFace = Patient + '/metarig/spine/spine.001/spine.002/spine.003/spine.004'
+$PatientFace = Patient + '/Head'
+$PatientHead = Patient + '/Jaw'
+$PatientRightEye = Patient + '/RightEye'
+$PatientLeftEye = Patient + '/LeftEye'
+$PatientMaskTarget = Patient + '/MaskTarget'
+$PatientNasalTarget = Patient + '/NasalTarget'
+$PatientNasalPos = Patient + '/Nasal'

@@ -1,0 +1,33 @@
+#GivePatientCup - Give patient a cup
+# $DrinkCup - cup object
+# $DrinkCupAmount - amount to fill cup
+
+#$DrinkCup = 'CupFillable'
+
+
+	#GivePatientCup
+	#nurse leans in to give cup
+	$PlayerNurse play LeanIn
+	Wait 2
+	Prompt ''
+
+	#create cup, fill, and attach to palm
+	Create $DrinkCup $DrinkCup
+	$DrinkCup fillAmount $DrinkCupAmount
+	
+	$DrinkCup moveto $PatientHand 0     #should have $PatientHandPalm defined
+	Wait 0.01   #need delay before moves to position in hand since no real grab point yet
+
+#	$DrinkCup localrotatez 90 0
+	#Move cup to center of hand (palm) since no palm is defined
+	If
+		$BedNumber < 3
+	Then
+		#Prompt 'Moved to +x hand'
+		$DrinkCup movex .088 0
+		$DrinkCup movez -.025 0
+	Else
+		#Prompt 'Moved to -x hand'
+		$DrinkCup movex -.088 0
+		$DrinkCup movez .025 0
+	Endif

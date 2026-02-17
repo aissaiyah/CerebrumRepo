@@ -1,0 +1,88 @@
+#########################################
+#  PATIENTNon3 INFO INIT
+#########################################
+
+$PatientName = 'Steve Lim'
+$isEWS = false
+$PatientIC = 'S107978B'
+$BloodType = 'B-'
+$AgeInYears = 82
+$PatientModel = 'uAvatar'
+$PatientDiag = 'Right fingers gangrene'
+$PatientGender = 'Male'
+$PatientSummary = 'Patient was admitted for ray amputations due to gangrene. It is his 1st POD upon receiving him from previous shift, the nurse noted he is in low mood and refuse to talk. Otherwise he is did not have other complain.'
+
+$PatientType = 'Non3'
+
+$Temperature = 36.4
+$HR = 85
+$BP = '120/50'
+$BPSys = 120
+$Respiration = 20
+$SpO2 = 98
+
+$PainScore = 'Pain Score: 0/10'
+
+$PatientSpeak = 'Please do not disturb me, I am not in the mood to talk to anyone.'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNon3_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientObjName align $Patient 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'NEWS_Nurse/SetupPatient.txt'
+
+$HeadAmount = 90.0
+#$WeightAmount = 75.0
+$WeightAmount = 20.0
+
+Do 'PatientCreations/Age/80.txt'
+Do 'PatientCreations/Head/Head3.txt'
+Do 'PatientCreations/Height/Short.txt'
+Do 'PatientCreations/Expressions/Frown.txt'
+Do 'PatientCreations/Weight/Weight.txt'
+
+$PatientBody = Patient + '/body'
+$PatientMat = 'PatientbodyGG'
+$PatientBody setmaterial $PatientMat 0
+
+$PatientRHand = Patient + '/RightHand'
+$PatientFinger1 = Patient + '/RightHandThumb1'
+$PatientFinger2 = Patient + '/RightHandMiddle1'
+$PatientFinger3 = Patient + '/RightHandIndex1'
+$PatientFinger4 = Patient + '/RightHandRing1'
+$PatientFinger5 = Patient + '/RightHandPinky1'
+
+
+$Bandage = 'Bandage'
+$BandageName = 'Bandage' + BedNumber
+Create $Bandage $BandageName
+$BandageName align $PatientRHand 0
+$BandageName parentto $PatientRHand
+
+#$PatientFinger1 scaleX 0
+#$PatientFinger1 scaleY 0
+#$PatientFinger1 scaleZ 0
+
+#$PatientFinger2 scaleX 0
+#$PatientFinger2 scaleY 0
+#$PatientFinger2 scaleZ 0
+
+$PatientFinger3 scaleX 0
+$PatientFinger3 scaleY 0
+$PatientFinger3 scaleZ 0
+
+#$PatientFinger4 scaleX 0
+#$PatientFinger4 scaleY 0
+#$PatientFinger4 scaleZ 0
+
+$PatientFinger5 scaleX 0
+$PatientFinger5 scaleY 0
+$PatientFinger5 scaleZ 0

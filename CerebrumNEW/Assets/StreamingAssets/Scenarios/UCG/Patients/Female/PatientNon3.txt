@@ -1,0 +1,51 @@
+#########################################
+#  PATIENTNon3 INFO INIT
+#########################################
+
+$PatientName = 'Tan Ah Nee'
+$isEWS = false
+$PatientIC = 'S107978B'
+$BloodType = 'B-'
+$AgeInYears = 82
+$PatientModel = 'uAvatar_Female'
+$PatientDiag = 'Right fingers gangrene'
+$PatientGender = 'Female'
+$PatientSummary = ''
+
+$PatientType = 'Non3'
+
+$Temperature = 36.4
+$HR = 85
+$BP = '120/50'
+$BPSys = 120
+$Respiration = 20
+$SpO2 = 98
+
+$PainScore = 'Pain Score: 0/10'
+
+$PatientSpeak = 'Please do not disturb me, I am not in the mood to talk to anyone.'
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNon3_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientObjName align $Patient 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'UCG/SetupPatient.txt'
+
+$HeadAmount = 90.0
+$WeightAmount = 75.0
+
+Do 'PatientCreations/FemaleTest3.txt'
+#Do 'PatientCreations/Head/Head0.txt'
+Do 'PatientCreations/Height/Average.txt'
+#Do 'PatientCreations/Weight/Average.txt'
+#Do 'PatientCreations/Gender/Female.txt'
+
+$Patient outline.off

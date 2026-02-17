@@ -1,0 +1,37 @@
+Prompt 'Drape'
+wait 1
+Prompt ''
+
+
+If
+	Do 'AnswerIsNo' 'Drape sheet over patient?'
+Then
+	Return
+Endif
+
+$Item = $DrapePackage	
+	
+#Grab item, and tear package open.
+Do 'Actions/UCG/GrabAndOpenPackage' $Item $PlayerStart
+wait 1
+Do 'Actions/UCG/ThrowAwayPackage' $Item $PlayerStart
+wait .5
+
+$DrapePos = $Bed + '/DrapePos'
+
+$DrapeObj = 'drape_exam'
+$Drape = 'Drape'
+
+$PlayerNurse localMoveY 0.4 0
+wait 0
+$PlayerNurse play LeanIn
+Wait 1
+
+Create $DrapeObj $Drape
+wait .1
+$Drape align $DrapePos 0
+
+Destroy $DrapePackage
+wait 3
+$PlayerNurse localMoveY -0.4 0
+

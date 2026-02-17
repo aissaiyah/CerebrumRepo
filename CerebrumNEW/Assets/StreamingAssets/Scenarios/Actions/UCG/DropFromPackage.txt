@@ -1,0 +1,36 @@
+# 'DropFromPackage' $ItemObject $PackagedItem $FallingSpot
+#Prompt 'DropFromPackage' + param[1] + ' ' + param[2] + ' ' + param[3]
+#wait 1
+#Prompt ''
+
+If
+	$param[0] > 0
+Then
+	$Package = param[1]
+	$ItemObject = param[2]
+	$FallingSpot = param[3]
+Endif
+
+#create a 2nd object so we don't have to unparent the one in pouch
+$ItemObjectName = ItemObject + 'Instance'
+Create $ItemObject $ItemObjectName
+Wait 0
+
+#align standalone object with one in pouch
+$PackagedItem = Package + '/' + ItemObject
+$ItemObjectName align $PackagedItem 0  #move to pouch
+Wait 0
+/*
+$PackagedItem off
+Prompt PackagedItem + 'off'
+Wait 5
+*/
+turnOff $PackagedItem
+#Prompt 'TurnOff' + PackagedItem
+#Wait 5
+
+#have item fall out of pouch
+$ItemObjectName align $FallingSpot 0.5
+Wait 0.5
+$ItemObjectName outline.on
+$ItemObjectName clickable true

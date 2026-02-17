@@ -1,0 +1,26 @@
+#########################################
+#  PATIENTNEWS2 INFO STAGE 2
+#########################################
+
+$Temperature = 37
+$HR = 115
+$BP = '78/53' #mmHg
+$BPSys = 78
+$Respiration = 26
+$SpO2 = 92
+
+$Eyes = $EyeResponse3
+$Verbal = $VerbalResponse3
+$Body = $MotorResponse5
+
+$SinusBradycardia = true
+$PhysicalExamResponse = 'Patient breathing heavily.'
+
+$Patient play BreathingSpeed true 2
+
+$FreqHourlyResponse = 'Patient is showing the signs and symptoms of pulmonary embolism, you should step up monitoring frequency and alert the medical team immediately.'
+$FreqShiftResponse = 'Patient is showing the signs and symptoms of pulmonary embolism, you should step up monitoring frequency and alert the medical team immediately.'
+
+$PatientSpeak = 'I am feeling breathless now and my chest is pain.'
+
+$Vitals setVitals $HR $SPO2 $BP $Respiration

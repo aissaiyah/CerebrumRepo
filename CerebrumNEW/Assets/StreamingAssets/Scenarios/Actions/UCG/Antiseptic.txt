@@ -1,0 +1,53 @@
+Prompt 'Antiseptic'
+wait .51
+Prompt ''
+
+
+If
+	Do 'AnswerIs'  'Pour Antiseptic solution?' 'No'
+Then
+	Return
+Endif
+
+#move player closer for grab
+$Player localMoveZ 0.1 0.5
+
+$Item = $Antiseptic
+$ItemPos = AntisepticSol
+
+#Grab item, and tear package open.
+Do 'Actions/UCG/GrabAndOpenPackage' $Item $CartLook
+
+Do 'Actions/UCG/PourPackage' $Item $ItemPos 0.15
+
+#Pour liquid and fill container
+$AntisepticSol on
+$AntisepticSol setOpacity 0 0
+
+$PouringLiquid = 'LiquidParticlesPink'
+Create $PouringLiquid $PouringLiquid
+Wait 0
+$AntisepticOpening = Antiseptic + '/Opening'
+$PouringLiquid align $AntisepticOpening 0
+
+#Fill up
+$AntisepticSol moveY 0.03 5
+#$AntisepticSol setColor 0.8,0.2,0.7 2
+$AntisepticSol setOpacity 0.5 5
+Wait 1
+$Item setOpacity 0.1 4
+wait 4.3
+
+
+
+#drop object from package
+#Do 'Actions/UCG/DropFromPackage' $Item $ItemObj $ItemPos
+#Wait 2
+
+Destroy $PouringLiquid
+
+#Stop pour
+Do 'Actions/UCG/StopPackagePour' $Item
+
+#Throw away package
+Do 'Actions/UCG/ThrowAwayPackage' $Item 

@@ -1,0 +1,17 @@
+Debug 'SetPicking'
+BackButtonCanvas off
+Label 'Scene04_SetLoop'
+	#Prompt 'Checking Infusion Set ' + InfusionSet
+	Wait 1
+	#If
+	#	$SelectedItem pressed
+	#Then
+		$SelectedItem reset
+		$SelectedItem moveto ZoomSpot
+		#$SelectedItem localrotatetox 90
+		#$SelectedItem localrotatetoy 90
+		#$SelectedItem localrotatetoz 90
+		$SelectedItem playerchose
+		Wait 1
+		Do 'Actions/StorageRoom/SetCheck.txt'
+	#Endif

@@ -1,0 +1,19 @@
+Debug 'SetCheck'
+/JoystickCanvas off
+
+#Prompt 'Grab item by ' + PlayerNurse
+#Wait 1
+#Prompt ''
+
+Create Locator $ToolLocation
+wait .1
+$ToolLocation moveto $SelectedItem 0
+#wait .1
+#$ToolLocation localmovez .04 0
+#wait .1
+
+#$PlayerNurse grabLeft $ToolLocation 1  'L_grip' 'vertical'
+#Wait 5
+#$PlayerNurse release 1 'L_grip'
+
+Do 'Actions/StorageRoom/SetChosen.txt'

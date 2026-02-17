@@ -1,0 +1,53 @@
+#########################################
+#  COW Variable INIT - Insertion of indwelling urinary catheterization
+#########################################
+
+$COWWorklistName = $COWMonitor + '/Header/WorklistName'
+$COWHeaderStartDate = $COWMonitor + '/Header/StartDate'
+$COWHeaderStartTime = $COWMonitor + '/Header/StartTime'
+$COWHeaderEndDate = $COWMonitor + '/Header/EndDate'
+$COWHeaderEndTime = $COWMonitor + '/Header/EndTime'
+
+
+$COWWorklistName setitemtext '1. SGH Current Patient (By Category)'
+$COWHeaderStartDate setitemdate 0 'dd-MMM-yyyy'
+$COWHeaderEndDate setitemdatetime 3 'dd-MMM-yyyy'
+$COWHeaderStartTime setitemdatetime 0 'HH:mm'
+$COWHeaderEndTime setitemdatetime 3 'HH:mm'
+
+$COWPatName = $COWMonitor + '/PatientName'
+$COWPatOrder = $COWMonitor + '/PatientOrder'
+$COWPatDate = $COWMonitor + '/Date'
+$COWStartDatePO = $COWMonitor + '/PhysicianOrders/StartDate'
+$COWStartTimePO = $COWMonitor + '/PhysicianOrders/StartTime'
+$COWEndTimePO = $COWMonitor + '/PhysicianOrders/EndTime'
+
+$COWStartTimePO setitemdatetime 0 'HH:mm'
+$COWEndTimePO setitemdatetime 3 'HH:mm'
+
+$COWAllergiesPO = $COWMonitor + '/PhysicianOrders/Allergies'
+
+$COWStartDateDrug = $COWMonitor + '/DrugOrder/StartDate'
+$COWAllergiesDrug = $COWMonitor + '/DrugOrder/Allergies'
+$COWMedication = $COWMonitor + '/Medication'
+$COWRoute = $COWMonitor + '/Route'
+
+
+#Set text
+$WardName = 'W42A'
+
+$COWPatNameTemp = $WardName + '; ' + PatientIC + '; ' + PatientName
+$COWPatOrderTemp = $PatientOrder + '- ' + OrderFreq
+
+$COWPatName setitemtext $COWPatNameTemp
+$COWPatOrder setitemtext $COWPatOrderTemp
+$COWPatDate setitemdate 0 'dd-MMM-yyyy'
+
+$COWStartDatePO setitemdate 0 'dd-MMM-yyyy'
+$COWAllergiesPO setitemtext 'No Known Aller...'
+
+$COWStartDateDrug setitemdate 0 'dd-MMM-yyyy'
+$COWAllergiesDrug setitemtext 'No Known Aller...'
+
+$COWMedication setitemtext $PatientMedication
+$COWRoute setitemtext $PatientRoute

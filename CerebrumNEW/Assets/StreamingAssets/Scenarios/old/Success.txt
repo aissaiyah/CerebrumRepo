@@ -1,0 +1,18 @@
+If
+    ScoreTracker percentachieved 90
+Then
+    UICompletion good
+Else
+    Do 'Failure.txt'
+Endif
+Label 'Loop'
+    If
+        $Leave pressed
+    Then
+        $Leave reset
+		#ScoreTracker CloseStage
+        #Wait 1   #needed for scorm
+        SceneManager quit
+    Endif
+    Wait .1
+Goto 'Loop'

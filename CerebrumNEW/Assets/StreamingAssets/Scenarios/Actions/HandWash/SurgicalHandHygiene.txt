@@ -1,0 +1,24 @@
+#SurgicalHandHygiene.txt - 12 steps of surgical hand hygiene
+#Prompt 'Surgical Hand Hygiene'
+#Do 'Setup/NursePlayer'
+
+Player component.off 'OutlineEffect'
+Do 'HandWash/S1SquirtHandrubInPalm.txt'
+Player component.on 'OutlineEffect'
+#Do 'HandWash/S2RubPalms.txt'
+#Do 'HandWash/S3RubPalmDorsumFingersInterlaced.txt'
+#Do 'HandWash/S4SquirtHandrubInPalm.txt'
+#Do 'HandWash/S5DipFingernails.txt'
+#Do 'HandWash/S6DivideForearm.txt'
+#Do 'HandWash/S7ForearmRub.txt' 
+#
+#Do 'HandWash/H0SquirtHandrubInPalm.txt'
+#Do 'HandWash/H1RubPalms.txt' 'left'
+#Do 'HandWash/H2RubPalmDorsumFingersInterlaced' 
+#Do 'HandWash/H3RubPalmPalmFingersInterlaced'
+#Do 'HandWash/H4RubBackOfFingers.txt'
+#Do 'HandWash/H5RubThumb.txt'
+#Do 'HandWash/H6RubFingersInPalm' 
+#Do 'HandWash/H7RubWrappedHandOnForearm.txt'
+Return
+

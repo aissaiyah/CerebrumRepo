@@ -1,0 +1,46 @@
+Prompt 'Continence Sheet'
+wait 1
+Prompt ''
+
+
+If
+	Do 'AnswerIsNo' 'Open Continence Sheet?'
+Then
+	Return
+Endif
+
+	$SheetObj = 'ContinenceSheet'
+	$Sheet = 'ContinenceSheetObj'
+	
+	$Item = $ContinenceSheet	
+	
+	#Grab item, and tear package open.
+	Do 'Actions/UCG/GrabAndOpenPackage' $Item $PlayerStart
+
+	#Player align $PlayerStart 1
+
+	$PlayerHandName = 'Nurse' + ActiveHand + 'Hand'
+	$PlayerHand =$ PlayerHandName
+	$Item constrainTo $PlayerHand
+	Wait 0
+	$Release = 'release' + ActiveHand
+	$PlayerNurse $Release 1 'dip'
+	Wait 1
+	$Item releaseConstraint
+
+	Create $SheetObj $Sheet
+	wait .1
+	$SheetPos = $Bed + '/Patient02'
+	wait .5
+	$PlayerNurse localMoveY 0.45 0
+	$PlayerNurse play LeanIn
+	Wait 1
+	$Sheet moveto $SheetPos 0
+	wait 0
+	$Sheet localmovex -.3 0
+	wait 0
+	Destroy $ContinenceSheet
+	wait 3
+	$PlayerNurse localMoveY -0.45 0
+	wait .1
+	Player align $CartLook 1

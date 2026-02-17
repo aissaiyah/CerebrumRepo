@@ -1,0 +1,51 @@
+#########################################
+#  PATIENTNEWS4 INFO INIT
+#########################################
+
+$PatientName = 'Steve Lim'
+$isEWS = true
+$PatientIC = 'S107978BB9'
+$BloodType = 'A-'
+$AgeInYears = 82
+$PatientModel = 'uAvatar'
+$PatientDiag = 'Right fingers gangrene'
+$PatientGender = 'Male'
+$PatientSummary = 'Patient was admitted  for ray amputations due to gangrene. It is his 1st POD upon receiving him from previous shift, the  nurse noted he is in low mood and refuse to talk. Otherwise he is did not have other complain.'
+
+$PatientType = 'News4'
+
+$Temperature 37
+$HR = 90
+$BP = '205/105'
+$BPSys = 205
+$Respiration = 22
+$SpO2 = 94
+
+$PainScore = 'Pain Score: 0/10'
+
+$AbnormalResponse = 'Patient is showing the signs and symptoms of stroke.'
+
+$PatientSpeak = 'Hi! I am generally good, however I feel a funny feeling on my face and I have trouble speaking properly. Is this normal post operation? '
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientNewsD_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientObjName align $Patient 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'NEWS_Nurse/SetupPatient.txt'
+
+$HeadAmount = 100
+$WeightAmount = 55.0
+
+Do 'PatientCreations/Age/80.txt'
+Do 'PatientCreations/Head/Head1.txt'
+Do 'PatientCreations/Height/Average.txt'
+Do 'PatientCreations/Expressions/Smile.txt'
+Do 'PatientCreations/Weight/Weight.txt'

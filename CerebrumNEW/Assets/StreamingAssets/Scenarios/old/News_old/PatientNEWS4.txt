@@ -1,0 +1,48 @@
+#########################################
+#  PATIENT INFO
+#########################################
+
+$PatientName = 'Kumar Sami S/O Balan'
+$PatientIC = 'S2023330P'
+$BloodType = 'B-'
+$AgeInYears = 69
+$PatientModel = 'PatientMale70'
+$PatientDiag = 'Right fingers gangrene'
+$PatientProf = 'Male, 69 years old'
+$PatientSummary = 'Patient was recently discharged from hospital for newly diagnosed leukemia. During his previous admission, IV cannula was inserted on his right dorsum and phlebitis developed over the cannula side. He was readmitted this morning due to worsening of phlebitis site. He is running  fever, right dorsum redness and swelling seen during handover. He is waiting for hand surgeon to see him.'
+
+
+$Temperature = 38.5
+$HR = 90
+$BP = '150/80' #mmHg
+$BPSys = 150
+$Respiration = 18
+$SpO2 = 98
+$OxygenSupplement = 'No'
+$LevelOfConscious =  'Alert'
+$Pat_Oxystored = 0
+$Pat_LOCstored = 0
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+#Do 'NEWS/GetPatient.txt'
+$PatLookPlayer = Patient + '/TurntoPlayer'
+$PatLookReset = Patient + '/TurnForward'
+
+Create $PatientModel 'PatientNEWS4'
+PatientNEWS4 align $Patient 0
+turnOff $Patient
+$Patient = 'PatientNEWS4'
+
+$CuffPos = Patient + '/CuffPos'
+$CannulaIVPos = Patient + '/CannulaIVPos'
+$PatientFace = Patient + '/head.x'
+$PatientHead = Patient + '/Jaw'
+$PatientMask = Patient + '/OxygenSuppliers/MaskGroup'
+$PatientNasal = Patient + '/OxygenSuppliers/NasalCannula'
+$PatientMask off
+$PatientNasal off
+
+Do 'NEWS_Nurse/SetupPatient.txt'

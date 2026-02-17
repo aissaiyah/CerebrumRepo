@@ -1,0 +1,10 @@
+#TakePatientCup - Take the cup away from patient
+# $DrinkCup - cup object
+
+
+#$DrinkCup = 'CupFillable'
+
+	#Have nurse take away cup
+	$PlayerNurse play LeanIn
+	Wait 2
+	Destroy $DrinkCup
