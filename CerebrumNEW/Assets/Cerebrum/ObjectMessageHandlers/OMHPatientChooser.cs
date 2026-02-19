@@ -39,7 +39,7 @@ public class OMHPatientChooser : ObjectMessageHandlerBase
     {
         base.Start();
         Debug.Log("OMHPatientChooser: " + gameObject.name + " STARTED");
-        AudioClip clip = Resources.Load<AudioClip>("Sound/freesound_community-cough-73464");
+        
 
         // Check to make sure the number of beds and patients are correct
         if (numNonEWSPatientsInScene + numEWSPatientsInScene > numBedsInScene) {
