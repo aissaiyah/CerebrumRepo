@@ -36,7 +36,9 @@ Create $PatientModel $PatientObjName
 $PatientBedLoc = $Patient
 $PatientObjName align $PatientBedLoc 0
 $Patient = PatientObjName
-
+$CoughingSound = 'AsthmaAttack'
+$CoughingSound loop true
+$CoughingSound play
 
 $RigType = 'uAvatar'
 Do 'Rigs/RigExtras.txt'

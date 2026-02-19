@@ -7,10 +7,12 @@ $Patient outline.on
 $Vitalsmonitor outline.on
 #Prompt 'Playerstart = ' + PlayerStart
 #Wait .51  #is this wait needed?
+
 WipeCanvas off
 SyringeCanvas off
 IVCanvas off
 DripCanvas off
+
 $Stage2Sum = false
 
 $Soap outline.on
@@ -30,8 +32,6 @@ $Wipe1 reset
 $Syringe outline.on
 $Phone outline.on
 $Phone clickable true
-
-                  
 
 
 #Move player to bed
