@@ -3295,6 +3295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1543078593}
   - component: {fileID: 1543078594}
+  - component: {fileID: 1543078595}
   m_Layer: 0
   m_Name: CoughingSound
   m_TagString: Untagged
@@ -3328,7 +3329,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3c0f8eddc4993fa42b31d45380ba91a9, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -3413,6 +3414,74 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1543078595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543078592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597287f6035fcff4687861bf1b013eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pressed: 0
+  hover: 0
+  clickable: 0
+  playSound: 0
+  startTime: 0
+  interval: 0
+  timertrack: 0
+  timer: 0
+  inputText: 
+  movementSpeed: 1
+  outline_normal: {fileID: 0}
+  outline_good: {fileID: 0}
+  outline_yellow: {fileID: 0}
+  outline_bad: {fileID: 0}
+  aSource: {fileID: 1543078594}
+  clip: {fileID: 8300000, guid: 3c0f8eddc4993fa42b31d45380ba91a9, type: 3}
+  enableSelection: 1
+  itemTextString: 
+  itemTextGO: {fileID: 0}
+  cursorTexture2D: {fileID: 0}
+  jumpVelocity: 8.5
+  fallMult: 2.5
+  lowJumpMult: 2
+  gravity: {x: 0, y: -10, z: 0}
+  center: {x: 500, y: 500}
+  radius: 125
+  centerButton: {fileID: 0}
+  answerButton: {fileID: 0}
+  rectOff:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  question: 
+  choices: []
+  menuSizeFraction: 0.55
+  radialMenuActive: 0
+  UIActiveReset: 0
+  anglePad: 20
+  correctSet: 0
+  chosenSet: 0
+  trackTime: 0
+  isEmpty: 0
+  isEWS: 0
+  stages: 
+  stageset: 0
+  pointTotal: 0
+  salineAmount: 5
+  time: 0
+  percentComplete: 0
+  totalMissed: 0
+  totalIncorrect: 0
+  totalCorrect: 0
+  consentPages: []
+  pageNumber: 0
+  numStageItems: 000000000d0000000900000008000000020000000c0000000f00000010000000
 --- !u!1 &1561797852
 GameObject:
   m_ObjectHideFlags: 0
@@ -5392,15 +5461,15 @@ MonoBehaviour:
   currentFileName: 
   maxJumpsPerFrame: 10
   gameDelay: 0
-  MyDebugLog: 0
-  displayLastCommands: 0
-  debugCommands: 0
+  MyDebugLog: 1
+  displayLastCommands: 1
+  debugCommands: 1
   DebugDialogText: {fileID: 0}
-  debugBox: 0
+  debugBox: 1
   debugStatementsDelay: 0
   DebugDialog: 
-  debugCanvas: 0
-  debugCommandEntry: 0
+  debugCanvas: 1
+  debugCommandEntry: 1
   debugCommandList: []
   Dialog2: 
   Dialog1: 

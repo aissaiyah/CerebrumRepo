@@ -60,6 +60,7 @@ Then
         $OxygenApplied = true
     Then
         $PatientSpeak = 'I can breathe better now.'
+        CoughingSound stopsound
     Else
         $PatientSpeak = '*Cough Cough Cough* Its hard to breathe.'
     Endif

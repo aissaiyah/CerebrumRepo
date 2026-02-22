@@ -247,7 +247,7 @@
 			$UIMan closetoolinventory
 			Do 'Intervention/OxygenTherapy.txt'
 			$GlobalVar setglobal 'OxygenApplied' true
-			$Patient stopSound
+			CoughingSound stopsound
 			$Patient reset
 			$UseToolButton reset
 		Endif
