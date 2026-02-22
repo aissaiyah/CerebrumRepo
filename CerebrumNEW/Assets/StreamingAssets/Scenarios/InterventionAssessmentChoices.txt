@@ -25,7 +25,6 @@
 # $GlobalVar is the empty game object that holds all of the global variables in the scene
 # $Stage is the current stage number
 
-
 	If
 		$AssessParameters isOnAndPressed
 	Then
@@ -247,6 +246,8 @@
 		Then
 			$UIMan closetoolinventory
 			Do 'Intervention/OxygenTherapy.txt'
+			$GlobalVar setglobal 'OxygenApplied' true
+			CoughingSound stopsound
 			$Patient reset
 			$UseToolButton reset
 		Endif
