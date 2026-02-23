@@ -1,0 +1,17 @@
+# CheckVitals.txt - Generic vitals check for asthma scenario
+# Moves player to monitor and displays current vitals
+
+Player align $Monitorlook 0.5
+Wait 1
+
+$VitalsCanvas on
+
+Prompt 'Current Vitals - HR: ' + HR + ' | SpO2: ' + SpO2 + '% | BP: ' + BP + ' | RR: ' + Respiration
+Wait 4
+
+$VitalsCanvas off
+Player align $PlayerStart 0.5
+Wait 1
+
+Prompt ''
+Return

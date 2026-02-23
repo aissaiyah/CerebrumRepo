@@ -1,0 +1,44 @@
+# TaskSetup.txt - Sets up task variables for the Asthma scenario (31 tasks)
+
+$TaskOffset = 0
+
+# Phase 1: Initial Assessment (Steps 1-8)
+$Task_ApproachPatient           = 0 + TaskOffset
+$Task_AskBreathing              = 1 + TaskOffset
+$Task_VisualAssessBreathing     = 2 + TaskOffset
+$Task_AssessSpeech              = 3 + TaskOffset
+$Task_ObserveChestRise          = 4 + TaskOffset
+$Task_CheckWheezing             = 5 + TaskOffset
+$Task_CountRespRate             = 6 + TaskOffset
+$Task_ReadO2Sat                 = 7 + TaskOffset
+
+# Phase 2: Immediate Interventions (Steps 9-14)
+$Task_AssistPosition            = 8 + TaskOffset
+$Task_ReassessBreathing1        = 9 + TaskOffset
+$Task_ApplyO2                   = 10 + TaskOffset
+$Task_SelectNasalCannula        = 11 + TaskOffset
+$Task_SetFlowRate               = 12 + TaskOffset
+$Task_ApplyO2Device             = 13 + TaskOffset
+
+# Phase 3: Secondary Assessment (Steps 15-21)
+$Task_ReassessO2Sat1            = 14 + TaskOffset
+$Task_CheckHeartRate            = 15 + TaskOffset
+$Task_CheckBP                   = 16 + TaskOffset
+$Task_AskAsthmaHistory          = 17 + TaskOffset
+$Task_AskTriggers               = 18 + TaskOffset
+$Task_AuscultateLungs           = 19 + TaskOffset
+$Task_IdentifyWheezing          = 20 + TaskOffset
+
+# Phase 4: Clinical Decision & Treatment (Steps 22-26)
+$Task_DetermineAsthma           = 21 + TaskOffset
+$Task_NotifyProvider            = 22 + TaskOffset
+$Task_ReceiveOrder              = 23 + TaskOffset
+$Task_PrepareNebulizer          = 24 + TaskOffset
+$Task_AdministerNeb             = 25 + TaskOffset
+
+# Phase 5: Post-Treatment Reassessment (Steps 27-31)
+$Task_MonitorDuringTreatment    = 26 + TaskOffset
+$Task_ReassessLungSounds        = 27 + TaskOffset
+$Task_ReassessRespRate          = 28 + TaskOffset
+$Task_ReassessO2Sat2            = 29 + TaskOffset
+$Task_ObserveImprovement        = 30 + TaskOffset

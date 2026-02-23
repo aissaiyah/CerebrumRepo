@@ -1,0 +1,103 @@
+#########################################
+#  PATIENT ASTHMA INFO INIT - Acute Asthma Exacerbation
+#########################################
+
+$PatientName = 'Maria Santos'
+$isEWS = true
+$PatientIC = 'S2234567B'
+$BloodType = 'A+'
+$AgeInYears = 34
+$PatientModel = 'uAvatar'
+$PatientDiag = 'Acute Asthma Exacerbation'
+$PatientGender = 'Female'
+$PatientSummary = 'Ms Maria Santos, 34 years old, presented to the emergency department with acute difficulty breathing. She has a history of asthma and reports using her rescue inhaler 3 times today with minimal relief. Family history of asthma. She appears anxious and is only able to speak in 3-4 word phrases.'
+
+$PatientType = 'Asthma1'
+
+# Initial vitals - patient in respiratory distress
+$Temperature = 37.2
+$HR = 112
+$BP = '145/92'
+$BPSys = 145
+$Respiration = 28
+$SpO2 = 89
+
+$OxygenSupplement = 'No'
+$PatientNasal = false
+$PatientMask = false
+$PatientVenturi = false
+
+$PainScore = 'Pain Score: 3/10'
+
+$AbnormalResponse = 'Patient is showing signs and symptoms of acute asthma exacerbation with respiratory distress.'
+
+$PatientSpeak = 'I... can not... breathe well... inhaler... not helping...'
+
+# Asthma-specific variables
+$AsthmaHistoryAsked = false
+$TriggersAsked = false
+$BreathingAssessed = false
+$SpeechAssessed = false
+$ChestRiseObserved = false
+$WheezingChecked = false
+$RespRateCounted = false
+$O2SatRead = false
+$PositionAssisted = false
+$BreathingReassessed1 = false
+$OxygenApplied = false
+$NasalCannulaSelected = false
+$FlowRateSet = false
+$OxygenDeviceApplied = false
+$O2SatReassessed1 = false
+$HeartRateChecked = false
+$BPChecked = false
+$LungSoundsAuscultated = false
+$WheezingIdentified = false
+$AsthmaExacDetermined = false
+$ProviderNotified = false
+$OrderReceived = false
+$NebPrepared = false
+$NebAdministered = false
+$PatientMonitored = false
+$LungSoundsReassessed = false
+$RespRateReassessed = false
+$O2SatReassessed2 = false
+$ImprovementObserved = false
+
+# Vitals progression tracking
+$VitalsPhase = 1
+# Phase 1: Initial (HR 112, SpO2 89, BP 145/92, RR 28)
+# Phase 2: After positioning (HR 112, SpO2 90, BP 145/92, RR 26)
+# Phase 3: After O2 applied (HR 112, SpO2 93, BP 145/92, RR 24)
+# Phase 4: During nebulizer (HR 125, SpO2 93, BP 145/92, RR 24)
+# Phase 5: After treatment (HR 110, SpO2 96, BP 138/88, RR 22)
+
+$Oriented = true
+$isEyesOpen = true
+$HasWristBand = true
+$LevelOfConscious = 'Alert'
+$BloodGlucoseLevel = 5.2
+
+#########################################
+# SETUP TYPE OF MODEL
+#########################################
+
+$PatientObjName = 'PatientAsthma_B' + BedNumber
+Create $PatientModel $PatientObjName
+$PatientBedLoc = $Patient
+$PatientObjName align $PatientBedLoc 0
+$Patient = PatientObjName
+
+$RigType = 'uAvatar'
+Do 'Rigs/RigExtras.txt'
+
+Do 'NEWS_Nurse/SetupPatient.txt'
+
+$HeadAmount = 50.0
+$WeightAmount = 30.0
+
+Do 'PatientCreations/Age/45.txt'
+Do 'PatientCreations/Head/Head1.txt'
+Do 'PatientCreations/Height/Average.txt'
+Do 'PatientCreations/Weight/Weight.txt'
+Do 'PatientCreations/Expressions/Frown.txt'
