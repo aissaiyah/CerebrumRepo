@@ -32,12 +32,14 @@ public class OMHPatientChooser : ObjectMessageHandlerBase
     {
         base.Awake();
         Debug.Log("OMHPatientChooser: " + gameObject.name + " AWAKE");
+
     }
 
     protected override void Start()
     {
         base.Start();
         Debug.Log("OMHPatientChooser: " + gameObject.name + " STARTED");
+        
 
         // Check to make sure the number of beds and patients are correct
         if (numNonEWSPatientsInScene + numEWSPatientsInScene > numBedsInScene) {

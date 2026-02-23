@@ -148,6 +148,10 @@ $GlobalVar setglobal 'PatientCheckDone' $PatientCheckTotal
 
 $Patient reset
 
+$CoughingSound = 'CoughingSound'
+
+$CoughingSound playsound 35
+
 $Bed clickable false
 $WristTag reset
 

@@ -1,0 +1,64 @@
+
+$Pat1Name = 
+$GlobalVar getglobal 'PatientName1'
+$CheckPat1 setItemText $Pat1Name
+
+
+$ComaTestCan off
+$PupilCanvas off
+#$VitalsCanvas off
+$EWSWrong off
+$EWSCorrect off
+PatInfoCanvas off
+PatientChecklistCanvas off
+PatientCanvas off
+ToolCanvas off
+DialogueCanvas off
+PatientPreCanvas off
+$ComaCheckCan off
+$PC_Info on
+$IVCannulaCan off
+$SpotMonitorCan off
+$IVDripCan off
+$OralCan off
+$OxyCan off
+$ECGCan off
+$AbCan off
+$EWSCheck off
+$EndGame off
+$EWSChoiceCanvas off
+$CheckCanvas off
+$EndCanvas off
+
+#$Patient component.add 'ObjectMessageHandler'
+#$Patient component.remove 'ObjectMessageHandlerBase'
+#This is how to add and remove components
+#$Patient component.add 'RandomID'
+#$Patient component.on 'Animator'
+#$Patient component.off 'Animator'
+#$Patient component.remove 'Animator'
+
+$Bed clickable false
+
+Do 'Setup/PatientCanvas.txt'
+
+#### Dialogue Setup
+
+   If
+      Player exists $DialogCanvas 
+   Else
+        Create DialogueCanvas 'DialogueCanvas'
+   Endif
+
+   #Do  'Setup/PatientCanvas.txt'
+
+Wait .1
+$PlayerSpeechBubble close
+$PatientSpeechBubble close
+
+#$SceneStart = 'NEWS_Nurse/MainLoop.txt'
+Do $SceneStart
+
+
+
+

@@ -10,7 +10,7 @@
 #
 # $GlobalVar is the empty game object that holds all of the global variables in the scene
 # $Stage is the current stage number
-
+$CoughingSound = 'CoughingSound'
 /PatientPreCanvas on
 JoystickCanvas off
 
@@ -46,20 +46,27 @@ Label 'PCLoop_Stage01'
 		PatInfoCanvas off
 	Endif
 
-	If
-		$Pre_Speak pressed
-	Then
-		$Pre_Speak reset
-		/PatientPreCanvas off
-		Prompt ''
-		If
-			PatInfoCanvas ison
-		Then
-			$PC_Info reset
-			PatInfoCanvas off
-		Endif
+If
+    $Pre_Speak pressed
+Then
+    $Pre_Speak reset
+    /PatientPreCanvas off
+    Prompt ''
 
-		Do 'NEWS_Nurse/PatientConversation.txt'
+    $OxygenApplied =
+        $GlobalVar getglobal 'OxygenApplied'
+
+    If
+        $OxygenApplied = true
+    Then
+        $PatientSpeak = 'I can breathe better now.'
+        CoughingSound stopsound
+    Else
+        $PatientSpeak = '*Cough Cough Cough* Its hard to breathe.'
+    Endif
+
+    Do 'NEWS_Nurse/PatientConversation.txt'
+
 		
 		If
 			$Stage = 1

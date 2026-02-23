@@ -11,6 +11,9 @@ $Nurse align $NursePatPos
 $IVPos = Bed + '/NursePosRight'
 $OxygenPos = Bed + '/Oxygen/OxygenFlowMeter'
 
+
+
+
 $PatientProf = PatientGender + ', ' + AgeInYears + ' years old'
 
 # + '/Medium'
@@ -19,7 +22,7 @@ $PlayerStart = Bed + '/Medium'
 #$WristTag setitemtext $PatientName
 #$Patient = Patient + BedNumber
 $PatientProf = PatientGender + ', ' + AgeInYears + ' years old'
-
+$Patient playsound 35
 #   Prompt 'SetupPatient ' + BedNumber
 #Wait 1
 
