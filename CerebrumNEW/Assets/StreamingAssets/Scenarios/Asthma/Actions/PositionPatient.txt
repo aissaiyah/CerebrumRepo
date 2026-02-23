@@ -1,0 +1,19 @@
+# PositionPatient.txt - Assist patient into high Fowler's position
+# High Fowler's = head of bed elevated 60-90 degrees
+
+$PlayerNurse play LeanIn
+Wait 1
+
+Prompt 'Raising head of bed to high Fowler position (60-90 degrees)...'
+Wait 2
+
+$GenericPlayerLine = 'I am going to sit you up to help with your breathing.'
+$GenericPatientLine = 'Okay... thank you...'
+Do 'GenericChat.txt'
+
+Prompt 'Patient now in upright sitting position. Pillows placed for support.'
+Wait 2
+
+$PlayerNurse release
+Prompt ''
+Return

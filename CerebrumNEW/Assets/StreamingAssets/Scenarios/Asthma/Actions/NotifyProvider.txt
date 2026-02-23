@@ -1,0 +1,30 @@
+# NotifyProvider.txt - SBAR communication to notify provider
+# Uses SBAR format: Situation, Background, Assessment, Recommendation
+
+Prompt 'Calling provider with SBAR report...'
+Wait 2
+
+$PlayerLower = 'Player/DialogSpot'
+
+# Situation
+$PlayerLower speaks 'S: Patient Maria Santos, 34F, acute respiratory distress.'
+Wait 3
+
+# Background
+$PlayerLower speaks 'B: History of asthma. Used rescue inhaler 3x today without relief. Family history of asthma.'
+Wait 3
+
+# Assessment
+$PlayerLower speaks 'A: RR 28, SpO2 89% now 93% on 2L NC. HR 112. BP 145/92. Diffuse bilateral wheezing.'
+Wait 3
+
+# Recommendation
+$PlayerLower speaks 'R: Requesting nebulized bronchodilator treatment.'
+Wait 3
+
+$PlayerLower speaks ''
+
+Prompt 'Provider notified via SBAR.'
+Wait 2
+Prompt ''
+Return

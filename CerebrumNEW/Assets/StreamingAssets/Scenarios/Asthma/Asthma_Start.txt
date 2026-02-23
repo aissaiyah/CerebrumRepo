@@ -1,0 +1,103 @@
+# Asthma_Start.txt - Main Asthma scenario setup file
+# Acute Asthma Exacerbation Training Scenario
+
+###########################################
+# Wait for canvases to load
+###########################################
+Label 'WaitForCanvases'
+
+$EndCanvas = 'EndCanvas'
+If
+   Player exists $EndCanvas
+Then
+   # Canvases loaded
+Else
+   Goto 'WaitForCanvases'
+Endif
+
+Do 'Asthma/SetupVariables'
+
+###########################################
+# Setup Scoring
+###########################################
+
+Do 'Asthma/TaskSetup'
+Do 'Asthma/ScoringSetup'
+
+$ScoreTracker SetStage 1
+$ScoreTracker NumItems 31
+
+###########################################
+# Setup Canvases - Turn everything off initially
+###########################################
+
+$SummaryInfo off
+$OxyCan off
+$ECGCan off
+$AbCan off
+$EndGame off
+$CheckCanvas off
+$EndCanvas off
+$VitalsCanvas off
+PatInfoCanvas off
+PatientPreCanvas off
+
+wait 1
+
+###########################################
+# Setup Patient
+###########################################
+
+$Patient reset
+$Bed clickable false
+$WristTag reset
+
+ALL/WristTag localMoveX -0.2
+ALL/WristTag localMoveZ 0.2
+
+$Nurse reset
+$Vitalsmonitor off
+
+$Gloves clickable true
+
+# Set initial vitals on monitor (patient in distress)
+$Vitals setVitals 112 89 '145/92' 28
+
+wait .1
+
+###########################################
+# Setup Dialogue
+###########################################
+
+If
+   Player exists $DialogCanvas
+Else
+   Create DialogueCanvas 'DialogueCanvas'
+Endif
+
+Wait .1
+$PlayerSpeechBubble close
+$PatientSpeechBubble close
+
+turnOff $NurseBodyGloves
+turnOn $NurseBodyNoGloves
+
+$Nurse speaker.color 1 .5 .5
+$Nurse speaker.object $NurseHead
+$Patient speaker.color .5 .5 1
+
+turnOff $Nurse
+
+###########################################
+# Start the scenario
+###########################################
+
+Prompt 'Acute Asthma Exacerbation Scenario'
+Wait 2
+Prompt 'A patient has been admitted with difficulty breathing.'
+Wait 3
+Prompt 'Approach the patient to begin your assessment.'
+Wait 2
+Prompt ''
+
+Do $SceneStart

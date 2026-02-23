@@ -1,0 +1,15 @@
+# AssessBreathing.txt - Visual assessment of patient breathing
+# Used when healthcare worker visually assesses patient's breathing pattern
+
+$PlayerNurse play LeanIn
+Wait 1
+
+Prompt 'Observing patient breathing pattern...'
+Wait 2
+
+Prompt 'Patient chest showing abnormal, rapid breaths. Accessory muscle use noted.'
+Wait 3
+
+$PlayerNurse release
+Prompt ''
+Return

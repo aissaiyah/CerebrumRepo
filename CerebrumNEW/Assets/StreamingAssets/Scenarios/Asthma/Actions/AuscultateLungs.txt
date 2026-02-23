@@ -1,0 +1,22 @@
+# AuscultateLungs.txt - Auscultate lung sounds with stethoscope
+# Player uses stethoscope to listen to patient lung sounds
+
+$PlayerNurse play LeanIn
+Wait 1
+
+Prompt 'Placing stethoscope on patient chest...'
+Wait 2
+
+# Audio cue - wheezing sounds
+Prompt 'Listening to anterior lung fields...'
+Wait 2
+
+Prompt 'Listening to posterior lung fields...'
+Wait 2
+
+Prompt 'Auscultation complete.'
+Wait 1
+
+$PlayerNurse release
+Prompt ''
+Return

@@ -67,7 +67,19 @@ Then
 
     Do 'NEWS_Nurse/PatientConversation.txt'
 
-		
+    # Step 1: Assess speech - patient can only manage 3-4 word phrases
+    If
+        $OxygenApplied = true
+    Then
+        # Patient can speak normally after treatment
+    Else
+        Wait 1
+        $GenericPlayerLine = 'Can you tell me more?'
+        $GenericPatientLine = 'Chest... so tight... *wheeze*'
+        Do 'GenericChat.txt'
+    Endif
+
+
 		If
 			$Stage = 1
 		Then

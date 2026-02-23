@@ -1,0 +1,25 @@
+# AdministerNebulizer.txt - Administer nebulized bronchodilator treatment
+# Albuterol 2.5mg/3mL via nebulizer
+
+$PlayerNurse play LeanIn
+Wait 1
+
+Prompt 'Connecting nebulizer to oxygen source...'
+Wait 2
+
+Prompt 'Placing nebulizer mouthpiece for patient...'
+Wait 2
+
+Prompt 'Instructing patient: Breathe normally through the mouthpiece.'
+Wait 2
+
+$GenericPlayerLine = 'Breathe normally through the mouthpiece. The treatment will take about 10-15 minutes.'
+$GenericPatientLine = 'Okay...'
+Do 'GenericChat.txt'
+
+Prompt 'Nebulizer treatment in progress...'
+Wait 3
+
+$PlayerNurse release
+Prompt ''
+Return

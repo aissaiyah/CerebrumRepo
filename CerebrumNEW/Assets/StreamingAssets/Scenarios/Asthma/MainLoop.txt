@@ -1,0 +1,892 @@
+###########################################
+# Asthma Scenario - Main Loop
+# Drives the 31-step acute asthma exacerbation scenario
+# Steps are presented sequentially through button presses
+###########################################
+
+JoystickCanvas on
+$Patient outline.on
+$Vitalsmonitor outline.on
+$Vitalsmonitor on
+
+# Move player to starting position near patient
+If
+    $Patient isCurrent
+Then
+    Player align $PlayerStart
+Endif
+
+$UIMan = 'UIManager'
+$UseToolButton = 'ToolCanvas/UseToolButton'
+$CloseTools = 'ToolCanvas/Assessments/CloseToolInventory'
+
+If
+    $Patient isCurrent
+Then
+    Do 'Setup/NursePlayer'
+    $Cart = 'Cart'
+    $Cart moveTo $PlayerNurse 0
+    Wait 0
+    $Cart localMoveX .51 0
+    Wait 0
+    $Cart localMoveZ .51 0
+    Wait 0
+    $Cart localRotateY 180 0
+    Wait 0
+Endif
+Wait 0.5
+
+###########################################
+# STEP 1: Healthcare worker approaches patient
+###########################################
+
+Prompt 'Approach the patient to begin assessment.'
+
+Label 'WaitApproach'
+    If
+        $Patient pressed
+    Then
+        $Patient reset
+        Player align $PlayerStart 0.5
+        Wait 1
+
+        ScoreTracker TaskCompleted $PatientType 'Task_ApproachPatient'
+        $ApproachDone = true
+        Prompt 'You approach the patient. She appears to be in respiratory distress.'
+        Wait 3
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitApproach'
+    Endif
+
+###########################################
+# STEP 2: Ask patient about breathing difficulty
+###########################################
+
+$GenericPlayerLine = 'Are you having trouble breathing?'
+$GenericPatientLine = $PatientLine_Breathing
+Do 'GenericChat.txt'
+
+ScoreTracker TaskCompleted $PatientType 'Task_AskBreathing'
+Wait 1
+
+###########################################
+# STEP 3: Visually assess patient breathing
+###########################################
+
+Prompt 'Visually assess the patient breathing. Click on the patient.'
+
+Label 'WaitVisualAssess'
+    If
+        $Patient pressed
+    Then
+        $Patient reset
+        Prompt 'You observe the patient chest showing abnormal, rapid breaths.'
+        Wait 3
+        ScoreTracker TaskCompleted $PatientType 'Task_VisualAssessBreathing'
+        $BreathingAssessed = true
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitVisualAssess'
+    Endif
+
+###########################################
+# STEP 4: Assess patient ability to speak in full sentences
+# Result: Speech 3-4 word phrases only
+###########################################
+
+Prompt 'Assess the patient ability to speak. Click on the patient.'
+
+Label 'WaitSpeechAssess'
+    If
+        $Patient pressed
+    Then
+        $Patient reset
+        $Patient headturn Player
+        Wait 0.5
+
+        # Player asks patient to speak in a full sentence
+        $GenericPlayerLine = 'Can you tell me your full name and date of birth?'
+        $GenericPatientLine = 'Maria... Santos...'
+        Do 'GenericChat.txt'
+
+        Wait 1
+
+        # Patient tries again - can only get 3-4 words out
+        $GenericPlayerLine = 'Can you try saying a full sentence for me?'
+        $GenericPatientLine = 'I... can not... breathe...'
+        Do 'GenericChat.txt'
+
+        Wait 1
+
+        # Assessment finding
+        Prompt 'Patient can only speak in 3-4 word phrases. Unable to complete full sentences.'
+        Wait 3
+        Prompt 'This indicates moderate-to-severe respiratory distress.'
+        Wait 3
+
+        ScoreTracker TaskCompleted $PatientType 'Task_AssessSpeech'
+        $SpeechAssessed = true
+        $Patient release
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitSpeechAssess'
+    Endif
+
+###########################################
+# STEP 5: Observe chest rise and breathing effort
+# Result: Patient chest showing abnormal/quick breaths
+###########################################
+
+Prompt 'Observe the patient chest rise and breathing effort. Click on the patient.'
+
+Label 'WaitChestRise'
+    If
+        $Patient pressed
+    Then
+        $Patient reset
+
+        # Nurse leans in to observe chest
+        $PlayerNurse play LeanIn
+        Wait 1
+
+        # Trigger rapid breathing animation on patient
+        $Patient play breathing
+        Wait 1
+
+        Prompt 'Observing patient chest...'
+        Wait 2
+
+        Prompt 'Chest is rising and falling rapidly. Breathing is shallow and fast.'
+        Wait 3
+
+        Prompt 'Accessory muscles in the neck and shoulders are being used to breathe.'
+        Wait 3
+
+        Prompt 'Breathing pattern is abnormal - rapid, labored breaths visible on inspection.'
+        Wait 3
+
+        $PlayerNurse release
+
+        ScoreTracker TaskCompleted $PatientType 'Task_ObserveChestRise'
+        $ChestRiseObserved = true
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitChestRise'
+    Endif
+
+###########################################
+# STEP 6: Check for audible wheezing
+# Result: Wheezing and coughs heard when closer to patient
+###########################################
+
+Prompt 'Check for audible wheezing. Move closer to the patient.'
+
+Label 'WaitWheezing'
+    If
+        $Patient pressed
+    Then
+        $Patient reset
+
+        # Nurse leans in closer to listen
+        $PlayerNurse play LeanIn
+        Wait 1
+
+        Prompt 'Moving closer to the patient to listen...'
+        Wait 2
+
+        # Patient coughs
+        $Patient speaks '*cough* *cough*'
+        Wait 2
+        $Patient speaks ''
+
+        Prompt 'You can hear a high-pitched whistling sound as the patient exhales.'
+        Wait 3
+
+        # More coughing and wheezing
+        $Patient speaks '*wheeze* ... *cough*'
+        Wait 2
+        $Patient speaks ''
+
+        Prompt 'Audible expiratory wheezing and intermittent coughing confirmed.'
+        Wait 3
+
+        $PlayerNurse release
+
+        ScoreTracker TaskCompleted $PatientType 'Task_CheckWheezing'
+        $WheezingChecked = true
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitWheezing'
+    Endif
+
+###########################################
+# STEP 7: Count respiratory rate - 28 breaths/min
+###########################################
+
+Prompt 'Count the patient respiratory rate. Click the patient chest.'
+
+Label 'WaitRespRate'
+    If
+        $Patient pressed
+    Then
+        $Patient reset
+        Prompt 'Respiratory Rate: 28 breaths/min (elevated - tachypnea)'
+        Wait 4
+        ScoreTracker TaskCompleted $PatientType 'Task_CountRespRate'
+        $RespRateCounted = true
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitRespRate'
+    Endif
+
+###########################################
+# STEP 8: Read oxygen saturation - 89% on Room Air
+###########################################
+
+Prompt 'Check the oxygen saturation on the monitor. Click the monitor.'
+
+Label 'WaitO2Sat'
+    If
+        $Vitalsmonitor pressed
+    Then
+        $Vitalsmonitor reset
+        Player align $Monitorlook 0.5
+        Wait 1
+        $VitalsCanvas on
+        Prompt 'SpO2: 89% on Room Air (critically low - normal is 95-100%)'
+        Wait 4
+        $VitalsCanvas off
+        Player align $PlayerStart 0.5
+        Wait 1
+        ScoreTracker TaskCompleted $PatientType 'Task_ReadO2Sat'
+        $O2SatRead = true
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitO2Sat'
+    Endif
+
+###########################################
+# STEP 9: Assist patient into upright/high Fowler's position
+###########################################
+
+Prompt 'Assist the patient into an upright or high Fowler position. Click the patient.'
+
+Label 'WaitPosition'
+    If
+        $Patient pressed
+    Then
+        $Patient reset
+        $PlayerNurse play LeanIn
+        Wait 1
+        # Sit patient up
+        Prompt 'You assist the patient into a high Fowler position (upright sitting).'
+        Wait 3
+        $PlayerNurse release
+        ScoreTracker TaskCompleted $PatientType 'Task_AssistPosition'
+        $PositionAssisted = true
+
+        # Update vitals slightly - positioning helps a tiny bit
+        $VitalsPhase = 2
+        $HR = 112
+        $SpO2 = 90
+        $Respiration = 26
+        $Vitals setVitals $HR 90 '145/92' 26
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitPosition'
+    Endif
+
+###########################################
+# STEP 10: Reassess breathing effort after positioning
+###########################################
+
+Prompt 'Reassess the patient breathing after repositioning. Click the patient.'
+
+Label 'WaitReassess1'
+    If
+        $Patient pressed
+    Then
+        $Patient reset
+        Prompt 'Slight breathing improvement noted but patient still in distress. Not fully resolved.'
+        Wait 4
+        ScoreTracker TaskCompleted $PatientType 'Task_ReassessBreathing1'
+        $BreathingReassessed1 = true
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitReassess1'
+    Endif
+
+###########################################
+# STEPS 11-14: Apply supplemental oxygen
+# Step 11: Apply supplemental oxygen
+# Step 12: Select nasal cannula
+# Step 13: Set oxygen flow rate (2-4 LPM)
+# Step 14: Apply oxygen device
+###########################################
+
+Prompt 'The patient needs supplemental oxygen. Open the oxygen therapy tool.'
+
+# Use the existing oxygen therapy canvas
+$OxyCan on
+$Nasal = OxyCan + '/Choices/Nasal Prong'
+$Mask = OxyCan + '/Choices/Non-rebreather Mask'
+$Venturi = OxyCan + '/Choices/Venturi Mask'
+$OxyExit = OxyCan + '/Choices/Exit'
+
+Label 'WaitOxygenChoice'
+    If
+        $Nasal pressed
+    Then
+        $Nasal reset
+        $PlayerNurse play LeanIn
+        Wait 1
+
+        # Step 11 - Apply supplemental oxygen
+        ScoreTracker TaskCompleted $PatientType 'Task_ApplyO2'
+        $OxygenApplied = true
+
+        # Step 12 - Selected nasal cannula (correct choice for 2-4 LPM)
+        $OxygenSupplement = 'Yes'
+        $PatientNasal = true
+        ScoreTracker TaskCompleted $PatientType 'Task_SelectNasalCannula'
+        $NasalCannulaSelected = true
+
+        Do 'Intervention/ApplyOxygen.txt'
+
+        # Step 13 - Set flow rate
+        Prompt 'Nasal cannula applied. Flow rate set to 2 Liters Per Minute per protocol.'
+        Wait 3
+        ScoreTracker TaskCompleted $PatientType 'Task_SetFlowRate'
+        $FlowRateSet = true
+
+        # Step 14 - Apply oxygen device
+        ScoreTracker TaskCompleted $PatientType 'Task_ApplyO2Device'
+        $OxygenDeviceApplied = true
+        $OxyCan off
+
+        # Update vitals - oxygen helping
+        $VitalsPhase = 3
+        $SpO2 = 93
+        $Respiration = 24
+        $Vitals setVitals 112 93 '145/92' 24
+
+        $PlayerNurse release
+        Prompt 'Oxygen device applied successfully.'
+        Wait 2
+        Prompt ''
+    Else
+        If
+            $Mask pressed
+        Then
+            $Mask reset
+            Prompt 'For asthma with SpO2 89%, nasal cannula at 2-4 LPM is the recommended first choice. Try again.'
+            Wait 3
+            Prompt ''
+            Goto 'WaitOxygenChoice'
+        Endif
+        If
+            $Venturi pressed
+        Then
+            $Venturi reset
+            Prompt 'For asthma with SpO2 89%, nasal cannula at 2-4 LPM is the recommended first choice. Try again.'
+            Wait 3
+            Prompt ''
+            Goto 'WaitOxygenChoice'
+        Endif
+        If
+            $OxyExit pressed
+        Then
+            $OxyExit reset
+            $OxyCan off
+            Prompt 'The patient still needs oxygen. Please apply oxygen therapy.'
+            Wait 2
+            Prompt ''
+            $OxyCan on
+        Endif
+    Endif
+    Wait .2
+    If
+        $OxygenDeviceApplied = false
+    Then
+        Goto 'WaitOxygenChoice'
+    Endif
+
+###########################################
+# STEP 15: Reassess oxygen saturation - 93% on 2L O2
+###########################################
+
+Prompt 'Reassess the oxygen saturation. Click the monitor.'
+
+Label 'WaitReassessO2'
+    If
+        $Vitalsmonitor pressed
+    Then
+        $Vitalsmonitor reset
+        Player align $Monitorlook 0.5
+        Wait 1
+        $VitalsCanvas on
+        Prompt 'SpO2: 93% on 2L O2 (improving from 89%)'
+        Wait 4
+        $VitalsCanvas off
+        Player align $PlayerStart 0.5
+        Wait 1
+        ScoreTracker TaskCompleted $PatientType 'Task_ReassessO2Sat1'
+        $O2SatReassessed1 = true
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitReassessO2'
+    Endif
+
+###########################################
+# STEP 16: Check heart rate - 112 bpm
+###########################################
+
+Prompt 'Check the patient heart rate. Click the monitor.'
+
+Label 'WaitHR'
+    If
+        $Vitalsmonitor pressed
+    Then
+        $Vitalsmonitor reset
+        Player align $Monitorlook 0.5
+        Wait 1
+        $VitalsCanvas on
+        Prompt 'Heart Rate: 112 bpm (tachycardia - elevated due to respiratory distress)'
+        Wait 4
+        $VitalsCanvas off
+        Player align $PlayerStart 0.5
+        Wait 1
+        ScoreTracker TaskCompleted $PatientType 'Task_CheckHeartRate'
+        $HeartRateChecked = true
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitHR'
+    Endif
+
+###########################################
+# STEP 17: Check blood pressure - 145/92 mmHg
+###########################################
+
+Prompt 'Check the patient blood pressure. Click the monitor.'
+
+Label 'WaitBP'
+    If
+        $Vitalsmonitor pressed
+    Then
+        $Vitalsmonitor reset
+        Player align $Monitorlook 0.5
+        Wait 1
+        $VitalsCanvas on
+        Prompt 'Blood Pressure: 145/92 mmHg (elevated - hypertension stage 2)'
+        Wait 4
+        $VitalsCanvas off
+        Player align $PlayerStart 0.5
+        Wait 1
+        ScoreTracker TaskCompleted $PatientType 'Task_CheckBP'
+        $BPChecked = true
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitBP'
+    Endif
+
+###########################################
+# STEP 18: Ask patient about asthma history
+###########################################
+
+$GenericPlayerLine = 'Do you have any history of asthma or respiratory conditions?'
+$GenericPatientLine = $PatientLine_AsthmaHistory
+Do 'GenericChat.txt'
+
+Prompt 'Patient reports family history of asthma and personal history since childhood.'
+Wait 4
+ScoreTracker TaskCompleted $PatientType 'Task_AskAsthmaHistory'
+$AsthmaHistoryAsked = true
+Prompt ''
+
+###########################################
+# STEP 19: Ask about recent triggers or inhaler use
+###########################################
+
+$GenericPlayerLine = 'Have you used your inhaler recently? Any recent triggers?'
+$GenericPatientLine = $PatientLine_Triggers
+Do 'GenericChat.txt'
+
+Prompt 'Patient reports: Used rescue inhaler 3 times today. Exposed to dust at work.'
+Wait 4
+ScoreTracker TaskCompleted $PatientType 'Task_AskTriggers'
+$TriggersAsked = true
+Prompt ''
+
+###########################################
+# STEP 20: Auscultate lung sounds (stethoscope)
+###########################################
+
+Prompt 'Auscultate the patient lung sounds with a stethoscope. Click the patient chest.'
+
+Label 'WaitAuscultate'
+    If
+        $Patient pressed
+    Then
+        $Patient reset
+        $PlayerNurse play LeanIn
+        Wait 1
+        # Audio cue would play here - wheezing sounds louder
+        Prompt 'Auscultation: Diffuse wheezing heard bilaterally in all lung fields.'
+        Wait 4
+        $PlayerNurse release
+        ScoreTracker TaskCompleted $PatientType 'Task_AuscultateLungs'
+        $LungSoundsAuscultated = true
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitAuscultate'
+    Endif
+
+###########################################
+# STEP 21: Identify diffuse wheezing consistent with asthma
+###########################################
+
+Prompt 'Based on auscultation, identify the lung sounds.'
+Wait 1
+
+# Present choices for identification
+$AbCan on
+$AbChoice1 = AbCan + '/Choices/Choice1'
+$AbChoice2 = AbCan + '/Choices/Choice2'
+$AbChoice3 = AbCan + '/Choices/Choice3'
+$AbExit = AbCan + '/Choices/Exit'
+
+# Set choice text if possible
+$AbChoice1 setItemText 'Diffuse wheezing - consistent with asthma'
+$AbChoice2 setItemText 'Crackles - consistent with pneumonia'
+$AbChoice3 setItemText 'Stridor - consistent with upper airway obstruction'
+
+Label 'WaitIdentify'
+    If
+        $AbChoice1 pressed
+    Then
+        $AbChoice1 reset
+        $AbCan off
+        Prompt 'Correct! Diffuse wheezing consistent with acute asthma exacerbation.'
+        Wait 3
+        ScoreTracker TaskCompleted $PatientType 'Task_IdentifyWheezing'
+        $WheezingIdentified = true
+        Prompt ''
+    Else
+        If
+            $AbChoice2 pressed
+        Then
+            $AbChoice2 reset
+            Prompt 'Incorrect. The sounds are wheezing, not crackles. Try again.'
+            Wait 2
+            Prompt ''
+            Goto 'WaitIdentify'
+        Endif
+        If
+            $AbChoice3 pressed
+        Then
+            $AbChoice3 reset
+            Prompt 'Incorrect. The sounds are diffuse wheezing, not stridor. Try again.'
+            Wait 2
+            Prompt ''
+            Goto 'WaitIdentify'
+        Endif
+        If
+            $AbExit pressed
+        Then
+            $AbExit reset
+            Prompt 'You must identify the lung sounds before proceeding.'
+            Wait 2
+            Prompt ''
+            Goto 'WaitIdentify'
+        Endif
+    Endif
+    Wait .2
+    If
+        $WheezingIdentified = false
+    Then
+        Goto 'WaitIdentify'
+    Endif
+
+###########################################
+# STEP 22: Determine likely acute asthma exacerbation
+###########################################
+
+Prompt 'Based on your findings, determine the likely diagnosis.'
+Wait 2
+Prompt 'Assessment: Acute Asthma Exacerbation - based on history of asthma, diffuse wheezing, tachypnea, low SpO2, and poor response to rescue inhaler.'
+Wait 5
+ScoreTracker TaskCompleted $PatientType 'Task_DetermineAsthma'
+$AsthmaExacDetermined = true
+Prompt ''
+
+###########################################
+# STEP 23: Notify provider of assessment findings
+###########################################
+
+Prompt 'Notify the provider of your assessment findings. Click the phone.'
+
+$Phone outline.on
+$Phone clickable true
+
+Label 'WaitNotify'
+    If
+        $Phone pressed
+    Then
+        $Phone reset
+
+        $GenericPlayerLine = 'Doctor, patient Maria Santos, 34F, presenting with acute asthma exacerbation. RR 28, SpO2 89% now 93% on 2L NC. HR 112. BP 145/92. Diffuse bilateral wheezing. Used rescue inhaler 3x today without relief.'
+
+        $PlayerLower = 'Player/DialogSpot'
+        $PlayerLower speaks $'You: ' + GenericPlayerLine
+        Wait 5
+        $PlayerLower speaks ''
+
+        ScoreTracker TaskCompleted $PatientType 'Task_NotifyProvider'
+        $ProviderNotified = true
+        Prompt 'Provider notified of assessment findings.'
+        Wait 2
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitNotify'
+    Endif
+
+###########################################
+# STEP 24: Receive order for nebulized bronchodilator
+###########################################
+
+Prompt 'Receiving order from provider...'
+Wait 2
+Prompt 'Order received: Nebulized bronchodilator treatment (Albuterol 2.5mg/3mL via nebulizer)'
+Wait 4
+ScoreTracker TaskCompleted $PatientType 'Task_ReceiveOrder'
+$OrderReceived = true
+Prompt ''
+
+###########################################
+# STEP 25: Prepare nebulizer treatment (albuterol)
+###########################################
+
+Prompt 'Prepare the nebulizer treatment. Click the cart to gather supplies.'
+
+Label 'WaitPrepNeb'
+    If
+        $Cart pressed
+    Then
+        $Cart reset
+        $PlayerNurse play LeanIn
+        Wait 1
+        Prompt 'Preparing nebulizer: Albuterol 2.5mg/3mL solution loaded into nebulizer chamber.'
+        Wait 3
+        $PlayerNurse release
+        ScoreTracker TaskCompleted $PatientType 'Task_PrepareNebulizer'
+        $NebPrepared = true
+        Prompt 'Nebulizer treatment prepared and ready to administer.'
+        Wait 2
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitPrepNeb'
+    Endif
+
+###########################################
+# STEP 26: Administer nebulized bronchodilator
+###########################################
+
+Prompt 'Administer the nebulized bronchodilator to the patient. Click the patient.'
+
+Label 'WaitAdminNeb'
+    If
+        $Patient pressed
+    Then
+        $Patient reset
+        $PlayerNurse play LeanIn
+        Wait 1
+        Prompt 'Nebulizer mouthpiece placed. Patient breathing in the medication. Treatment in progress...'
+        Wait 4
+        $PlayerNurse release
+        ScoreTracker TaskCompleted $PatientType 'Task_AdministerNeb'
+        $NebAdministered = true
+
+        # Update vitals - HR increases due to albuterol (beta-agonist side effect)
+        $VitalsPhase = 4
+        $HR = 125
+        $Vitals setVitals 125 93 '145/92' 24
+
+        Prompt 'Nebulizer treatment being administered. Monitor the patient during treatment.'
+        Wait 3
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitAdminNeb'
+    Endif
+
+###########################################
+# STEP 27: Monitor patient during treatment - HR 125 bpm
+###########################################
+
+Prompt 'Monitor the patient during nebulizer treatment. Check the vitals monitor.'
+
+Label 'WaitMonitor'
+    If
+        $Vitalsmonitor pressed
+    Then
+        $Vitalsmonitor reset
+        Player align $Monitorlook 0.5
+        Wait 1
+        $VitalsCanvas on
+        Prompt 'HR: 125 bpm (increased - expected side effect of Albuterol, a beta-agonist)'
+        Wait 5
+        $VitalsCanvas off
+        Player align $PlayerStart 0.5
+        Wait 1
+        ScoreTracker TaskCompleted $PatientType 'Task_MonitorDuringTreatment'
+        $PatientMonitored = true
+        Prompt 'Note: Heart rate increase is an expected side effect of Albuterol (beta-agonist).'
+        Wait 3
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitMonitor'
+    Endif
+
+# Treatment complete - update vitals to post-treatment values
+Wait 2
+Prompt 'Nebulizer treatment complete.'
+Wait 2
+
+$VitalsPhase = 5
+$HR = 110
+$SpO2 = 96
+$BP = '138/88'
+$Respiration = 22
+$Vitals setVitals 110 96 '138/88' 22
+
+Prompt ''
+
+###########################################
+# STEP 28: Reassess lung sounds - Clearer breath sounds
+###########################################
+
+Prompt 'Reassess the patient lung sounds. Click the patient chest.'
+
+Label 'WaitReassessLungs'
+    If
+        $Patient pressed
+    Then
+        $Patient reset
+        $PlayerNurse play LeanIn
+        Wait 1
+        Prompt 'Auscultation: Breath sounds significantly clearer. Minimal residual wheezing.'
+        Wait 4
+        $PlayerNurse release
+        ScoreTracker TaskCompleted $PatientType 'Task_ReassessLungSounds'
+        $LungSoundsReassessed = true
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitReassessLungs'
+    Endif
+
+###########################################
+# STEP 29: Reassess respiratory rate - 22 breaths/min
+###########################################
+
+Prompt 'Reassess the respiratory rate. Click the patient.'
+
+Label 'WaitReassessRR'
+    If
+        $Patient pressed
+    Then
+        $Patient reset
+        Prompt 'Respiratory Rate: 22 breaths/min (improved from 28 - still slightly elevated but much better)'
+        Wait 4
+        ScoreTracker TaskCompleted $PatientType 'Task_ReassessRespRate'
+        $RespRateReassessed = true
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitReassessRR'
+    Endif
+
+###########################################
+# STEP 30: Reassess oxygen saturation - 96% on 2L O2
+###########################################
+
+Prompt 'Reassess the oxygen saturation. Click the monitor.'
+
+Label 'WaitFinalO2'
+    If
+        $Vitalsmonitor pressed
+    Then
+        $Vitalsmonitor reset
+        Player align $Monitorlook 0.5
+        Wait 1
+        $VitalsCanvas on
+        Prompt 'SpO2: 96% on 2L O2 (significantly improved from 89%)'
+        Wait 4
+        $VitalsCanvas off
+        Player align $PlayerStart 0.5
+        Wait 1
+        ScoreTracker TaskCompleted $PatientType 'Task_ReassessO2Sat2'
+        $O2SatReassessed2 = true
+        Prompt ''
+    Else
+        Wait .2
+        Goto 'WaitFinalO2'
+    Endif
+
+###########################################
+# STEP 31: Observe improvement / Successful end
+###########################################
+
+$GenericPlayerLine = 'How are you feeling now?'
+$GenericPatientLine = $PatientLine_PostTreatment
+Do 'GenericChat.txt'
+
+Prompt 'Patient shows significant improvement in airflow and breathing effort.'
+Wait 3
+ScoreTracker TaskCompleted $PatientType 'Task_ObserveImprovement'
+$ImprovementObserved = true
+$ScenarioComplete = true
+
+###########################################
+# SCENARIO COMPLETE - Show Results
+###########################################
+
+Wait 2
+Prompt 'Scenario Complete! All assessment and intervention steps performed successfully.'
+Wait 4
+Prompt ''
+
+# End stage scoring
+ScoreTracker EndStage
+Wait 1
+ScoreTracker CloseStage
+Wait 1
+
+# Show end screen
+$EndCanvas on
+
+Label 'WaitEnd'
+    If
+        $EndGame isOnAndPressed
+    Then
+        SceneManager switchtoscene $MainMenu
+    Endif
+    Wait .2
+Goto 'WaitEnd'

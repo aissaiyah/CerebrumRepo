@@ -370,6 +370,24 @@ Label 'LoopN1'
 		Wait .5
 		$Patient reset
 		$Patient outline.off
+
+		# Approaching patient - observe breathing symptoms
+		$OxygenApplied =
+			$GlobalVar getglobal 'OxygenApplied'
+		If
+			$OxygenApplied = true
+		Then
+			# Patient breathing normally after treatment
+		Else
+			# Step 2: Observe chest rise - rapid abnormal breathing visible up close
+			Prompt 'You notice rapid, abnormal chest rise as the patient struggles to breathe.'
+			Wait 3
+			# Step 3: Audible wheezing heard when closer to patient
+			Prompt 'You can hear audible wheezing alongside the coughing.'
+			Wait 3
+			Prompt ''
+		Endif
+
 		Do 'NEWS_Nurse/EngagePatient.txt'
 		$UseToolButton reset
 		$Patient outline.on

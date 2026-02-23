@@ -40,5 +40,12 @@ Label 'GameLoop'
         Stages/Buttons/SceneRandom reset
         SceneManager switchtoscene Scenes/NEWS/RandomNEWS
     Endif
+
+    If
+        Stages/Buttons/SceneAsthma isOnAndPressed
+    Then
+        Stages/Buttons/SceneAsthma reset
+        SceneManager switchtoscene Scenes/Asthma/Asthma01
+    Endif
     Wait .1
 goto 'GameLoop'

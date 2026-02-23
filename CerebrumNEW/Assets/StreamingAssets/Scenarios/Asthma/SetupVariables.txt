@@ -1,0 +1,112 @@
+###########################################
+# Asthma Scenario - Setup Variables
+# Sets up all scene object references
+###########################################
+
+$Stage = '1'
+$StageFolderPrefix = 'Asthma/'
+
+$ScoreTracker = 'ScoreTracker'
+$TakenAction = false
+
+###########################################
+# Setup Canvases
+###########################################
+
+$SumCanvas = 'SummaryCanvas'
+$Summary = 'SummaryCanvas/Background/Text'
+$SummaryText = SumCanvas + '/TopSummary'
+$SummaryExit = SumCanvas + '/OKButton'
+$SummaryBlack = SumCanvas + '/Black'
+$SummaryInfo = SumCanvas + '/InfoButton'
+$SumButton = SummaryInfo + '/Information'
+
+$PatCan = 'PatientCanvas'
+$OxyCan = 'OxygenTherapyCanvas'
+$ECGCan = 'ECGCheckCanvas'
+$AbCan = 'AbnormalFindingsCanvas'
+$EndCanvas = 'EndCanvas'
+$InterventionsCanvas = 'ToolCanvas/Interventions'
+$AssessmentsCanvas = 'ToolCanvas/Assessments'
+$ToolDescription = 'ToolCanvas/ToolDescription'
+$ChecklistButton = 'ToolCanvas/Checklist'
+$EndGame = 'ToolCanvas/EndGame'
+$CheckCanvas = 'PatientChecklistCanvas'
+
+$Timer = 20*60
+$TimeManager = 'UIManager'
+
+$BackECG = 'ECGCheckCanvas/Choices/Exit'
+
+###########################################
+# Scene Objects
+###########################################
+
+$Nurse = 'Nurse_01(Clone)'
+$Nurse reset
+$NurseFace = $Nurse + '/Eyes'
+$Player = 'Player'
+$LeftHandSpot = 'LeftHandSpot'
+$RightHandSpot = 'RightHandSpot'
+$Scene_Exit = 'JoystickCanvas/Exit'
+
+$PatLook = 'PatLook'
+
+$Vitalsmonitor = 'BedsideHeadLeft' + BedNumber + '/VitalsSpotMonitor(Clone)'
+$Monitorlook = $Vitalsmonitor + '/Close'
+$VitalsCanvas = $Vitalsmonitor + '/SpotCanvas'
+$VitalsCanvas off
+
+###########################################
+# Cart and Equipment
+###########################################
+
+$Cart = 'Cart' + BedNumber
+$COWComputer = Cart + '/Computer1'
+$Gloves = Cart + '/Misc9'
+
+###########################################
+# Dialogue
+###########################################
+
+$DialogCanvas = 'DialogueCanvas'
+$PatientSpeechBubble = 'DialogueCanvas/Patient Speak'
+$PlayerSpeechBubble = 'DialogueCanvas/Player Speak'
+$PatientSpeech = 'DialogueCanvas/Patient Speak/Text'
+$PlayerSpeech = 'DialogueCanvas/Player Speak/Text'
+
+###########################################
+# Nurse Player
+###########################################
+
+$PlayerNurse = 'Player/NursePlayer'
+$NurseBodyGloves = PlayerNurse + '/BodyGloves'
+$NurseBodyNoGloves = PlayerNurse + '/BodyNoGloves'
+
+$NurseHead = $Nurse + '/metarig/Jaw'
+
+$grab = 'v0_grab'
+$grabRight = 'v0_grabRight'
+$grabLeft = 'v0_grabLeft'
+
+###########################################
+# Asthma Scenario State
+###########################################
+
+$CurrentPhase = 1
+$ScenarioComplete = false
+
+$SceneStart = 'Asthma/MainLoop.txt'
+$EndCanvas = 'EndCanvas'
+$MainMenu = 'Scenes/NEWS/NEWSMainMenu'
+
+###########################################
+# Asthma-specific dialogue lines
+###########################################
+
+$PatientLine_Breathing = 'I... can not... breathe well...'
+$PatientLine_Speech = 'Hard to... talk... can not... finish sentences...'
+$PatientLine_AsthmaHistory = 'My mother... had asthma... I have had it... since childhood...'
+$PatientLine_Triggers = 'Used rescue... inhaler 3 times... today... dust at work...'
+$PatientLine_Improvement = 'I feel... a little better... breathing easier now...'
+$PatientLine_PostTreatment = 'Much better now. I can breathe more easily. Thank you.'

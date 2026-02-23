@@ -1,0 +1,24 @@
+# PrepareNebulizer.txt - Prepare nebulizer with albuterol
+# Albuterol 2.5mg/3mL nebulizer solution
+
+$PlayerNurse play LeanIn
+Wait 1
+
+Prompt 'Gathering nebulizer equipment from cart...'
+Wait 2
+
+Prompt 'Checking medication: Albuterol 2.5mg/3mL - verifying patient, dose, route, time.'
+Wait 3
+
+Prompt 'Loading albuterol solution into nebulizer chamber...'
+Wait 2
+
+Prompt 'Attaching mouthpiece and connecting tubing to oxygen source at 6-8 LPM...'
+Wait 2
+
+Prompt 'Nebulizer prepared and ready for administration.'
+Wait 2
+
+$PlayerNurse release
+Prompt ''
+Return

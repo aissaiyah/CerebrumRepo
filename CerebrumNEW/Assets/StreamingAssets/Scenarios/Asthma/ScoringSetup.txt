@@ -1,0 +1,46 @@
+#########################################
+#  ASTHMA SCENARIO SCORING INIT
+#  Point values for each task
+#  Positive = correct action, Negative = wrong/missed
+#########################################
+
+# Phase 1: Initial Assessment
+$Task_ApproachPatient_Value           = 5
+$Task_AskBreathing_Value              = 5
+$Task_VisualAssessBreathing_Value     = 5
+$Task_AssessSpeech_Value              = 5
+$Task_ObserveChestRise_Value          = 5
+$Task_CheckWheezing_Value            = 5
+$Task_CountRespRate_Value             = 10
+$Task_ReadO2Sat_Value                 = 10
+
+# Phase 2: Immediate Interventions
+$Task_AssistPosition_Value            = 10
+$Task_ReassessBreathing1_Value        = 5
+$Task_ApplyO2_Value                   = 10
+$Task_SelectNasalCannula_Value        = 5
+$Task_SetFlowRate_Value               = 10
+$Task_ApplyO2Device_Value             = 5
+
+# Phase 3: Secondary Assessment
+$Task_ReassessO2Sat1_Value            = 10
+$Task_CheckHeartRate_Value            = 5
+$Task_CheckBP_Value                   = 5
+$Task_AskAsthmaHistory_Value          = 5
+$Task_AskTriggers_Value               = 5
+$Task_AuscultateLungs_Value           = 10
+$Task_IdentifyWheezing_Value          = 5
+
+# Phase 4: Clinical Decision & Treatment
+$Task_DetermineAsthma_Value           = 10
+$Task_NotifyProvider_Value            = 10
+$Task_ReceiveOrder_Value              = 5
+$Task_PrepareNebulizer_Value          = 10
+$Task_AdministerNeb_Value             = 10
+
+# Phase 5: Post-Treatment Reassessment
+$Task_MonitorDuringTreatment_Value    = 10
+$Task_ReassessLungSounds_Value        = 5
+$Task_ReassessRespRate_Value          = 5
+$Task_ReassessO2Sat2_Value            = 5
+$Task_ObserveImprovement_Value        = 5
