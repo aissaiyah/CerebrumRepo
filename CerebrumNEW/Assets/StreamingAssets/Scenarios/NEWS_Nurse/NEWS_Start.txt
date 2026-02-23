@@ -152,6 +152,12 @@ $CoughingSound = 'CoughingSound'
 
 $CoughingSound playsound 35
 
+# Start abnormal breathing animation on patient (chest rise)
+$Patient play breathing
+
+# Initialize oxygen applied state
+$GlobalVar setglobal 'OxygenApplied' false
+
 $Bed clickable false
 $WristTag reset
 
