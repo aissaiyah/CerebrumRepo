@@ -2,22 +2,24 @@
 #  PATIENT INFO
 #########################################
 
-$PatientName = 'Teng Nelson'
-$PatientIC = 'S2833365H'
-$BloodType = 'B-'
-$AgeInYears = 80
-$PatientModel = 'PatientMale50Diaper'
-$PatientDiag = 'Urinary tract infection'
-$PatientProf = 'Male, 80 years old'
-$PatientSummary = 'Patient was recently discharged from hospital for prostate cancer. During his previous admission,  he had urinary catheter inserted. However he had developed urinary tract infection after discharge.  He was readmitted for heamaturia and fever.'
+$PatientName = 'James Tan'
+$isEWS = false
+$PatientIC = 'S9312345A'
+$BloodType = 'A+'
+$AgeInYears = 30
+$PatientModel = 'uAvatar'
+$PatientDiag = 'Acute Difficulty Breathing'
+$PatientSummary = 'Mr James Tan, 30 years old, presented to the ward with acute difficulty breathing.'
 
 
-$Temperature = 38.8
-$HR = 85
-$BP = '138/67' #mmHg
-$BPSys = 138
+$PatientType = 'Non1'
+
+$Temperature = 37.2
+$HR = 98
+$BP = '128/82' #mmHg
+$BPSys = 128
 $Respiration = 20
-$SpO2 = 98
+$SpO2 = 95
 $OxygenSupplement = 'No'
 $LevelOfConscious =  'Alert'
 $Pat_Oxystored = 0
@@ -44,5 +46,3 @@ $PatientMask = Patient + '/OxygenSuppliers/MaskGroup'
 $PatientNasal = Patient + '/OxygenSuppliers/NasalCannula'
 $PatientMask off
 $PatientNasal off
-
-Do 'NEWS_Nurse/SetupPatient.txt'

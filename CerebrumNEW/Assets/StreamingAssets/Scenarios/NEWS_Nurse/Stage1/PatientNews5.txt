@@ -1,52 +1,39 @@
 #########################################
-#  PATIENTNEWS1 INFO INIT - Transient ischemic attack then develop to stroke
+#  PATIENTNEWS5 INFO INIT - Acute asthma attack scenario
 #########################################
 
-$PatientName = 'Mister Buster'
-$isEWS = true
-$PatientIC = 'S1112223A'
-$BloodType = 'O-'
-$AgeInYears = 67
+$PatientName = 'James Tan'
+$PatientIC = 'S9312345A'
+$AgeInYears = 30
 $PatientModel = 'uAvatar'
-$PatientDiag = 'Trouble breathing'
-$PatientGender = 'Male'
-$PatientSummary = 'Mister Buster, admitted electively for trouble breathing. He has past medical history of asthma attacks. Post op instruction: set him on oxygen'
+$PatientDiag = 'Acute Difficulty Breathing'
+$HR = 112
+$PatientSpeak = '*Cough Cough Cough* Its hard to breathe.'
 
-$PatientType = 'News1'
+$PatientSummary = 'Mr James Tan, 30 years old, admitted to the ward presenting with acute difficulty breathing. He has a known history of asthma and reports worsening shortness of breath over the past few hours with no relief from his personal inhaler. Post-admission instruction: hourly parameters.'
 
-$Temperature = 30.5
-$HR = 65
-$BP = '120/71'
-$BPSys = 120
-$Respiration = 12
-$SpO2 = 100
+$PatientType = 'News5'
 
-$PainScore = 'Pain Score: 4/10'
+$Temperature = 37.2
+$HR = 112
+$BP = '145/92' #mmHg
+$BPSys = 145
+$Respiration = 28
+$SpO2 = 89
 
-$AbnormalResponse = 'Patient is showing the signs and symptoms of an asthma attack.'
+$OxygenSupplement = 'No'
 
-$PatientSpeak = '*Cough Cough Cough* Its hard to breathe. '
+$PainScore = 'Pain Score: 3/10'
 
-#########################################
-# SETUP TYPE OF MODEL
-#########################################
+$AbnormalResponse = 'Patient is showing the signs and symptoms of an acute asthma exacerbation.'
 
-$PatientObjName = 'PatientNewsA_B' + BedNumber
+$PatientSpeak = '*Cough Cough Cough* Its hard to breathe.'
+
+$PatientBedLoc = $Patient
+
+
+$PatientObjName = 'PatientNewsE_B' + BedNumber
 Create $PatientModel $PatientObjName
 $PatientBedLoc = $Patient
 $PatientObjName align $PatientBedLoc 0
-$Patient = PatientObjName
-
-$RigType = 'uAvatar'
-Do 'Rigs/RigExtras.txt'
-
-Do 'NEWS_Nurse/SetupPatient.txt'
-
-$HeadAmount = 80.0
-$WeightAmount = 20.0
-
-Do 'PatientCreations/Age/75.txt'
-Do 'PatientCreations/Head/Head3.txt'
-Do 'PatientCreations/Height/Short.txt'
-Do 'PatientCreations/Weight/Weight.txt'
-Do 'PatientCreations/Expressions/Frown.txt'
+Do 'NEWS_Nurse/SetupPatient.txt' 

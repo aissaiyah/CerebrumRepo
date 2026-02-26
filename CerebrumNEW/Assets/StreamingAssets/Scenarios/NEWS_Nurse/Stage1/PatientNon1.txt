@@ -2,31 +2,33 @@
 #  PATIENTNon1 INFO INIT
 #########################################
 
-$PatientName = 'Wee Song Kok'
+$PatientName = 'James Tan'
 $isEWS = false
-$PatientIC = 'S1257567T'
-$BloodType = 'B-'
-$AgeInYears = 75
+$PatientIC = 'S9312345A'
+$BloodType = 'A+'
+$AgeInYears = 30
 $PatientModel = 'uAvatar'
-$PatientDiag = 'Pneumonia'
+$PatientDiag = 'Acute Difficulty Breathing'
 $PatientGender = 'Male'
-$PatientSummary = 'Patient was admitted from Emergency department for pneumonia.  He has complained of breathless during the handover. He was put on oxygen therapy (nasal prong).'
+$PatientSummary = 'Mr James Tan, 30 years old, presented to the ward with acute difficulty breathing.'
 
 $PatientType = 'Non1'
 
-$Temperature = 36.8
-$HR = 70
-$BP = '120/52'
-$BPSys = 120
+$Temperature = 37.2
+$HR = 98
+$BP = '128/82' #mmHg
+$BPSys = 128
 $Respiration = 20
-$SpO2 = 100
+$SpO2 = 95
 
-$OxygenSupplement = 'Yes'
-$PatientNasal = true
+$OxygenSupplement = 'No'
+$PatientNasal = false
 
-$PainScore = 'Pain Score: 0/10'
+$PainScore = 'Pain Score: 3/10'
 
-$PatientSpeak = 'Hi, I am generally good with the oxygen mask on. I felt breathless this morning when I was in the bathroom without the oxygen mask.'
+$PatientSpeak = 'I have been having some difficulty breathing.'
+
+$AbnormalResponse = 'Patient is presenting with mild respiratory distress and a history of asthma.'
 
 #########################################
 # SETUP TYPE OF MODEL
