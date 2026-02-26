@@ -1,0 +1,182 @@
+# ============================================================
+# PatientNews5_Guide.txt
+# Step-by-step instructional guide for the Asthma scenario
+# Runs alongside the NEWS05 scene for PatientNews5 (Bed 2)
+# ============================================================
+
+# --- Initial vitals: acute respiratory distress ---
+# HR=118, SpO2=87%, BP=148/94, RR=28
+$Vitals setVitals 118 87 '148/94' 28
+
+
+# ============================================================
+# STEP 1 — Speak to the patient
+# ============================================================
+Prompt 'A patient in Bed 2 is in visible distress. Approach and speak with them to find out what is wrong. Click on the patient.'
+    $HasSpokenToPatient
+
+# ============================================================
+# STEP 2 — Initial observation (no player action required)
+# ============================================================
+Prompt 'Notice their breathing: it is rapid and laboured, and they can only manage a few words at a time. This is significant respiratory distress. Take a closer look — move near the patient to observe their breathing effort, then check their vitals on the monitor.'
+
+
+# ============================================================
+# STEP 3 — Check vitals, then sit the patient up
+# ============================================================
+Label 'WaitStep3_Vitals'
+    $Vitalsmonitor pressed
+    If Not Goto 'WaitStep3_Vitals'
+    $Vitalsmonitor reset
+
+Prompt 'Vitals: HR 118, SpO2 87%, BP 148/94, RR 28. The oxygen saturation and respiratory rate are both critically abnormal. An upright position will immediately reduce the work of breathing by allowing gravity to assist lung expansion. Help the patient sit up into a high Fowler position. Use the Patient menu.'
+
+# Wait for sit-up button press
+# ^ $Pre_SitUp button must be available in PatientPreCanvas (see EngagePatient.txt)
+Label 'WaitStep3_SitUp'
+    $Pre_SitUp pressed
+    If Not Goto 'WaitStep3_SitUp'
+    $Pre_SitUp reset
+    $Pre_SitUp off
+    $Pre_PrepareNeb on
+
+
+# Vitals after sitting: slight improvement
+$Vitals setVitals 116 89 '146/93' 26
+
+Prompt 'Good. The patient is now upright. You can already see their chest rising with slightly less effort — gravity is helping the diaphragm and accessory muscles work more efficiently.'
+
+
+# ============================================================
+# STEP 4 — Reassess vitals after repositioning
+# ============================================================
+Prompt 'Reassess the vitals to note any changes since repositioning. Click the monitor.'
+
+Label 'WaitStep4_Vitals'
+    $Vitalsmonitor pressed
+    If Not Goto 'WaitStep4_Vitals'
+    $Vitalsmonitor reset
+
+Prompt 'Slight improvement: HR 116, SpO2 89%, RR 26. Better, but far from normal. The airway is still compromised. The next step is supplemental oxygen — apply a nasal cannula using the oxygen therapy tool.'
+
+
+# ============================================================
+# STEP 5 — Apply supplemental oxygen (nasal cannula)
+# ============================================================
+Label 'WaitStep5_Oxygen'
+    $OxygenApplied
+    If Not Goto 'WaitStep5_Oxygen'
+    # ^ $OxygenApplied is set to true by 6OxygenTherapy.txt on successful application
+
+# Vitals after oxygen applied: moderate improvement
+$Vitals setVitals 114 93 '144/92' 24
+
+
+# ============================================================
+# STEP 6 — Check vitals after oxygen
+# ============================================================
+Prompt 'Nasal cannula applied. Check the vitals again to see the effect of the supplemental oxygen.'
+
+Label 'WaitStep6_Vitals'
+    $Vitalsmonitor pressed
+    If Not Goto 'WaitStep6_Vitals'
+    $Vitalsmonitor reset
+
+Prompt 'Improvement: HR 114, SpO2 93%, RR 24. The oxygen is helping, but saturation and respiratory rate are still elevated. The patient seems a little calmer now — notice they can speak a few more words without gasping. This is a good moment to gather more clinical history. Ask the patient about their medical background.'
+
+
+# ============================================================
+# STEP 7 — Ask patient about family/medical history
+# ============================================================
+# ^ $Pre_FamilyHistory button must be added to PatientPreCanvas (requires implementation)
+Label 'WaitStep7_History'
+    $Pre_FamilyHistory pressed
+    If Not Goto 'WaitStep7_History'
+    $Pre_FamilyHistory reset
+
+# Patient responds with asthma family history dialogue
+$Patient speaks 'My mum had asthma... I have too, since I was young...'
+Wait 2
+$Patient speaks ''
+
+Prompt 'The patient reports a personal and family history of asthma. Combined with what you are observing — the rapid laboured breathing, audible wheeze, low SpO2, and only partial response to oxygen and positioning — this presentation is consistent with an acute asthma exacerbation. Confirm by auscultating the lung sounds. Click on the patient chest with the stethoscope.'
+
+
+# ============================================================
+# STEP 8 — Auscultate lung sounds
+# ============================================================
+# ^ $LungSoundsAuscultated is set to true by AuscultateLungs.txt (requires implementation)
+Label 'WaitStep8_Lungs'
+    $LungSoundsAuscultated
+    If Not Goto 'WaitStep8_Lungs'
+
+Prompt 'Auscultation result: diffuse bilateral wheezing heard throughout all lung fields. This is the hallmark sound of narrowed, inflamed airways during bronchospasm. Your clinical picture is confirmed: acute asthma exacerbation. The first-line treatment is a nebulised bronchodilator. Notify the provider and request the order now.'
+
+
+# ============================================================
+# STEP 9 — Notify provider, receive medication order
+# ============================================================
+# ^ $OrderReceived is set to true by NotifyProvider.txt (requires implementation)
+Label 'WaitStep9_Order'
+    $OrderReceived
+    If Not Goto 'WaitStep9_Order'
+
+Prompt 'Order received: Albuterol 2.5mg/3mL via nebuliser. Prepare and administer the treatment to the patient.'
+
+
+# ============================================================
+# STEP 10 — Administer nebuliser treatment
+# ============================================================
+# ^ $NebuliserAdministered is set to true by AdministerNebulizer.txt (requires implementation)
+Label 'WaitStep10_Nebuliser'
+    $NebuliserAdministered
+    If Not Goto 'WaitStep10_Nebuliser'
+
+# Vitals immediately post-nebuliser: HR spikes from albuterol (beta-2 agonist side effect)
+$Vitals setVitals 125 94 '144/92' 22
+
+Prompt 'Nebuliser treatment administered. Check the vitals monitor now.'
+
+Label 'WaitStep10_Vitals'
+    $Vitalsmonitor pressed
+    If Not Goto 'WaitStep10_Vitals'
+    $Vitalsmonitor reset
+
+Prompt 'You will notice the heart rate has risen to 125 bpm. This is expected and normal: Albuterol is a beta-2 agonist, which stimulates the heart as a side effect and causes a temporary tachycardia. The SpO2 and respiratory rate are both continuing to improve. The medication is working — allow sufficient time for it to take full effect.'
+
+
+# ============================================================
+# STEP 11 — Wait for medication to take effect, final vitals check
+# ============================================================
+Prompt 'Enough time has passed for the bronchodilator to reach its full effect. Check the vitals one last time.'
+
+Label 'WaitStep11_Vitals'
+    $Vitalsmonitor pressed
+    If Not Goto 'WaitStep11_Vitals'
+    $Vitalsmonitor reset
+
+# Final healthy vitals
+$Vitals setVitals 88 98 '128/82' 16
+
+
+# ============================================================
+# STEP 12 — Vitals normal, scenario complete
+# ============================================================
+Prompt 'Vitals are now within normal range: HR 88, SpO2 98%, BP 128/82, RR 16. The bronchospasm has resolved, oxygen exchange is effective, and the patient is breathing comfortably. They are calm and able to speak in full sentences. The treatment has worked. The patient is stable and ready for observation and discharge planning.'
+
+Wait 2
+
+CoughingSound stopsound
+
+Wait 3
+
+Prompt 'Well done. You correctly identified and managed an acute asthma exacerbation: initial assessment, repositioning, supplemental oxygen, history gathering, auscultation, provider notification, and nebulised bronchodilator administration — all in the correct order.'
+
+Wait 4
+
+ScoreTracker EndStage
+
+Wait 5
+
+SceneManager switchtoscene Scenes/NEWS/MainMenu
+

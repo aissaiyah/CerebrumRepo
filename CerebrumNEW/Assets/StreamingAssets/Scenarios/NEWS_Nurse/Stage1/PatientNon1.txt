@@ -2,11 +2,19 @@
 #  PATIENTNon1 INFO INIT
 #########################################
 
+<<<<<<< Updated upstream
 $PatientName = 'Wee Song Kok'
 $isEWS = false
 $PatientIC = 'S1257567T'
 $BloodType = 'B-'
 $AgeInYears = 75
+=======
+$PatientName = 'James Tan'
+$isEWS = true
+$PatientIC = 'S9312345A'
+$BloodType = 'A+'
+$AgeInYears = 30
+>>>>>>> Stashed changes
 $PatientModel = 'uAvatar'
 $PatientDiag = 'Pneumonia'
 $PatientGender = 'Male'
@@ -14,12 +22,23 @@ $PatientSummary = 'Patient was admitted from Emergency department for pneumonia.
 
 $PatientType = 'Non1'
 
+<<<<<<< Updated upstream
 $Temperature = 36.8
 $HR = 70
 $BP = '120/52'
 $BPSys = 120
 $Respiration = 20
 $SpO2 = 100
+=======
+$Temperature = 37.2
+$HR = 112
+$BP = '128/82' #mmHg
+$BPSys = 128
+$Respiration = 28
+$SpO2 = 89
+$Pressure = '148/94'
+$RR = 28
+>>>>>>> Stashed changes
 
 $OxygenSupplement = 'Yes'
 $PatientNasal = true
