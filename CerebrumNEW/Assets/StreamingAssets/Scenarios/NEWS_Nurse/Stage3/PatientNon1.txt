@@ -1,6 +1,8 @@
 #########################################
-#  PATIENTNon1 INFO INIT
+#  PATIENTNon1 INFO STAGE 3
 #########################################
+<<<<<<< Updated upstream
+=======
 
 $PatientName = 'James Tan'
 $isEWS = false
@@ -11,12 +13,13 @@ $PatientModel = 'uAvatar'
 $PatientDiag = 'Acute Difficulty Breathing'
 
 $PatientSummary = 'Mr James Tan, 30 years old, presented to the ward with acute difficulty breathing.'
-
-$PatientType = 'Non1'
+$AbnormalResponse → 'Patient is showing signs and symptoms of acute asthma exacerbation.'
+$PainScore        → 'Pain Score: 3/10'
+$PatientType      → 'Non1'
 
 $Temperature = 37.2
 $HR = 98
-$BP = '128/82' #mmHg
+$BP = '148/94' #mmHg
 $BPSys = 128
 $Respiration = 20
 $SpO2 = 95
@@ -27,7 +30,27 @@ $AbnormalResponse = 'Patient is presenting with mild respiratory distress and a 
 
 $PatientSpeak = 'I have been having some difficulty breathing.'
 
+# Vitals phase tracker (advances through each intervention)
+$VitalsPhase            = 1
+
+# Guide progression flags — all start false, set true by action files
+$HasSpokenToPatient     = false
+$VitalsChecked_Phase1   = false
+$PatientPositioned      = false
+$VitalsChecked_Phase2   = false
+$OxygenApplied          = false
+$VitalsChecked_Phase3   = false
+$AsthmaHistoryAsked     = false
+$LungSoundsAuscultated  = false
+$OrderReceived          = false
+$NebuliserAdministered  = false
+$VitalsChecked_Phase4   = false
+$VitalsChecked_Final    = false
+
 $PatientObjName = 'PatientNon1_B' + BedNumber
 Create $PatientModel $PatientObjName
 
 $PatientObjName align $Patient 0
+
+
+>>>>>>> Stashed changes

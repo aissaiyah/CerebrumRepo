@@ -13,6 +13,7 @@ $Vitals setVitals 118 87 '148/94' 28
 # STEP 1 — Speak to the patient
 # ============================================================
 Prompt 'A patient in Bed 2 is in visible distress. Approach and speak with them to find out what is wrong. Click on the patient.'
+    $HasSpokenToPatient
 
 # ============================================================
 # STEP 2 — Initial observation (no player action required)
@@ -36,6 +37,9 @@ Label 'WaitStep3_SitUp'
     $Pre_SitUp pressed
     If Not Goto 'WaitStep3_SitUp'
     $Pre_SitUp reset
+    $Pre_SitUp off
+    $Pre_PrepareNeb on
+
 
 # Vitals after sitting: slight improvement
 $Vitals setVitals 116 89 '146/93' 26
@@ -171,3 +175,8 @@ Prompt 'Well done. You correctly identified and managed an acute asthma exacerba
 Wait 4
 
 ScoreTracker EndStage
+
+Wait 5
+
+SceneManager switchtoscene Scenes/NEWS/MainMenu
+

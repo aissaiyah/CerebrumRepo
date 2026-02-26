@@ -2,33 +2,50 @@
 #  PATIENTNon1 INFO INIT
 #########################################
 
-$PatientName = 'James Tan'
+<<<<<<< Updated upstream
+$PatientName = 'Wee Song Kok'
 $isEWS = false
+$PatientIC = 'S1257567T'
+$BloodType = 'B-'
+$AgeInYears = 75
+=======
+$PatientName = 'James Tan'
+$isEWS = true
 $PatientIC = 'S9312345A'
 $BloodType = 'A+'
 $AgeInYears = 30
+>>>>>>> Stashed changes
 $PatientModel = 'uAvatar'
-$PatientDiag = 'Acute Difficulty Breathing'
+$PatientDiag = 'Pneumonia'
 $PatientGender = 'Male'
-$PatientSummary = 'Mr James Tan, 30 years old, presented to the ward with acute difficulty breathing.'
+$PatientSummary = 'Patient was admitted from Emergency department for pneumonia.  He has complained of breathless during the handover. He was put on oxygen therapy (nasal prong).'
 
 $PatientType = 'Non1'
 
+<<<<<<< Updated upstream
+$Temperature = 36.8
+$HR = 70
+$BP = '120/52'
+$BPSys = 120
+$Respiration = 20
+$SpO2 = 100
+=======
 $Temperature = 37.2
-$HR = 98
+$HR = 112
 $BP = '128/82' #mmHg
 $BPSys = 128
-$Respiration = 20
-$SpO2 = 95
+$Respiration = 28
+$SpO2 = 89
+$Pressure = '148/94'
+$RR = 28
+>>>>>>> Stashed changes
 
-$OxygenSupplement = 'No'
-$PatientNasal = false
+$OxygenSupplement = 'Yes'
+$PatientNasal = true
 
-$PainScore = 'Pain Score: 3/10'
+$PainScore = 'Pain Score: 0/10'
 
-$PatientSpeak = 'I have been having some difficulty breathing.'
-
-$AbnormalResponse = 'Patient is presenting with mild respiratory distress and a history of asthma.'
+$PatientSpeak = 'Hi, I am generally good with the oxygen mask on. I felt breathless this morning when I was in the bathroom without the oxygen mask.'
 
 #########################################
 # SETUP TYPE OF MODEL
