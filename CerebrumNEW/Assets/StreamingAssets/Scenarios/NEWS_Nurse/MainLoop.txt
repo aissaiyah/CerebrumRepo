@@ -379,6 +379,10 @@ Label 'LoopN1'
 		Then
 			# Patient breathing normally after treatment
 		Else
+			$Patient play 'BreathingSpeed' true 4.5
+			$SPO2 = 90
+			$Vitals setVitals $HR $SPO2 $BP $Respiration
+
 			# Step 2: Observe chest rise - rapid abnormal breathing visible up close
 			Prompt 'You notice rapid, abnormal chest rise as the patient struggles to breathe.'
 			Wait 3

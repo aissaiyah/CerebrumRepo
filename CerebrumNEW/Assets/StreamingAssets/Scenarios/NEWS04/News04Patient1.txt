@@ -37,7 +37,7 @@ $PatientBedLoc = $Patient
 $PatientObjName align $PatientBedLoc 0
 $Patient = PatientObjName
 $CoughingSound = 'AsthmaAttack'
-$CoughingSound loop true
+#$CoughingSound loop true
 $CoughingSound play
 
 $RigType = 'uAvatar'

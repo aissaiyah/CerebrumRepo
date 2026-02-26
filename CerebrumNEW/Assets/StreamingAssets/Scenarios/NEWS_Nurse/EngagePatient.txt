@@ -62,6 +62,9 @@ Then
         $PatientSpeak = 'I can breathe better now.'
         CoughingSound stopsound
     Else
+	Prompt 'About to cough'
+	Wait 1
+		Do 'Action/PatientCough'
         $PatientSpeak = '*Cough Cough Cough* Its hard to breathe.'
     Endif
 
