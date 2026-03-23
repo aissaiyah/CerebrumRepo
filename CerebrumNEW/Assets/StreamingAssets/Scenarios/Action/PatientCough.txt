@@ -1,0 +1,21 @@
+#PatientDrinkCup - Patient drinks the cup liquid
+# $DrinkCup - cup object
+# $DrinkCupAmount - amount to fill cup
+
+
+	#bring hand to mouth
+	#Prompt 'Bring to mouth ' + PatientMouth
+	#Wait 3.5
+	$Patient $grabLeft $PatientMouth
+	Wait 1.5
+	$Patient setblend face 30 100
+	$CoughingSound play
+	Wait 4
+	$CoughingSound play
+	Wait 1
+
+
+	#bring drink back down, 
+	$Patient setblend face 30 0
+	$Patient release
+	Wait 1
